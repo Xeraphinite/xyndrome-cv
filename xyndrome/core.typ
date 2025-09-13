@@ -5,28 +5,49 @@
 // Put this near the top of your document
 
 #let cv(
-  /// The person to be listed at the top of the CV. -> content
-  author: "",
-  original: "",
+  /// The person's English name to be listed at the top of the CV. -> content
+  en_name: "",
+  /// The person's original name (e.g., Chinese, Japanese, Korean). -> content
+  original_name: "",
   /// Your address, preferably in two-line format. -> str | content
   address: "",
   /// Contact info entries (use `contact(...)`). -> array(content)
   contacts: (),
   /// Date updated. -> datetime | str
   updated: datetime.today(),
+  /// Language setting for the document. -> str
+  lang: "en",
   /// The content of the cv. -> content
   body,
 ) = {
   // Metadata
-  set document(author: author, title: author, date: updated)
+  let full_name = if original_name != "" { en_name + "  " + original_name } else { en_name }
+  set document(author: full_name, title: full_name, date: updated)
 
-  // Global text & page
-  set text(size: 11pt, lang: "en")
+  // Multilingual serif font configuration (optimized for your system)
+  let multilingual_fonts = (
+    (name: "New Computer Modern", covers: "latin-in-cjk"),
+    "Songti SC",            // Chinese serif
+    "Hiragino Mincho ProN", // Japanese serif
+    "AppleMyungjo",         // Korean serif
+    "STSong",               // Chinese serif fallback
+    "YuMincho",             // Japanese serif fallback
+    "Georgia"               // English serif fallback
+  )
+
+  set text(
+    size: 11pt,
+    lang: lang,
+    font: multilingual_fonts,
+    fallback: true
+  )
+  
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
+
     footer: [
       #align(center)[
-        #author -- CV -- #context { counter(page).display("1 of 1", both: true) }
+        #en_name -- Last Updated: #updated.display() -- #context { counter(page).display("1 of 1", both: true) }
       ]
     ],
   )
@@ -36,33 +57,30 @@
   show heading.where(level: 1): it => pad(bottom: 12pt, smallcaps(it))
   show heading.where(level: 2): it => pad(bottom: 0pt, it)
 
-  // Author
+  // Author name display
   align(center)[
-    #block(text(size: 14pt, weight: 700, [#smallcaps(author)]))
+    #block(text(size: 14pt, weight: 700, [#smallcaps(full_name)]))
   ]
 
-  // Contacts (with icons)
+  // Contacts and Address (combined line)
   pad(
     top: 2pt,
     align(center)[
-      #contacts.join("  |  ")
+      #{
+        let contact_info = contacts
+        if address != none and address != "" {
+          contact_info.push([#smallcaps(address)])
+        }
+        contact_info.join(" | ")
+      }
     ],
   )
-
-  // Address (if provided)
-  if address != none and address != "" {
-    align(center)[
-      #smallcaps[#address]
-    ]
-  }
 
   // Main body
   set par(justify: true)
   body
 }
 
-/// Contact helper: icon + text (+ optional link)
-/// Contact helper: icon + text (+ optional link)
 /// Contact helper: icon + text (+ optional link)
 #let contact(
   /// Icon function from @preview/scienceicons. -> function | none
@@ -77,9 +95,8 @@
   baseline: 20%,
 ) = {
   let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
-  if url != "" { [#ico #h(0.35em) #link(url)[#label]] } else { [#ico #h(0.35em) #label] }
+  if url != "" { [#ico #h(0.1em) #link(url)[#label]] } else { [#ico #h(0.1em) #label] }
 }
-
 
 /// Create an education entry, suitable for one degree and accompanying information.
 /// -> content
@@ -233,4 +250,62 @@
     area.at(1).join(" | ")
     linebreak()
   }
+}
+
+/// Create a detailed skills section with categories and levels
+/// -> content  
+#let detailed_skills(
+  /// Array of skill categories. Each category should be a dictionary with
+  /// "category", "skills" keys. Skills can have optional "level" field.
+  categories: (),
+  /// Whether to show skill levels. -> bool
+  show_levels: true,
+  /// Layout style: "compact", "detailed", "bars". -> str
+  style: "compact",
+) = {
+  for cat in categories {
+    strong[#cat.category: ]
+    
+    if style == "compact" {
+      cat.skills.map(skill => {
+        if type(skill) == dictionary and show_levels and "level" in skill {
+          [#skill.name (#skill.level)]
+        } else if type(skill) == dictionary {
+          skill.name
+        } else {
+          skill
+        }
+      }).join(" • ")
+    } else if style == "detailed" {
+      for skill in cat.skills {
+        if type(skill) == dictionary {
+          [- #skill.name]
+          if show_levels and "level" in skill {
+            [ (#skill.level)]
+          }
+          linebreak()
+        } else {
+          [- #skill]
+          linebreak()
+        }
+      }
+    }
+    
+    linebreak()
+  }
+}
+
+/// Create a programming languages section with proficiency levels
+/// -> content
+#let programming_skills(
+  /// Array of programming languages with proficiency
+  languages: (),
+) = {
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    ..languages.map(lang => [
+      #strong[#lang.name:] #lang.proficiency
+    ])
+  )
 }

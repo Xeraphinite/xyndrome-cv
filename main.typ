@@ -3,12 +3,14 @@
 
 #show link: it => underline(
   stroke: (dash: "dashed"),    // keeps font-derived thickness & text color
-  offset: 0.2em,               // tweak if you like
+  offset: 0.2em,              // tweak if you like
 )[#it]
 
 #show: cv.with(
-  author: "Keyou (Key) Zheng | 郑恪悠",
-  address: "Guangzhou, Guangdong, China",
+  en_name: "Keyou (Key) Zheng",
+  original_name: "郑恪悠",
+  address: "",  // Address will be handled in contacts now
+  lang: "en", // Set to "zh" for Chinese, "ja" for Japanese, "ko" for Korean
   contacts: (
     contact(
       icon: email-icon,
@@ -24,6 +26,11 @@
       icon: github-icon,
       label: "Xeraphinite",
       url: "https://github.com/Xeraphinite",
+    ),
+    contact(
+      icon: canton-tower-icon,
+      label: "Guangzhou, China",
+      url: "",
     ),
   ),
 )
@@ -49,7 +56,7 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 #edu(
   institution: "Guangdong University of Finance and Economics",
   location: "Guangzhou, CN",
-  gpa: "3.75 / 5.0",
+  gpa: "3.5 / 4.0",
   degrees: ("Bachelor of Engineering in Computer Science",),
   date: "2019 - 2023",
   details: [
@@ -62,12 +69,16 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 #exp(
   role: "Core Member & Researcher",
   org: "State Key Laboratory of Precision Electronic Manufacturing Technology and Equipment",
-  location: "Guangzhou, CN",
-  start: "Feb 2025",
-  end: "Present",
+  location: "Guangzhou, China",
+  start: "2025.2",
+  end: "Now",
   details: [
     #strong[Project: Sequence-based Parametric CAD Generation]
-    - Developing an LLM-based agent for generating #link("https://openscad.org/")[OpenSCAD] code from textual and schematic inputs;
+    - Developing an LLM-based agent for generating #link_with_icon(
+        icon: openscad-icon,
+        url: "https://openscad.org/",
+        text: "OpenSCAD"
+      ) code from textual and schematic inputs;
     - Investigating novel sequence-to-sequence modeling techniques to improve the accuracy and complexity of generated 3D parametric models.
     - Focusing on creating a robust human-in-the-loop system to refine and validate the agent's output for industrial applications.
   ],
@@ -75,7 +86,7 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 
 #exp(
   role: "Core Developer",
-  org: "Vograce (University-Industry Collaboration)",
+  org: "Vograce (Collaboration with Industry)",
   location: "Yiwu, CN",
   start: "Dec 2024",
   end: "Jul 2025",
@@ -98,8 +109,6 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
   vol: 101,
   pages: 103076,
   DOI: "10.1016/j.rcim.2025.103076",
-  // Example: add icons if applicable
-  icons: (open-access-icon()),
 )
 
 #paper(
@@ -109,21 +118,69 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
   published: "Under Review",
 )
 
-=  Skills
+= Skills
 
-- Coding
-  - #strong("Deep Learning"): PyTorch, vLLM, MLX
-  - #strong("DevOps"): Git, CI/CD, Docker
-  - Dev: TypeScript, Next.js, Node.js
-  - Design: Figma, TailwindCSS
-- Project: #link("https://github.com/Xeraphinite/ringrad")[ringrad]
+#detailed_skills(
+  categories: (
+    (
+      category: "Deep Learning & AI",
+      skills: (
+        (name: "PyTorch", level: "Advanced"),
+        (name: "vLLM", level: "Intermediate"),
+        (name: "MLX", level: "Intermediate"),
+        (name: "Transformers", level: "Advanced"),
+        (name: "Computer Vision", level: "Intermediate")
+      )
+    ),
+    (
+      category: "DevOps & Infrastructure", 
+      skills: (
+        (name: "Git", level: "Advanced"),
+        (name: "CI/CD", level: "Intermediate"),
+        (name: "Docker", level: "Advanced"),
+        (name: "Kubernetes", level: "Beginner"),
+        (name: "AWS", level: "Intermediate")
+      )
+    ),
+    (
+      category: "Development",
+      skills: (
+        (name: "TypeScript", level: "Advanced"),
+        (name: "Next.js", level: "Advanced"), 
+        (name: "Node.js", level: "Advanced"),
+        (name: "Python", level: "Expert"),
+        (name: "React", level: "Advanced")
+      )
+    ),
+    (
+      category: "Design & UI/UX",
+      skills: (
+        (name: "Figma", level: "Intermediate"),
+        (name: "TailwindCSS", level: "Advanced"),
+        (name: "Adobe Creative Suite", level: "Beginner")
+      )
+    )
+  ),
+  style: "compact"
+)
 
-- Language: 
-  - Native: Mandarin, Cantonese, Teochew
-  - Fluent: English (TOEFL: xxx), Japanese (JLPT N1)
-  - Intermediate: Korean
+*Projects:* #link_with_icon(
+  icon: github-icon,
+  url: "https://github.com/Xeraphinite/ringrad",
+  text: "Ringrad"
+) 
+
+*Languages:*
+
 
 = Awards
+
+#award(
+  name: "National Scholarship",
+  date: "2025", 
+  from: "National Scholarship",
+  details: "Among top 1% out of 10,000+ teams.",
+)
 
 #award(
   name: "Academic Scholarship",
