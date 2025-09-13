@@ -6,6 +6,8 @@
   offset: 0.2em,              // tweak if you like
 )[#it]
 
+#show list: set list(marker: [◦])
+
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
   original_name: "郑恪悠",
@@ -45,7 +47,7 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
   institution: "Guangdong University of Technology",
   location: "Guangzhou, CN",
   gpa: "3.62 / 4.0",
-  degrees: ("Master of Engineering in Mechanical Engineering",),
+  degrees: ("MEng. in Mechanical Engineering",),
   date: "2023 - 2026 (Expected)",
   details: [
     - *Supervisor:* Prof. Jiewu Leng
@@ -57,7 +59,7 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
   institution: "Guangdong University of Finance and Economics",
   location: "Guangzhou, CN",
   gpa: "3.5 / 4.0",
-  degrees: ("Bachelor of Engineering in Computer Science",),
+  degrees: ("BEng. in Computer Science",),
   date: "2019 - 2023",
   details: [
     - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning
@@ -67,13 +69,13 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 = Research & Project Experience
 
 #exp(
-  role: "Core Member & Researcher",
-  org: "State Key Laboratory of Precision Electronic Manufacturing Technology and Equipment",
+  project: "Sequence-based Parametric CAD Generation",
+  role: "Core Member",
+  org: "State Key Laboratory of Mfg. Technology and Equipment",
   location: "Guangzhou, China",
   start: "2025.2",
   end: "Now",
   details: [
-    #strong[Project: Sequence-based Parametric CAD Generation]
     - Developing an LLM-based agent for generating #link_with_icon(
         icon: openscad-icon,
         url: "https://openscad.org/",
@@ -85,18 +87,18 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 )
 
 #exp(
-  role: "Core Developer",
+  project: "Automated Color Difference Control System",
+  role: "Lead Developer",
   org: "Vograce (Collaboration with Industry)",
   location: "Yiwu, CN",
   start: "Dec 2024",
   end: "Jul 2025",
   details: [
-    #strong[Project: Automated Color Difference Control System]
     - Architected and deployed a machine vision system to automate color consistency control in personalized custom printing.
     - Implemented a novel feedback loop that converts sRGB to CMYK and uses adaptive iteration to recommend ink adjustments, achieving closed-loop quality control.
     - Optimized the full detection-to-recommendation pipeline to under 1 second per image, boosting efficiency by over 20x compared to manual color correction.
-    - Co-authored two software copyrights resulting from the project's innovations.
   ],
+  output: "Co-authored two software copyrights resulting from the project's innovations."
 )
 
 = Publications
@@ -120,48 +122,14 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 
 = Skills
 
-#detailed_skills(
+#simple_skills(
   categories: (
-    (
-      category: "Deep Learning & AI",
-      skills: (
-        (name: "PyTorch", level: "Advanced"),
-        (name: "vLLM", level: "Intermediate"),
-        (name: "MLX", level: "Intermediate"),
-        (name: "Transformers", level: "Advanced"),
-        (name: "Computer Vision", level: "Intermediate")
-      )
-    ),
-    (
-      category: "DevOps & Infrastructure", 
-      skills: (
-        (name: "Git", level: "Advanced"),
-        (name: "CI/CD", level: "Intermediate"),
-        (name: "Docker", level: "Advanced"),
-        (name: "Kubernetes", level: "Beginner"),
-        (name: "AWS", level: "Intermediate")
-      )
-    ),
-    (
-      category: "Development",
-      skills: (
-        (name: "TypeScript", level: "Advanced"),
-        (name: "Next.js", level: "Advanced"), 
-        (name: "Node.js", level: "Advanced"),
-        (name: "Python", level: "Expert"),
-        (name: "React", level: "Advanced")
-      )
-    ),
-    (
-      category: "Design & UI/UX",
-      skills: (
-        (name: "Figma", level: "Intermediate"),
-        (name: "TailwindCSS", level: "Advanced"),
-        (name: "Adobe Creative Suite", level: "Beginner")
-      )
-    )
-  ),
-  style: "compact"
+    ("Frontend", ("TypeScript", "JavaScript", "Vue", "Nuxt", "Vite")),
+    ("Backend", ("Node", "MongoDB", "MySQL", "Serverless", "Nginx", "Docker")),
+    ("Mobile", ("Android", "Kotlin", "PWA")),
+    ("DevOps", ("Firebase", "AWS", "Azure", "AliCloud")),
+    ("Languages", ("Python", "Java", "C/C++", "C#", "Go"))
+  )
 )
 
 *Projects:* #link_with_icon(
@@ -169,9 +137,6 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
   url: "https://github.com/Xeraphinite/ringrad",
   text: "Ringrad"
 ) 
-
-*Languages:*
-
 
 = Awards
 

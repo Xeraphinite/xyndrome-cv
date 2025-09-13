@@ -2,8 +2,6 @@
 /// Sets up a header for the front page.
 /// -> content
 
-// Put this near the top of your document
-
 #let cv(
   /// The person's English name to be listed at the top of the CV. -> content
   en_name: "",
@@ -44,7 +42,6 @@
   
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
-
     footer: [
       #align(center)[
         #en_name -- Last Updated: #updated.display() -- #context { counter(page).display("1 of 1", both: true) }
@@ -81,17 +78,12 @@
   body
 }
 
-/// Contact helper: icon + text (+ optional link)
+/// Contact
 #let contact(
-  /// Icon function from @preview/scienceicons. -> function | none
   icon: none,
-  /// Visible label. -> str | content
   label: "",
-  /// Optional URL (mailto:, https://, etc.). -> str | none
   url: "",
-  /// Icon height. -> length
   height: 1em,
-  /// Icon baseline shift. -> ratio
   baseline: 20%,
 ) = {
   let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
@@ -108,66 +100,47 @@
   gpa: "",
   details: "",
 ) = {
-  [#grid(
-      columns: (auto, 1fr),
-      align(left)[
-        #{
-          for degree in degrees [
-            #strong[#degree] \
-          ]
-        }
-        #institution
-        \ #{
-          if gpa != "" [
-            GPA: #gpa
-          ]
-        }
-      ],
-      align(right)[
-        #{ if location != "" { location } }
-        #{
-          if type(date) == datetime [
-            \ #date.display("[month repr:long] [year]")
-          ] else [
-            \ #date
-          ]
-        }
-      ],
-    )
-    #{ if details != "" [#details] }
-  ]
+  [#{
+    for degree in degrees [
+      #strong[#degree], #institution, #location #{
+        if type(date) == datetime [
+          #date.display("([month repr:long] [year])")
+        ] else [
+          (#date)
+        ]
+      }
+      #{
+        if gpa != "" [
+          | GPA: #gpa
+        ]
+      }
+      \
+    ]
+  }
+  #{ if details != "" [#details] }]
 }
 
 /// Create an entry detailing work experience.
 /// -> content
 #let exp(
+  project: "",
   role: "",
   org: "",
   start: "",
   end: "",
   location: "",
-  summary: "",
   details: [],
+  output: none,
 ) = {
   [#grid(
       columns: (auto, 1fr),
       align(left)[
-        #strong[#role]
-        \ #org
-        #{
-          if summary != "" [
-            \ #summary
-          ]
-        }
+        #strong[#project]
+        \ #role #h(1em) #org, #location
       ],
       align(right)[
-        #{
-          if location != "" [
-            #location
-          ]
-        }
         #text[
-          \ #{
+          #{
             if type(start) == datetime {
               start.display("[month repr:long] [year]")
             } else { start }
@@ -181,7 +154,14 @@
             ]
           }]
       ],
-    ) #details]
+    )
+    #details
+    #{
+      if output != none [
+        \ *Output:* #output
+      ]
+    }
+  ]
 }
 
 /// Create an entry detailing service to the field.
@@ -232,12 +212,13 @@
   details: "",
 ) = {
   grid(
-    columns: (8em, auto, 3em),
-    align(left)[
-      #{ if type(date) == datetime [#date.display("[year]")] else [#date] }
-    ],
+    columns: (1fr, auto),
+    column-gutter: 1em,
     align(left)[
       #strong[#name,] #text[#from. #details]
+    ],
+    align(right)[
+      #{ if type(date) == datetime [#date.display("[year]")] else [#date] }
     ],
   )
 }
@@ -252,60 +233,18 @@
   }
 }
 
-/// Create a detailed skills section with categories and levels
-/// -> content  
-#let detailed_skills(
-  /// Array of skill categories. Each category should be a dictionary with
-  /// "category", "skills" keys. Skills can have optional "level" field.
-  categories: (),
-  /// Whether to show skill levels. -> bool
-  show_levels: true,
-  /// Layout style: "compact", "detailed", "bars". -> str
-  style: "compact",
-) = {
-  for cat in categories {
-    strong[#cat.category: ]
-    
-    if style == "compact" {
-      cat.skills.map(skill => {
-        if type(skill) == dictionary and show_levels and "level" in skill {
-          [#skill.name (#skill.level)]
-        } else if type(skill) == dictionary {
-          skill.name
-        } else {
-          skill
-        }
-      }).join(" • ")
-    } else if style == "detailed" {
-      for skill in cat.skills {
-        if type(skill) == dictionary {
-          [- #skill.name]
-          if show_levels and "level" in skill {
-            [ (#skill.level)]
-          }
-          linebreak()
-        } else {
-          [- #skill]
-          linebreak()
-        }
-      }
-    }
-    
-    linebreak()
-  }
-}
-
-/// Create a programming languages section with proficiency levels
+/// Simple skills section with categories  
 /// -> content
-#let programming_skills(
-  /// Array of programming languages with proficiency
-  languages: (),
+#let simple_skills(
+  /// Array of skill categories as tuples: (category_name, [skills_array])
+  categories: (),
 ) = {
-  grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    ..languages.map(lang => [
-      #strong[#lang.name:] #lang.proficiency
-    ])
-  )
+  for category in categories {
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 2em,
+      align(left)[*#category.at(0)*],
+      align(right)[#category.at(1).join(", ")]
+    )
+  }
 }
