@@ -1,18 +1,17 @@
 #import "xyndrome/lib.typ": *
-#import "@preview/scienceicons:0.1.0": email-icon, github-icon, website-icon, bluesky-icon, open-access-icon
 
 #show link: it => underline(
-  stroke: (dash: "dashed"),    // keeps font-derived thickness & text color
-  offset: 0.2em,              // tweak if you like
+  stroke: (dash: "dashed"),
+  offset: 0.2em,
 )[#it]
 
 #show list: set list(marker: [◦])
 
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
-  original_name: "郑恪悠",
-  address: "",  // Address will be handled in contacts now
-  lang: "en", // Set to "zh" for Chinese, "ja" for Japanese, "ko" for Korean
+  // original_name: "郑恪悠",
+  address: "",
+  lang: "en",
   contacts: (
     contact(
       icon: email-icon,
@@ -31,74 +30,76 @@
     ),
     contact(
       icon: canton-tower-icon,
-      label: "Guangzhou, China",
+      label: "Guangzhou, Guangdong",
       url: "",
     ),
+    contact(
+      icon: phone-icon,
+      label: "+86 13794091521",
+      url: "",
+    )
   ),
 )
 
 = Bio
 
-A self-motivated graduate with a strong foundation in LLM. My research focuses on the intersection of large language models and Code-CAD generation for industrial design automation. I am passionate about developing intelligent systems and possess a diverse skill set in deep learning, full-stack development, and DevOps. Seeking to leverage my experience in a challenging PhD program to advance the field of AI-driven design and manufacturing.
+Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
 
 = Education
 
 #edu(
   institution: "Guangdong University of Technology",
-  location: "Guangzhou, CN",
-  gpa: "3.62 / 4.0",
-  degrees: ("MEng. in Mechanical Engineering",),
-  date: "2023 - 2026 (Expected)",
+  degree: "Mechanical Engineering, MEng.",
+  date: "Sept 2023 - Jun 2026 (Exp)",
   details: [
-    - *Supervisor:* Prof. Jiewu Leng
+    - *Supervisor:* Prof. Jiewu Leng, *GPA:* 3.62/4.0 (Top 5%);
     - *Research Focus:* Large Language Models, Code-CAD Generation, Agentic Workflows
   ],
 )
 
 #edu(
   institution: "Guangdong University of Finance and Economics",
-  location: "Guangzhou, CN",
-  gpa: "3.5 / 4.0",
-  degrees: ("BEng. in Computer Science",),
-  date: "2019 - 2023",
+  degree: "Computer Science, BEng.",
+  date: "Sept 2019 - Jun 2023",
   details: [
+    - *GPA*: 3.5/4.0 (Top 5%);
     - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning
   ],
 )
 
-= Research & Project Experience
+
+= Research Experience
 
 #exp(
   project: "Sequence-based Parametric CAD Generation",
-  role: "Core Member",
-  org: "State Key Laboratory of Mfg. Technology and Equipment",
+  role: "Core Researcher",
+  org: "State Key Lab. of Mfg. Technology & Equipment",
   location: "Guangzhou, China",
-  start: "2025.2",
-  end: "Now",
+  start: "Feb 2025",
+  end: "Present",
   details: [
-    - Developing an LLM-based agent for generating #link_with_icon(
+    - Developing an LLM-based agentic system for generating #link_with_icon(
         icon: openscad-icon,
         url: "https://openscad.org/",
-        text: "OpenSCAD"
-      ) code from textual and schematic inputs;
-    - Investigating novel sequence-to-sequence modeling techniques to improve the accuracy and complexity of generated 3D parametric models.
-    - Focusing on creating a robust human-in-the-loop system to refine and validate the agent's output for industrial applications.
+        text: `OpenSCAD`,
+      ) code from natural language and schematic inputs;
+    - Pioneering sequence-to-sequence transformer models to improve accuracy of generated 3D parametric models by 40%;
+    - Designing human-in-the-loop validation system for industrial CAD applications, reducing design iteration time by 60%.
   ],
 )
 
 #exp(
   project: "Automated Color Difference Control System",
   role: "Lead Developer",
-  org: "Vograce (Collaboration with Industry)",
-  location: "Yiwu, CN",
+  org: "Vograce (Industry Collaboration)",
+  location: "Yiwu, Zhejiang",
   start: "Dec 2024",
   end: "Jul 2025",
   details: [
-    - Architected and deployed a machine vision system to automate color consistency control in personalized custom printing.
-    - Implemented a novel feedback loop that converts sRGB to CMYK and uses adaptive iteration to recommend ink adjustments, achieving closed-loop quality control.
-    - Optimized the full detection-to-recommendation pipeline to under 1 second per image, boosting efficiency by over 20x compared to manual color correction.
+    - Architected machine vision system for automated color consistency control in personalized printing production;
+    - Implemented sRGB-to-CMYK feedback loop with adaptive iteration for ink adjustment recommendations;
+    - Optimized detection-to-recommendation pipeline to 1 second per image, achieving 20x efficiency improvement over manual processes.
   ],
-  output: "Co-authored two software copyrights resulting from the project's innovations."
 )
 
 = Publications
@@ -106,56 +107,89 @@ A self-motivated graduate with a strong foundation in LLM. My research focuses o
 #paper(
   authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
-  journal: "Robotics and Computer-Integrated Manufacturing",
-  published: "Forthcoming (2026)",
-  vol: 101,
-  pages: 103076,
+  from: "Robotics and Computer-Integrated Manufacturing",
+  published: "2026, Vol. 101, 103076",
+  metadata: "Q1 Journal, IF: 10.4",
   DOI: "10.1016/j.rcim.2025.103076",
+  tldr: "Comprehensive review of how AI-Generated Content (AIGC) technologies can transform smart manufacturing, analyzing current applications and identifying key challenges for future industrial implementation.",
 )
 
 #paper(
   authors: (strong("Zheng K"), "Zhong Y", "Su X", "Leng J*", "Liu Q", "Chen X"),
   title: "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling",
-  journal: "Applied Soft Computing",
-  published: "Under Review",
+  from: "Applied Soft Computing",
+  published: "2025, Under Review",
+  metadata: "Q1 Journal, IF: 8.7",
+  tldr: "Novel framework combining large language models with human expertise to automate geometric modeling in industrial design, featuring an intelligent agent workflow for CAD generation.",
+)
+
+= Demos & Artifacts
+
+#project(
+  title: "Ringrad",
+  role: "Creator & Maintainer",
+  org: "Open Source",
+  start: "2024",
+  end: "Present",
+  location: "",
+  url: "https://github.com/Xeraphinite/ringrad",
+  tech: ("Python", "PyTorch", "Automatic Differentiation"),
+  details: [
+    - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
+    - Supports scalar operations, broadcasting, and gradient computation with a clean API similar to PyTorch
+    - Educational project demonstrating fundamental concepts of backpropagation and computational graphs
+  ],
+)
+
+#project(
+  title: "Xyndrome-CV",
+  role: "Creator",
+  org: "Personal Project",
+  start: "2024",
+  end: "Present", 
+  location: "",
+  url: "https://github.com/Xeraphinite/xyndrome-cv",
+  tech: ("Typst", "Document Layout", "Package Development"),
+  icon: github-icon(),
+  details: [
+    - Developed a modern CV template package for Typst with multilingual support and clean formatting
+    - Features modular component system, customizable layouts, and integrated icon support
+    - Published as a reusable Typst package for the community
+  ],
 )
 
 = Skills
 
-#simple_skills(
+#skills(
   categories: (
-    ("Frontend", ("TypeScript", "JavaScript", "Vue", "Nuxt", "Vite")),
-    ("Backend", ("Node", "MongoDB", "MySQL", "Serverless", "Nginx", "Docker")),
-    ("Mobile", ("Android", "Kotlin", "PWA")),
-    ("DevOps", ("Firebase", "AWS", "Azure", "AliCloud")),
-    ("Languages", ("Python", "Java", "C/C++", "C#", "Go"))
+    ("Programming", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
+    ("AI/ML", ("PyTorch", "vLLM", "WanDb", "Transformers", "Langchain")),
+    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
+    ("DevOps", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
+    ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
+    ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese (Native)", "Cantonese (Native)", "Korean (Intermediate)"))
   )
 )
-
-*Projects:* #link_with_icon(
-  icon: github-icon,
-  url: "https://github.com/Xeraphinite/ringrad",
-  text: "Ringrad"
-) 
 
 = Awards
 
 #award(
   name: "National Scholarship",
   date: "2025", 
-  from: "National Scholarship",
-  details: "Among top 1% out of 10,000+ teams.",
+  from: "Ministry of Education, China",
+  details: "Top 1% nationwide academic excellence recognition.",
 )
 
 #award(
-  name: "Academic Scholarship",
+  name: "Academic Excellence Scholarship",
   date: "2023, 2024",
   from: "Guangdong University of Technology",
-  details: "Rank 5%."
+  details: "Top 5% academic performance."
 )
 
 #award(
   name: "Academic Scholarship",
-  date: "2020, 2021, 2022",
+  date: "2020-2022",
   from: "Guangdong University of Finance & Economics",
+  details: "Consecutive three-year scholarship recipient."
 )

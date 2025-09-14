@@ -1,0 +1,16 @@
+[package]
+name = "xyndrome"
+version = "0.1.0"
+entrypoint = "xyndrome/lib.typ"
+authors = ["Keyou (Key) Zheng"]
+license = "MIT"
+description = "A curriculum vitae template written in Typst"
+repository = "https://github.com/Xeraphinite/xyndrome-cv"
+keywords = ["cv", "resume", "template"]
+
+[dependencies]
+scienceicons = "0.1.0"
+
+# The main document file for preview
+[tool.typst]
+main = "main.typ"
