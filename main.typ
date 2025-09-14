@@ -9,7 +9,7 @@
 
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
-  // original_name: "郑恪悠",
+  // original_name: "郑恪悠", 
   address: "",
   lang: "en",
   contacts: (
@@ -25,7 +25,7 @@
     ),
     contact(
       icon: github-icon,
-      label: "Xeraphinite",
+      label: `Xeraphinite`,
       url: "https://github.com/Xeraphinite",
     ),
     contact(
@@ -40,6 +40,8 @@
     )
   ),
 )
+
+// Maybe you don't need a bio section.
 
 = Bio
 
@@ -63,7 +65,11 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   date: "Sept 2019 - Jun 2023",
   details: [
     - *GPA*: 3.5/4.0 (Top 5%);
-    - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning
+    - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning, a _reincarnation_  project is available at #link_with_icon(
+        icon: github-icon,
+        url: "https://github.com/Xeraphinite/Mario-RL",
+        text: `Xeraphinite/Mario-RL`,
+      ).
   ],
 )
 
@@ -104,12 +110,13 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 
 = Publications
 
+// Journal Papers
 #paper(
   authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
   from: "Robotics and Computer-Integrated Manufacturing",
   published: "2026, Vol. 101, 103076",
-  metadata: "Q1 Journal, IF: 10.4",
+  metadata: "(JCR Q1, IF: 11.4)",
   DOI: "10.1016/j.rcim.2025.103076",
   tldr: "Comprehensive review of how AI-Generated Content (AIGC) technologies can transform smart manufacturing, analyzing current applications and identifying key challenges for future industrial implementation.",
 )
@@ -118,10 +125,33 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   authors: (strong("Zheng K"), "Zhong Y", "Su X", "Leng J*", "Liu Q", "Chen X"),
   title: "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling",
   from: "Applied Soft Computing",
-  published: "2025, Under Review",
-  metadata: "Q1 Journal, IF: 8.7",
+  published: "2025, Accepted",
+  metadata: "(JCR Q1, IF: 8.7)",
   tldr: "Novel framework combining large language models with human expertise to automate geometric modeling in industrial design, featuring an intelligent agent workflow for CAD generation.",
 )
+
+// Conference Papers
+
+// Patents
+
+
+= Skills
+
+- Since I have a wide range of interest, here are some of the skills I am familiar with:
+
+#skills(
+  categories: (
+    ("Programming", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
+    ("AI/ML", ("PyTorch", "vLLM", "WanDb")),
+    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
+    ("DevOps", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
+    ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
+    ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
+    ("Interest", ("Rhythm Game", "CJK Films", "Typography", ""))
+  )
+)
+
+= Patents & copyrights
 
 = Demos & Artifacts
 
@@ -158,38 +188,26 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   ],
 )
 
-= Skills
-
-#skills(
-  categories: (
-    ("Programming", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
-    ("AI/ML", ("PyTorch", "vLLM", "WanDb", "Transformers", "Langchain")),
-    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
-    ("DevOps", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
-    ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
-    ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese (Native)", "Cantonese (Native)", "Korean (Intermediate)"))
-  )
-)
 
 = Awards
 
 #award(
-  name: "National Scholarship",
+  name: "China National Scholarship",
   date: "2025", 
   from: "Ministry of Education, China",
-  details: "Top 1% nationwide academic excellence recognition.",
+  details: "(TOP 1%)",
 )
 
 #award(
   name: "Academic Excellence Scholarship",
   date: "2023, 2024",
   from: "Guangdong University of Technology",
-  details: "Top 5% academic performance."
+  details: ""
 )
 
 #award(
   name: "Academic Scholarship",
-  date: "2020-2022",
+  date: "2020, 2021, 2022",
   from: "Guangdong University of Finance & Economics",
-  details: "Consecutive three-year scholarship recipient."
+  details: ""
 )

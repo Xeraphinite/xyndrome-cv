@@ -22,7 +22,7 @@
   )
 
   set text(
-    size: 9.5pt,
+    size: 10pt,
     lang: lang,
     font: font_configs,
     fallback: true,
@@ -115,7 +115,7 @@
       columns: (auto, 1fr),
       align(left)[
         #strong[#project]
-        \ #role
+        \ #text(size: 0.9em, [#role])  
       ],
       align(right)[
         #text[
@@ -128,7 +128,7 @@
               #{
                 if type(end) == datetime {
                   end.display("- [month repr:long] [year]")
-                } else [\- #end \ #org `@` #location]
+                } else [\- #end \ #text(size: 0.9em, [#org `@` #location])]
               }
             ]
           }]
@@ -226,26 +226,29 @@
         if icon != none {
           [#icon #h(0.2em) #strong[#project_title]]
         } else {
-          [#strong[#project_title]]
+          [#strong[#project_title]] 
         }
+        h(2em)  
+        // TODO: need to updated to support icons, and monospace font
+        if tech.len() > 0 [ #text(size: 0.75em, style: "italic")[#tech.join(", ")]] 
       }
-      #if role != "" [ \ #role]
-      #if tech.len() > 0 [ \ #text(style: "italic")[Tech Stack: #tech.join(", ")]]
+      #if role != "" [ \ #text(size: 0.9em, [#role]) ]
+      
     ],
     align(right)[
       #if org != "" [#org]
       #if location != "" and org != "" [, #location] else if location != "" [#location]
       \
-      #{
+      #{  
         if type(start) == datetime {
-          start.display("[month repr:long] [year]")
-        } else { start }
+          text(size: 0.9em, [#start.display("[month repr:long] [year]")])
+        } else { text(size: 0.9em, [#start]) }
       } #{
         if end != "" [
           #{
             if type(end) == datetime {
-              end.display("- [month repr:long] [year]")
-            } else [\- #end]
+              text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
+            } else [\- #text(size: 0.9em, [#end])]
           }
         ]
       }
@@ -285,7 +288,7 @@
   } else { authors }
 
   enum.item[
-    #{author_text}. #{title}. #{emph[from]}. #{published}#{if metadata != "" [. #{metadata}]}.
+    #{author_text}. #{title}.  #{published}#{if metadata != "" [. #{metadata}]}.
     #{if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]]}
     #{if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }]}
     #{if tldr != none [ 
