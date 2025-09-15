@@ -1,4 +1,5 @@
-#let cv( // Apply the cv layout to the document. Sets up a header for the front page. -> content
+#let cv(
+  // Apply the cv layout to the document. Sets up a header for the front page. -> content
   en_name: "", // The person's English name to be listed at the top of the CV. -> content
   original_name: "", // The person's original name (e.g., Chinese, Japanese, Korean). -> content
   address: "", // Your address, preferably in two-line format. -> str | content
@@ -10,23 +11,50 @@
   let full_name = if original_name != "" { en_name + "  " + original_name } else { en_name }
   set document(author: full_name, title: full_name, date: updated)
 
+  // Harmonized stacks built around your choices
   let font_configs = (
-    (name: "New Computer Modern", covers: "latin-in-cjk"),
-    (name: "Cascadia Mono", covers: "latin-in-cjk"),
-    "Songti SC", // Fallbacks Font for MacOS
-    "Hiragino Mincho ProN", 
-    "AppleMyungjo",
-    "STSong",
-    "YuMincho",
-    "Georgia",
+    serif: (
+      (name: "New Computer Modern", covers: "latin-in-cjk"),
+      "Georgia",
+      "Songti SC",
+      "Hiragino Mincho ProN",
+      "AppleMyungjo",
+      "STSong",
+      "YuMincho",
+    ),
+    sans: (
+      (name: "New Computer Modern Sans", covers: "latin-in-cjk", ),
+      "Arial",
+      // CJK sans fallbacks (macOS / Windows)
+      "PingFang SC",
+      "Hiragino Sans",
+      "Microsoft JhengHei",
+    ),
+    mono: (
+      (name: "Cascadia Mono", covers: "latin-in-cjk"),
+      (name: "New Computer Modern Mono", covers: "latin-in-cjk"),
+      // If you need CJK in code blocks, install and add a CJK mono font, e.g.:
+      // "Sarasa Mono TC", "Sarasa Mono SC", "Noto Sans Mono CJK SC",
+    ),
+    math: "New Computer Modern Math",
   )
 
-  set text(
-    size: 10pt,
-    lang: lang,
-    font: font_configs,
-    fallback: true,
-  )
+  // Global defaults (sans body, serif headings, mono for code, NCM math)
+  show: doc => {
+    set text(
+      size: 10pt,
+      lang: lang,
+      font: font_configs.serif,
+      fallback: true,
+      cjk-latin-spacing: auto,
+    )
+
+    doc
+  }
+
+  show heading: it => text(font: font_configs.sans, size: 13pt, it.body)
+  show heading.where(level: 1): it => pad(bottom: 6pt, smallcaps(it))
+  show heading.where(level: 2): it => pad(bottom: 10pt, it)
 
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
@@ -40,15 +68,17 @@
     ],
   )
 
-  show heading: it => text(size: 13pt, it.body) // Headings
-  show heading.where(level: 1): it => pad(bottom: 6pt, smallcaps(it))
-  show heading.where(level: 2): it => pad(bottom: 10pt, it)
+  
+
+  // Code and monospace text styling
+  show raw: it => text(font: font_configs.mono, it)
 
   align(center)[ // Author name display
-    #block(text(size: 16pt, weight: "bold", [#smallcaps(en_name)  #original_name]))
+    #block(text(size: 16pt, weight: "bold", font: font_configs.sans, [#smallcaps(en_name)  #original_name]))
   ]
 
-  pad( // Contacts and Address (combined line)
+  pad(
+    // Contacts and Address (combined line)
     top: 2pt,
     align(center)[
       #{
@@ -65,7 +95,8 @@
   body
 }
 
-#let contact( // Contact
+#let contact(
+  // Contact
   icon: none,
   label: "",
   url: "",
@@ -76,7 +107,8 @@
   if url != "" { [#ico #h(0.1em) #link(url)[#label]] } else { [#ico #h(0.1em) #label] }
 }
 
-#let edu( // Create an education entry, suitable for one degree and accompanying information. -> content
+#let edu(
+  // Create an education entry, suitable for one degree and accompanying information. -> content
   institution: "",
   date: "",
   degree: "",
@@ -96,13 +128,14 @@
             #date
           ]
         }
-      ]
+      ],
     )
     #details
   ]
 }
 
-#let exp( // Create an entry detailing work experience. -> content
+#let exp(
+  // Create an entry detailing work experience. -> content
   project: "",
   role: "",
   org: "",
@@ -115,7 +148,7 @@
       columns: (auto, 1fr),
       align(left)[
         #strong[#project]
-        \ #text(size: 0.9em, [#role])  
+        \ #text(size: 0.9em, [#role])
       ],
       align(right)[
         #text[
@@ -138,7 +171,8 @@
   ]
 }
 
-#let ser( // Create an entry detailing service to the field. -> content
+#let ser(
+  // Create an entry detailing service to the field. -> content
   role: "",
   org: "",
   start: "",
@@ -174,7 +208,8 @@
   )
 }
 
-#let award( // Creates an entry for an award, such as a scholarship or fellowship. -> content
+#let award(
+  // Creates an entry for an award, such as a scholarship or fellowship. -> content
   name: "",
   date: "",
   from: "",
@@ -193,7 +228,8 @@
   )
 }
 
-#let skills( // Skills section formatter. -> content
+#let skills(
+  // Skills section formatter. -> content
   categories: (), // Array of skill categories as tuples: (category_name, [skills_array])
 ) = {
   for category in categories {
@@ -205,7 +241,8 @@
   }
 }
 
-#let project( // Create a project entry. -> content
+#let project(
+  // Create a project entry. -> content
   title: "",
   role: "",
   org: "",
@@ -226,20 +263,20 @@
         if icon != none {
           [#icon #h(0.2em) #strong[#project_title]]
         } else {
-          [#strong[#project_title]] 
+          [#strong[#project_title]]
         }
-        h(2em)  
-        // TODO: need to updated to support icons, and monospace font
-        if tech.len() > 0 [ #text(size: 0.75em, style: "italic")[#tech.join(", ")]] 
+        h(2em)
+        // Technology stack - styled globally via raw text
+        if tech.len() > 0 [ #text(size: 0.75em)[#raw(tech.join(", "))]]
       }
       #if role != "" [ \ #text(size: 0.9em, [#role]) ]
-      
+
     ],
     align(right)[
       #if org != "" [#org]
       #if location != "" and org != "" [, #location] else if location != "" [#location]
       \
-      #{  
+      #{
         if type(start) == datetime {
           text(size: 0.9em, [#start.display("[month repr:long] [year]")])
         } else { text(size: 0.9em, [#start]) }
@@ -257,43 +294,85 @@
   details
 }
 
-#let hide(should-hide, content) = { // Allows hiding or showing full resume dynamically using global variable. -> content
+#let hide(should-hide, content) = {
+  // Allows hiding or showing full resume dynamically using global variable. -> content
   if not should-hide { content }
 }
 
-#let render-icons = (icons) => { // Helper: render one or many icons with spacing
-  if icons == none { [] }
-  else if type(icons) == array {
-    icons
-      .filter(icon => icon != none)
-      .map(icon => box()[#icon])
-      .join(h(0.5em))
+#let render-icons = icons => {
+  // Helper: render one or many icons with spacing
+  if icons == none { [] } else if type(icons) == array {
+    icons.filter(icon => icon != none).map(icon => box()[#icon]).join(h(0.5em))
   } else {
     box()[#icons]
   }
 }
 
-#let paper( // Create a unified publication entry that handles different types of publications. -> content
+#let paper(
+  // Create a unified publication entry that handles different types of publications. -> content
   authors: (), // List of authors in order. -> array | str
   title: "", // Title of the publication. -> str | content
   from: "", // publication name
-  published: "", // status and date of publication/presentation. 
+  published: "", // status and date of publication/presentation.
   metadata: "", // other metadata (e.g., VOL, JCR, etc.)
   DOI: none, // (optional) Digital Object Identifier. -> str | content | none
   icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
   tldr: none, // (optional) Too Long; Didn't Read summary. -> str | content | none
 ) = {
-  let author_text = if type(authors) == array { // Format authors
+  let author_text = if type(authors) == array {
+    // Format authors
     authors.join(", ")
   } else { authors }
 
   enum.item[
-    #{author_text}. #{title}.  #{published}#{if metadata != "" [. #{metadata}]}.
-    #{if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]]}
-    #{if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }]}
-    #{if tldr != none [ 
-      #v(0.2em)
-      #text(style: "italic", size: 0.9em, fill: rgb("#555555"))[*TL;DR:* #tldr]
-    ]}
+    #{ author_text }. #{ title }.  #{ published }#{ if metadata != "" [. #{ metadata }] }.
+    #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
+    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
+    #{
+      if tldr != none [
+        #v(0.2em)
+        #text(style: "italic", size: 0.9em, fill: rgb("#555555"))[*TL;DR:* #tldr]
+      ]
+    }
   ]
+}
+
+#let patent(
+  // Create a patent entry. -> content
+  number: "", // Patent number. -> str
+  title: "", // Title of the patent. -> str | content
+  inventors: (), // List of inventors in order. -> array | str
+  filed: "", // Filing date. -> str
+  status: "", // Status of the patent (e.g., "Application", "Granted"). -> str
+  country: "", // Country code (e.g., "CN", "US"). -> str
+) = {
+  let inventor_text = if type(inventors) == array {
+    inventors.join(", ")
+  } else { inventors }
+
+  enum.item[
+    *#number* — #title
+    \ *Inventors:* #inventor_text; *Filed:* #filed; *Status:* #status.
+  ]
+}
+
+#let copyright(
+  // Create a copyright entry. -> content
+  title: "", // Title of the copyrighted work. -> str | content
+  status: "", // Status of the copyright. -> str
+) = {
+  enum.item[
+    #title — #status.
+  ]
+}
+
+#let link_with_icon(
+  icon: none,
+  url: "",
+  text: "",
+  height: 1em,
+  baseline: 20%,
+) = {
+  let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
+  [#link(url)[#ico] #link(url)[#text]]
 }

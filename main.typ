@@ -66,7 +66,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   details: [
     - *GPA*: 3.5/4.0 (Top 5%);
     - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning, a _reincarnation_  project is available at #link_with_icon(
-        icon: github-icon,
+        icon: github-line-icon,
         url: "https://github.com/Xeraphinite/Mario-RL",
         text: `Xeraphinite/Mario-RL`,
       ).
@@ -111,6 +111,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 = Publications
 
 // Journal Papers
+
 #paper(
   authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
@@ -118,7 +119,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   published: "2026, Vol. 101, 103076",
   metadata: "(JCR Q1, IF: 11.4)",
   DOI: "10.1016/j.rcim.2025.103076",
-  tldr: "Comprehensive review of how AI-Generated Content (AIGC) technologies can transform smart manufacturing, analyzing current applications and identifying key challenges for future industrial implementation.",
+  tldr: "Survey of AIGC for smart manufacturing across design, planning, production, and inspection; synthesizes industrial cases, outlines enabling models (LLMs, diffusion, multimodal) and integration patterns (agents, digital twins), discusses risks (IP, safety, evaluation), and proposes a research roadmap.",
 )
 
 #paper(
@@ -127,7 +128,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   from: "Applied Soft Computing",
   published: "2025, Accepted",
   metadata: "(JCR Q1, IF: 8.7)",
-  tldr: "Novel framework combining large language models with human expertise to automate geometric modeling in industrial design, featuring an intelligent agent workflow for CAD generation.",
+  tldr: "Introduces a large-model, human-in-the-loop agentic workflow for geometric modelling: generates code-to-CAD, invokes tools for constraint checking, and closes the loop with expert feedback; demonstrated on industry-style geometry tasks.",
 )
 
 // Conference Papers
@@ -151,7 +152,61 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   )
 )
 
-= Patents & copyrights
+= Patents & Copyrights
+
+*Patent applications (selected)*
+
+#patent(
+  number: "CN 202410273298.7",
+  title: "Flexible needle puncture path planning based on deep reinforcement learning",
+  inventors: ("Jiewu Leng", strong("Keyou Zheng"), "Yuanwei Zhong", "et al."),
+  filed: "2024-03-11",
+  status: "Application"
+)
+
+#patent(
+  number: "CN 202410950697.2", 
+  title: "Interaction extraction and demand–manufacturing matching from service interaction context",
+  inventors: ("Jiewu Leng", strong("Keyou Zheng"), "Junxing Xie", "et al."),
+  filed: "2024-07-16", 
+  status: "Application"
+)
+
+#patent(
+  number: "CN 202410368790.2",
+  title: "Unified value-chain middleware for manufacturing and its digital-twin system",
+  inventors: ("Jiewu Leng", "Yuanwei Zhong", strong("Keyou Zheng"), "et al."),
+  filed: "2024-03-28",
+  status: "Application"
+)
+
+#patent(
+  number: "US 18/662,981",
+  title: "DEFECT PREDICTION METHODS BASED ON MULTI-FEATURE PARALLEL MULTI-STAGE NEURAL NETWORK (MF-PMSNN)",
+  inventors: ("Jiewu Leng", "Junxing Xie", strong("Keyou Zheng"), "et al."),
+  filed: "2024-05-13",
+  status: "Application"
+)
+
+#patent(
+  number: "CN 202410180822.6",
+  title: "Defect prediction via multi-feature parallel multi-stage neural networks", 
+  inventors: ("Jiewu Leng", "Junxing Xie", strong("Keyou Zheng"), "et al."),
+  filed: "2024-02-18",
+  status: "Application"
+)
+
+*Software copyrights (color-difference systems)*
+
+#copyright(
+  title: "Multi-feature Fusion Print Color Difference Detection System",
+  status: "(Registered)"
+)
+
+#copyright(
+  title: "Vision Intelligence-based Personalized Print Color Difference Analysis System",
+  status: "(Registered)"
+)
 
 = Demos & Artifacts
 
@@ -211,3 +266,10 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   from: "Guangdong University of Finance & Economics",
   details: ""
 )
+
+<center> You could refer the online version at #link_with_icon(
+  icon: website-icon,
+  url: "https://keyzh.pages.dev/cv",
+  text: `keyzh.pages.dev/cv`,
+) for the latest updates.
+
