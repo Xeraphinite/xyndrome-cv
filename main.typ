@@ -9,7 +9,7 @@
 
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
-  // original_name: "郑恪悠", 
+  // original_name: "郑恪悠",
   address: "",
   lang: "en",
   contacts: (
@@ -35,13 +35,11 @@
     ),
     contact(
       icon: phone-icon,
-      label: "+86 13794091521",
+      label: "(+86) 137 9409 1521",
       url: "",
     )
   ),
 )
-
-// Maybe you don't need a bio section.
 
 = Summary
 
@@ -54,8 +52,12 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   degree: "Mechanical Engineering, MEng.",
   date: "Sept 2023 - Jun 2026 (Exp)",
   details: [
-    - *Supervisor:* Prof. Jiewu Leng, *GPA:* 3.62/4.0 (Top 2.5%);
-    - *Research Focus:* Large Language Models, Code-CAD Generation, Agentic Workflows
+    - *GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. _*Jiewu Leng*_;
+    - *Thesis:* Sequence-based Parametric CAD Generation with Large Language Models, project page and blog is available at #link_with_icon(
+        icon: github-line-icon,
+        url: "https://github.com/Xeraphinite/spada",
+        text: `Xeraphinite/spada`,
+    ).
   ],
 )
 
@@ -186,8 +188,6 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   country: "CN"
 )
 
-#v(0.5em)
-
 *Software Copyrights*
 
 #copyright(
@@ -215,16 +215,15 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   )
 )
 
+#skills(
+  categories: (
+    ("Interest", ("Typography", "Graphic Design")),
+    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
+  )
+)
 
-= Artifacts & Demos
 
-// #skills(
-//   categories: (
-//     ("AI & Machine Learning", ("Deep Learning", "Transformers", )),
-//     ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
-//     ("Interest", ("Rhythm Game", "CJK Films", "Typography", ""))
-//   )
-// )
+= Projects
 
 #project(
   title: "Ringrad",
@@ -237,14 +236,6 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   ],
 )
 
-
-#skills(
-  categories: (
-    ("Interest", ("Typography", "Graphic Design")),
-    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
-  )
-)
-
 #project(
   title: "Xyndrome-CV",
   location: "",
@@ -253,11 +244,24 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   icon: github-icon(),
   details: [
     - Developed a modern CV template package for Typst with multilingual support and clean formatting
-    - Features modular component system, customizable layouts, and integrated icon support
-    - Published as a reusable Typst package for the community
   ],
 )
 
+= Artifacts & Demos
+
+#artifact(
+  name: "Personal Portfolio",
+  tech: ("Next.js", "Tailwind CSS", "TypeScript"),
+  description: "Modern responsive portfolio website with dynamic content",
+  time: "2024",
+)
+
+#artifact(
+  name: "Typography Experiments",
+  tech: ("Typst", "LaTeX"),
+  description: "Collection of typography and layout design experiments",
+  time: "2023-2025"
+)
 
 = Awards
 
@@ -281,9 +285,3 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   from: "Guangdong University of Finance & Economics",
   details: ""
 )
-
-<center> You could refer the online version at #link_with_icon(
-  icon: website-icon,
-  url: "https://keyzh.pages.dev/cv",
-  text: `keyzh.pages.dev/cv`,
-) for the latest updates.

@@ -38,6 +38,8 @@
     ),
     math: "New Computer Modern Math",
   )
+  
+  show raw: it => text(font: font_configs.mono, it)
 
   // Global defaults (sans body, serif headings, mono for code, NCM math)
   show: doc => {
@@ -48,13 +50,11 @@
       fallback: true,
       cjk-latin-spacing: auto,
     )
-
     doc
   }
 
   show heading: it => text(font: font_configs.sans, size: 13pt, weight: "bold", it.body)
-  show heading.where(level: 1): it => pad(bottom: 6pt, smallcaps(it))
-  show heading.where(level: 2): it => pad(bottom: 10pt, it)
+  show heading.where(level: 1): it => pad(bottom: 0.8em, smallcaps(it))
 
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
@@ -63,22 +63,16 @@
         #text(
           size: 9pt,
           fill: luma(20%),
-        )[#en_name -- Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
+        )[*#en_name* -- Online version available at #link("https://keyzh.pages.dev/cv")[keyzh.pages.dev/cv], Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
       ]
     ],
   )
 
-  
-
-  // Code and monospace text styling
-  show raw: it => text(font: font_configs.mono, it)
-
-  align(center)[ // Author name display
+  align(center)[
     #block(text(size: 1.8em, weight: "bold", font: font_configs.serif, [#smallcaps(en_name)  #original_name]))
   ]
 
   pad(
-    // Contacts and Address (combined line)
     top: 2pt,
     align(center)[
       #{
@@ -91,7 +85,6 @@
     ],
   )
 
-  set par(justify: true)
   body
 }
 
@@ -114,7 +107,7 @@
   degree: "",
   details: "",
 ) = {
-  [#grid(
+    grid(
       columns: (1fr, auto),
       column-gutter: 2em,
       align(left)[
@@ -130,8 +123,7 @@
         }
       ],
     )
-    #details
-  ]
+    details
 }
 
 #let exp(
@@ -144,7 +136,7 @@
   location: "",
   details: [],
 ) = {
-  [#grid(
+  grid(
       columns: (auto, 1fr),
       align(left)[
         #strong[#project]
@@ -167,8 +159,7 @@
           }]
       ],
     )
-    #details
-  ]
+    details
 }
 
 #let ser(
@@ -234,9 +225,9 @@
 ) = {
   for category in categories {
     grid(
-      columns: (1fr, 3fr, auto),
+      columns: (1fr, auto),
       column-gutter: 1.5em,
-      align(left)[#align(right)[*#category.at(0)*]], 
+      align(left)[#align()[*#category.at(0)*]], 
       align(right)[#align(left)[#category.at(1).join(", ")]],
     )
   }
@@ -255,44 +246,46 @@
   url: "",
   icon: none, // (optional) Icon to display at the front of project name. -> content | none
 ) = {
-  grid(
-    columns: (1fr, auto),
-    column-gutter: 2em,
-    align(left)[
-      #{
-        let project_title = if url != "" { link(url)[#title] } else { title }
-        if icon != none {
-          [#icon #h(0.2em) #strong[#project_title]]
-        } else {
-          [#strong[#project_title]]
-        }
-        h(2em)
-        // Technology stack - styled globally via raw text
-        if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
-      }
-      #if role != "" [ \ #text(size: 0.9em, [#role]) ]
 
-    ],
-    align(right)[
-      #if org != "" [#org]
-      #if location != "" and org != "" [, #location] else if location != "" [#location]
-      \
-      #{
-        if type(start) == datetime {
-          text(size: 0.9em, [#start.display("[month repr:long] [year]")])
-        } else { text(size: 0.9em, [#start]) }
-      } #{
-        if end != "" [
-          #{
-            if type(end) == datetime {
-              text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
-            } else [\- #text(size: 0.9em, [#end])]
+    grid(
+      columns: (1fr, auto),
+      column-gutter: 2em,
+      align(left)[
+        #{
+          let project_title = if url != "" { link(url)[#title] } else { title }
+          if icon != none {
+            [#icon #h(0.2em) #strong[#project_title]]
+          } else {
+            [#strong[#project_title]]
           }
-        ]
-      }
-    ],
-  )
-  details
+          h(2em)
+          // Technology stack - styled globally via raw text
+          if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
+        }
+        #if role != "" [ \ #text(size: 0.9em, [#role]) ]
+
+      ],
+      align(right)[
+        #if org != "" [#org]
+        #if location != "" and org != "" [, #location] else if location != "" [#location]
+        \
+        #{
+          if type(start) == datetime {
+            text(size: 0.9em, [#start.display("[month repr:long] [year]")])
+          } else { text(size: 0.9em, [#start]) }
+        } #{
+          if end != "" [
+            #{
+              if type(end) == datetime {
+                text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
+              } else [\- #text(size: 0.9em, [#end])]
+            }
+          ]
+        }
+      ],
+    )
+    details
+  
 }
 
 #let hide(should-hide, content) = {
@@ -321,12 +314,12 @@
   tldr: none, // (optional) Too Long; Didn't Read summary. -> str | content | none
 ) = {
   let author_text = if type(authors) == array {
-    // Format authors
-    authors.join(", ")
-  } else { authors }
+    // Format authors with smallcaps for proper APA style
+    authors.map(author => smallcaps(author)).join(", ")
+  } else { smallcaps(authors) }
 
   enum.item[
-    #{ author_text }. #{ title }.  #{ published }#{ if metadata != "" [. \[#{ metadata }\] ] }.
+    #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }.  _#{ from }_#{ if metadata != "" [. #{ metadata }] }.
     #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
     #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
     #{
@@ -348,14 +341,14 @@
   country: "", // Country code (e.g., "CN", "US"). -> str
 ) = {
   let inventor_text = if type(inventors) == array {
-    inventors.join(", ")
-  } else { inventors }
+    inventors.map(inventor => smallcaps(inventor)).join(", ")
+  } else { smallcaps(inventors) }
 
   // Parse filing date to get year
   let year = filed.split("-").at(0)
 
   enum.item[
-    #inventor_text (#year). #title \[#status\]. #country Patent \#number.
+    #inventor_text (#year). #emph(title) \[#status\]. #country Patent \##number.
   ]
 }
 
@@ -370,6 +363,39 @@
   enum.item[
     #title (#year). #status. #country Copyright. Held by #holder.
   ]
+}
+
+#let artifact(
+  // Create an artifact entry - a one-line item with optional icon, name, tech stack, description, and time. -> content
+  name: "",
+  tech: (), // Technology stack. -> array
+  description: "",
+  time: "",
+  icon: none, // (optional) Icon to display. -> content | none
+) = {
+  grid(
+    columns: (auto, 1fr, auto),
+    column-gutter: 1em,
+    align(left)[
+      #{
+        let artifact_name = if icon != none {
+          [#icon #h(0.2em) #strong[#name]]
+        } else {
+          [#strong[#name]]
+        }
+        artifact_name
+      }
+      #{
+        if tech.len() > 0 [ #h(0.5em) #text(size: 0.9em)[#raw(tech.join(", "))]]
+      }
+    ],
+    align(left)[
+      #text(size: 0.9em, style: "italic")[#description]
+    ],
+    align(right)[
+      #text(size: 0.9em, fill: luma(40%))[#time]
+    ],
+  )
 }
 
 #let link_with_icon(
