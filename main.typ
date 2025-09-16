@@ -43,7 +43,7 @@
 
 // Maybe you don't need a bio section.
 
-= Bio
+= Summary
 
 Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
 
@@ -54,7 +54,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   degree: "Mechanical Engineering, MEng.",
   date: "Sept 2023 - Jun 2026 (Exp)",
   details: [
-    - *Supervisor:* Prof. Jiewu Leng, *GPA:* 3.62/4.0 (Top 5%);
+    - *Supervisor:* Prof. Jiewu Leng, *GPA:* 3.62/4.0 (Top 2.5%);
     - *Research Focus:* Large Language Models, Code-CAD Generation, Agentic Workflows
   ],
 )
@@ -112,12 +112,14 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 
 // Journal Papers
 
+*Journal Papers*
+
 #paper(
   authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
   from: "Robotics and Computer-Integrated Manufacturing",
   published: "2026, Vol. 101, 103076",
-  metadata: "(JCR Q1, IF: 11.4)",
+  metadata: "JCR Q1, IF: 11.4",
   DOI: "10.1016/j.rcim.2025.103076",
   tldr: "Survey of AIGC for smart manufacturing across design, planning, production, and inspection; synthesizes industrial cases, outlines enabling models (LLMs, diffusion, multimodal) and integration patterns (agents, digital twins), discusses risks (IP, safety, evaluation), and proposes a research roadmap.",
 )
@@ -127,111 +129,124 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   title: "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling",
   from: "Applied Soft Computing",
   published: "2025, Accepted",
-  metadata: "(JCR Q1, IF: 8.7)",
+  metadata: "JCR Q1, IF: 8.7",
+  DOI: "10.1016/j.asoc.2025.113920",
   tldr: "Introduces a large-model, human-in-the-loop agentic workflow for geometric modelling: generates code-to-CAD, invokes tools for constraint checking, and closes the loop with expert feedback; demonstrated on industry-style geometry tasks.",
 )
 
 // Conference Papers
 
-// Patents
 
+= Patents & Copyrights
+
+*Patents*
+
+#patent(
+  number: "202410273298.7",
+  title: "Flexible needle puncture path planning based on deep reinforcement learning",
+  inventors: ("Leng, J.", strong("Zheng, K."), "Zhong, Y.", "et al."),
+  filed: "2024-03-11",
+  status: "Patent application",
+  country: "CN"
+)
+
+#patent(
+  number: "202410950697.2", 
+  title: "Interaction extraction and demand–manufacturing matching from service interaction context",
+  inventors: ("Leng, J.", strong("Zheng, K."), "Xie, J.", "et al."),
+  filed: "2024-07-16", 
+  status: "Patent application",
+  country: "CN"
+)
+
+#patent(
+  number: "202410368790.2",
+  title: "Unified value-chain middleware for manufacturing and its digital-twin system",
+  inventors: ("Leng, J.", "Zhong, Y.", strong("Zheng, K."), "et al."),
+  filed: "2024-03-28",
+  status: "Patent application",
+  country: "CN"
+)
+
+#patent(
+  number: "18/662,981",
+  title: "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)",
+  inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
+  filed: "2024-05-13",
+  status: "Patent application",
+  country: "US"
+)
+
+#patent(
+  number: "202410180822.6",
+  title: "Defect prediction via multi-feature parallel multi-stage neural networks", 
+  inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
+  filed: "2024-02-18",
+  status: "Patent application",
+  country: "CN"
+)
+
+#v(0.5em)
+
+*Software Copyrights*
+
+#copyright(
+  title: "Multi-feature fusion print color difference detection system",
+  year: "2024",
+  status: "Computer Software Copyright Certificate (Registered)"
+)
+
+#copyright(
+  title: "Vision intelligence-based personalized print color difference analysis system",
+  year: "2024", 
+  status: "Computer Software Copyright Certificate (Registered)"
+)
 
 = Skills
 
-- Since I have a wide range of interest, here are some of the skills I am familiar with:
+- Since I have a wide range of interest, here are some of the transferable skills I am familiar with:
 
 #skills(
   categories: (
     ("Programming", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
-    ("AI/ML", ("PyTorch", "vLLM", "WanDb")),
-    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
-    ("DevOps", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
-    ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
+    ("Tools", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
     ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
-    ("Interest", ("Rhythm Game", "CJK Films", "Typography", ""))
+    ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability"))
   )
 )
 
-= Patents & Copyrights
 
-*Patent applications (selected)*
+= Artifacts & Demos
 
-#patent(
-  number: "CN 202410273298.7",
-  title: "Flexible needle puncture path planning based on deep reinforcement learning",
-  inventors: ("Jiewu Leng", strong("Keyou Zheng"), "Yuanwei Zhong", "et al."),
-  filed: "2024-03-11",
-  status: "Application"
-)
-
-#patent(
-  number: "CN 202410950697.2", 
-  title: "Interaction extraction and demand–manufacturing matching from service interaction context",
-  inventors: ("Jiewu Leng", strong("Keyou Zheng"), "Junxing Xie", "et al."),
-  filed: "2024-07-16", 
-  status: "Application"
-)
-
-#patent(
-  number: "CN 202410368790.2",
-  title: "Unified value-chain middleware for manufacturing and its digital-twin system",
-  inventors: ("Jiewu Leng", "Yuanwei Zhong", strong("Keyou Zheng"), "et al."),
-  filed: "2024-03-28",
-  status: "Application"
-)
-
-#patent(
-  number: "US 18/662,981",
-  title: "DEFECT PREDICTION METHODS BASED ON MULTI-FEATURE PARALLEL MULTI-STAGE NEURAL NETWORK (MF-PMSNN)",
-  inventors: ("Jiewu Leng", "Junxing Xie", strong("Keyou Zheng"), "et al."),
-  filed: "2024-05-13",
-  status: "Application"
-)
-
-#patent(
-  number: "CN 202410180822.6",
-  title: "Defect prediction via multi-feature parallel multi-stage neural networks", 
-  inventors: ("Jiewu Leng", "Junxing Xie", strong("Keyou Zheng"), "et al."),
-  filed: "2024-02-18",
-  status: "Application"
-)
-
-*Software copyrights (color-difference systems)*
-
-#copyright(
-  title: "Multi-feature Fusion Print Color Difference Detection System",
-  status: "(Registered)"
-)
-
-#copyright(
-  title: "Vision Intelligence-based Personalized Print Color Difference Analysis System",
-  status: "(Registered)"
-)
-
-= Demos & Artifacts
+// #skills(
+//   categories: (
+//     ("AI & Machine Learning", ("Deep Learning", "Transformers", )),
+//     ("Design Tools", ("Typst", "LaTeX", "Figma", "Adobe Creative Suite")),
+//     ("Interest", ("Rhythm Game", "CJK Films", "Typography", ""))
+//   )
+// )
 
 #project(
   title: "Ringrad",
   role: "Creator & Maintainer",
   org: "Open Source",
-  start: "2024",
-  end: "Present",
-  location: "",
   url: "https://github.com/Xeraphinite/ringrad",
-  tech: ("Python", "PyTorch", "Automatic Differentiation"),
+  tech: ("MLX", "Automatic Differentiation"),
   details: [
     - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
-    - Supports scalar operations, broadcasting, and gradient computation with a clean API similar to PyTorch
-    - Educational project demonstrating fundamental concepts of backpropagation and computational graphs
   ],
+)
+
+
+#skills(
+  categories: (
+    ("Interest", ("Typography", "Graphic Design")),
+    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
+  )
 )
 
 #project(
   title: "Xyndrome-CV",
-  role: "Creator",
-  org: "Personal Project",
-  start: "2024",
-  end: "Present", 
   location: "",
   url: "https://github.com/Xeraphinite/xyndrome-cv",
   tech: ("Typst", "Document Layout", "Package Development"),
@@ -272,4 +287,3 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   url: "https://keyzh.pages.dev/cv",
   text: `keyzh.pages.dev/cv`,
 ) for the latest updates.
-

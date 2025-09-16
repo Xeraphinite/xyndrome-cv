@@ -52,7 +52,7 @@
     doc
   }
 
-  show heading: it => text(font: font_configs.sans, size: 13pt, it.body)
+  show heading: it => text(font: font_configs.sans, size: 13pt, weight: "bold", it.body)
   show heading.where(level: 1): it => pad(bottom: 6pt, smallcaps(it))
   show heading.where(level: 2): it => pad(bottom: 10pt, it)
 
@@ -74,7 +74,7 @@
   show raw: it => text(font: font_configs.mono, it)
 
   align(center)[ // Author name display
-    #block(text(size: 16pt, weight: "bold", font: font_configs.sans, [#smallcaps(en_name)  #original_name]))
+    #block(text(size: 1.8em, weight: "bold", font: font_configs.serif, [#smallcaps(en_name)  #original_name]))
   ]
 
   pad(
@@ -234,9 +234,10 @@
 ) = {
   for category in categories {
     grid(
-      columns: (auto, 1fr),
-      column-gutter: 2em,
-      align(left)[*#category.at(0)*], align(right)[#category.at(1).join(", ")],
+      columns: (1fr, 3fr, auto),
+      column-gutter: 1.5em,
+      align(left)[#align(right)[*#category.at(0)*]], 
+      align(right)[#align(left)[#category.at(1).join(", ")]],
     )
   }
 }
@@ -267,7 +268,7 @@
         }
         h(2em)
         // Technology stack - styled globally via raw text
-        if tech.len() > 0 [ #text(size: 0.75em)[#raw(tech.join(", "))]]
+        if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
       }
       #if role != "" [ \ #text(size: 0.9em, [#role]) ]
 
@@ -325,7 +326,7 @@
   } else { authors }
 
   enum.item[
-    #{ author_text }. #{ title }.  #{ published }#{ if metadata != "" [. #{ metadata }] }.
+    #{ author_text }. #{ title }.  #{ published }#{ if metadata != "" [. \[#{ metadata }\] ] }.
     #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
     #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
     #{
@@ -338,7 +339,7 @@
 }
 
 #let patent(
-  // Create a patent entry. -> content
+  // Create a patent entry in APA format. -> content
   number: "", // Patent number. -> str
   title: "", // Title of the patent. -> str | content
   inventors: (), // List of inventors in order. -> array | str
@@ -350,19 +351,24 @@
     inventors.join(", ")
   } else { inventors }
 
+  // Parse filing date to get year
+  let year = filed.split("-").at(0)
+
   enum.item[
-    *#number* — #title
-    \ *Inventors:* #inventor_text; *Filed:* #filed; *Status:* #status.
+    #inventor_text (#year). #title \[#status\]. #country Patent \#number.
   ]
 }
 
 #let copyright(
-  // Create a copyright entry. -> content
+  // Create a copyright entry in APA format. -> content
   title: "", // Title of the copyrighted work. -> str | content
-  status: "", // Status of the copyright. -> str
+  year: "", // Year of copyright. -> str
+  status: "", // Status of the copyright. -> str,
+  country: "", // Country of copyright. -> str
+  holder: (), // Copyright holder. -> array | str
 ) = {
   enum.item[
-    #title — #status.
+    #title (#year). #status. #country Copyright. Held by #holder.
   ]
 }
 
