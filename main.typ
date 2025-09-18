@@ -35,25 +35,23 @@
     ),
     contact(
       icon: phone-icon,
-      label: "(+86) 137 9409 1521",
+      label: "(+86) 137-9409-1521",
       url: "",
     )
   ),
 )
 
-= Summary
-
-Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
+// Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
 
 = Education
 
 #edu(
   institution: "Guangdong University of Technology",
   degree: "Mechanical Engineering, MEng.",
-  date: "Sept 2023 - Jun 2026 (Exp)",
+  date: "September 2023 - June 2026 (Expected)",
   details: [
-    - *GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. _*Jiewu Leng*_;
-    - *Thesis:* Sequence-based Parametric CAD Generation with Large Language Models, project page and blog is available at #link_with_icon(
+    - *GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps("Jiewu Leng");
+    - *Thesis:* _Sequence-based Parametric CAD Generation with Large Language Models_, project page is available at #link_with_icon(
         icon: github-line-icon,
         url: "https://github.com/Xeraphinite/spada",
         text: `Xeraphinite/spada`,
@@ -64,10 +62,10 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 #edu(
   institution: "Guangdong University of Finance and Economics",
   degree: "Computer Science, BEng.",
-  date: "Sept 2019 - Jun 2023",
+  date: "September 2019 - June 2023",
   details: [
     - *GPA*: 3.5/4.0 (Top 5%);
-    - *Thesis:* Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning, a _reincarnation_  project is available at #link_with_icon(
+    - *Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, a _*reincarnation*_  project is available at #link_with_icon(
         icon: github-line-icon,
         url: "https://github.com/Xeraphinite/Mario-RL",
         text: `Xeraphinite/Mario-RL`,
@@ -83,7 +81,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   role: "Core Researcher",
   org: "State Key Lab. of Mfg. Technology & Equipment",
   location: "Guangzhou, China",
-  start: "Feb 2025",
+  start: "February 2025",
   end: "Present",
   details: [
     - Developing an LLM-based agentic system for generating #link_with_icon(
@@ -97,12 +95,12 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 )
 
 #exp(
-  project: "Automated Color Difference Control System",
+  project: "Automated Color Difference Control & Calibration System",
   role: "Lead Developer",
   org: "Vograce (Industry Collaboration)",
   location: "Yiwu, Zhejiang",
-  start: "Dec 2024",
-  end: "Jul 2025",
+  start: "December 2024",
+  end: "July 2025",
   details: [
     - Architected machine vision system for automated color consistency control in personalized printing production;
     - Implemented sRGB-to-CMYK feedback loop with adaptive iteration for ink adjustment recommendations;
@@ -117,9 +115,10 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 *Journal Papers*
 
 #paper(
+  type: "journal",
   authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
-  from: "Robotics and Computer-Integrated Manufacturing",
+  venue: "Robotics and Computer-Integrated Manufacturing",
   published: "2026, Vol. 101, 103076",
   metadata: "JCR Q1, IF: 11.4",
   DOI: "10.1016/j.rcim.2025.103076",
@@ -127,10 +126,11 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 )
 
 #paper(
+  type: "journal",
   authors: (strong("Zheng K"), "Zhong Y", "Su X", "Leng J*", "Liu Q", "Chen X"),
   title: "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling",
-  from: "Applied Soft Computing",
-  published: "2025, Accepted",
+  venue: "Applied Soft Computing",
+  published: "2025",
   metadata: "JCR Q1, IF: 8.7",
   DOI: "10.1016/j.asoc.2025.113920",
   tldr: "Introduces a large-model, human-in-the-loop agentic workflow for geometric modelling: generates code-to-CAD, invokes tools for constraint checking, and closes the loop with expert feedback; demonstrated on industry-style geometry tasks.",
@@ -192,33 +192,31 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
 
 #copyright(
   title: "Multi-feature fusion print color difference detection system",
-  year: "2024",
-  status: "Computer Software Copyright Certificate (Registered)"
+  year: "2025",
+  status: "Computer Software Copyright Certificate",
+  country: "China",
+  holders: ("Zheng K", "Leng J", "et al.")
 )
 
 #copyright(
   title: "Vision intelligence-based personalized print color difference analysis system",
-  year: "2024", 
-  status: "Computer Software Copyright Certificate (Registered)"
+  year: "2025", 
+  status: "Computer Software Copyright Certificate",
+  country: "China",
+  holders: ("Zheng K", "Leng J", "et al.")
 )
 
 = Skills
 
-- Since I have a wide range of interest, here are some of the transferable skills I am familiar with:
-
 #skills(
   categories: (
-    ("Programming", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
-    ("Tools", ("Docker", "CI/CD", "Linux", "Microsoft Azure", "Git")),
+    ("Tools", ("Git", "LaTeX", "Docker", "CI/CD", "CLI")),
+    ("Machine Learning", ("PyTorch", "TensorFlow", "scikit-learn", "MLX")),
+    ("Web Development", ("Next.js", "Tailwind CSS", "React", "Node.js")),
+    ("Programming Languages", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
     ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
-    ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability"))
-  )
-)
-
-#skills(
-  categories: (
+    ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability")),
     ("Interest", ("Typography", "Graphic Design")),
-    ("Web Dev", ("Next.js", "Tailwind CSS", "Node.js", "FastAPI", "React")),
   )
 )
 
@@ -232,7 +230,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   url: "https://github.com/Xeraphinite/ringrad",
   tech: ("MLX", "Automatic Differentiation"),
   details: [
-    - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
+    Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
   ],
 )
 
@@ -243,7 +241,7 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   tech: ("Typst", "Document Layout", "Package Development"),
   icon: github-icon(),
   details: [
-    - Developed a modern CV template package for Typst with multilingual support and clean formatting
+    Developed a modern CV template package for Typst with multilingual support and clean formatting
   ],
 )
 
@@ -260,28 +258,38 @@ Self-motivated MEng graduate specializing in Large Language Models and AI-driven
   name: "Typography Experiments",
   tech: ("Typst", "LaTeX"),
   description: "Collection of typography and layout design experiments",
-  time: "2023-2025"
+  time: "2023-2025",
+  icon: github-icon()
 )
 
 = Awards
 
 #award(
-  name: "China National Scholarship",
+  name: "National Scholarship",
   date: "2025", 
   from: "Ministry of Education, China",
-  details: "(TOP 1%)",
 )
 
 #award(
-  name: "Academic Excellence Scholarship",
-  date: "2023, 2024",
+  name: "First Class Scholarship in Academic Excellence",
+  date: "2025",
   from: "Guangdong University of Technology",
-  details: ""
 )
 
 #award(
-  name: "Academic Scholarship",
+  name: "Second Class Scholarship in Academic Excellence",
+  date: "2024",
+  from: "Guangdong University of Technology",
+)
+
+#award(
+  name: "Freshman Entrance Scholarship",
+  date: "2023",
+  from: "Guangdong University of Technology",
+)
+
+#award(
+  name: "First Class Scholarship in Academic Excellence",
   date: "2020, 2021, 2022",
   from: "Guangdong University of Finance & Economics",
-  details: ""
 )

@@ -1,3 +1,5 @@
+#import "utils.typ": *
+
 #let cv(
   // Apply the cv layout to the document. Sets up a header for the front page. -> content
   en_name: "", // The person's English name to be listed at the top of the CV. -> content
@@ -23,7 +25,7 @@
       "YuMincho",
     ),
     sans: (
-      (name: "New Computer Modern Sans", covers: "latin-in-cjk", ),
+      (name: "New Computer Modern Sans", covers: "latin-in-cjk"),
       "Arial",
       // CJK sans fallbacks (macOS / Windows)
       "PingFang SC",
@@ -31,14 +33,14 @@
       "Microsoft JhengHei",
     ),
     mono: (
-      (name: "Cascadia Mono", covers: "latin-in-cjk"),
+      (name: "Cascadia Mono"),
       (name: "New Computer Modern Mono", covers: "latin-in-cjk"),
       // If you need CJK in code blocks, install and add a CJK mono font, e.g.:
       // "Sarasa Mono TC", "Sarasa Mono SC", "Noto Sans Mono CJK SC",
     ),
     math: "New Computer Modern Math",
   )
-  
+
   show raw: it => text(font: font_configs.mono, it)
 
   // Global defaults (sans body, serif headings, mono for code, NCM math)
@@ -88,17 +90,10 @@
   body
 }
 
-#let contact(
-  // Contact
-  icon: none,
-  label: "",
-  url: "",
-  height: 1em,
-  baseline: 20%,
-) = {
-  let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
-  if url != "" { [#ico #h(0.1em) #link(url)[#label]] } else { [#ico #h(0.1em) #label] }
-}
+// Publication type counters
+#let journal-counter = counter("journal")
+#let conference-counter = counter("conference") 
+#let preprint-counter = counter("preprint")
 
 #let edu(
   // Create an education entry, suitable for one degree and accompanying information. -> content
@@ -107,23 +102,23 @@
   degree: "",
   details: "",
 ) = {
-    grid(
-      columns: (1fr, auto),
-      column-gutter: 2em,
-      align(left)[
-        #strong[#degree], #institution
-      ],
-      align(right)[
-        #{
-          if type(date) == datetime [
-            #date.display("[month repr:long] [year]")
-          ] else [
-            #date
-          ]
-        }
-      ],
-    )
-    details
+  grid(
+    columns: (1fr, auto),
+    column-gutter: 2em,
+    align(left)[
+      #strong[#degree], #institution
+    ],
+    align(right)[
+      #{
+        if type(date) == datetime [
+          #date.display("[month repr:long] [year]")
+        ] else [
+          #date
+        ]
+      }
+    ],
+  )
+  details
 }
 
 #let exp(
@@ -137,29 +132,29 @@
   details: [],
 ) = {
   grid(
-      columns: (auto, 1fr),
-      align(left)[
-        #strong[#project]
-        \ #text(size: 0.9em, [#role])
-      ],
-      align(right)[
-        #text[
-          #{
-            if type(start) == datetime {
-              start.display("[month repr:long] [year]")
-            } else { start }
-          } #{
-            if end != "" [
-              #{
-                if type(end) == datetime {
-                  end.display("- [month repr:long] [year]")
-                } else [\- #end \ #text(size: 0.9em, [#org `@` #location])]
-              }
-            ]
-          }]
-      ],
-    )
-    details
+    columns: (auto, 1fr),
+    align(left)[
+      #strong[#project]
+      \ #text(size: 0.9em, [#role])
+    ],
+    align(right)[
+      #text[
+        #{
+          if type(start) == datetime {
+            start.display("[month repr:long] [year]")
+          } else { start }
+        } #{
+          if end != "" [
+            #{
+              if type(end) == datetime {
+                end.display("- [month repr:long] [year]")
+              } else [\- #end \ #text(size: 0.9em, [#org `@` #location])]
+            }
+          ]
+        }]
+    ],
+  )
+  details
 }
 
 #let ser(
@@ -227,8 +222,7 @@
     grid(
       columns: (1fr, auto),
       column-gutter: 1.5em,
-      align(left)[#align()[*#category.at(0)*]], 
-      align(right)[#align(left)[#category.at(1).join(", ")]],
+      align(left)[#align()[*#category.at(0)*]], align(right)[#align(left)[#category.at(1).join(", ")]],
     )
   }
 }
@@ -245,81 +239,89 @@
   tech: (),
   url: "",
   icon: none, // (optional) Icon to display at the front of project name. -> content | none
+  icon-height: 0.95em, // Icon height for better text balance
+  icon-baseline: 15%, // Icon baseline for better text alignment
 ) = {
-
-    grid(
-      columns: (1fr, auto),
-      column-gutter: 2em,
-      align(left)[
-        #{
-          let project_title = if url != "" { link(url)[#title] } else { title }
-          if icon != none {
-            [#icon #h(0.2em) #strong[#project_title]]
+  grid(
+    columns: (1fr, auto),
+    column-gutter: 2em,
+    align(left)[
+      #{
+        let project_title = if url != "" { link(url)[#title] } else { title }
+        if icon != none {
+          let icon_display = if type(icon) == function {
+            icon(height: icon-height, baseline: icon-baseline)
           } else {
-            [#strong[#project_title]]
+            box(height: icon-height, baseline: icon-baseline)[#icon]
           }
-          h(2em)
-          // Technology stack - styled globally via raw text
-          if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
+          [#icon_display #h(0.15em) #strong[#project_title]]
+        } else {
+          [#strong[#project_title]]
         }
-        #if role != "" [ \ #text(size: 0.9em, [#role]) ]
+        h(2em)
+        // Technology stack - styled globally via raw text
+        if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
+      }
+      #if role != "" [ \ #text(size: 0.9em, [#role]) ]
 
-      ],
-      align(right)[
-        #if org != "" [#org]
-        #if location != "" and org != "" [, #location] else if location != "" [#location]
-        \
-        #{
-          if type(start) == datetime {
-            text(size: 0.9em, [#start.display("[month repr:long] [year]")])
-          } else { text(size: 0.9em, [#start]) }
-        } #{
-          if end != "" [
-            #{
-              if type(end) == datetime {
-                text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
-              } else [\- #text(size: 0.9em, [#end])]
-            }
-          ]
-        }
-      ],
-    )
-    details
-  
+    ],
+    align(right)[
+      #if org != "" [#org]
+      #if location != "" and org != "" [, #location] else if location != "" [#location]
+      \
+      #{
+        if type(start) == datetime {
+          text(size: 0.9em, [#start.display("[month repr:long] [year]")])
+        } else { text(size: 0.9em, [#start]) }
+      } #{
+        if end != "" [
+          #{
+            if type(end) == datetime {
+              text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
+            } else [\- #text(size: 0.9em, [#end])]
+          }
+        ]
+      }
+    ],
+  )
+  details
 }
 
-#let hide(should-hide, content) = {
-  // Allows hiding or showing full resume dynamically using global variable. -> content
-  if not should-hide { content }
-}
-
-#let render-icons = icons => {
-  // Helper: render one or many icons with spacing
-  if icons == none { [] } else if type(icons) == array {
-    icons.filter(icon => icon != none).map(icon => box()[#icon]).join(h(0.5em))
-  } else {
-    box()[#icons]
-  }
-}
+// Publication type counters
+#let journal-counter = counter("journal")
+#let conference-counter = counter("conference") 
+#let preprint-counter = counter("preprint")
 
 #let paper(
-  // Create a unified publication entry that handles different types of publications. -> content
   authors: (), // List of authors in order. -> array | str
-  title: "", // Title of the publication. -> str | content
-  from: "", // publication name
+  title: "",     // Title of the publication. -> str | content
+  venue: "",      // publication venue (e.g., CVPR, NeurIPS, ArXiv, etc.). -> str | content
   published: "", // status and date of publication/presentation.
   metadata: "", // other metadata (e.g., VOL, JCR, etc.)
-  DOI: none, // (optional) Digital Object Identifier. -> str | content | none
+  DOI: none,   // (optional) Digital Object Identifier. -> str | content | none
   icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
   tldr: none, // (optional) Too Long; Didn't Read summary. -> str | content | none
+  type: "journal", // Type of publication: "journal", "conference", or "preprint"
 ) = {
-  let author_text = if type(authors) == array {
-    // Format authors with smallcaps for proper APA style
-    authors.map(author => smallcaps(author)).join(", ")
-  } else { smallcaps(authors) }
+  let author_text = authors-component(authors: authors, format: "full")
+  
+  // Get the appropriate counter and prefix based on type
+  let (pub_counter, prefix) = if type == "journal" {
+    (journal-counter, "J")
+  } else if type == "conference" {
+    (conference-counter, "C") 
+  } else if type == "preprint" {
+    (preprint-counter, "P")
+  } else {
+    (journal-counter, "J") // default fallback
+  }
+  
+  // Step the counter and get current value
+  pub_counter.step()
+  let number = context pub_counter.display()
 
   enum.item[
-    #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }.  _#{ from }_#{ if metadata != "" [. #{ metadata }] }.
+    \[#prefix#number\] #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }.  _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
     #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
     #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
     #{
@@ -332,36 +334,40 @@
 }
 
 #let patent(
-  // Create a patent entry in APA format. -> content
+  // Create a patent entry with consistent formatting. -> content
   number: "", // Patent number. -> str
   title: "", // Title of the patent. -> str | content
   inventors: (), // List of inventors in order. -> array | str
   filed: "", // Filing date. -> str
   status: "", // Status of the patent (e.g., "Application", "Granted"). -> str
   country: "", // Country code (e.g., "CN", "US"). -> str
+  icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
 ) = {
-  let inventor_text = if type(inventors) == array {
-    inventors.map(inventor => smallcaps(inventor)).join(", ")
-  } else { smallcaps(inventors) }
+  let inventor_text = authors-component(authors: inventors, format: "full")
 
   // Parse filing date to get year
   let year = filed.split("-").at(0)
 
   enum.item[
     #inventor_text (#year). #emph(title) \[#status\]. #country Patent \##number.
+    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
   ]
 }
 
 #let copyright(
-  // Create a copyright entry in APA format. -> content
+  // Create a copyright entry with consistent formatting. -> content
   title: "", // Title of the copyrighted work. -> str | content
   year: "", // Year of copyright. -> str
   status: "", // Status of the copyright. -> str,
   country: "", // Country of copyright. -> str
-  holder: (), // Copyright holder. -> array | str
+  holders: (), // Copyright holders. -> array | str
+  icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
 ) = {
+  let holder_text = authors-component(authors: holders, format: "full")
+  
   enum.item[
-    #title (#year). #status. #country Copyright. Held by #holder.
+    #holder_text (#year). #emph(title). #status, #country.
+    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
   ]
 }
 
@@ -372,6 +378,8 @@
   description: "",
   time: "",
   icon: none, // (optional) Icon to display. -> content | none
+  icon-height: 0.9em, // Icon height for better text balance
+  icon-baseline: 15%, // Icon baseline for better text alignment
 ) = {
   grid(
     columns: (auto, 1fr, auto),
@@ -379,7 +387,12 @@
     align(left)[
       #{
         let artifact_name = if icon != none {
-          [#icon #h(0.2em) #strong[#name]]
+          let icon_display = if type(icon) == function {
+            icon(height: icon-height, baseline: icon-baseline)
+          } else {
+            box(height: icon-height, baseline: icon-baseline)[#icon]
+          }
+          [#icon_display #h(0.15em) #strong[#name]]
         } else {
           [#strong[#name]]
         }
@@ -396,15 +409,4 @@
       #text(size: 0.9em, fill: luma(40%))[#time]
     ],
   )
-}
-
-#let link_with_icon(
-  icon: none,
-  url: "",
-  text: "",
-  height: 1em,
-  baseline: 20%,
-) = {
-  let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
-  [#link(url)[#ico] #link(url)[#text]]
 }
