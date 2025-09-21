@@ -81,8 +81,8 @@
   icon: none,
   url: "",
   text: "",
-  height: 0.9em, // Reduced for better balance
-  baseline: 15%, // Adjusted for better text alignment
+  height: 1em,
+  baseline: 15%,
 ) = {
   let ico = if icon == none { [] } else { icon(height: height, baseline: baseline) }
   [#link(url)[#ico] #link(url)[#text]]

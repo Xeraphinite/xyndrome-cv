@@ -28,7 +28,6 @@
     ),
     mono: (
       (name: "Inconsolata", covers: "latin-in-cjk"),
-      (name: "New Computer Modern Mono", covers: "latin-in-cjk"),
     ),
     math: "New Computer Modern Math",
   )
@@ -269,7 +268,6 @@
   end: "",
   location: "",
   details: [],
-  tech: (),
   url: "",
   icon: none, // (optional) Icon to display at the front of project name. -> content | none
   icon-height: 0.95em, // Icon height for better text balance
@@ -277,14 +275,12 @@
 ) = {
   reset-heading-gap()
 
-  // Determine if we need URL column
   let has_url = url != ""
-  let columns = if has_url { (1fr, 2fr, 1fr, auto) } else { (1fr, 2fr, auto) }
+  let columns = (1fr, auto)
   
   grid(
     columns: columns,
     column-gutter: 1em,
-    // Name column
     align(left)[
       #{
         let project_title = if url != "" { link(url)[#title] } else { title }
@@ -303,14 +299,7 @@
         if role != "" [ \ #text(size: 0.9em, [#role]) ]
       }
     ],
-    // Tech stack column
-    align(left)[
-      #{
-        if tech.len() > 0 [#raw(tech.join(", "))]
-      }
-    ],
-    // Description/Details column
-    align(left)[
+    align(right)[
       #{
         if org != "" [#org]
         if location != "" and org != "" [, #location] else if location != "" [#location]
@@ -383,7 +372,7 @@
       align(left)[
         #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }. _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
         #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
-        #{ if pdf != none [#h(0.5em) #link_with_icon(icon: pdf-icon, url: pdf, text: "PDF")] }
+        #{ if pdf != none [#h(0.5em) #link_with_icon(icon: pdf-icon, url: pdf, text: `PDF`)] }
         #{ if icon != none [
           #h(0.5em)
           #if type(icon) == array { icon.join(h(0.5em)) } else { icon }
@@ -476,12 +465,13 @@
   icon: none, // (optional) Icon to display. -> content | none
   icon-height: 0.9em, // Icon height for better text balance
   icon-baseline: 15%, // Icon baseline for better text alignment
+  year: "", // Year of creation or release. -> str
 ) = {
   reset-heading-gap()
   
   // Determine if we need URL column
   let has_url = url != ""
-  let columns = if has_url { (2fr, 2fr, 3fr, 1fr) } else { (1fr, 2fr, 3fr) }
+  let columns = (1fr, 1fr, 3fr, auto)
   
   grid(
     columns: columns,
@@ -508,6 +498,12 @@
       }],
     // Description column
     align(left)[#text(size: 1em, style: "italic")[#description]],
+    // Year/URL column
+    align(right)[
+      #{
+        if year != "" [#year]
+      }
+    ]
   )
 }
 

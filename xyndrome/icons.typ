@@ -62,7 +62,7 @@
 #let skill-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(skill-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -71,7 +71,7 @@
 #let award-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(award-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -80,7 +80,7 @@
 #let artifact-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(artifact-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -89,7 +89,7 @@
 #let publication-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(publication-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -98,7 +98,7 @@
 #let experience-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(experience-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -107,7 +107,7 @@
 #let education-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(education-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -116,7 +116,7 @@
 #let copyright-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(copyright-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }
 
@@ -125,6 +125,6 @@
 #let projects-icon(color: black, height: 1em, baseline: 13.5%) = {
   box(height: height, baseline: baseline)[
     #image(bytes(projects-svg.replace("currentColor", color.to-hex())))
-    #h(0.3em)
+    #h(1em)
   ]
 }

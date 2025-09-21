@@ -10,9 +10,9 @@ A modern, pixel-perfect, and highly customizable CV/resume template built with T
 
 ## Fonts
 
-- Serif: [Lora](https://github.com/cyrealtype/Lora-Cyrillic)
-- Sans: [Work Sans](https://github.com/weiweihuanghuang/Work-Sans)
-- Fixed Width: [Space Grotesk](https://github.com/CooperHuang/Space-Grotesk)
+- Serif: [Spectral](https://github.com/productiontype/Spectral)
+- Sans: [Rethink Sans](https://github.com/hans-thiessen/Rethink-Sans)
+- Fixed Width: [Inconsolata](https://github.com/googlefonts/Inconsolata)
 
 ## License
 

@@ -88,10 +88,25 @@
 #exp(
   project: "Automated Color Difference Control & Calibration System",
   role: "Lead Developer",
-  org: "Vograce, Industry Collaboration",
+  org: "Vograce (Industry Collaboration)",
   location: "Yiwu, Zhejiang",
-  start: "December 2024",
-  end: "July 2025",
+  start: "Dec 2024",
+  end: "Jul 2025",
+  details: [
+    - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
+    - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
+    - *Action:* Engineered calibrated machine-vision capture, implemented adaptive sRGB-to-CMYK feedback, and automated operator guidance;
+    - *Result:* Reduced detection-to-recommendation latency to 1 s per image and achieved a 20x efficiency gain over manual inspection.
+  ],
+)
+
+#exp(
+  project: "LLM-based Cosmetic Application Design Assistant",
+  role: "Developer",
+  org: "Vograce (Industry Collaboration)",
+  location: "Guangzhou, Guangdong",
+  start: "May 2023",
+  end: "Jul 2023",
   details: [
     - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
     - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
@@ -113,6 +128,7 @@
   metadata: "JCR Q1, IF: 11.4",
   DOI: "10.1016/j.rcim.2025.103076",
   tldr: "Survey of AIGC for smart manufacturing across design, planning, production, and inspection; synthesizes industrial cases, outlines enabling models (LLMs, diffusion, multimodal) and integration patterns (agents, digital twins), discusses risks (IP, safety, evaluation), and proposes a research roadmap.",
+  pdf: "",
 )
 
 #paper(
@@ -204,13 +220,13 @@
 
 #skills(
   categories: (
-    ("General DevTools", ("VSCode", "Git", "LaTeX", "Docker", "CI/CD", "CLI")),
-    ("Machine Learning", ("vLLM", "PyTorch", "CUDA", "MLX", "Gradio")),
+    ("DevTools", ("VSCode", "Git", "LaTeX", "Docker", "CI/CD", "CLI")),
+    ("ML Toolkits", ("vLLM", "PyTorch", "CUDA", "MLX", "Gradio")),
     ("Web Development", ("Next.js", "Tailwind CSS", "Node.js")),
     ("Programming Languages", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
     ("Languages", (strong("English (TOEFL: 114)"), strong("Japanese (N1)"), "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
     ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability")),
-    ("Interest", ("Typography", "Graphic Design")),
+    ("Interest", ("Typography", "Graphic Design", "UI/UX Design")),
   )
 )
 
@@ -219,10 +235,11 @@
 
 #project(
   title: "Ringrad",
-  role: "Creator & Maintainer",
+  role: "Creator",
   org: "Open Source",
   url: "https://github.com/Xeraphinite/ringrad",
-  tech: ("MLX", "Automatic Differentiation"),
+  end: "2024",
+  start: "2023",
   icon: github-icon(),
   details: [
     - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
@@ -230,10 +247,8 @@
 )
 
 #project(
-  title: "Xyndrome-CV",
-  location: "",
-  url: "https://github.com/Xeraphinite/xyndrome-cv",
-  tech: ("Typst", "Document Layout", "Package Development"),
+  title: "SPADA",
+  url: "https://github.com/Xeraphinite/spada",
   icon: github-icon(),
   details: [
     Developed a modern CV template package for Typst with multilingual support and clean formatting
@@ -243,15 +258,17 @@
 = #artifact-icon() Artifacts & Demos
 
 #artifact(
-  name: "Personal",
-  tech: ("Next.js", "Tailwind CSS", "TypeScript"),
-  description: "Modern responsive portfolio website with dynamic content",
+  name: "Ringrad",
+  tech: ("MLX", "Python"),
+  description: "A minimal automatic differentiation library with Apple Silicon.",
+  year: "2024",
 )
 
 #artifact(
   name: "Typography",
   tech: ("Typst", "LaTeX"),
   description: "Collection of typography and layout design experiments",
+  year: "2023",
 )
 
 = #award-icon() Awards
