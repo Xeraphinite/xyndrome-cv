@@ -33,7 +33,11 @@
     math: "New Computer Modern Math",
   )
 
-  show raw: it => text(font: font_configs.mono, weight: 500, it, size: 9pt)
+  show raw: it => box(
+    // fill: luma(240),
+    // radius: 0.2em,
+    text(font: font_configs.mono, weight: 500, it, size: 1.2em)
+  )
 
   show link: it => underline(
     stroke: (dash: "dashed"),
@@ -74,6 +78,8 @@
     heading-gap.update(0.1em)
     pad(top: -reduction, bottom: 0.3em, text(size: 10.5pt, weight: "bold", it.body))
   }
+
+  set par(justify: true);
 
   show parbreak: it => context {
     heading-gap.update(none)
@@ -220,7 +226,6 @@
 }
 
 #let award(
-  // Creates an entry for an award, such as a scholarship or fellowship. -> content
   name: "",
   date: "",
   from: "",
@@ -241,7 +246,6 @@
 }
 
 #let skills(
-  // Skills section formatter. -> content
   categories: (), // Array of skill categories as tuples: (category_name, [skills_array])
 ) = {
   reset-heading-gap()
@@ -273,9 +277,14 @@
 ) = {
   reset-heading-gap()
 
+  // Determine if we need URL column
+  let has_url = url != ""
+  let columns = if has_url { (1fr, 2fr, 1fr, auto) } else { (1fr, 2fr, auto) }
+  
   grid(
-    columns: (1fr, auto),
-    column-gutter: 2em,
+    columns: columns,
+    column-gutter: 1em,
+    // Name column
     align(left)[
       #{
         let project_title = if url != "" { link(url)[#title] } else { title }
@@ -289,31 +298,40 @@
         } else {
           [#strong[#project_title]]
         }
-        h(2em)
-        // Technology stack - styled globally via raw text
-        if tech.len() > 0 [ #text(size: 1em)[#raw(tech.join(", "))]]
       }
-      #if role != "" [ \ #text(size: 0.9em, [#role]) ]
-
-    ],
-    align(right)[
-      #if org != "" [#org]
-      #if location != "" and org != "" [, #location] else if location != "" [#location]
-      \
       #{
-        if type(start) == datetime {
-          text(size: 0.9em, [#start.display("[month repr:long] [year]")])
-        } else { text(size: 0.9em, [#start]) }
-      } #{
-        if end != "" [
-          #{
-            if type(end) == datetime {
-              text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
-            } else [\- #text(size: 0.9em, [#end])]
+        if role != "" [ \ #text(size: 0.9em, [#role]) ]
+      }
+    ],
+    // Tech stack column
+    align(left)[
+      #{
+        if tech.len() > 0 [#raw(tech.join(", "))]
+      }
+    ],
+    // Description/Details column
+    align(left)[
+      #{
+        if org != "" [#org]
+        if location != "" and org != "" [, #location] else if location != "" [#location]
+        if start != "" or end != "" [
+          \ #{
+            if type(start) == datetime {
+              text(size: 0.9em, [#start.display("[month repr:long] [year]")])
+            } else { text(size: 0.9em, [#start]) }
+          } #{
+            if end != "" [
+              #{
+                if type(end) == datetime {
+                  text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
+                } else [\- #text(size: 0.9em, [#end])]
+              }
+            ]
           }
         ]
       }
     ],
+
   )
   details
 }
@@ -454,15 +472,21 @@
   name: "",
   tech: (), // Technology stack. -> array
   description: "",
+  url: "", // Optional URL for the artifact
   icon: none, // (optional) Icon to display. -> content | none
   icon-height: 0.9em, // Icon height for better text balance
   icon-baseline: 15%, // Icon baseline for better text alignment
 ) = {
   reset-heading-gap()
-
+  
+  // Determine if we need URL column
+  let has_url = url != ""
+  let columns = if has_url { (2fr, 2fr, 3fr, 1fr) } else { (1fr, 2fr, 3fr) }
+  
   grid(
-    columns: (1fr, auto, auto),
+    columns: columns,
     column-gutter: 1em,
+    // Name column
     align(left)[
       #{
         let artifact_name = if icon != none {
@@ -477,13 +501,13 @@
         }
         artifact_name
       }
-      #{
-        if tech.len() > 0 [ #h(0.5em) #text(size: 0.9em)[#raw(tech.join(", "))]]
-      }
     ],
-    align(right)[
-      #text(size: 0.9em, style: "italic")[#description]
-    ],
+    // Tech stack column
+    align(left)[#{
+        if tech.len() > 0 [#raw(tech.join(", "))]
+      }],
+    // Description column
+    align(left)[#text(size: 1em, style: "italic")[#description]],
   )
 }
 

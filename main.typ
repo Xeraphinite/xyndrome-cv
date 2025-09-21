@@ -3,17 +3,16 @@
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
   // original_name: "郑恪悠",
-  address: "",
   lang: "en",
   contacts: (
     contact(
       icon: email-icon,
-      label: "keyouzheng0915@gmail.com",
+      label: `keyouzheng0915@gmail.com`,
       url: "mailto:keyouzheng0915@gmail.com",
     ),
     contact(
       icon: website-icon,
-      label: "keyzh.pages.dev",
+      label: `keyzh.pages.dev`,
       url: "https://keyzh.pages.dev",
     ),
     contact(
@@ -24,12 +23,10 @@
     contact(
       icon: canton-tower-icon,
       label: "Guangzhou, Guangdong",
-      url: "",
     ),
     contact(
       icon: phone-icon,
       label: "(+86) 137-9409-1521",
-      url: "",
     )
   ),
 )
@@ -50,7 +47,7 @@
         text: `Xeraphinite/spada`,
     ).
   ],
-)
+) 
 
 #edu(
   institution: "Guangdong University of Finance and Economics",
@@ -228,7 +225,7 @@
   tech: ("MLX", "Automatic Differentiation"),
   icon: github-icon(),
   details: [
-    Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
+    - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
   ],
 )
 
@@ -246,13 +243,13 @@
 = #artifact-icon() Artifacts & Demos
 
 #artifact(
-  name: "Personal Portfolio",
+  name: "Personal",
   tech: ("Next.js", "Tailwind CSS", "TypeScript"),
   description: "Modern responsive portfolio website with dynamic content",
 )
 
 #artifact(
-  name: "Typography Experiments",
+  name: "Typography",
   tech: ("Typst", "LaTeX"),
   description: "Collection of typography and layout design experiments",
 )
