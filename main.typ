@@ -1,12 +1,5 @@
 #import "xyndrome/lib.typ": *
 
-#show link: it => underline(
-  stroke: (dash: "dashed"),
-  offset: 0.2em,
-)[#it]
-
-#show list: set list(marker: [◦])
-
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
   // original_name: "郑恪悠",
@@ -43,15 +36,15 @@
 
 // Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
 
-= Education
+= #education-icon() Education
 
 #edu(
   institution: "Guangdong University of Technology",
   degree: "Mechanical Engineering, MEng.",
-  date: "September 2023 - June 2026 (Expected)",
+  date: "Sep 2023 - Jun 2026 (Expected)",
   details: [
     - *GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps("Jiewu Leng");
-    - *Thesis:* _Sequence-based Parametric CAD Generation with Large Language Models_, project page is available at #link_with_icon(
+    - *Dissertation:* _Sequence-based Parametric CAD Generation with Large Language Models_, project page at #link_with_icon(
         icon: github-line-icon,
         url: "https://github.com/Xeraphinite/spada",
         text: `Xeraphinite/spada`,
@@ -62,7 +55,7 @@
 #edu(
   institution: "Guangdong University of Finance and Economics",
   degree: "Computer Science, BEng.",
-  date: "September 2019 - June 2023",
+  date: "Sep 2019 - Jun 2023",
   details: [
     - *GPA*: 3.5/4.0 (Top 5%);
     - *Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, a _*reincarnation*_  project is available at #link_with_icon(
@@ -74,7 +67,7 @@
 )
 
 
-= Research Experience
+= #experience-icon() Research Experience
 
 #exp(
   project: "Sequence-based Parametric CAD Generation",
@@ -84,42 +77,42 @@
   start: "February 2025",
   end: "Present",
   details: [
-    - Developing an LLM-based agentic system for generating #link_with_icon(
+    - *Situation:* Lab teams manually converted design briefs and sketches into #link_with_icon(
         icon: openscad-icon,
         url: "https://openscad.org/",
         text: `OpenSCAD`,
-      ) code from natural language and schematic inputs;
-    - Pioneering sequence-to-sequence transformer models to improve accuracy of generated 3D parametric models by 40%;
-    - Designing human-in-the-loop validation system for industrial CAD applications, reducing design iteration time by 60%.
+      ) code, slowing industrial CAD prototyping and introducing inconsistency;
+    - *Task:* Lead development of an LLM-driven agent that outputs production-ready parametric scripts aligned with manufacturing tolerances;
+    - *Action:* Built multi-modal prompt parsing, fine-tuned sequence-to-sequence transformers, and coordinated tool-use planning for dependable OpenSCAD generation;
+    - *Result:* Boosted geometric accuracy of generated models by 40% and, with a human-in-the-loop validator, cut design iteration time by 60%.
   ],
 )
 
 #exp(
   project: "Automated Color Difference Control & Calibration System",
   role: "Lead Developer",
-  org: "Vograce (Industry Collaboration)",
+  org: "Vograce, Industry Collaboration",
   location: "Yiwu, Zhejiang",
   start: "December 2024",
   end: "July 2025",
   details: [
-    - Architected machine vision system for automated color consistency control in personalized printing production;
-    - Implemented sRGB-to-CMYK feedback loop with adaptive iteration for ink adjustment recommendations;
-    - Optimized detection-to-recommendation pipeline to 1 second per image, achieving 20x efficiency improvement over manual processes.
+    - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
+    - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
+    - *Action:* Engineered calibrated machine-vision capture, implemented adaptive sRGB-to-CMYK feedback, and automated operator guidance;
+    - *Result:* Reduced detection-to-recommendation latency to 1 s per image and achieved a 20x efficiency gain over manual inspection.
   ],
 )
 
-= Publications
+= #publication-icon() Publications
 
-// Journal Papers
-
-*Journal Papers*
+== Journal Papers
 
 #paper(
   type: "journal",
-  authors: ("Leng J", strong("Zheng K"), "Li R", "Chen C", "Wang B", "Liu Q*", "Chen X", "Shen W"),
+  authors: ("Leng J.", strong("Zheng K."), "Li R.", "Chen C.", "Wang B.", "Liu Q.*", "Chen X.", "Shen W"),
   title: "AIGC-empowered Smart Manufacturing: Prospects and Challenges",
   venue: "Robotics and Computer-Integrated Manufacturing",
-  published: "2026, Vol. 101, 103076",
+  published: "2026",
   metadata: "JCR Q1, IF: 11.4",
   DOI: "10.1016/j.rcim.2025.103076",
   tldr: "Survey of AIGC for smart manufacturing across design, planning, production, and inspection; synthesizes industrial cases, outlines enabling models (LLMs, diffusion, multimodal) and integration patterns (agents, digital twins), discusses risks (IP, safety, evaluation), and proposes a research roadmap.",
@@ -127,28 +120,30 @@
 
 #paper(
   type: "journal",
-  authors: (strong("Zheng K"), "Zhong Y", "Su X", "Leng J*", "Liu Q", "Chen X"),
+  authors: (strong("Zheng K."), "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"),
   title: "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling",
   venue: "Applied Soft Computing",
   published: "2025",
-  metadata: "JCR Q1, IF: 8.7",
+  metadata: "JCR Q1, IF: 6.6",
   DOI: "10.1016/j.asoc.2025.113920",
   tldr: "Introduces a large-model, human-in-the-loop agentic workflow for geometric modelling: generates code-to-CAD, invokes tools for constraint checking, and closes the loop with expert feedback; demonstrated on industry-style geometry tasks.",
+  pdf: "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 )
 
 // Conference Papers
 
 
-= Patents & Copyrights
+= #copyright-icon() Patents & Copyrights
 
-*Patents*
+== Patents
 
+// Disclosed, Granted
 #patent(
   number: "202410273298.7",
   title: "Flexible needle puncture path planning based on deep reinforcement learning",
   inventors: ("Leng, J.", strong("Zheng, K."), "Zhong, Y.", "et al."),
   filed: "2024-03-11",
-  status: "Patent application",
+  status: "Disclosed",
   country: "CN"
 )
 
@@ -157,7 +152,7 @@
   title: "Interaction extraction and demand–manufacturing matching from service interaction context",
   inventors: ("Leng, J.", strong("Zheng, K."), "Xie, J.", "et al."),
   filed: "2024-07-16", 
-  status: "Patent application",
+  status: "Disclosed",
   country: "CN"
 )
 
@@ -166,7 +161,7 @@
   title: "Unified value-chain middleware for manufacturing and its digital-twin system",
   inventors: ("Leng, J.", "Zhong, Y.", strong("Zheng, K."), "et al."),
   filed: "2024-03-28",
-  status: "Patent application",
+  status: "Disclosed",
   country: "CN"
 )
 
@@ -175,7 +170,7 @@
   title: "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)",
   inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
   filed: "2024-05-13",
-  status: "Patent application",
+  status: "Disclosed",
   country: "US"
 )
 
@@ -184,44 +179,46 @@
   title: "Defect prediction via multi-feature parallel multi-stage neural networks", 
   inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
   filed: "2024-02-18",
-  status: "Patent application",
+  status: "Disclosed",
   country: "CN"
 )
 
-*Software Copyrights*
+#v(0.5em)
+
+== Software Copyrights
 
 #copyright(
   title: "Multi-feature fusion print color difference detection system",
   year: "2025",
-  status: "Computer Software Copyright Certificate",
+  status: "Authorized",
   country: "China",
-  holders: ("Zheng K", "Leng J", "et al.")
+  holders: (strong("Zheng K."), "Leng J.", "Zhong Y.")
 )
 
 #copyright(
   title: "Vision intelligence-based personalized print color difference analysis system",
   year: "2025", 
-  status: "Computer Software Copyright Certificate",
+  status: "Authorized",
   country: "China",
-  holders: ("Zheng K", "Leng J", "et al.")
+  holders: (strong("Zheng K."), "Leng J.", "Zhong Y.")
 )
 
-= Skills
+= #skill-icon() Skills
 
 #skills(
   categories: (
-    ("Tools", ("Git", "LaTeX", "Docker", "CI/CD", "CLI")),
-    ("Machine Learning", ("PyTorch", "TensorFlow", "scikit-learn", "MLX")),
-    ("Web Development", ("Next.js", "Tailwind CSS", "React", "Node.js")),
+    ("General DevTools", ("VSCode", "Git", "LaTeX", "Docker", "CI/CD", "CLI")),
+    ("Machine Learning", ("vLLM", "PyTorch", "CUDA", "MLX", "Gradio")),
+    ("Web Development", ("Next.js", "Tailwind CSS", "Node.js")),
     ("Programming Languages", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
-    ("Languages", ("English (TOEFL: 114)", "Japanese (N1)", "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
+    ("Languages", (strong("English (TOEFL: 114)"), strong("Japanese (N1)"), "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
     ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability")),
     ("Interest", ("Typography", "Graphic Design")),
   )
 )
 
 
-= Projects
+= #projects-icon() Projects
 
 #project(
   title: "Ringrad",
@@ -229,6 +226,7 @@
   org: "Open Source",
   url: "https://github.com/Xeraphinite/ringrad",
   tech: ("MLX", "Automatic Differentiation"),
+  icon: github-icon(),
   details: [
     Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
   ],
@@ -245,40 +243,33 @@
   ],
 )
 
-= Artifacts & Demos
+= #artifact-icon() Artifacts & Demos
 
 #artifact(
   name: "Personal Portfolio",
   tech: ("Next.js", "Tailwind CSS", "TypeScript"),
   description: "Modern responsive portfolio website with dynamic content",
-  time: "2024",
 )
 
 #artifact(
   name: "Typography Experiments",
   tech: ("Typst", "LaTeX"),
   description: "Collection of typography and layout design experiments",
-  time: "2023-2025",
-  icon: github-icon()
 )
 
-= Awards
+= #award-icon() Awards
 
 #award(
   name: "National Scholarship",
   date: "2025", 
   from: "Ministry of Education, China",
+  details: ""
 )
 
-#award(
-  name: "First Class Scholarship in Academic Excellence",
-  date: "2025",
-  from: "Guangdong University of Technology",
-)
 
 #award(
-  name: "Second Class Scholarship in Academic Excellence",
-  date: "2024",
+  name: "Scholarship in Academic Excellence",
+  date: "2024, 2025",
   from: "Guangdong University of Technology",
 )
 
@@ -289,7 +280,7 @@
 )
 
 #award(
-  name: "First Class Scholarship in Academic Excellence",
+  name: "Scholarship in Academic Excellence",
   date: "2020, 2021, 2022",
   from: "Guangdong University of Finance & Economics",
 )

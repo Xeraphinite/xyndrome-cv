@@ -1,77 +1,99 @@
 #import "utils.typ": *
+#import "icons.typ": *
+
+#let heading-gap = state("heading-gap", none)
+#let reset-heading-gap() = context {
+  heading-gap.update(none)
+  none
+}
 
 #let cv(
-  // Apply the cv layout to the document. Sets up a header for the front page. -> content
-  en_name: "", // The person's English name to be listed at the top of the CV. -> content
-  original_name: "", // The person's original name (e.g., Chinese, Japanese, Korean). -> content
-  address: "", // Your address, preferably in two-line format. -> str | content
-  contacts: (), // Contact info entries (use `contact(...)`). -> array(content)
+  en_name: "",               // The person's English name to be listed at the top of the CV. -> content
+  original_name: "",         // The person's original name (e.g., Chinese, Japanese, Korean). -> content
+  address: "",               // Your address, preferably in two-line format. -> str | content
+  contacts: (),              // Contact info entries (use `contact(...)`). -> array(content)
   updated: datetime.today(), // Date updated. -> datetime | str
-  lang: "en", // Language setting for the document. -> str
-  body, // The content of the cv. -> content
+  lang: "en",                // Language setting for the document. -> str
+  body,                      // The content of the cv. -> content
 ) = {
   let full_name = if original_name != "" { en_name + "  " + original_name } else { en_name }
   set document(author: full_name, title: full_name, date: updated)
 
-  // Harmonized stacks built around your choices
   let font_configs = (
     serif: (
-      (name: "New Computer Modern", covers: "latin-in-cjk"),
-      "Georgia",
-      "Songti SC",
-      "Hiragino Mincho ProN",
-      "AppleMyungjo",
-      "STSong",
-      "YuMincho",
+      (name: "Spectral", covers: "latin-in-cjk"),
     ),
     sans: (
-      (name: "New Computer Modern Sans", covers: "latin-in-cjk"),
-      "Arial",
-      // CJK sans fallbacks (macOS / Windows)
-      "PingFang SC",
-      "Hiragino Sans",
-      "Microsoft JhengHei",
+      (name: "Rethink Sans", covers: "latin-in-cjk"),
     ),
     mono: (
-      (name: "Cascadia Mono"),
+      (name: "Inconsolata", covers: "latin-in-cjk"),
       (name: "New Computer Modern Mono", covers: "latin-in-cjk"),
-      // If you need CJK in code blocks, install and add a CJK mono font, e.g.:
-      // "Sarasa Mono TC", "Sarasa Mono SC", "Noto Sans Mono CJK SC",
     ),
     math: "New Computer Modern Math",
   )
 
-  show raw: it => text(font: font_configs.mono, it)
+  show raw: it => text(font: font_configs.mono, weight: 500, it, size: 9pt)
 
-  // Global defaults (sans body, serif headings, mono for code, NCM math)
+  show link: it => underline(
+    stroke: (dash: "dashed"),
+    offset: 0.2em,
+  )[#it]
+
+  show list: it => context {
+    heading-gap.update(none)
+    set text(size: 9pt)
+    it
+  }
+
+  show list: set list(
+    marker: [◦],
+    spacing: 9pt,
+  )
+
   show: doc => {
     set text(
-      size: 10pt,
+      size: 9.5pt,
       lang: lang,
       font: font_configs.serif,
-      fallback: true,
-      cjk-latin-spacing: auto,
+      fill: luma(20%)
     )
     doc
   }
+  
+  show heading: it => text(font: font_configs.sans, size: 12pt, weight: "black", it.body)
+  show heading.where(level: 1): it => context {
+    let previous = heading-gap.get()
+    let reduction = if previous == none { 0pt } else { previous }
+    heading-gap.update(0.2em)
+    pad(top: -reduction, bottom: 0.6em, it)
+  }
+  show heading.where(level: 2): it => context {
+    let previous = heading-gap.get()
+    let reduction = if previous == none { 5pt } else { previous }
+    heading-gap.update(0.1em)
+    pad(top: -reduction, bottom: 0.3em, text(size: 10.5pt, weight: "bold", it.body))
+  }
 
-  show heading: it => text(font: font_configs.sans, size: 13pt, weight: "bold", it.body)
-  show heading.where(level: 1): it => pad(bottom: 0.8em, smallcaps(it))
+  show parbreak: it => context {
+    heading-gap.update(none)
+    it
+  }
 
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
     footer: [
       #align(center)[
         #text(
-          size: 9pt,
-          fill: luma(20%),
+          size: 8pt,
+          fill: luma(40%),
         )[*#en_name* -- Online version available at #link("https://keyzh.pages.dev/cv")[keyzh.pages.dev/cv], Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
       ]
     ],
   )
 
   align(center)[
-    #block(text(size: 1.8em, weight: "bold", font: font_configs.serif, [#smallcaps(en_name)  #original_name]))
+    #block(text(size: 1.8em, weight: "bold", font: font_configs.serif, [#smallcaps(en_name) #original_name]))
   ]
 
   pad(
@@ -87,13 +109,10 @@
     ],
   )
 
+  reset-heading-gap()
+
   body
 }
-
-// Publication type counters
-#let journal-counter = counter("journal")
-#let conference-counter = counter("conference") 
-#let preprint-counter = counter("preprint")
 
 #let edu(
   // Create an education entry, suitable for one degree and accompanying information. -> content
@@ -102,6 +121,8 @@
   degree: "",
   details: "",
 ) = {
+  reset-heading-gap()
+
   grid(
     columns: (1fr, auto),
     column-gutter: 2em,
@@ -131,6 +152,8 @@
   location: "",
   details: [],
 ) = {
+  reset-heading-gap()
+
   grid(
     columns: (auto, 1fr),
     align(left)[
@@ -165,6 +188,8 @@
   end: "",
   summary: none,
 ) = {
+  reset-heading-gap()
+
   grid(
     columns: (auto, 1fr),
     align(left)[
@@ -199,9 +224,10 @@
   name: "",
   date: "",
   from: "",
-  amt: "",
   details: "",
 ) = {
+  reset-heading-gap()
+
   grid(
     columns: (1fr, auto),
     column-gutter: 1em,
@@ -218,11 +244,14 @@
   // Skills section formatter. -> content
   categories: (), // Array of skill categories as tuples: (category_name, [skills_array])
 ) = {
+  reset-heading-gap()
+
   for category in categories {
     grid(
-      columns: (1fr, auto),
-      column-gutter: 1.5em,
-      align(left)[#align()[*#category.at(0)*]], align(right)[#align(left)[#category.at(1).join(", ")]],
+      columns: (1fr, 3fr),
+      column-gutter: 1em,
+      align(left)[*#category.at(0)*],
+      align(left)[#category.at(1).join(", ")],
     )
   }
 }
@@ -242,6 +271,8 @@
   icon-height: 0.95em, // Icon height for better text balance
   icon-baseline: 15%, // Icon baseline for better text alignment
 ) = {
+  reset-heading-gap()
+
   grid(
     columns: (1fr, auto),
     column-gutter: 2em,
@@ -289,8 +320,10 @@
 
 // Publication type counters
 #let journal-counter = counter("journal")
-#let conference-counter = counter("conference") 
+#let conference-counter = counter("conference")
 #let preprint-counter = counter("preprint")
+#let patent-counter = counter("patent")
+#let software-counter = counter("software")
 
 #let paper(
   authors: (), // List of authors in order. -> array | str
@@ -302,35 +335,48 @@
   icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
   tldr: none, // (optional) Too Long; Didn't Read summary. -> str | content | none
   type: "journal", // Type of publication: "journal", "conference", or "preprint"
+  pdf: none, // (optional) Link to PDF version of the paper. -> str | content | none
 ) = {
+  reset-heading-gap()
+
   let author_text = authors-component(authors: authors, format: "full")
-  
+
   // Get the appropriate counter and prefix based on type
   let (pub_counter, prefix) = if type == "journal" {
     (journal-counter, "J")
   } else if type == "conference" {
-    (conference-counter, "C") 
+    (conference-counter, "C")
   } else if type == "preprint" {
     (preprint-counter, "P")
   } else {
     (journal-counter, "J") // default fallback
   }
-  
+
   // Step the counter and get current value
   pub_counter.step()
   let number = context pub_counter.display()
 
-  enum.item[
-    \[#prefix#number\] #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }.  _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
-    #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
-    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
-    #{
-      if tldr != none [
-        #v(0.2em)
-        #text(style: "italic", size: 0.9em, fill: rgb("#555555"))[*TL;DR:* #tldr]
-      ]
-    }
-  ]
+  pad(
+    bottom: 0.6em,
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 0.8em,
+      align(top)[#text(weight: "bold")[\[#prefix#number\]]],
+      align(left)[
+        #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }. _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
+        #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
+        #{ if pdf != none [#h(0.5em) #link_with_icon(icon: pdf-icon, url: pdf, text: "PDF")] }
+        #{ if icon != none [
+          #h(0.5em)
+          #if type(icon) == array { icon.join(h(0.5em)) } else { icon }
+        ] }
+        #{ if tldr != none [
+          #v(0.2em)
+          #text(style: "italic", size: 0.9em, fill: rgb("#555555"))[*TL;DR:* #tldr]
+        ] }
+      ],
+    ),
+  )
 }
 
 #let patent(
@@ -343,15 +389,31 @@
   country: "", // Country code (e.g., "CN", "US"). -> str
   icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
 ) = {
+  reset-heading-gap()
+
   let inventor_text = authors-component(authors: inventors, format: "full")
 
   // Parse filing date to get year
   let year = filed.split("-").at(0)
 
-  enum.item[
-    #inventor_text (#year). #emph(title) \[#status\]. #country Patent \##number.
-    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
-  ]
+  patent-counter.step()
+  let pat_number = context patent-counter.display()
+
+  pad(
+    bottom: 0.1em,
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 0.8em,
+      align(top)[#text(weight: "bold")[\[P#{pat_number}\]]],
+      align(left)[
+        #inventor_text (#year). #emph(title) \[#{status}\]. #country #{number}.
+        #{ if icon != none [
+          #h(0.5em)
+          #if type(icon) == array { icon.join(h(0.5em)) } else { icon }
+        ] }
+      ],
+    ),
+  )
 }
 
 #let copyright(
@@ -363,12 +425,28 @@
   holders: (), // Copyright holders. -> array | str
   icon: none, // (optional) One icon or a list of icons to display. -> content | array | none
 ) = {
+  reset-heading-gap()
+
   let holder_text = authors-component(authors: holders, format: "full")
-  
-  enum.item[
-    #holder_text (#year). #emph(title). #status, #country.
-    #{ if icon != none [ #h(0.5em) #if type(icon) == array { icon.join(h(0.5em)) } else { icon }] }
-  ]
+
+  software-counter.step()
+  let number = context software-counter.display()
+
+  pad(
+    bottom: 0.1em,
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 0.8em,
+      align(top)[#text(weight: "bold")[\[S#number\]]],
+      align(left)[
+        #holder_text (#year). #emph(title). #status, #country.
+        #{ if icon != none [
+          #h(0.5em)
+          #if type(icon) == array { icon.join(h(0.5em)) } else { icon }
+        ] }
+      ],
+    ),
+  )
 }
 
 #let artifact(
@@ -376,13 +454,14 @@
   name: "",
   tech: (), // Technology stack. -> array
   description: "",
-  time: "",
   icon: none, // (optional) Icon to display. -> content | none
   icon-height: 0.9em, // Icon height for better text balance
   icon-baseline: 15%, // Icon baseline for better text alignment
 ) = {
+  reset-heading-gap()
+
   grid(
-    columns: (auto, 1fr, auto),
+    columns: (1fr, auto, auto),
     column-gutter: 1em,
     align(left)[
       #{
@@ -402,11 +481,9 @@
         if tech.len() > 0 [ #h(0.5em) #text(size: 0.9em)[#raw(tech.join(", "))]]
       }
     ],
-    align(left)[
-      #text(size: 0.9em, style: "italic")[#description]
-    ],
     align(right)[
-      #text(size: 0.9em, fill: luma(40%))[#time]
+      #text(size: 0.9em, style: "italic")[#description]
     ],
   )
 }
+
