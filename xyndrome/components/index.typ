@@ -1,0 +1,8 @@
+#import "sections.typ": sec-heading
+#import "education.typ": *
+#import "experience.typ": *
+#import "projects.typ": *
+#import "skills.typ": *
+#import "recognition.typ": *
+#import "publications.typ": *
+#import "artifacts.typ": *

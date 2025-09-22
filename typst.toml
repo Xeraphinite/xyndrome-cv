@@ -2,12 +2,14 @@
 name = "xyndrome"
 version = "0.1.0"
 entrypoint = "xyndrome/lib.typ"
-authors = ["Keyou (Key) Zheng"]
+authors = ["Xeraphinite"]
+categories = ["cv"]
 license = "MIT"
-description = "A curriculum vitae template written in Typst"
+description = "Xyndrome: A modern, clean, and customizable CV template for Typst"
 repository = "https://github.com/Xeraphinite/xyndrome-cv"
 keywords = ["cv", "resume", "template"]
 
-# The main document file for preview
-[tool.typst]
-main = "main.typ"
+[template]
+entrypoint = "main.typ"
+path = "xyndrome"
+thumbnail = "thumbnail.png"

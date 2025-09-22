@@ -2,7 +2,8 @@
 
 #show: cv.with(
   en_name: "Keyou (Key) Zheng",
-  // original_name: "郑恪悠",
+  original_name: "郑|恪|悠",
+  ruby_name: "チェン|コッ|ヤオ",
   lang: "en",
   contacts: (
     contact(
@@ -33,7 +34,9 @@
 
 // Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies.
 
-= #education-icon() Education
+#sec-heading(icon: education-icon, title: "Education")
+
+// #badge(label: "hello", icon: education-icon)
 
 #edu(
   institution: "Guangdong University of Technology",
@@ -64,14 +67,14 @@
 )
 
 
-= #experience-icon() Research Experience
+#sec-heading(icon: experience-icon, title: "Research Experience")
 
 #exp(
   project: "Sequence-based Parametric CAD Generation",
   role: "Core Researcher",
   org: "State Key Lab. of Mfg. Technology & Equipment",
   location: "Guangzhou, China",
-  start: "February 2025",
+  start: "Feb 2025",
   end: "Present",
   details: [
     - *Situation:* Lab teams manually converted design briefs and sketches into #link_with_icon(
@@ -96,7 +99,7 @@
     - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
     - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
     - *Action:* Engineered calibrated machine-vision capture, implemented adaptive sRGB-to-CMYK feedback, and automated operator guidance;
-    - *Result:* Reduced detection-to-recommendation latency to 1 s per image and achieved a 20x efficiency gain over manual inspection.
+    - *Result:* Reduced detection-to-recommendation latency to $1$s per image and achieved a 20x efficiency gain over manual inspection.
   ],
 )
 
@@ -115,9 +118,9 @@
   ],
 )
 
-= #publication-icon() Publications
+#sec-heading(icon: publication-icon, title: "Publications")
 
-== Journal Papers
+#sec-heading(level: 2, title: "Journal Papers")
 
 #paper(
   type: "journal",
@@ -146,15 +149,15 @@
 // Conference Papers
 
 
-= #copyright-icon() Patents & Copyrights
+#sec-heading(icon: copyright-icon, title: "Patents & Copyrights")
 
-== Patents
+#sec-heading(level: 2, title: "Patents")
 
 // Disclosed, Granted
 #patent(
   number: "202410273298.7",
   title: "Flexible needle puncture path planning based on deep reinforcement learning",
-  inventors: ("Leng, J.", strong("Zheng, K."), "Zhong, Y.", "et al."),
+  inventors: ("Leng, J.", strong("Zheng, K."), "Zhong, Y.", "Xie, J.", "Li R.", "Xu C.", "Liu Q."),
   filed: "2024-03-11",
   status: "Disclosed",
   country: "CN"
@@ -163,7 +166,7 @@
 #patent(
   number: "202410950697.2", 
   title: "Interaction extraction and demand–manufacturing matching from service interaction context",
-  inventors: ("Leng, J.", strong("Zheng, K."), "Xie, J.", "et al."),
+  inventors: ("Leng, J.", strong("Zheng, K."), "Xie, J.", "Li R.", "Xu C.", "Liu Q."),
   filed: "2024-07-16", 
   status: "Disclosed",
   country: "CN"
@@ -172,7 +175,7 @@
 #patent(
   number: "202410368790.2",
   title: "Unified value-chain middleware for manufacturing and its digital-twin system",
-  inventors: ("Leng, J.", "Zhong, Y.", strong("Zheng, K."), "et al."),
+  inventors: ("Leng, J.", "Zhong, Y.", strong("Zheng, K."), "Li R.", "Xu C.", "Liu Q."),
   filed: "2024-03-28",
   status: "Disclosed",
   country: "CN"
@@ -181,31 +184,22 @@
 #patent(
   number: "18/662,981",
   title: "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)",
-  inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
+  inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "Li R.", "Xu C.", "Liu Q."),
   filed: "2024-05-13",
   status: "Disclosed",
   country: "US"
 )
 
-#patent(
-  number: "202410180822.6",
-  title: "Defect prediction via multi-feature parallel multi-stage neural networks", 
-  inventors: ("Leng, J.", "Xie, J.", strong("Zheng, K."), "et al."),
-  filed: "2024-02-18",
-  status: "Disclosed",
-  country: "CN"
-)
-
 #v(0.5em)
 
-== Software Copyrights
+#sec-heading(level: 2, title: "Software Copyrights")
 
 #copyright(
   title: "Multi-feature fusion print color difference detection system",
   year: "2025",
   status: "Authorized",
   country: "China",
-  holders: (strong("Zheng K."), "Leng J.", "Zhong Y.")
+  holders: (strong("Zheng K."), "Zhong Y.", "Leng J.")
 )
 
 #copyright(
@@ -213,10 +207,10 @@
   year: "2025", 
   status: "Authorized",
   country: "China",
-  holders: (strong("Zheng K."), "Leng J.", "Zhong Y.")
+  holders: (strong("Zheng K."), "Zhong Y.", "Leng J.",)
 )
 
-= #skill-icon() Skills
+#sec-heading(icon: skill-icon, title: "Skills")
 
 #skills(
   categories: (
@@ -231,7 +225,7 @@
 )
 
 
-= #projects-icon() Projects
+#sec-heading(icon: projects-icon, title: "Projects")
 
 #project(
   title: "Ringrad",
@@ -249,13 +243,13 @@
 #project(
   title: "SPADA",
   url: "https://github.com/Xeraphinite/spada",
-  icon: github-icon(),
+  icon: spada-icon(),
   details: [
     Developed a modern CV template package for Typst with multilingual support and clean formatting
   ],
 )
 
-= #artifact-icon() Artifacts & Demos
+#sec-heading(icon: artifact-icon, title: "Artifacts & Demos")
 
 #artifact(
   name: "Ringrad",
@@ -265,13 +259,20 @@
 )
 
 #artifact(
-  name: "Typography",
-  tech: ("Typst", "LaTeX"),
-  description: "Collection of typography and layout design experiments",
-  year: "2023",
+  name: "kits(une)",
+  tech: ("vLLM", "TypeScript", "Next.js"),
+  description: "Collection of reproduced projects for LLMs.",
+  year: "2025",
 )
 
-= #award-icon() Awards
+#artifact(
+  name: "Xeraphinite",
+  tech: ("Next.js", "Tailwind CSS"),
+  description: "A modern CV template package for Typst with multilingual support and clean formatting.",
+  year: "2024",
+)
+
+#sec-heading(icon: award-icon, title: "Awards")
 
 #award(
   name: "National Scholarship",
@@ -279,7 +280,6 @@
   from: "Ministry of Education, China",
   details: ""
 )
-
 
 #award(
   name: "Scholarship in Academic Excellence",
