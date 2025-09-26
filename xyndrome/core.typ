@@ -97,7 +97,7 @@
         #text(
           size: 8pt,
           fill: luma(40%),
-        )[*#en_name* -- Online version: #link("https://keyzh.pages.dev/cv")[`keyzh.pages.dev/cv`] Last Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
+        )[*#en_name* -- Proudly Open-sourced, Online version `at` #link("https://keyzh.pages.dev/cv")[`keyzh.pages.dev/cv`], Last Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
       ]
     ],
   )

@@ -7,26 +7,26 @@
   lang: "en",
   contacts: (
     contact(
-      icon: email-icon,
+      icon: email-icon(right-space: 0.2em),
       label: `keyouzheng0915@gmail.com`,
       url: "mailto:keyouzheng0915@gmail.com",
     ),
     contact(
-      icon: website-icon,
+      icon: website-icon(right-space: 0.2em),
       label: `keyzh.pages.dev`,
       url: "https://keyzh.pages.dev",
     ),
     contact(
-      icon: github-icon,
+      icon: github-icon(right-space: 0.2em),
       label: `Xeraphinite`,
       url: "https://github.com/Xeraphinite",
     ),
     contact(
-      icon: canton-tower-icon,
+      icon: canton-tower-icon(right-space: 0.2em),
       label: "Guangzhou, Guangdong",
     ),
     contact(
-      icon: phone-icon,
+      icon: phone-icon(right-space: 0.2em),
       label: "(+86) 137-9409-1521",
     )
   ),
@@ -46,7 +46,7 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
   date: "Sep 2023 - Jun 2026 (Expected)",
   details: [
     - *GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps("Jiewu Leng");
-    - *Dissertation:* _Sequence-based Parametric CAD Generation with Large Language Models_, project page at #link_with_icon(
+    - *Dissertation:* _Sequence-based Parametric CAD Generation with Large Language Models_, project page at #link-with-icon(
         icon: github-line-icon,
         url: "https://github.com/Xeraphinite/spada",
         text: `Xeraphinite/spada`,
@@ -60,7 +60,7 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
   date: "Sep 2019 - Jun 2023",
   details: [
     - *GPA*: 3.5/4.0 (Top 5%);
-    - *Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, a _*reincarnation*_  project is available at #link_with_icon(
+    - *Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, a _*reincarnation*_  project is available at #link-with-icon(
         icon: github-line-icon,
         url: "https://github.com/Xeraphinite/Mario-RL",
         text: `Xeraphinite/Mario-RL`,
@@ -74,51 +74,55 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
 #exp(
   project: "Sequence-based Parametric CAD Generation",
   role: "Core Researcher",
-  org: "State Key Lab. of Mfg. Technology & Equipment",
+  org: "State Key Lab of Manufacturing Technology & Equipment",
   location: "Guangzhou, China",
   start: "Feb 2025",
   end: "Present",
   details: [
-    - *Situation:* Lab teams manually converted design briefs and sketches into #link_with_icon(
-        icon: openscad-icon,
-        url: "https://openscad.org/",
-        text: `OpenSCAD`,
-      ) code, slowing industrial CAD prototyping and introducing inconsistency;
-    - *Task:* Lead development of an LLM-driven agent that outputs production-ready parametric scripts aligned with manufacturing tolerances;
-    - *Action:* Built multi-modal prompt parsing, fine-tuned sequence-to-sequence transformers, and coordinated tool-use planning for dependable OpenSCAD generation;
-    - *Result:* Boosted geometric accuracy of generated models by 40% and, with a human-in-the-loop validator, cut design iteration time by 60%.
+    - Problem: Manual brief→OpenSCAD coding slowed prototyping and produced inconsistent parametrics.
+    - Approach: Multimodal parsing of sketches/specs; seq2seq fine-tuning for code synthesis; tool-use planning with constraint validators (geometry sanity checks, tolerance assertions).
+    - Reliability: Deterministic scaffolds; unit tests for CAD primitives; failure-recovery prompts; human-in-the-loop review UI.
+    - Impact: +40% geometric accuracy (IoU/param error) and −60% iteration time on internal benchmarks with designer validation.
+    - Stack: Python, PyTorch, vLLM, OpenSCAD, evaluation harnesses for shape metrics.
   ],
 )
 
 #exp(
-  project: "Automated Color Difference Control & Calibration System",
+  project: "Automated Color Difference Control & Calibration",
   role: "Lead Developer",
   org: "Vograce (Industry Collaboration)",
   location: "Yiwu, Zhejiang",
   start: "Dec 2024",
   end: "Jul 2025",
   details: [
-    - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
-    - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
-    - *Action:* Engineered calibrated machine-vision capture, implemented adaptive sRGB-to-CMYK feedback, and automated operator guidance;
-    - *Result:* Reduced detection-to-recommendation latency to $1$s per image and achieved a 20x efficiency gain over manual inspection.
+    - Problem: Personalized printing had inconsistent color reproduction and labor-heavy QA.
+    - Method: Calibrated machine-vision capture; $Delta E$ (CIEDE2000) computation, adaptive sRGB↔CMYK feedback, operator guidance and audit trails.
+    - Result: Detection→recommendation latency ↓ to ~1 s/image; ≈20× efficiency vs. manual inspection in pilot line runs.
+    - Stack: Python/OpenCV, color science libs, Gradio dashboards; Ops integration with SOP checklists.
   ],
 )
 
 #exp(
-  project: "LLM-based Cosmetic Application Design Assistant",
+  project: "Regulatory-Grade Cosmetics Compliance Assistant",
   role: "Developer",
   org: "Vograce (Industry Collaboration)",
   location: "Guangzhou, Guangdong",
   start: "May 2023",
   end: "Jul 2023",
   details: [
-    - *Situation:* Vograce's personalized printing line faced inconsistent color reproduction and labor-intensive quality checks;
-    - *Task:* Deliver an automated calibration workflow that flags color drift and issues ink adjustments without slowing one-off production;
-    - *Action:* Engineered calibrated machine-vision capture, implemented adaptive sRGB-to-CMYK feedback, and automated operator guidance;
-    - *Result:* Reduced detection-to-recommendation latency to 1 s per image and achieved a 20x efficiency gain over manual inspection.
+    - Objective: From single-product materials (ingredients, registration/filing records, labels), compare against statutory documents and internal guidelines to produce traceable, cite-linked compliance prompts.
+    - RAG Design:
+        - Knowledge base: parsed statutes, administrative measures, and technical standards; normalized metadata (title, article, clause, version, effective date, source URL).  
+        - Chunking: hierarchical (section→clause) with 512–1024 token windows + overlap; clause IDs preserved for citations.  
+        - Retrieval: hybrid BM25 + dense embeddings; top-k retrieval with MMR diversity; cross-encoder re-ranking for precision\@k.  
+        - Prompting: role-grounded templates with requirement decomposition; tool hints for citation spans; refusal rules for out-of-scope asks.  
+        - Tracing: per-claim citation mapping (article/paragraph), confidence tags, and rationale summaries; exportable audit JSON.
+    - Demo & Ops: Built a Gradio prototype for early testing; added batch mode and redline diffs for changed statutes; integrated to front-end review queue.
+    - Impact: Average human review time reduced from ~3 min to ~1–2 min per item (≈40–60% faster) while improving traceability (every suggestion back-referenced to clause-level citations).
+    - Stack: Python, FAISS/elastic-like retriever (hybrid), Gradio UI, prompt engineering; governance with versioned KB and test queries.
   ],
 )
+
 
 #sec-heading(icon: publication-icon, title: "Publications")
 
@@ -218,11 +222,11 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
   categories: (
     ("DevTools", ("VSCode", "Git", "LaTeX", "Docker", "CI/CD", "CLI")),
     ("ML Toolkits", ("vLLM", "PyTorch", "CUDA", "MLX", "Gradio")),
+    ("Interests", ("Typography", "Graphic Design", "UI/UX Design")),
     ("Web Development", ("Next.js", "Tailwind CSS", "Node.js")),
     ("Programming Languages", ("Python", "TypeScript", "JavaScript", "Rust", "C/C++")),
     ("Languages", (strong("English (TOEFL: 114)"), strong("Japanese (N1)"), "Chinese & Cantonese (Bilingual)", "Korean (Intermediate)")),
     ("Soft Skills", ("Communication", "Teamwork", "Problem Solving", "Adaptability")),
-    ("Interest", ("Typography", "Graphic Design", "UI/UX Design")),
   )
 )
 
@@ -230,24 +234,15 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
 #sec-heading(icon: projects-icon, title: "Projects")
 
 #project(
-  title: "Ringrad",
-  role: "Creator",
-  org: "Open Source",
-  url: "https://github.com/Xeraphinite/ringrad",
-  end: "2024",
-  start: "2023",
-  icon: github-icon(),
-  details: [
-    - Created a minimal automatic differentiation library from scratch, implementing reverse-mode differentiation for neural network training
-  ],
-)
-
-#project(
   title: "SPADA",
   url: "https://github.com/Xeraphinite/spada",
+  role: "Core Developer",
+  org: "Open Source",
+  start: "2025",
+  end: "Present",
   icon: spada-icon(),
   details: [
-    Developed a modern CV template package for Typst with multilingual support and clean formatting
+   - All-in-one DX friendly kit for OpenSCAD.
   ],
 )
 
@@ -299,4 +294,12 @@ _Self-motivated MEng graduate specializing in Large Language Models and AI-drive
   name: "Scholarship in Academic Excellence",
   date: "2020, 2021, 2022",
   from: "Guangdong University of Finance & Economics",
+)
+
+#sec-heading(icon: serving-icon(), title: "Serving")
+
+#serving(
+  name: "Silk Road International Industry-University-Research Cooperation Conference",
+  description: "Volunteer",
+  date: "2023, 2024"
 )

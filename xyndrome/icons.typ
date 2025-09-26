@@ -25,7 +25,7 @@
 #let openscad-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(openscad-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -35,7 +35,7 @@
 #let canton-tower-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(canton-tower-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -43,7 +43,7 @@
 #let location-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = canton-tower-icon(color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -53,7 +53,7 @@
 #let website-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(website-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -63,7 +63,7 @@
 #let email-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(mail-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -73,7 +73,7 @@
 #let phone-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(phone-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -83,7 +83,7 @@
 #let github-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(github-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -93,7 +93,7 @@
 #let github-line-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(github-line-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -103,7 +103,7 @@
 #let pdf-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(pdf-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -113,7 +113,7 @@
 #let skill-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(skill-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -123,7 +123,7 @@
 #let award-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(award-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -133,7 +133,7 @@
 #let artifact-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(artifact-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -143,7 +143,7 @@
 #let publication-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(publication-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -153,7 +153,7 @@
 #let experience-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(experience-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -163,7 +163,7 @@
 #let education-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(education-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -173,7 +173,7 @@
 #let copyright-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(copyright-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -183,7 +183,7 @@
 #let projects-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = create-icon(projects-svg, color: color, height: height, baseline: baseline, right-space: right-space)
 
@@ -193,7 +193,7 @@
 #let spada-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = {
   let processed-svg = spada-svg.replace("#09244BFF", color.to-hex())
@@ -206,10 +206,20 @@
 #let summary-icon(
   color: black,
   height: 1em,
-  baseline: 13.5%,
+  baseline: 20%,
   right-space: 0pt
 ) = {
   let processed-svg = summary-svg.replace("#09244BFF", color.to-hex())
   let icon-box = box(height: height, baseline: baseline, image(bytes(processed-svg)))
   box[#icon-box#h(right-space)]
 }
+
+/// Serving (ceiling lamp) icon
+#let serving-svg = ```<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><title>ceiling_lamp_fill</title><g id="ceiling_lamp_fill" fill='none' fill-rule='evenodd'><path d='M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z'/><path fill='currentColor' d='M12 19a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1m4.95-2.05a1 1 0 0 1 1.32-.083l.094.083.707.707a1 1 0 0 1-1.32 1.497l-.094-.083-.707-.707a1 1 0 0 1 0-1.414m-9.9 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 0 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 .993.883L13 3v1.1l8.175 8.176c.609.608.223 1.63-.6 1.718l-.114.006H16.9a5.002 5.002 0 0 1-9.752.212L7.1 14H3.54c-.861 0-1.31-.995-.791-1.639l.077-.085L11 4.1V3a1 1 0 0 1 1-1m2.83 12H9.17a3.001 3.001 0 0 0 5.592.172z'/></g></svg>```.text
+
+#let serving-icon(
+  color: black,
+  height: 1em,
+  baseline: 20%,
+  right-space: 0pt
+) = create-icon(serving-svg, color: color, height: height, baseline: baseline, right-space: right-space)
