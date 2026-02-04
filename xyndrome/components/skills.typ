@@ -7,7 +7,7 @@
 
   for category in categories {
     grid(
-      columns: (1fr, 3fr),
+      columns: (1fr, 5fr),
       column-gutter: 1em,
       align(left)[*#category.at(0)*],
       align(left)[#category.at(1).join(", ")],

@@ -1,0 +1,167 @@
+[locale]
+location_label = "広州市、広東省"
+lang = "ja"
+original_name = "郑|恪|悠"
+section_order = ["education", "experience", "publications", "patents", "projects", "skills", "awards"]
+
+[titles]
+education = "学歴"
+experience = "研究経験"
+publications = "発表論文"
+publications_sub = "学術雑誌論文"
+patents = "特許・著作権"
+patents_sub = "特許"
+copyrights_sub = "ソフトウェア著作権"
+projects = "プロジェクト"
+skills = "技能"
+artifacts = "成果物・デモ"
+awards = "受賞歴"
+serving = "奉仕活動"
+
+[[education]]
+institution = "Guangdong University of Technology"
+degree = "Mechanical Engineering, MEng."
+date = "Sep 2023 - Jun 2026 (Expected)"
+details = [
+  "*GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps(\"Jiewu Leng\");",
+  "*Dissertation:* _Code-based Parametric CAD Generation with Large Language Models_",
+]
+
+[[education]]
+institution = "Guangdong University of Finance and Economics"
+degree = "Computer Science, BEng."
+date = "Sep 2019 - Jun 2023"
+details = [
+  "*GPA*: 3.5/4.0 (Top 5%);",
+  "*Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_",
+]
+
+[[experience]]
+project = "Controllable Code-based CAD Generation"
+role = "Core Researcher"
+org = "State Key Lab of Manufacturing Technology & Equipment"
+location = "Guangzhou, China"
+start = "Mar 2025"
+end = "Present"
+details = [
+  "*Stack*: Python, #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text: \"vLLM\"), #link-with-icon(url: \"https://openhands.dev/\", text: \"OpenHands\"), Harbor,",
+  "*Problem*:",
+  "*Approach*: Built a test-driven agent pipeline that turns natural-language into a structured spec, generates multi-file CAD workspaces, and iterates using multimodal feedback and quantitative test diagnostics.",
+  "*Verification*: Designed deterministic unit tests as an executable contract, covering (i) interface/signature checks, (ii) geometry validity checks (e.g., manifold status, bounding box limits), and (iii) assembly constraint checks, with stable pass/fail outcomes across runs.",
+  "*Benchmarking*: Curated an execution-based benchmark of real human-written CAD workspaces across OpenSCAD, CadQuery, and Build123d, paired with golden references and deterministic verifier suites to enable objective evaluation beyond visual similarity.",
+  "*Results*: On SPADA-Bench-Verified, reduced invalid generations to ~1–3% and improved strict constraint satisfaction (APR) by +17.1 percentage points for parts and +21.5 percentage points for assemblies (41.9% vs 20.4% best zero-shot); also improved geometric fidelity under the same execution harness.",
+  "#strong(\"Paper under review (ICML 2026 submission).\")",
+]
+
+[[publications]]
+type = "journal"
+title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
+venue = "Applied Soft Computing"
+published = "2025"
+metadata = "JCR Q1, IF: 6.6"
+DOI = "10.1016/j.asoc.2025.113920"
+tldr = "Introduces a human-in-the-loop agentic workflow for geometric modelling: LLMs generate code-to-CAD, invoke tools for constraint checking, and close the loop with expert feedback; demonstrated on real-world geometry tasks."
+pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
+authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
+[[publications]]
+type = "journal"
+title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
+venue = "Robotics and Computer-Integrated Manufacturing"
+published = "2026"
+metadata = "JCR Q1, IF: 11.4"
+DOI = "10.1016/j.rcim.2025.103076"
+tldr = "Survey of AIGC for smart manufacturing across design, planning, production, and inspection; synthesizes industrial cases, outlines enabling models and integration patterns, discusses risks, and proposes a research roadmap."
+pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
+authors = ["Leng J.", "Zheng K.", "Li R.", "Chen C.", "Wang B.", "Liu Q.*", "Chen X.", "Shen W"]
+
+[[patents]]
+number = "202410273298.7"
+title = "Flexible needle puncture path planning based on deep reinforcement learning"
+filed = "2024-03-11"
+status = "Disclosed"
+country = "CN"
+inventors = ["Leng J.", "Zheng K.", "Zhong Y.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
+[[patents]]
+number = "202410950697.2"
+title = "Interaction extraction and demand–manufacturing matching from service interaction context"
+filed = "2024-07-16"
+status = "Disclosed"
+country = "CN"
+inventors = ["Leng J.", "Zheng K.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
+[[patents]]
+number = "202410368790.2"
+title = "Unified value-chain middleware for manufacturing and its digital-twin system"
+filed = "2024-03-28"
+status = "Disclosed"
+country = "CN"
+inventors = ["Leng J.", "Zhong Y.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
+
+[[patents]]
+number = "18/662,981"
+title = "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)"
+filed = "2024-05-13"
+status = "Disclosed"
+country = "US"
+inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
+[[copyrights]]
+title = "Multi-feature fusion print color difference detection system"
+year = "2025"
+status = "Authorized"
+country = "China"
+holders = ["Zheng K.", "Zhong Y.", "Leng J."]
+[[copyrights]]
+title = "Vision intelligence-based personalized print color difference analysis system"
+year = "2025"
+status = "Authorized"
+country = "China"
+holders = ["Zheng K.", "Zhong Y.", "Leng J."]
+[[projects]]
+title = "SPADA"
+org = "Open Source"
+icon = "spada"
+role = ""
+start = ""
+end = ""
+details = []
+
+[[skills]]
+label = "Languages"
+items = ["*English (TOEFL: 90)*", "*Japanese (N1: 130)*", "Chinese & Cantonese (native)", "Korean (basic)"]
+
+[[skills]]
+label = "AI Engineering"
+items = ["Inference: vLLM", "RL/Fine-tuning"]
+
+[[skills]]
+label = "General DevTools"
+items = ["Codex CLI", "VSCode", "Git", "LaTeX", "Docker", "CI/CD"]
+
+[[skills]]
+label = "Web Dev"
+items = ["Next.js", "Tailwind CSS", "Node.js"]
+
+[[skills]]
+label = "Programming"
+items = ["Python", "TypeScript", "JavaScript", "Rust", "C/C++"]
+
+[[skills]]
+label = "Interests"
+items = ["Typography", "Graphic Design", "UI/UX Design"]
+
+[[awards]]
+name = "National Scholarship"
+date = "2025"
+from = "Ministry of Education, China"
+details = ""
+
+[[awards]]
+name = "Scholarship in Academic Excellence"
+date = "2024, 2025"
+from = "Guangdong University of Technology"
+details = ""
+
+[[awards]]
+name = "Scholarship in Academic Excellence"
+date = "2020, 2021, 2022"
+from = "Guangdong University of Finance & Economics"
+details = ""

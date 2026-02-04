@@ -12,7 +12,7 @@
   reset-heading-gap()
 
   grid(
-    columns: (auto, 1fr),
+    columns: (1fr, auto),
     align(left)[
       #strong[#project]
       \ #text(size: 0.9em, [#role])

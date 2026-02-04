@@ -25,22 +25,22 @@ The CV is available in multiple languages, located in the `intl/` directory:
 
 #### Japanese (日本語)
 ```bash
-typst compile intl/ja/main-ja.typ intl/ja/cv-ja.pdf
+typst compile --root . intl/ja/main-ja.typ intl/ja/cv-ja.pdf
 ```
 
 #### Simplified Chinese (简体中文)
 ```bash
-typst compile intl/zh-cn/main-zh-cn.typ intl/zh-cn/cv-zh-cn.pdf
+typst compile --root . intl/zh-cn/main-zh-cn.typ intl/zh-cn/cv-zh-cn.pdf
 ```
 
 #### Traditional Chinese / Cantonese (繁體中文/粵語)
 ```bash
-typst compile intl/zh-hk/main-zh-hk.typ intl/zh-hk/cv-zh-hk.pdf
+typst compile --root . intl/zh-hk/main-zh-hk.typ intl/zh-hk/cv-zh-hk.pdf
 ```
 
 #### Korean (한국어)
 ```bash
-typst compile intl/ko/main-ko.typ intl/ko/cv-ko.pdf
+typst compile --root . intl/ko/main-ko.typ intl/ko/cv-ko.pdf
 ```
 
 ### Directory Structure

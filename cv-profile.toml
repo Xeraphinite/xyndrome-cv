@@ -1,0 +1,27 @@
+[profile]
+en_name = "Keyou (Key) Zheng"
+ruby_name = "チェン|コッ|ヤオ"
+aliases = ["Zheng K."]
+
+[[contacts]]
+icon = "email"
+label = "`keyouzheng0915@gmail.com`"
+url = "mailto:keyouzheng0915@gmail.com"
+
+
+[[contacts]]
+icon = "website"
+label = "`keyzh.pages.dev`"
+url = "https://keyzh.pages.dev"
+
+
+[[contacts]]
+icon = "github"
+label = "`Xeraphinite`"
+url = "https://github.com/Xeraphinite"
+
+
+[[contacts]]
+icon = "phone"
+label = "(+86) 137-9409-1521"
+url = ""

@@ -61,7 +61,7 @@
 
   show: doc => {
     set text(
-      size: 9.5pt,
+      size: 10pt,
       lang: lang,
       font: font_configs.serif,
       fill: luma(20%),
