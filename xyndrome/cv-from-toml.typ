@@ -64,145 +64,179 @@
 
 #let opt-text(value) = if value == none or value == "" { none } else { value }
 
-#let render-education(items) = {
-  if items != none {
-    for item in items {
+#let to-length(value, fallback) = {
+  if value == none { fallback }
+  else if type(value) == int or type(value) == float { value * 1pt }
+  else { value }
+}
+
+#let render-education(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str { (institution: item, degree: "", date: "", details: ()) } else { item }
       edu(
-        institution: item.at("institution"),
-        degree: item.at("degree"),
-        date: item.at("date"),
-        details: bullet-list(item.at("details")),
+        institution: entry.at("institution"),
+        degree: entry.at("degree"),
+        date: entry.at("date"),
+        details: bullet-list(entry.at("details")),
       )
     }
   }
 }
 
-#let render-experience(items) = {
-  if items != none {
-    for item in items {
+#let render-experience(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str { (project: item, role: "", org: "", location: "", start: "", end: "", details: ()) } else { item }
       exp(
-        project: item.at("project"),
-        role: item.at("role"),
-        org: item.at("org"),
-        location: item.at("location"),
-        start: item.at("start"),
-        end: item.at("end"),
-        details: bullet-list(item.at("details")),
+        project: entry.at("project"),
+        role: entry.at("role"),
+        org: entry.at("org"),
+        location: entry.at("location"),
+        start: entry.at("start"),
+        end: entry.at("end"),
+        summary: entry.at("summary", default: none),
+        details: bullet-list(entry.at("details")),
       )
     }
   }
 }
 
-#let render-publications(items, aliases) = {
-  if items != none {
-    for item in items {
+#let render-publications(section, aliases) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str {
+        (type: "journal", authors: (), title: item, venue: "", published: "", metadata: "", DOI: "", tldr: "", pdf: "")
+      } else { item }
       paper(
-        type: item.at("type"),
-        authors: format-people(item.at("authors"), aliases: aliases),
-        title: item.at("title"),
-        venue: item.at("venue"),
-        published: item.at("published"),
-        metadata: item.at("metadata"),
-        DOI: opt-text(item.at("DOI")),
-        tldr: opt-text(item.at("tldr")),
-        pdf: opt-text(item.at("pdf")),
+        type: entry.at("type"),
+        authors: format-people(entry.at("authors"), aliases: aliases),
+        title: entry.at("title"),
+        venue: entry.at("venue"),
+        published: entry.at("published"),
+        metadata: entry.at("metadata"),
+        DOI: opt-text(entry.at("DOI")),
+        tldr: opt-text(entry.at("tldr")),
+        pdf: opt-text(entry.at("pdf")),
       )
     }
   }
 }
 
-#let render-patents(items, aliases) = {
-  if items != none {
-    for item in items {
+#let render-patents(section, aliases) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str {
+        (number: "", title: item, inventors: (), filed: "", status: "", country: "")
+      } else { item }
       patent(
-        number: item.at("number"),
-        title: item.at("title"),
-        inventors: format-people(item.at("inventors"), aliases: aliases),
-        filed: item.at("filed"),
-        status: item.at("status"),
-        country: item.at("country"),
+        number: entry.at("number"),
+        title: entry.at("title"),
+        inventors: format-people(entry.at("inventors"), aliases: aliases),
+        filed: entry.at("filed"),
+        status: entry.at("status"),
+        country: entry.at("country"),
       )
     }
   }
 }
 
-#let render-copyrights(items, aliases) = {
-  if items != none {
-    for item in items {
+#let render-copyrights(section, aliases) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str {
+        (title: item, year: "", status: "", country: "", holders: ())
+      } else { item }
       copyright(
-        title: item.at("title"),
-        year: item.at("year"),
-        status: item.at("status"),
-        country: item.at("country"),
-        holders: format-people(item.at("holders"), aliases: aliases),
+        title: entry.at("title"),
+        year: entry.at("year"),
+        status: entry.at("status"),
+        country: entry.at("country"),
+        holders: format-people(entry.at("holders"), aliases: aliases),
       )
     }
   }
 }
 
-#let render-projects(items) = {
-  if items != none {
-    for item in items {
+#let render-projects(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str {
+        (title: item, url: "", role: "", org: "", start: "", end: "", location: "", icon: "", details: ())
+      } else { item }
       project(
-        title: item.at("title"),
-        url: item.at("url", default: ""),
-        role: item.at("role", default: ""),
-        org: item.at("org", default: ""),
-        start: item.at("start", default: ""),
-        end: item.at("end", default: ""),
-        location: item.at("location", default: ""),
-        icon: icon-for(item.at("icon", default: "")),
-        details: bullet-list(item.at("details")),
+        title: entry.at("title"),
+        url: entry.at("url", default: ""),
+        role: entry.at("role", default: ""),
+        org: entry.at("org", default: ""),
+        start: entry.at("start", default: ""),
+        end: entry.at("end", default: ""),
+        location: entry.at("location", default: ""),
+        icon: icon-for(entry.at("icon", default: "")),
+        details: bullet-list(entry.at("details")),
       )
     }
   }
 }
 
-#let render-skills(items) = {
-  if items != none {
-    let categories = items.map(item => (
-      item.at("label"),
-      item.at("items").map(entry => rich(entry)),
-    ))
+#let render-skills(section) = {
+  if section != none {
+    let categories = section.pairs().map(pair => {
+      let key = pair.at(0)
+      let entry = pair.at(1)
+      let label = if entry.at("label", default: none) != none and entry.at("label") != "" {
+        entry.at("label")
+      } else {
+        key
+      }
+      (
+        label,
+        entry.at("items").map(entry => rich(entry)),
+      )
+    })
     skills(categories: categories)
   }
 }
 
-#let render-artifacts(items) = {
-  if items != none {
-    for item in items {
+#let render-artifacts(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str {
+        (name: item, tech: (), description: "", year: "", url: "", icon: "")
+      } else { item }
       artifact(
-        name: item.at("name"),
-        tech: item.at("tech"),
-        description: item.at("description"),
-        year: item.at("year"),
-        url: item.at("url", default: ""),
-        icon: icon-for(item.at("icon", default: "")),
+        name: entry.at("name"),
+        tech: entry.at("tech"),
+        description: entry.at("description"),
+        year: entry.at("year"),
+        url: entry.at("url", default: ""),
+        icon: icon-for(entry.at("icon", default: "")),
       )
     }
   }
 }
 
-#let render-awards(items) = {
-  if items != none {
-    for item in items {
+#let render-awards(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str { (name: item, date: "", from: "") } else { item }
       award(
-        name: item.at("name"),
-        date: item.at("date"),
-        from: item.at("from"),
-        details: item.at("details"),
+        name: entry.at("name"),
+        date: entry.at("date"),
+        from: entry.at("from"),
       )
     }
   }
 }
 
-#let render-serving(items) = {
-  if items != none {
-    for item in items {
+#let render-serving(section) = {
+  if section != none {
+    for item in section.values() {
+      let entry = if type(item) == str { (name: item, description: "", date: "") } else { item }
       serving(
-        name: item.at("name"),
-        description: item.at("description"),
-        date: item.at("date"),
+        name: entry.at("name"),
+        description: entry.at("description"),
+        date: entry.at("date"),
       )
     }
   }
@@ -227,60 +261,77 @@
   }
 }
 
-#let render-cv(profile-path, locale-path) = {
-  let profile-data = toml(profile-path)
+#let render-cv(locale-path, profile-path: none) = {
   let locale-data = toml(locale-path)
+  let profile-data = if profile-path == none { locale-data } else { toml(profile-path) }
 
   let profile = profile-data.at("profile")
-  let locale = locale-data.at("locale")
-  let titles = locale-data.at("titles")
+  let metadata = locale-data.at("metadata")
+  let titles = locale-data.at("sections")
   let aliases = profile.at("aliases", default: ())
+
+  let base-font = to-length(metadata.at("font_size", default: none), 10pt)
+  let heading-size = to-length(metadata.at("heading_size", default: none), base-font + 2pt)
+  let subheading-size = to-length(metadata.at("subheading_size", default: none), base-font + 0.5pt)
+  let list-size = to-length(metadata.at("list_size", default: none), base-font - 1pt)
+  let footer-size = to-length(metadata.at("footer_size", default: none), base-font - 2pt)
+
+  let known_sections = ("education", "experience", "publications", "patents", "projects", "skills", "artifacts", "awards", "serving")
+  let section_order = titles.keys().filter(key => known_sections.contains(key))
+  let get-section = section => {
+    if locale-data.at(section, default: none) == none { none } else { locale-data.at(section) }
+  }
 
   show: cv.with(
     en_name: profile.at("en_name"),
-    original_name: locale.at("original_name"),
+    original_name: metadata.at("original_name"),
     ruby_name: profile.at("ruby_name"),
-    lang: locale.at("lang"),
-    contacts: render-contacts(profile-data.at("contacts"), locale.at("location_label")),
+    lang: metadata.at("lang"),
+    text_size: base-font,
+    heading_size: heading-size,
+    subheading_size: subheading-size,
+    list_size: list-size,
+    footer_size: footer-size,
+    contacts: render-contacts(profile.at("contacts"), metadata.at("location_label")),
   )
 
-  for section in locale.at("section_order") {
+  for section in section_order {
     if section == "education" {
       sec-heading(icon: education-icon, title: titles.at("education"))
-      render-education(locale-data.at("education"))
+      render-education(get-section("education"))
     } else if section == "experience" {
       sec-heading(icon: experience-icon, title: titles.at("experience"))
-      render-experience(locale-data.at("experience"))
+      render-experience(get-section("experience"))
     } else if section == "publications" {
       sec-heading(icon: publication-icon, title: titles.at("publications"))
       if titles.at("publications_sub") != "" {
         sec-heading(level: 2, title: titles.at("publications_sub"))
       }
-      render-publications(locale-data.at("publications"), aliases)
+      render-publications(get-section("publications"), aliases)
     } else if section == "patents" {
       sec-heading(icon: copyright-icon, title: titles.at("patents"))
       sec-heading(level: 2, title: titles.at("patents_sub"))
-      render-patents(locale-data.at("patents"), aliases)
-      if locale-data.at("copyrights") != none {
+      render-patents(get-section("patents"), aliases)
+      if locale-data.at("copyrights", default: none) != none {
         v(0.5em)
         sec-heading(level: 2, title: titles.at("copyrights_sub"))
-        render-copyrights(locale-data.at("copyrights"), aliases)
+        render-copyrights(get-section("copyrights"), aliases)
       }
     } else if section == "projects" {
       sec-heading(icon: projects-icon, title: titles.at("projects"))
-      render-projects(locale-data.at("projects"))
+      render-projects(get-section("projects"))
     } else if section == "skills" {
       sec-heading(icon: skill-icon, title: titles.at("skills"))
-      render-skills(locale-data.at("skills"))
+      render-skills(get-section("skills"))
     } else if section == "artifacts" {
       sec-heading(icon: artifact-icon, title: titles.at("artifacts"))
-      render-artifacts(locale-data.at("artifacts"))
+      render-artifacts(get-section("artifacts"))
     } else if section == "awards" {
       sec-heading(icon: award-icon, title: titles.at("awards"))
-      render-awards(locale-data.at("awards"))
+      render-awards(get-section("awards"))
     } else if section == "serving" {
       sec-heading(icon: serving-icon(), title: titles.at("serving"))
-      render-serving(locale-data.at("serving"))
+      render-serving(get-section("serving"))
     }
   }
 }

@@ -9,7 +9,7 @@
   reset-heading-gap()
 
   grid(
-    columns: (2fr, 2fr, 1fr),
+    columns: (2fr, 2.5fr, 1fr),
     column-gutter: 1em,
     align: (left, left, right),
     [#strong[#name]],

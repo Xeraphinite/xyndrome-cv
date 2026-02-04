@@ -7,6 +7,7 @@
   start: "",
   end: "",
   location: "",
+  summary: none,
   details: [],
 ) = {
   reset-heading-gap()
@@ -34,6 +35,10 @@
         }]
     ],
   )
+  if summary != none [
+    #strong(text(size: 0.85em, [#summary]))
+    #v(0.2em)
+  ]
   details
 }
 

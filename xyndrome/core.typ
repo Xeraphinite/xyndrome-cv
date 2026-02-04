@@ -9,6 +9,11 @@
   contacts: (),
   updated: datetime.today(),
   lang: "en",
+  text_size: 10pt,
+  heading_size: 12pt,
+  subheading_size: 10.5pt,
+  list_size: 9pt,
+  footer_size: 8pt,
   body,
 ) = {
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
@@ -49,7 +54,7 @@
 
   show list: it => context {
     heading-gap.update(none)
-    set text(size: 9pt)
+    set text(size: list_size)
     it
   }
 
@@ -61,7 +66,7 @@
 
   show: doc => {
     set text(
-      size: 10pt,
+      size: text_size,
       lang: lang,
       font: font_configs.serif,
       fill: luma(20%),
@@ -69,7 +74,7 @@
     doc
   }
 
-  show heading: it => text(font: font_configs.sans, size: 12pt, weight: "black", it.body)
+  show heading: it => text(font: font_configs.sans, size: heading_size, weight: "black", it.body)
   show heading.where(level: 1): it => context {
     let previous = heading-gap.get()
     let reduction = if previous == none { 0pt } else { previous }
@@ -80,7 +85,7 @@
     let previous = heading-gap.get()
     let reduction = if previous == none { 5pt } else { previous }
     heading-gap.update(0.1em)
-    pad(top: -reduction, bottom: 0.3em, text(size: 10.5pt, weight: "bold", it.body))
+    pad(top: -reduction, bottom: 0.3em, text(size: subheading_size, weight: "bold", it.body))
   }
 
   set par(justify: true)
@@ -95,7 +100,7 @@
     footer: [
       #align(center)[
         #text(
-          size: 8pt,
+          size: footer_size,
           fill: luma(40%),
         )[*#en_name* -- Proudly Open-sourced, Online version `at` #link("https://keyzh.pages.dev/cv")[`keyzh.pages.dev/cv`], Last Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
       ]
