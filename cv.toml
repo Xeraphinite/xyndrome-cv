@@ -1,7 +1,6 @@
 #:schema false
 
 [metadata]
-location_label = "Guangzhou, Guangdong"
 lang = "en"
 original_name = "郑|恪|悠"
 font_size = 10
@@ -10,11 +9,14 @@ subheading_size = 10.5
 list_size = 9
 footer_size = 8
 
+
 [profile]
 en_name = "Keyou (Key) Zheng"
 ruby_name = "チェン|コッ|ヤオ"
 aliases = ["Zheng K."]
-# summary = "Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies."
+location_label = "Guangzhou, Guangdong"
+show_icons = false
+summary = "Self-motivated MEng graduate specializing in Large Language Models and AI-driven design automation. Research expertise in Code-CAD generation, agentic workflows, and human-in-the-loop systems for industrial applications. Proven track record in deep learning, full-stack development, and DevOps. Seeking PhD opportunities to advance AI-powered design and manufacturing technologies."
 contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
@@ -24,16 +26,16 @@ contacts = [
 
 [sections]
 education = "Education"
-experience = "Research Experience"
 publications = "Publications"
+experience = "Research Experience"
 publications_sub = ""
 patents = "Patents & Copyrights"
 patents_sub = "Patents"
 copyrights_sub = "Software Copyrights"
-projects = "Projects"
-skills = "Skills"
-# artifacts = "Artifacts & Demos"
 awards = "Awards"
+skills = "Skills"
+# projects = "Working Experience"
+# artifacts = "Artifacts & Demos"
 # serving = "Serving"
 
 [education.education-1]
@@ -52,8 +54,7 @@ degree = "Computer Science, BEng."
 date = "Sep 2019 - Jun 2023"
 details = [
   "*GPA*: 3.5/4.0 (Top 5%);",
-  "*Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_",
-  # "*Project:* #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:\"Xeraphinite/Mario-RL\").",
+  "*Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, project at: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:\"Mario-RL\").",
 ]
 
 [experience.experience-1]
@@ -63,7 +64,7 @@ org = "State Key Lab of Manufacturing Technology & Equipment"
 location = "Guangzhou, China"
 start = "Mar 2025"
 end = "Present"
-summary = "Built a reliability-first, constraint-checked code-to-CAD generation pipeline; curated 10k parts/1.7k assemblies and achieved strong validity and pass rates."
+summary = "Built a high-quality Code-based CAD benchmark; Built an agent with a constraint-first loop and achieved high performance. [Submitted to ICML 2026 (Under Review)]"
 details = [
   "*Problem*: Text-to-CAD in main format often produces invalid solids and misses key dimensions and fit constraints. Code-based CAD is a great alternative, but it is challenging to ensure code correctness and constraint satisfaction, especially for complex designs.",
   "*Data & Benchmark Curation*: Given by the data scarcity in code-based CAD, we developed a dedicate pipeline to curate from real-world CAD models.", 
@@ -71,20 +72,41 @@ details = [
   "*Reproducible evaluation from real designs*: Curated 10k parts and 1.7k assemblies; paired each with fixed checks and references.",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
   # "*Stack*: #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\") (Inference), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\")(Agent Scaffold) , #link-with-icon(url:\"https://github.com/laude-institute/harbor\", text:\"Harbor\"), #link-with-icon(url:\"https://laminar.sh/\", text:\"Laminar\")(Eval & Observation)",
-  "#strong(\"Paper under review (ICML 2026 submission).\")",
+  "**",
 ]
 
-# Alternate/expanded bullets from the old main.typ:
-# details_alt = [
-#   "*Stack*: Python, #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\"), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\"), Harbor",
-#   "*Problem*: ...",
-#   "*Approach*: Built a test-driven agent pipeline that turns natural-language into a structured spec, generates multi-file CAD workspaces, and iterates using multimodal feedback and quantitative test diagnostics.",
-#   "*Verification*: Designed deterministic unit tests as an executable contract, covering (i) interface/signature checks, (ii) geometry validity checks (e.g., manifold status, bounding box limits), and (iii) assembly constraint checks, with stable pass/fail outcomes across runs.",
-#   "*Benchmarking*: Curated an execution-based benchmark of real human-written CAD workspaces across OpenSCAD, CadQuery, and Build123d, paired with golden references and deterministic verifier suites to enable objective evaluation beyond visual similarity.",
-#   "*Results*: On SPADA-Bench-Verified, reduced invalid generations to ~1–3% and improved strict constraint satisfaction (APR) by +17.1 percentage points for parts and +21.5 percentage points for assemblies (41.9% vs 20.4% best zero-shot); also improved geometric fidelity under the same execution harness.",
-#   "#strong(\"Paper under review (ICML 2026 submission).\")",
-# ]
+[experience.experience-2]
+project = "Automated Color Difference Control & Calibration"
+role = "Lead Developer"
+org = "Vograce"
+location = "Yiwu, Zhejiang"
+start = "Dec 2024"
+end = "Jul 2025"
+summary = "Built an AI-driven color difference detection and calibration system for personalized printing lines, achieving ~20× efficiency over manual inspection while ensuring consistent color reproduction."
+details = [
+  "Problem: Personalized printing had inconsistent color reproduction and labor-heavy QA.",
+  "Method: Calibrated machine-vision capture; $Delta E$ (CIEDE2000) computation, adaptive sRGB↔CMYK feedback, operator guidance and audit trails.",
+  "Result: Detection→recommendation latency ↓ to ~1 s/image; ≈20× efficiency vs. manual inspection in pilot line runs.",
+  "Stack: Python/OpenCV, color science libs, Gradio dashboards; Ops integration with SOP checklists.",
+]
 
+[experience.experience-3]
+project = "LLM-based Cosmetics Compliance Assistant"
+role = "Intern Developer"
+org = "Commercial Blockchain Technology Co., Ltd."
+location = "Guangzhou, Guangdong"
+start = "May 2023"
+end = "Jul 2023"
+summary = "Built an assistant to help compliance reviewers check cosmetics materials against regulations, reducing review time by ~40–60% while improving traceability."
+details = [
+  "Objective: From single-product materials (ingredients, registration/filing records, labels), compare against statutory documents and internal guidelines to produce traceable, cite-linked compliance prompts.",
+  "Retrieval: hybrid BM25 + dense embeddings; top-k retrieval with MMR diversity; cross-encoder re-ranking for precision\\@k.",
+  "Prompting: role-grounded templates with requirement decomposition; tool hints for citation spans; refusal rules for out-of-scope asks.",
+  "Tracing: per-claim citation mapping (article/paragraph), confidence tags, and rationale summaries; exportable audit JSON.",
+  "Demo & Ops: Built a Gradio prototype for early testing; added batch mode and redline diffs for changed statutes; integrated to front-end review queue.",
+  "Impact: Average human review time reduced from ~3 min to ~1–2 min per item (≈40–60% faster) while improving traceability (every suggestion back-referenced to clause-level citations).",
+  "Stack: Python, FAISS/elastic-like retriever (hybrid), Gradio UI, prompt engineering; governance with versioned KB and test queries.",
+]
 
 
 [publications.publication-1]
@@ -115,7 +137,7 @@ authors = [
   "Wang B.",
   "Liu Q.*",
   "Chen X.",
-  "Shen W.",
+  "Shen W",
 ]
 # Under review items can be added here if needed.
 
@@ -175,49 +197,21 @@ country = "China"
 holders = ["Zheng K.", "Zhong Y.", "Leng J."]
 
 
-[projects.project-1]
-title = "SPADA"
-role = ""
-org = "Open Source"
-start = ""
-end = ""
-icon = "spada"
-details = []
-# role = "Core Developer"
-# start = "2025"
-# end = "Present"
-[projects.project-2]
-title = "Automated Color Difference Control & Calibration"
-role = "Lead Developer"
-org = "Vograce (Industry Collaboration)"
-location = "Yiwu, Zhejiang"
-start = "Dec 2024"
-end = "Jul 2025"
-details = [
-  "Problem: Personalized printing had inconsistent color reproduction and labor-heavy QA.",
-  "Method: Calibrated machine-vision capture; $Delta E$ (CIEDE2000) computation, adaptive sRGB↔CMYK feedback, operator guidance and audit trails.",
-  "Result: Detection→recommendation latency ↓ to ~1 s/image; ≈20× efficiency vs. manual inspection in pilot line runs.",
-  "Stack: Python/OpenCV, color science libs, Gradio dashboards; Ops integration with SOP checklists.",
-]
+[skills.programming]
+label = "Programming"
+items = ["Python", "TypeScript", "JavaScript", "Rust", "C/C++"]
 
-[projects.project-3]
-title = "Regulatory-Grade Cosmetics Compliance Assistant"
-role = "Intern"
-org = ""
-location = "Guangzhou, Guangdong"
-start = "May 2023"
-end = "Jul 2023"
-details = [
-  "Objective: From single-product materials (ingredients, registration/filing records, labels), compare against statutory documents and internal guidelines to produce traceable, cite-linked compliance prompts.",
-  "RAG Design: Knowledge base parsed statutes, administrative measures, and technical standards; normalized metadata (title, article, clause, version, effective date, source URL).",
-  "Chunking: hierarchical (section→clause) with 512–1024 token windows + overlap; clause IDs preserved for citations.",
-  "Retrieval: hybrid BM25 + dense embeddings; top-k retrieval with MMR diversity; cross-encoder re-ranking for precision\\@k.",
-  "Prompting: role-grounded templates with requirement decomposition; tool hints for citation spans; refusal rules for out-of-scope asks.",
-  "Tracing: per-claim citation mapping (article/paragraph), confidence tags, and rationale summaries; exportable audit JSON.",
-  "Demo & Ops: Built a Gradio prototype for early testing; added batch mode and redline diffs for changed statutes; integrated to front-end review queue.",
-  "Impact: Average human review time reduced from ~3 min to ~1–2 min per item (≈40–60% faster) while improving traceability (every suggestion back-referenced to clause-level citations).",
-  "Stack: Python, FAISS/elastic-like retriever (hybrid), Gradio UI, prompt engineering; governance with versioned KB and test queries.",
-]
+[skills.ai-engineering]
+label = "AI Engineering"
+items = ["vLLM", "TRL", "Tinker", "OpenHands", "PyTorch", "CUDA"]
+
+[skills.web-dev]
+label = "Frontend & Web"
+items = ["Next.js", "Tailwind CSS", "UnoCSS", "Vite", "Node.js"]
+
+[skills.general-devtools]
+label = "DevTools"
+items = ["Codex CLI", "VSCode", "Git", "LaTeX", "Docker", "CI/CD"]
 
 
 [skills.languages]
@@ -229,25 +223,9 @@ items = [
   "Korean (basic)",
 ]
 
-[skills.ai-engineering]
-label = "AI Engineering"
-items = ["vLLM", "TRL", "Tinker", "OpenHands", "OpenTelemetry"]
-
-[skills.general-devtools]
-label = "General DevTools"
-items = ["Codex CLI", "VSCode", "Git", "LaTeX", "Docker", "CI/CD"]
-
-[skills.web-dev]
-label = "Web Dev"
-items = ["Next.js", "Tailwind CSS", "Node.js"]
-
-[skills.programming]
-label = "Programming"
-items = ["Python", "TypeScript", "JavaScript", "Rust", "C/C++"]
-
 [skills.interests]
 label = "Interests"
-items = ["Typography", "Graphic Design", "UI/UX Design"]
+items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
 
 [awards.award-1]
 name = "National Scholarship"

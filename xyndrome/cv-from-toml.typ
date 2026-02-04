@@ -269,6 +269,8 @@
   let metadata = locale-data.at("metadata")
   let titles = locale-data.at("sections")
   let aliases = profile.at("aliases", default: ())
+  let show-icons = profile.at("show_icons", default: metadata.at("show_icons", default: true))
+  let location-label = profile.at("location_label", default: metadata.at("location_label", default: none))
 
   let base-font = to-length(metadata.at("font_size", default: none), 10pt)
   let heading-size = to-length(metadata.at("heading_size", default: none), base-font + 2pt)
@@ -292,7 +294,8 @@
     subheading_size: subheading-size,
     list_size: list-size,
     footer_size: footer-size,
-    contacts: render-contacts(profile.at("contacts"), metadata.at("location_label")),
+    icons_enabled: show-icons,
+    contacts: render-contacts(profile.at("contacts"), location-label),
   )
 
   for section in section_order {

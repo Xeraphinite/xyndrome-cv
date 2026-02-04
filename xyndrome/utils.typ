@@ -1,6 +1,9 @@
 /// Utility functions for the Xyndrome CV template
 /// This file contains helper functions and utilities used across components
 
+/// Global toggle for icons (true by default)
+#let icons-enabled = state("icons-enabled", true)
+
 /// Universal icon renderer that handles all icon formats consistently
 #let render-icon(
   icon,
@@ -8,7 +11,8 @@
   baseline: 15%,
   right-space: 0pt,
 ) = {
-  if icon == none {
+  let enabled = context { icons-enabled.get() }
+  if enabled == false or icon == none {
     none
   } else if type(icon) == function {
     icon(height: height, baseline: baseline, right-space: right-space)

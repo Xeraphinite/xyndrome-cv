@@ -1,5 +1,7 @@
 /// Section heading helper that preserves the existing typography style.
 /// Usage: `#sec-heading(icon: education-icon, title: "Education")`
+#import "../utils.typ": render-icon
+
 #let sec-heading(
   title: "",
   icon: none,
@@ -10,13 +12,7 @@
   subtitle: none,
   subtitle-gap: 0.5em,
 ) = {
-  let icon-content = if icon == none {
-    none
-  } else if type(icon) == function {
-    icon(height: icon-height, baseline: icon-baseline)
-  } else {
-    box(height: icon-height, baseline: icon-baseline)[#icon]
-  }
+  let icon-content = render-icon(icon, height: icon-height, baseline: icon-baseline)
 
   let heading-body = if icon-content == none {
     [#title]

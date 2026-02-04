@@ -1,4 +1,5 @@
 #import "components/common.typ": heading-gap, reset-heading-gap
+#import "utils.typ": icons-enabled
 #import "@preview/rubby:0.10.2": get-ruby
 
 #let cv(
@@ -14,8 +15,10 @@
   subheading_size: 10.5pt,
   list_size: 9pt,
   footer_size: 8pt,
+  icons_enabled: true,
   body,
 ) = {
+  context { icons-enabled.update(icons_enabled) }
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
 
   let ruby = get-ruby(
