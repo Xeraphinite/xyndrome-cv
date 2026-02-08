@@ -1,3 +1,3 @@
 #import "xyndrome/cv-from-toml.typ": render-cv
 
-#render-cv("../cv.toml")
+#render-cv("../cv-1p.toml")

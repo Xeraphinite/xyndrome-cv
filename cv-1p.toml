@@ -31,12 +31,7 @@ publications = "Publications"
 publications_sub = ""
 skills = "Skills"
 awards = "Awards"
-patents = "Patents & Copyrights"
-patents_sub = "Patents"
 copyrights_sub = "Software Copyrights"
-# projects = "Working Experience"
-# artifacts = "Artifacts & Demos"
-# serving = "Serving"
 
 [education.education-1]
 institution = "Guangdong University of Technology"
@@ -75,41 +70,7 @@ details = [
   "*Reliability-first generation loop*: Turn briefs into constraints, execute candidates, read failures, and repair until checks pass.",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
   "*Outcome*: One paper under review (ICML 2026), one paper accepted by _Applied Soft Computing_ (JCR Q1)."
-  # "*Stack*: #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\") (Inference), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\")(Agent Scaffold) , #link-with-icon(url:\"https://github.com/laude-institute/harbor\", text:\"Harbor\"), #link-with-icon(url:\"https://laminar.sh/\", text:\"Laminar\")(Eval & Observation)",
 ]
-
-[experience.experience-2]
-project = "Automated Color Difference Control & Calibration"
-role = "Lead Developer"
-org = "Vograce"
-location = "Yiwu, Zhejiang"
-start = "Dec 2024"
-end = "Jul 2025"
-summary = "Quick Prototyping in Automated Color Difference Control & Calibration."
-details = [
-  "Problem: Personalized printing had inconsistent color reproduction and labor-heavy QA.",
-  "Method: Calibrated machine-vision capture; $Delta E$ (CIEDE2000) computation, adaptive sRGB↔CMYK feedback, operator guidance and audit trails.",
-  "Result: Detection→recommendation latency ↓ to ~1 s/image; ≈20× efficiency vs. manual inspection in pilot line runs.",
-  "Stack: Python/OpenCV, color science libs, Gradio dashboards; Ops integration with SOP checklists.",
-]
-
-# [experience.experience-3]
-# project = "LLM-based Cosmetics Compliance Assistant"
-# role = "Intern Developer"
-# org = "Commercial Blockchain Technology Co., Ltd."
-# location = "Guangzhou, Guangdong"
-# start = "May 2023"
-# end = "Jul 2023"
-# summary = "Built an assistant to help compliance reviewers check cosmetics materials against regulations, reducing review time by ~40–60% while improving traceability."
-# details = [
-#   "Objective: From single-product materials (ingredients, registration/filing records, labels), compare against statutory documents and internal guidelines to produce traceable, cite-linked compliance prompts.",
-#   "Retrieval: hybrid BM25 + dense embeddings; top-k retrieval with MMR diversity; cross-encoder re-ranking for precision\\@k.",
-#   "Prompting: role-grounded templates with requirement decomposition; tool hints for citation spans; refusal rules for out-of-scope asks.",
-#   "Tracing: per-claim citation mapping (article/paragraph), confidence tags, and rationale summaries; exportable audit JSON.",
-#   "Demo & Ops: Built a Gradio prototype for early testing; added batch mode and redline diffs for changed statutes; integrated to front-end review queue.",
-#   "Impact: Average human review time reduced from ~3 min to ~1–2 min per item (≈40–60% faster) while improving traceability (every suggestion back-referenced to clause-level citations).",
-#   "Stack: Python, FAISS/elastic-like retriever (hybrid), Gradio UI, prompt engineering; governance with versioned KB and test queries.",
-# ]
 
 
 [publications.publication-1]
@@ -119,9 +80,9 @@ venue = "Applied Soft Computing"
 published = "2025"
 metadata = "JCR Q1, IF: 6.6"
 DOI = "10.1016/j.asoc.2025.113920"
-tldr = "Introduces a human-in-the-loop agentic workflow for geometric modelling, demonstrated on real-world design tasks."
 pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
+tldr = ""
 
 [publications.publication-2]
 type = "journal"
@@ -130,7 +91,6 @@ venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
 metadata = "JCR Q1, IF: 11.4"
 DOI = "10.1016/j.rcim.2025.103076"
-tldr = "In-depth survey of Generative AI for smart manufacturing across full product lifecycle."
 pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
 authors = [
   "Leng J.",
@@ -142,62 +102,7 @@ authors = [
   "Chen X.",
   "Shen W",
 ]
-# Under review items can be added here if needed.
-
-[patents.patent-1]
-number = "202410273298.7"
-title = "Flexible needle puncture path planning based on deep reinforcement learning"
-filed = "2024-03-11"
-status = "Disclosed"
-country = "CN"
-inventors = [
-  "Leng J.",
-  "Zheng K.",
-  "Zhong Y.",
-  "Xie J.",
-  "Li R.",
-  "Xu C.",
-  "Liu Q.",
-]
-# status values typically: Disclosed, Granted.
-
-[patents.patent-2]
-number = "202410950697.2"
-title = "Interaction extraction and demand–manufacturing matching from service interaction context"
-filed = "2024-07-16"
-status = "Disclosed"
-country = "CN"
-inventors = ["Leng J.", "Zheng K.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
-
-[patents.patent-3]
-number = "202410368790.2"
-title = "Unified value-chain middleware for manufacturing and its digital-twin system"
-filed = "2024-03-28"
-status = "Disclosed"
-country = "CN"
-inventors = ["Leng J.", "Zhong Y.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
-
-[patents.patent-4]
-number = "18/662,981"
-title = "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)"
-filed = "2024-05-13"
-status = "Disclosed"
-country = "US"
-inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
-
-[copyrights.copyright-1]
-title = "Multi-feature fusion print color difference detection system"
-year = "2025"
-status = "Authorized"
-country = "China"
-holders = ["Zheng K.", "Zhong Y.", "Leng J."]
-
-[copyrights.copyright-2]
-title = "Vision intelligence-based personalized print color difference analysis system"
-year = "2025"
-status = "Authorized"
-country = "China"
-holders = ["Zheng K.", "Zhong Y.", "Leng J."]
+tldr = ""
 
 
 [skills.programming]
@@ -211,10 +116,6 @@ items = ["vLLM", "TRL", "Tinker", "OpenHands", "PyTorch", "CUDA"]
 [skills.web-dev]
 label = "Frontend & Web"
 items = ["Next.js", "Tailwind CSS", "UnoCSS", "Vite", "Node.js"]
-
-[skills.general-devtools]
-label = "DevTools"
-items = ["Codex CLI", "VSCode", "Git", "LaTeX", "Docker", "CI/CD"]
 
 
 [skills.languages]
@@ -234,13 +135,11 @@ items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
 name = "National Scholarship (TOP 0.1%)"
 date = "2025"
 from = "Ministry of Education, China"
-# details = "Top 0.1% / all graduates"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"
 date = "2024, 2025"
 from = "Guangdong University of Technology"
-# details = "Top 10% among all graduate"
 
 [awards.award-4]
 name = "Freshman Entrance Scholarship"
@@ -251,29 +150,3 @@ from = "Guangdong University of Technology"
 name = "Scholarship in Academic Excellence"
 date = "2020, 2021, 2022"
 from = "Guangdong University of Finance & Economics"
-# details = "Top 5% among all undergraduates"
-
-
-
-# [artifacts.artifact-1]
-# name = "Ringrad"
-# tech = ["MLX", "Python"]
-# description = "A minimal automatic differentiation library with Apple Silicon."
-# year = "2024"
-
-# [artifacts.artifact-2]
-# name = "kits(une)"
-# tech = ["vLLM", "TypeScript", "Next.js"]
-# description = "Collection of reproduced projects for LLMs."
-# year = "2025"
-
-# [artifacts.artifact-3]
-# name = "Xeraphinite"
-# tech = ["Next.js", "Tailwind CSS"]
-# description = "A modern CV template package for Typst with multilingual support and clean formatting."
-# year = "2024"
-
-# [serving.serving-1]
-# name = "Silk Road International Industry-University-Research Cooperation Conference"
-# description = "Volunteer"
-# date = "2023, 2024"

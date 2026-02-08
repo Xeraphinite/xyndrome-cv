@@ -224,6 +224,7 @@
         name: entry.at("name"),
         date: entry.at("date"),
         from: entry.at("from"),
+        details: entry.at("details", default: "")
       )
     }
   }

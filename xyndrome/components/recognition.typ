@@ -13,7 +13,7 @@
     column-gutter: 1em,
     align: (left, left, right),
     [#strong[#name]],
-    [#text[#from] #{ if details != "" [. #details] }],
+    [#text[#from]#{ if details != "" [; #details] }],
     [#{ if type(date) == datetime [#date.display("[year]")] else [#date] }],
   )
 }
