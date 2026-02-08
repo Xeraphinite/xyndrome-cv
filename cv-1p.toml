@@ -42,7 +42,7 @@ details = [
 
 
 [experience.experience-1]
-project = "LLM-based Agent for Controllable Code-based CAD"
+project = "Controllable Code-based CAD Generation"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
 location = "Guangzhou, China"
@@ -54,11 +54,11 @@ details = [
   "*Benchmark Curation*: Collected 200k code corpus from multiple sources (e.g., GitHub Repo, 3D communities), filtered with both deterministic rules (e.g., deduplications, PII removal) and an LLM-driven pipeline to prevent data quality issues (e.g., containmination, hardness). The benchmark finally consisted with 10k parts and 1.7k assemblies with golden references.", 
   "*Agent Implementation*: Designed a simple yet effective tool-augmented agent: ",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
-  "*Outcome*: Paper under review at Forty-Third _International Conference on Machine Learning_ (*ICML 2026*).",
+  "*Outcome*: One paper was under review at Forty-Third _International Conference on Machine Learning_ (*ICML 2026*).",
 ]
 
 [experience.experience-2]
-project = "Human-in-the-loop Agentic Workflow for Code-based CAD Generation"
+project = "Human-in-the-loop CAD Generation Workflow"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
 location = "Guangzhou, China"
@@ -68,7 +68,7 @@ summary = "Designed a HITL agentic workflow for Code-based CAD generation, and e
 details = [
   "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as backbone, combined multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
   "*Results*: Evaluated 100 real-world models using invalid rate and expert pairwise Elo; achieved best performance at 2% invalid rate and 1075.5 Elo, outperforming Claude, GPT-4o, and non-agent Qwen baselines.",
-  "*Outcome*: Published at _Applied Soft Computing_.",
+  "*Outcome*: One paper was published at _Applied Soft Computing_.",
 ]
 
 
