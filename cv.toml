@@ -72,7 +72,6 @@ details = [
   "*Reproducible evaluation from real designs*: Curated 10k parts and 1.7k assemblies; paired each with fixed checks and references.",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
   # "*Stack*: #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\") (Inference), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\")(Agent Scaffold) , #link-with-icon(url:\"https://github.com/laude-institute/harbor\", text:\"Harbor\"), #link-with-icon(url:\"https://laminar.sh/\", text:\"Laminar\")(Eval & Observation)",
-  "**",
 ]
 
 [experience.experience-2]
