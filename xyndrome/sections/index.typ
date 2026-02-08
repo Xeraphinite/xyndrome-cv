@@ -3,7 +3,7 @@
 #import "experience.typ": *
 #import "projects.typ": *
 #import "skills.typ": *
-#import "recognition.typ": *
+#import "awards.typ": *
 #import "publications.typ": *
 #import "artifacts.typ": *
 #import "serving.typ": *

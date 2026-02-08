@@ -21,26 +21,26 @@ typst compile main.typ
 
 ### International Versions
 
-The CV is available in multiple languages, located in the `intl/` directory:
+Language data is stored in `intl/` as TOML files. Entry `.typ` files are at project root:
 
 #### Japanese (日本語)
 ```bash
-typst compile --root . intl/ja/main-ja.typ intl/ja/cv-ja.pdf
+typst compile --root . main-ja.typ cv-ja.pdf
 ```
 
 #### Simplified Chinese (简体中文)
 ```bash
-typst compile --root . intl/zh-cn/main-zh-cn.typ intl/zh-cn/cv-zh-cn.pdf
+typst compile --root . main-zh-cn.typ cv-zh-cn.pdf
 ```
 
 #### Traditional Chinese / Cantonese (繁體中文/粵語)
 ```bash
-typst compile --root . intl/zh-hk/main-zh-hk.typ intl/zh-hk/cv-zh-hk.pdf
+typst compile --root . main-zh-hk.typ cv-zh-hk.pdf
 ```
 
 #### Korean (한국어)
 ```bash
-typst compile --root . intl/ko/main-ko.typ intl/ko/cv-ko.pdf
+typst compile --root . main-ko.typ cv-ko.pdf
 ```
 
 ### Directory Structure
@@ -48,21 +48,27 @@ typst compile --root . intl/ko/main-ko.typ intl/ko/cv-ko.pdf
 ```
 xyndrome-cv/
 ├── main.typ                 # English version
-├── intl/                    # International versions
+├── main-ja.typ              # Japanese entrypoint
+├── main-zh-cn.typ           # Simplified Chinese entrypoint
+├── main-zh-hk.typ           # Traditional Chinese/Cantonese entrypoint
+├── main-ko.typ              # Korean entrypoint
+├── intl/                    # International TOML data only
 │   ├── ja/                  # Japanese
-│   │   └── main-ja.typ
+│   │   └── cv-ja.toml
 │   ├── zh-cn/               # Simplified Chinese
-│   │   └── main-zh-cn.typ
+│   │   └── cv-zh-cn.toml
 │   ├── zh-hk/               # Traditional Chinese/Cantonese
-│   │   └── main-zh-hk.typ
+│   │   └── cv-zh-hk.toml
 │   └── ko/                  # Korean
-│       └── main-ko.typ
+│       └── cv-ko.toml
 ├── xyndrome/                # Template package
 │   ├── lib.typ              # Main library
 │   ├── core.typ             # Core CV template
+│   ├── cv.typ               # TOML renderer
 │   ├── icons.typ            # Icon definitions
-│   ├── utils.typ            # Utility functions
-│   └── components/          # CV components
+│   ├── utils.typ            # Helper utilities
+│   ├── components/          # Reusable UI components
+│   └── sections/            # CV sections and renderers
 └── README.md
 ```
 

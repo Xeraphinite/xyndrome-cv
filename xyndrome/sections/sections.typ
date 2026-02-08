@@ -1,6 +1,6 @@
 /// Section heading helper that preserves the existing typography style.
 /// Usage: `#sec-heading(icon: education-icon, title: "Education")`
-#import "../utils.typ": render-icon
+#import "../components/ui.typ": render-icon
 
 #let sec-heading(
   title: "",

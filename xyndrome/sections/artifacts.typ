@@ -1,5 +1,5 @@
 #import "common.typ": reset-heading-gap
-#import "../utils.typ": render-icon
+#import "../components/ui.typ": render-icon
 
 #let artifact-entry(
   name: "",

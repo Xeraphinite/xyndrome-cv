@@ -1,25 +1,46 @@
-#import "components/common.typ": heading-gap, reset-heading-gap
-#import "utils.typ": icons-enabled
+#import "sections/common.typ": heading-gap, reset-heading-gap, heading-size-override, subheading-size-override, list-size-override, reset-typography-overrides
+#import "components/ui.typ": icons-enabled
 #import "@preview/rubby:0.10.2": get-ruby
 
 #let cv(
   en_name: "",
   original_name: "",
-  ruby_name: none,
+  furigana_name: none,
+  furigana: none,
   address: "",
   contacts: (),
   updated: datetime.today(),
   lang: "en",
+  show_furigana: true,
   text_size: 10pt,
   heading_size: 12pt,
   subheading_size: 10.5pt,
   list_size: 9pt,
+  font_serif_primary: "Spectral",
+  font_serif_secondary: "Noto Serif SC",
+  font_sans: "Rethink Sans",
+  font_mono: "Inconsolata",
+  font_math: "New Computer Modern Math",
+  header_name_size: 18pt,
+  header_name_weight: "bold",
+  header_original_name_size: 15.3pt,
+  header_original_name_weight: "black",
+  header_contact_size: 9pt,
   footer_size: 8pt,
+  footer_show_name: true,
+  footer_text: none,
+  footer_show_updated: true,
+  footer_updated_prefix: "Last Updated:",
+  footer_show_page: true,
+  footer_page_format: "1 of 1",
   icons_enabled: true,
   body,
 ) = {
   context { icons-enabled.update(icons_enabled) }
+  context { reset-typography-overrides() }
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
+  let resolved-furigana-name = if furigana_name == none or furigana_name == "" { original_name } else { furigana_name }
+  let resolved-furigana = furigana
 
   let ruby = get-ruby(
     size: 0.4em, // Ruby font size (made smaller)
@@ -34,16 +55,16 @@
 
   let font_configs = (
     serif: (
-      (name: "Spectral", covers: "latin-in-cjk"),
-      (name: "Noto Serif SC"),
+      (name: font_serif_primary, covers: "latin-in-cjk"),
+      (name: font_serif_secondary),
     ),
     sans: (
-      (name: "Rethink Sans", covers: "latin-in-cjk"),
+      (name: font_sans, covers: "latin-in-cjk"),
     ),
     mono: (
-      (name: "Inconsolata", covers: "latin-in-cjk"),
+      (name: font_mono, covers: "latin-in-cjk"),
     ),
-    math: "New Computer Modern Math",
+    math: font_math,
   )
 
   show raw: it => box(
@@ -57,7 +78,8 @@
 
   show list: it => context {
     heading-gap.update(none)
-    set text(size: list_size)
+    let section-list-size = list-size-override.get()
+    set text(size: if section-list-size == none { list_size } else { section-list-size })
     it
   }
 
@@ -77,18 +99,37 @@
     doc
   }
 
-  show heading: it => text(font: font_configs.sans, size: heading_size, weight: "black", it.body)
   show heading.where(level: 1): it => context {
     let previous = heading-gap.get()
     let reduction = if previous == none { 0pt } else { previous }
     heading-gap.update(0.2em)
-    pad(top: -reduction, bottom: 0.6em, it)
+    let section-heading-size = heading-size-override.get()
+    pad(
+      top: -reduction,
+      bottom: 0.6em,
+      text(
+        font: font_configs.sans,
+        size: if section-heading-size == none { heading_size } else { section-heading-size },
+        weight: "black",
+        it.body,
+      ),
+    )
   }
   show heading.where(level: 2): it => context {
     let previous = heading-gap.get()
     let reduction = if previous == none { 5pt } else { previous }
     heading-gap.update(0.1em)
-    pad(top: -reduction, bottom: 0.3em, text(size: subheading_size, weight: "bold", it.body))
+    let section-subheading-size = subheading-size-override.get()
+    pad(
+      top: -reduction,
+      bottom: 0.3em,
+      text(
+        font: font_configs.sans,
+        size: if section-subheading-size == none { subheading_size } else { section-subheading-size },
+        weight: "bold",
+        it.body,
+      ),
+    )
   }
 
   set par(justify: true)
@@ -105,20 +146,47 @@
         #text(
           size: footer_size,
           fill: luma(40%),
-        )[*#en_name* -- Proudly Open-sourced, Online version `at` #link("https://keyzh.pages.dev/cv")[`keyzh.pages.dev/cv`], Last Updated: #updated.display("[month repr:short] [year]") -- #context { counter(page).display("1 of 1", both: true) }]
+        )[
+          #{
+            let footer-items = ()
+            if footer_show_name and en_name != none and en_name != "" {
+              footer-items.push([*#en_name*])
+            }
+            if footer_text != none and footer_text != "" {
+              footer-items.push([#footer_text])
+            }
+            if footer_show_updated {
+              if footer_updated_prefix != none and footer_updated_prefix != "" {
+                footer-items.push([#footer_updated_prefix #updated.display("[month repr:short] [year]")])
+              } else {
+                footer-items.push([#updated.display("[month repr:short] [year]")])
+              }
+            }
+            if footer_show_page {
+              footer-items.push([#context { counter(page).display(footer_page_format, both: true) }])
+            }
+            let separator = [#h(0.4em)-#h(0.4em)]
+            footer-items.join(separator)
+          }
+        ]
       ]
     ],
   )
 
   align(center)[
-    #block(text(size: 1.8em, weight: "bold", font: font_configs.serif, [#smallcaps(en_name) #h(0.4em) #{
-      if ruby_name != none {
-        text(size: 0.85em, weight: "black")[#ruby[#ruby_name][#original_name]]
+    #block(text(size: header_name_size, weight: header_name_weight, font: font_configs.serif, [#smallcaps(en_name) #h(0.4em) #{
+      let show-ruby = (
+        show_furigana and resolved-furigana != none and resolved-furigana != ""
+        and resolved-furigana-name != none and resolved-furigana-name != ""
+        and resolved-furigana.contains("|") and resolved-furigana-name.contains("|")
+      )
+      if show-ruby {
+        text(size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
       } else {
         text(
           original_name,
-          size: 0.85em,
-          weight: "black",
+          size: header_original_name_size,
+          weight: header_original_name_weight,
         )
       }
     }]))
@@ -132,7 +200,7 @@
         if address != none and address != "" {
           contact_info.push([#smallcaps(address)])
         }
-        text(size: 9pt, contact_info.join("   "))
+        text(size: header_contact_size, contact_info.join("   "))
       }
     ],
   )

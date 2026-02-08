@@ -8,11 +8,25 @@ heading_size = 12
 subheading_size = 10.5
 list_size = 9
 footer_size = 8
+footer_separator = "--"
+footer_show_name = true
+footer_name = ""
+footer_tagline = "Proudly Open-sourced"
+footer_show_online = true
+footer_online_prefix = "Online version at"
+footer_online_label = "keyzh.pages.dev/cv"
+footer_online_url = "https://keyzh.pages.dev/cv"
+footer_show_updated = true
+footer_updated_prefix = "Last Updated:"
+footer_show_page = true
+footer_page_format = "1 of 1"
 
 
 [profile]
 en_name = "Keyou (Key) Zheng"
-ruby_name = "チェン|コッ|ヤオ"
+original_name = "郑恪悠"
+furigana_name = "郑|恪|悠"
+furigana = "チェン|コッ|ヤオ"
 aliases = ["Zheng K."]
 location_label = "Guangzhou, Guangdong"
 show_icons = false
@@ -74,7 +88,7 @@ details = [
   "*Agent Design*: We designed a simple yet effective tool-augmennted agent: ",
   "*Reliability-first generation loop*: Turn briefs into constraints, execute candidates, read failures, and repair until checks pass.",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
-  "*Outcome*: One paper under review (ICML 2026), one paper accepted by _Applied Soft Computing_ (JCR Q1)."
+  "*Outcome*: One paper under review (ICML 2026)."
   # "*Stack*: #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\") (Inference), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\")(Agent Scaffold) , #link-with-icon(url:\"https://github.com/laude-institute/harbor\", text:\"Harbor\"), #link-with-icon(url:\"https://laminar.sh/\", text:\"Laminar\")(Eval & Observation)",
 ]
 
@@ -206,7 +220,14 @@ items = ["Python", "TypeScript", "JavaScript", "Rust", "C/C++ (Sort in Efficienc
 
 [skills.ai-engineering]
 label = "AI Engineering"
-items = ["vLLM", "TRL", "Tinker", "OpenHands", "PyTorch", "CUDA"]
+items = [
+  { text = "vLLM", category = "LLM Inference" },
+  "TRL",
+  "Tinker",
+  "OpenHands",
+  "PyTorch",
+  "CUDA",
+]
 
 [skills.web-dev]
 label = "Frontend & Web"

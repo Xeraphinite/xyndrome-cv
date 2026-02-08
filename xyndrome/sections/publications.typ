@@ -1,5 +1,5 @@
 #import "common.typ": reset-heading-gap
-#import "../utils.typ": authors-component, link-with-icon
+#import "../components/ui.typ": authors-component, link-with-icon
 #import "../icons.typ": pdf-icon
 
 #let journal-counter = counter("journal")
