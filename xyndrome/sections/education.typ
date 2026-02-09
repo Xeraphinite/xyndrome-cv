@@ -1,13 +1,9 @@
-#import "common.typ": reset-heading-gap
-
 #let education-entry(
   institution: "",
   date: "",
   degree: "",
   details: "",
 ) = {
-  reset-heading-gap()
-
   grid(
     columns: (1fr, auto),
     column-gutter: 2em,

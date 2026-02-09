@@ -1,4 +1,3 @@
-#import "common.typ": reset-heading-gap
 #import "../components/ui.typ": authors-component, link-with-icon
 #import "../icons.typ": pdf-icon
 
@@ -7,6 +6,23 @@
 #let preprint-counter = counter("preprint")
 #let patent-counter = counter("patent")
 #let software-counter = counter("software")
+
+#let year-text(value) = {
+  if value == none or value == "" {
+    ""
+  } else if type(value) == datetime {
+    value.display("[year]")
+  } else {
+    let normalized = str(value).trim()
+    if normalized.contains(",") {
+      normalized.split(",").at(-1).trim()
+    } else if normalized.contains("-") {
+      normalized.split("-").at(0).trim()
+    } else {
+      normalized
+    }
+  }
+}
 
 #let paper(
   authors: (),
@@ -20,9 +36,8 @@
   type: "journal",
   pdf: none,
 ) = {
-  reset-heading-gap()
-
   let author_text = authors-component(authors: authors, format: "full")
+  let published-year = year-text(published)
 
   let (pub_counter, prefix) = if type == "journal" {
     (journal-counter, "J")
@@ -44,7 +59,7 @@
       column-gutter: 0.8em,
       align(top)[#text(weight: "bold")[\[#prefix#number\]]],
       align(left)[
-        #{ author_text }. (#{ published.split(",").at(-1).trim() }). #{ emph(title) }. _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
+        #{ author_text }#{ if published-year != "" [ (#published-year)] }. #{ emph(title) }. _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
         #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
         #{ if pdf != none [#h(0.5em) #link-with-icon(icon: pdf-icon, url: pdf, text: `PDF`)] }
         #{ if icon != none [
@@ -69,10 +84,8 @@
   country: "",
   icon: none,
 ) = {
-  reset-heading-gap()
-
   let inventor_text = authors-component(authors: inventors, format: "full")
-  let year = filed.split("-").at(0)
+  let year = year-text(filed)
 
   patent-counter.step()
   let pat_number = context patent-counter.display()
@@ -102,8 +115,6 @@
   holders: (),
   icon: none,
 ) = {
-  reset-heading-gap()
-
   let holder_text = authors-component(authors: holders, format: "full")
 
   software-counter.step()

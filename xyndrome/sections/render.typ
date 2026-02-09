@@ -12,17 +12,17 @@
   spada: spada-icon,
 )
 
-#let icon-for(name) = if name == none or name == "" { none } else { icon-map.at(name) }
+#let icon-for(name) = if name == none or name == "" { none } else { icon-map.at(name, default: none) }
 
 #let render-education(section) = {
   if section != none {
     for item in section.values() {
       let entry = if type(item) == str { (institution: item, degree: "", date: "", details: ()) } else { item }
       edu(
-        institution: entry.at("institution"),
-        degree: entry.at("degree"),
-        date: entry.at("date"),
-        details: bullet-list(entry.at("details")),
+        institution: entry.at("institution", default: ""),
+        degree: entry.at("degree", default: ""),
+        date: entry.at("date", default: ""),
+        details: bullet-list(entry.at("details", default: ())),
       )
     }
   }
@@ -33,15 +33,15 @@
     for item in section.values() {
       let entry = if type(item) == str { (project: item, stack: none, role: "", org: "", location: "", start: "", end: "", details: ()) } else { item }
       exp(
-        project: entry.at("project"),
+        project: entry.at("project", default: ""),
         stack: entry.at("stack", default: none),
-        role: entry.at("role"),
-        org: entry.at("org"),
-        location: entry.at("location"),
-        start: entry.at("start"),
-        end: entry.at("end"),
+        role: entry.at("role", default: ""),
+        org: entry.at("org", default: ""),
+        location: entry.at("location", default: ""),
+        start: entry.at("start", default: ""),
+        end: entry.at("end", default: ""),
         summary: entry.at("summary", default: none),
-        details: bullet-list(entry.at("details")),
+        details: bullet-list(entry.at("details", default: ())),
       )
     }
   }
@@ -54,12 +54,12 @@
         (type: "journal", authors: (), title: item, venue: "", published: "", metadata: "", DOI: none, tldr: none, pdf: none)
       } else { item }
       paper(
-        type: entry.at("type"),
-        authors: format-people(entry.at("authors"), aliases: aliases),
-        title: entry.at("title"),
-        venue: entry.at("venue"),
-        published: entry.at("published"),
-        metadata: entry.at("metadata"),
+        type: entry.at("type", default: "journal"),
+        authors: format-people(entry.at("authors", default: ()), aliases: aliases),
+        title: entry.at("title", default: ""),
+        venue: entry.at("venue", default: ""),
+        published: entry.at("published", default: ""),
+        metadata: entry.at("metadata", default: ""),
         DOI: opt-text(entry.at("DOI", default: none)),
         tldr: opt-text(entry.at("tldr", default: none)),
         pdf: opt-text(entry.at("pdf", default: none)),
@@ -75,12 +75,12 @@
         (number: "", title: item, inventors: (), filed: "", status: "", country: "")
       } else { item }
       patent(
-        number: entry.at("number"),
-        title: entry.at("title"),
-        inventors: format-people(entry.at("inventors"), aliases: aliases),
-        filed: entry.at("filed"),
-        status: entry.at("status"),
-        country: entry.at("country"),
+        number: entry.at("number", default: ""),
+        title: entry.at("title", default: ""),
+        inventors: format-people(entry.at("inventors", default: ()), aliases: aliases),
+        filed: entry.at("filed", default: ""),
+        status: entry.at("status", default: ""),
+        country: entry.at("country", default: ""),
       )
     }
   }
@@ -93,11 +93,11 @@
         (title: item, year: "", status: "", country: "", holders: ())
       } else { item }
       copyright(
-        title: entry.at("title"),
-        year: entry.at("year"),
-        status: entry.at("status"),
-        country: entry.at("country"),
-        holders: format-people(entry.at("holders"), aliases: aliases),
+        title: entry.at("title", default: ""),
+        year: entry.at("year", default: ""),
+        status: entry.at("status", default: ""),
+        country: entry.at("country", default: ""),
+        holders: format-people(entry.at("holders", default: ()), aliases: aliases),
       )
     }
   }
@@ -110,7 +110,7 @@
         (title: item, url: "", role: "", org: "", start: "", end: "", location: "", icon: "", details: ())
       } else { item }
       project(
-        title: entry.at("title"),
+        title: entry.at("title", default: ""),
         url: entry.at("url", default: ""),
         role: entry.at("role", default: ""),
         org: entry.at("org", default: ""),
@@ -118,7 +118,7 @@
         end: entry.at("end", default: ""),
         location: entry.at("location", default: ""),
         icon: icon-for(entry.at("icon", default: "")),
-        details: bullet-list(entry.at("details")),
+        details: bullet-list(entry.at("details", default: ())),
       )
     }
   }
@@ -153,9 +153,14 @@
   if section != none {
     let categories = section.pairs().map(pair => {
       let key = pair.at(0)
-      let entry = pair.at(1)
+      let raw-entry = pair.at(1)
+      let entry = if type(raw-entry) == dictionary {
+        raw-entry
+      } else {
+        (label: key, items: (raw-entry,))
+      }
       let label = if entry.at("label", default: none) != none and entry.at("label") != "" { entry.at("label") } else { key }
-      let items = entry.at("items").map(item => render-skill-item(item)).filter(item => item != none)
+      let items = entry.at("items", default: ()).map(item => render-skill-item(item)).filter(item => item != none)
       (label, items)
     })
     skills(categories: categories)
@@ -169,10 +174,10 @@
         (name: item, tech: (), description: "", year: "", url: "", icon: "")
       } else { item }
       artifact(
-        name: entry.at("name"),
-        tech: entry.at("tech"),
-        description: entry.at("description"),
-        year: entry.at("year"),
+        name: entry.at("name", default: ""),
+        tech: entry.at("tech", default: ()),
+        description: entry.at("description", default: ""),
+        year: entry.at("year", default: ""),
         url: entry.at("url", default: ""),
         icon: icon-for(entry.at("icon", default: "")),
       )
@@ -185,9 +190,9 @@
     for item in section.values() {
       let entry = if type(item) == str { (name: item, date: "", from: "") } else { item }
       award(
-        name: entry.at("name"),
-        date: entry.at("date"),
-        from: entry.at("from"),
+        name: entry.at("name", default: ""),
+        date: entry.at("date", default: ""),
+        from: entry.at("from", default: ""),
         details: entry.at("details", default: ""),
       )
     }
@@ -199,9 +204,9 @@
     for item in section.values() {
       let entry = if type(item) == str { (name: item, description: "", date: "") } else { item }
       serving(
-        name: entry.at("name"),
-        description: entry.at("description"),
-        date: entry.at("date"),
+        name: entry.at("name", default: ""),
+        description: entry.at("description", default: ""),
+        date: entry.at("date", default: ""),
       )
     }
   }
@@ -211,9 +216,9 @@
   let contacts = if base-contacts == none { [] } else {
     base-contacts.map(item => {
       contact(
-        icon: icon-for(item.at("icon")),
-        label: rich(item.at("label")),
-        url: item.at("url"),
+        icon: icon-for(item.at("icon", default: none)),
+        label: rich(item.at("label", default: "")),
+        url: item.at("url", default: ""),
       )
     })
   }
@@ -228,49 +233,87 @@
   }
 }
 
-#let render-section(section, titles, get-section, aliases) = {
-  if section == "education" {
-    sec-heading(icon: education-icon, title: titles.at("education"))
-    render-education(get-section("education"))
-  } else if section == "experience" {
-    sec-heading(icon: experience-icon, title: titles.at("experience"))
-    render-experience(get-section("experience"))
-  } else if section == "publications" {
-    sec-heading(icon: publication-icon, title: titles.at("publications"))
-    let publications-sub = titles.at("publications_sub", default: none)
+#let default-section-order = (
+  "education",
+  "experience",
+  "publications",
+  "patents",
+  "projects",
+  "skills",
+  "artifacts",
+  "awards",
+  "serving",
+)
+
+#let section-title(titles, key, default: none) = if titles != none and type(titles) == dictionary {
+  titles.at(key, default: default)
+} else {
+  default
+}
+
+#let section-default-title = (
+  education: "Education",
+  experience: "Experience",
+  publications: "Publications",
+  patents: "Patents & Copyrights",
+  projects: "Projects",
+  skills: "Skills",
+  artifacts: "Artifacts",
+  awards: "Awards",
+  serving: "Serving",
+)
+
+#let section-icon = (
+  education: education-icon,
+  experience: experience-icon,
+  publications: publication-icon,
+  patents: copyright-icon,
+  projects: projects-icon,
+  skills: skill-icon,
+  artifacts: artifact-icon,
+  awards: award-icon,
+  serving: serving-icon,
+)
+
+#let section-dispatch = (
+  education: (titles, get-section, aliases) => render-education(get-section("education")),
+  experience: (titles, get-section, aliases) => render-experience(get-section("experience")),
+  publications: (titles, get-section, aliases) => {
+    let publications-sub = section-title(titles, "publications_sub", default: none)
     if has-text(publications-sub) {
       sec-heading(level: 2, title: publications-sub)
     }
     render-publications(get-section("publications"), aliases)
-  } else if section == "patents" {
-    sec-heading(icon: copyright-icon, title: titles.at("patents"))
-    let patents-sub = titles.at("patents_sub", default: none)
+  },
+  patents: (titles, get-section, aliases) => {
+    let patents-sub = section-title(titles, "patents_sub", default: none)
     if has-text(patents-sub) {
       sec-heading(level: 2, title: patents-sub)
     }
     render-patents(get-section("patents"), aliases)
     if get-section("copyrights") != none {
       v(0.5em)
-      let copyrights-sub = titles.at("copyrights_sub", default: none)
+      let copyrights-sub = section-title(titles, "copyrights_sub", default: none)
       if has-text(copyrights-sub) {
         sec-heading(level: 2, title: copyrights-sub)
       }
       render-copyrights(get-section("copyrights"), aliases)
     }
-  } else if section == "projects" {
-    sec-heading(icon: projects-icon, title: titles.at("projects"))
-    render-projects(get-section("projects"))
-  } else if section == "skills" {
-    sec-heading(icon: skill-icon, title: titles.at("skills"))
-    render-skills(get-section("skills"))
-  } else if section == "artifacts" {
-    sec-heading(icon: artifact-icon, title: titles.at("artifacts"))
-    render-artifacts(get-section("artifacts"))
-  } else if section == "awards" {
-    sec-heading(icon: award-icon, title: titles.at("awards"))
-    render-awards(get-section("awards"))
-  } else if section == "serving" {
-    sec-heading(icon: serving-icon(), title: titles.at("serving"))
-    render-serving(get-section("serving"))
+  },
+  projects: (titles, get-section, aliases) => render-projects(get-section("projects")),
+  skills: (titles, get-section, aliases) => render-skills(get-section("skills")),
+  artifacts: (titles, get-section, aliases) => render-artifacts(get-section("artifacts")),
+  awards: (titles, get-section, aliases) => render-awards(get-section("awards")),
+  serving: (titles, get-section, aliases) => render-serving(get-section("serving")),
+)
+
+#let render-section(section, titles, get-section, aliases) = {
+  let handler = section-dispatch.at(section, default: none)
+  if handler == none {
+    none
+  } else {
+    let heading-title = section-title(titles, section, default: section-default-title.at(section, default: section))
+    sec-heading(icon: section-icon.at(section, default: none), title: heading-title)
+    handler(titles, get-section, aliases)
   }
 }

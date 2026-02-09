@@ -1,5 +1,3 @@
-#import "common.typ": reset-heading-gap
-
 #let format-date(value) = {
   if value == none or value == "" {
     none
@@ -84,8 +82,6 @@
   summary: none,
   details: [],
 ) = {
-  reset-heading-gap()
-
   let stack-text = render-stack(stack)
   let date-range = format-date-range(start, end)
   let has-stack = stack-text != none
@@ -144,8 +140,6 @@
   end: "",
   summary: none,
 ) = {
-  reset-heading-gap()
-
   grid(
     columns: (auto, 1fr),
     align(left)[

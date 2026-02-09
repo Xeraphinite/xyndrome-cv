@@ -1,27 +1,5 @@
 #:schema false
 
-[metadata]
-lang = "en"
-original_name = "郑|恪|悠"
-font_size = 10
-heading_size = 12
-subheading_size = 10.5
-list_size = 9
-footer_size = 8
-footer_separator = "--"
-footer_show_name = true
-footer_name = ""
-footer_tagline = "Proudly Open-sourced"
-footer_show_online = true
-footer_online_prefix = "Online version at"
-footer_online_label = "keyzh.pages.dev/cv"
-footer_online_url = "https://keyzh.pages.dev/cv"
-footer_show_updated = true
-footer_updated_prefix = "Last Updated:"
-footer_show_page = true
-footer_page_format = "1 of 1"
-
-
 [profile]
 en_name = "Keyou (Key) Zheng"
 original_name = "郑恪悠"

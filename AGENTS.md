@@ -7,6 +7,8 @@ Always record reusable project rules here after structural/template changes.
 - Reusable UI components live in `xyndrome/components/ui.typ`.
 - Shared non-visual helpers live in `xyndrome/utils.typ`.
 - `xyndrome/lib.typ` re-exports from `sections/index.typ` and `components/ui.typ`.
+- `xyndrome/sections/common.typ` was removed; heading-gap state/reset is no longer used.
+- Typography override states (`heading-size-override`, `subheading-size-override`, `list-size-override`) are declared in both `xyndrome/cv.typ` and `xyndrome/core.typ` with the same state keys.
 
 ## Folder Rules
 

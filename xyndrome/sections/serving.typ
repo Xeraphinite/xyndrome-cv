@@ -1,12 +1,8 @@
-#import "common.typ": reset-heading-gap
-
 #let serving-entry(
   name: "",
   description: "",
   date: "",
 ) = {
-  reset-heading-gap()
-
   grid(
     columns: (auto, 1fr),
     align(left)[

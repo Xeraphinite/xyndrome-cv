@@ -1,10 +1,6 @@
-#import "common.typ": reset-heading-gap
-
 #let skills-grid(
   categories: (),
 ) = {
-  reset-heading-gap()
-
   for category in categories {
     grid(
       columns: (1fr, 4fr),

@@ -1,4 +1,3 @@
-#import "common.typ": reset-heading-gap
 #import "../components/ui.typ": render-icon
 
 #let project-entry(
@@ -14,8 +13,6 @@
   icon-height: 0.95em,
   icon-baseline: 15%,
 ) = {
-  reset-heading-gap()
-
   let project_title = if url != "" { link(url)[#title] } else { title }
   let icon-content = render-icon(icon, height: icon-height, baseline: icon-baseline)
 

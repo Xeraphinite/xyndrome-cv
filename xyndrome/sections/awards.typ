@@ -1,13 +1,9 @@
-#import "common.typ": reset-heading-gap
-
 #let award-entry(
   name: "",
   date: "",
   from: "",
   details: "",
 ) = {
-  reset-heading-gap()
-
   grid(
     columns: (2fr, 2.5fr, 1fr),
     column-gutter: 1em,

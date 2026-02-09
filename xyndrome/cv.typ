@@ -1,7 +1,10 @@
 #import "core.typ": cv
-#import "sections/common.typ": heading-size-override, subheading-size-override, list-size-override
-#import "sections/render.typ": render-contacts, render-section
+#import "sections/render.typ": default-section-order, render-contacts, render-section
 #import "utils.typ": rich, to-length
+
+#let heading-size-override = state("heading-size-override", none)
+#let subheading-size-override = state("subheading-size-override", none)
+#let list-size-override = state("list-size-override", none)
 
 #let render-cv(locale-path, config-path: none) = {
   let empty-style = (text_size: none, heading_size: none, subheading_size: none, list_size: none)
@@ -50,20 +53,38 @@
 
   let locale-data = toml(locale-path)
   let config-data = if config-path == none { default-config } else { toml(config-path) }
-  let profile = locale-data.at("profile", default: default-profile)
+  let metadata = locale-data.at("metadata", default: none)
+  let profile = locale-data.at("profile", default: none)
+  let profile-value = (key, default: none) => {
+    let from-profile = if profile != none and type(profile) == dictionary {
+      profile.at(key, default: none)
+    } else {
+      none
+    }
+    if from-profile != none {
+      from-profile
+    } else {
+      if metadata != none and type(metadata) == dictionary {
+        metadata.at(key, default: default)
+      } else {
+        default
+      }
+    }
+  }
 
   let global-config = config-data.at("global", default: default-config.global)
   let header-config = config-data.at("header", default: default-config.header)
   let footer-config = config-data.at("footer", default: default-config.footer)
   let section-config = config-data.at("sections", default: default-config.sections)
 
-  let aliases = profile.at("aliases", default: ())
-  let en-name = profile.at("en_name", default: "")
-  let original-name = profile.at("original_name", default: "")
-  let furigana-name = profile.at("furigana_name", default: original-name)
-  let furigana = profile.at("furigana", default: none)
-  let show-icons = profile.at("show_icons", default: true)
-  let location-label = profile.at("location_label", default: none)
+  let aliases = profile-value("aliases", default: default-profile.aliases)
+  let en-name = profile-value("en_name", default: default-profile.en_name)
+  let original-name = profile-value("original_name", default: default-profile.original_name)
+  let furigana-name = profile-value("furigana_name", default: original-name)
+  let furigana = profile-value("furigana", default: default-profile.furigana)
+  let show-icons = profile-value("show_icons", default: default-profile.show_icons)
+  let location-label = profile-value("location_label", default: default-profile.location_label)
+  let contacts = profile-value("contacts", default: default-profile.contacts)
 
   let lang = global-config.at("lang", default: "en")
   let show-furigana = global-config.at("show_furigana", default: true)
@@ -102,9 +123,16 @@
     )
   }
 
-  let titles = locale-data.at("sections")
-  let known-sections = ("education", "experience", "publications", "patents", "projects", "skills", "artifacts", "awards", "serving")
-  let section-order = titles.keys().filter(key => known-sections.contains(key))
+  let titles = locale-data.at("sections", default: none)
+  let configured-order = if titles != none and type(titles) == dictionary {
+    titles.keys().filter(key => default-section-order.contains(key))
+  } else {
+    ()
+  }
+  let discovered-order = default-section-order.filter(section =>
+    locale-data.at(section, default: none) != none and not configured-order.contains(section)
+  )
+  let section-order = configured-order + discovered-order
   let get-section = section => {
     if locale-data.at(section, default: none) == none { none } else { locale-data.at(section) }
   }
@@ -138,7 +166,7 @@
     footer_show_page: footer-show-page,
     footer_page_format: footer-page-format,
     icons_enabled: show-icons,
-    contacts: render-contacts(profile.at("contacts"), location-label),
+    contacts: render-contacts(contacts, location-label),
   )
 
   for section in section-order {

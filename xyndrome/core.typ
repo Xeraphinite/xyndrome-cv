@@ -1,6 +1,9 @@
-#import "sections/common.typ": heading-gap, reset-heading-gap, heading-size-override, subheading-size-override, list-size-override, reset-typography-overrides
 #import "components/ui.typ": icons-enabled
 #import "@preview/rubby:0.10.2": get-ruby
+
+#let heading-size-override = state("heading-size-override", none)
+#let subheading-size-override = state("subheading-size-override", none)
+#let list-size-override = state("list-size-override", none)
 
 #let cv(
   en_name: "",
@@ -37,7 +40,6 @@
   body,
 ) = {
   context { icons-enabled.update(icons_enabled) }
-  context { reset-typography-overrides() }
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
   let resolved-furigana-name = if furigana_name == none or furigana_name == "" { original_name } else { furigana_name }
   let resolved-furigana = furigana
@@ -77,7 +79,6 @@
   )[#it]
 
   show list: it => context {
-    heading-gap.update(none)
     let section-list-size = list-size-override.get()
     set text(size: if section-list-size == none { list_size } else { section-list-size })
     it
@@ -100,12 +101,9 @@
   }
 
   show heading.where(level: 1): it => context {
-    let previous = heading-gap.get()
-    let reduction = if previous == none { 0pt } else { previous }
-    heading-gap.update(0.2em)
     let section-heading-size = heading-size-override.get()
     pad(
-      top: -reduction,
+      top: 0pt,
       bottom: 0.6em,
       text(
         font: font_configs.sans,
@@ -116,12 +114,9 @@
     )
   }
   show heading.where(level: 2): it => context {
-    let previous = heading-gap.get()
-    let reduction = if previous == none { 5pt } else { previous }
-    heading-gap.update(0.1em)
     let section-subheading-size = subheading-size-override.get()
     pad(
-      top: -reduction,
+      top: -0.2em,
       bottom: 0.3em,
       text(
         font: font_configs.sans,
@@ -133,11 +128,6 @@
   }
 
   set par(justify: true)
-
-  show parbreak: it => context {
-    heading-gap.update(none)
-    it
-  }
 
   set page(
     margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
