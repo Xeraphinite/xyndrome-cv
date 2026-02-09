@@ -8,16 +8,15 @@
   icon,
   height: 1em,
   baseline: 15%,
-  right-space: 0pt,
+  outset: (left: 0pt, right: 0pt, top: 0pt, bottom: 0pt),
 ) = {
   let enabled = context { icons-enabled.get() }
   if enabled == false or icon == none {
     none
   } else if type(icon) == function {
-    icon(height: height, baseline: baseline, right-space: right-space)
+    icon(height: height, baseline: baseline)
   } else {
-    let icon-box = box(height: height, baseline: baseline)[#icon]
-    if right-space == 0pt { icon-box } else { box[#icon-box#h(right-space)] }
+    box(height: height, baseline: baseline, outset: outset)[#icon]
   }
 }
 
@@ -27,12 +26,12 @@
   icon: none,
   url: "",
   height: 1em,
-  baseline: 15%,
-  gap: 0.15em,
-  right-space: 0pt,
+  baseline: 0%,
+  gap: -0.2em,
+  outset: (left: 0pt, right: 1pt, top: 0pt, bottom: 0pt),
   trailing: none,
 ) = {
-  let rendered-icon = render-icon(icon, height: height, baseline: baseline, right-space: right-space)
+  let rendered-icon = render-icon(icon, height: height, baseline: baseline, outset: outset)
   let main-content = if rendered-icon == none { content } else { [#rendered-icon#h(gap)#content] }
   let final-content = if trailing == none { main-content } else { [#main-content#h(gap)#trailing] }
   if url == "" { final-content } else { link(url)[#final-content] }
@@ -42,7 +41,7 @@
   icon: none,
   label: "",
   url: "",
-  height: 0.9em,
+  height: 0.85em,
   baseline: 15%,
   gap: 0.1em,
 ) = content-with-icon(
@@ -156,8 +155,7 @@
   radius: 0.25em,
   padding: (x: 0.4em, y: 0.4em),
   text-size: 0.9em,
-  font: ("Inconsolata", "Consolas"),
-  icon-height: 0.8em,
+  icon-height: 0.6em,
   icon-baseline: 15%,
   icon-gap: 0.1em,
 ) = {
@@ -174,7 +172,7 @@
     inset: padding,
     radius: radius,
   )[
-    #text(size: text-size, fill: text-color, weight: "medium", font: font)[#badge-content]
+    #text(size: text-size, fill: text-color, weight: "medium")[#badge-content]
   ]
 }
 

@@ -1,10 +1,10 @@
 [global]
 lang = "en"
-show_furigana = true
-font_size = 9
-heading_size = 11
+show_furigana = false
+font_size = 10
+heading_size = 12
 subheading_size = 10.5
-list_size = 8.5
+list_size = 9
 font_serif = "Spectral"
 font_serif_cjk = "Noto Serif SC"
 font_sans = "Rethink Sans"
@@ -12,14 +12,14 @@ font_mono = "Inconsolata"
 font_math = "New Computer Modern Math"
 
 [header]
-name_size = 18
-original_name_size = 15.3
+name_size = 20
+original_name_size = 17
 original_name_weight = "black"
 contact_size = 9
 
 [footer]
 show_name = true
-text = "Online CV: #link(\"https://keyzh.pages.dev/cv\")[`keyzh.pages.dev/cv`]"
+text = "Full CV: #link(\"https://keyzh.pages.dev/cv\")[`keyzh.pages.dev/cv`]"
 show_updated = true
 updated_prefix = "Last Updated:"
 show_page = true

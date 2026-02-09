@@ -17,7 +17,7 @@ contacts = [
 
 [sections]
 education = "Education"
-experience = "Highlighted Projects"
+experience = "Selected Project"
 publications = "Publications"
 skills = "Skills"
 awards = "Awards"
@@ -31,45 +31,47 @@ details = [
   "*Dissertation:* _Verifier-Driven Code-based Parametric CAD Generation with Large Language Models Agent_ (Ongoing).",
 ]
 
+# Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
 [education.education-2]
 institution = "Guangdong University of Finance and Economics"
 degree = "Computer Science, BEng."
 date = "Sep 2019 - Jun 2023"
 details = [
   "*GPA*: 3.5/4.0 (Top 5%);",
-  "*Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_, Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`).",
+  "*Thesis:* _Design and Implementation of a Mario Game Agent Based on Deep Reinforcement Learning_.",
 ]
 
 
-[experience.experience-1]
-project = "Controllable Code-based CAD Generation"
+[experience.exp-1]
+project = "Code-based CAD Assembly Generation"
+stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
 location = "Guangzhou, China"
 start = "Aug 2025"
 end = "Present"
-summary = "A benchmark and a performant LLM-agent satisfying verifiable constraints for Code-based CAD."
+summary = "Built a verifiable benchmark and an LLM agent for controllable code-based CAD generation under executable constraints."
 details = [
-  "*Infrastructure*: Built a full-stack system to support the full ecosystem from data curating to evaluation. Built a scalable ",
-  "*Benchmark Curation*: Collected 200k code corpus from multiple sources (e.g., GitHub Repo, 3D communities), filtered with both deterministic rules (e.g., deduplications, PII removal) and an LLM-driven pipeline to prevent data quality issues (e.g., containmination, hardness). The benchmark finally consisted with 10k parts and 1.7k assemblies with golden references.", 
-  "*Agent Implementation*: Designed a simple yet effective tool-augmented agent: ",
-  "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
-  "*Outcome*: One paper was under review at Forty-Third _International Conference on Machine Learning_ (*ICML 2026*).",
+  "*Agent Infra*: Built a _multi-language, containerized code execution sandbox_ with pinned toolchains and reproducible runs. Designed a _horizontally scalable_ backend which captures multiple agent trajectories and failure for large-scale experiment observability. Also built a _lightweight web playground_ for fast debugging and artifacts generating.",
+  "*Benchmark Construction*: Built an benchmark from a 200k human CAD code corpus collected from public repos and CAD communities. Filtered with _deterministic and heuristic rules_ (e.g., fuzzy deduplication), and an LLM-based pipeline to _reduce data contamination and control task difficulty_. Produced 10k single-part tasks and 1.7k assembly tasks with golden reference workspaces and executable tests.",
+  "*Agent Design*: Designed _architecture_ for LLMs to generate or edit CAD programs through self-testing and self-repairing. Different from prior method that only work in one-file, the agent could use specific tools (e.g., `spec` tool for extracting specification from natural language)  in multi-file workspaces for assemblies, which guiding fixes in a closed-loop.",
+  "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming prior LLM-only (e.g., GPT-5) and tool-based baselines on constraint satisfaction while keeping geometry fidelity.",
+  "*Outcome*: One paper is under review at _43rd International Conference on Machine Learning_ (*ICML 2026*).",
 ]
 
-[experience.experience-2]
-project = "Human-in-the-loop CAD Generation Workflow"
-role = "Leader"
-org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, China"
-start = "Dec 2024"
-end = "May 2025"
-summary = "Designed a HITL agentic workflow for Code-based CAD generation, and evaluated it with code validity and human preference."
-details = [
-  "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as backbone, combined multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
-  "*Results*: Evaluated 100 real-world models using invalid rate and expert pairwise Elo; achieved best performance at 2% invalid rate and 1075.5 Elo, outperforming Claude, GPT-4o, and non-agent Qwen baselines.",
-  "*Outcome*: One paper was published at _Applied Soft Computing_.",
-]
+# [experience.exp-2]
+# project = "Human-in-the-loop CAD Generation Workflow"
+# role = "Leader"
+# org = "State Key Lab of Manufacturing Technology & Equipment"
+# location = "Guangzhou, China"
+# start = "Dec 2024"
+# end = "May 2025"
+# summary = "Designed a HITL agentic workflow for Code-based CAD generation, and evaluated it with code validity and human preference."
+# details = [
+#   "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as backbone, combined multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
+#   "*Results*: Evaluated 100 real-world models using invalid rate and expert pairwise Elo; achieved best performance at 2% invalid rate and 1075.5 Elo, outperforming Claude, GPT-4o, and non-agent Qwen baselines.",
+#   "*Outcome*: One paper was published at _Applied Soft Computing_.",
+# ]
 
 
 [publications.publication-1]
@@ -78,7 +80,7 @@ title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in
 venue = "Applied Soft Computing"
 published = "2025"
 metadata = "JCR Q1, IF: 6.6"
-# DOI = "10.1016/j.asoc.2025.113920"
+DOI = "10.1016/j.asoc.2025.113920"
 pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
 tldr = ""
@@ -89,7 +91,7 @@ title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
 venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
 metadata = "JCR Q1, IF: 11.4"
-# DOI = "10.1016/j.rcim.2025.103076"
+DOI = "10.1016/j.rcim.2025.103076"
 pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
 authors = [
   "Leng J.",
@@ -104,24 +106,17 @@ authors = [
 tldr = ""
 
 
-[skills.programming]
-label = "Programming"
-items = ["Python", "TypeScript", "JavaScript", "Rust", "C/C++ (Sort in Efficiency)"]
-
 [skills.ai-engineering]
 label = "AI Engineering"
 items = [
-  { text = "vLLM", category = "LLM Inference" },
+  "Python",
+  "vLLM",
+  "Unsloth",
   "TRL",
-  "Tinker",
   "OpenHands",
   "PyTorch",
   "CUDA",
 ]
-
-[skills.web-dev]
-label = "Frontend & Web"
-items = ["Next.js", "Tailwind CSS", "UnoCSS", "Vite", "Node.js"]
 
 
 [skills.languages]
@@ -132,6 +127,14 @@ items = [
   "Chinese & Cantonese (native)",
   "Korean (basic)",
 ]
+
+[skills.web-dev]
+label = "Frontend"
+items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
+
+[skills.devops]
+label = "DevOps & Backend"
+items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
 
 [skills.interests]
 label = "Interests"

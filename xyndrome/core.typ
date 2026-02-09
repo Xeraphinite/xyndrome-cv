@@ -200,7 +200,11 @@
         if address != none and address != "" {
           contact_info.push([#smallcaps(address)])
         }
-        text(size: header_contact_size, contact_info.join("   "))
+        let contact_items = contact_info.map(item => box(baseline: 32%)[#item])
+        [
+          #set text(size: header_contact_size)
+          #contact_items.join(h(0.75em))
+        ]
       }
     ],
   )

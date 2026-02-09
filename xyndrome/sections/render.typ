@@ -31,9 +31,10 @@
 #let render-experience(section) = {
   if section != none {
     for item in section.values() {
-      let entry = if type(item) == str { (project: item, role: "", org: "", location: "", start: "", end: "", details: ()) } else { item }
+      let entry = if type(item) == str { (project: item, stack: none, role: "", org: "", location: "", start: "", end: "", details: ()) } else { item }
       exp(
         project: entry.at("project"),
+        stack: entry.at("stack", default: none),
         role: entry.at("role"),
         org: entry.at("org"),
         location: entry.at("location"),

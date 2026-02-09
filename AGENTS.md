@@ -33,6 +33,14 @@ Always record reusable project rules here after structural/template changes.
 - Furigana toggle is `global.show_furigana`.
   - `true`: render `furigana` over `furigana_name`
   - `false`: render `original_name`
+- Experience entries support optional `stack` text.
+  - Experience header layout is two grids:
+  - line 1: `project` (left), `stack` + `time` (right, stack before time)
+  - line 2: `role` (left), `place` (right, from `org` and `location`)
+  - `stack` can be comma-separated text (or array) and each stack token renders as mono; commas remain serif.
+- Header contacts are rendered as boxed inline items with explicit baseline and spacing for vertical centering consistency.
+- `create-icon` in `xyndrome/icons.typ` supports per-side `inset` padding and full `outset` spacing (`left`/`right`/`top`/`bottom`) via native `box(..., outset: ...)`.
+- Specific icon wrappers should be defined via `create-icon.with(...)` (or alias `.with(...)`) to avoid duplicated default parameter signatures; keep `inset`/`outset` only on `create-icon`.
 
 ## Footer Rules
 
