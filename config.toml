@@ -4,7 +4,7 @@ show_furigana = false
 font_size = 10
 heading_size = 12
 subheading_size = 10.5
-list_size = 9
+list_size = 9.5
 font_serif = "Spectral"
 font_serif_cjk = "Noto Serif SC"
 font_sans = "Rethink Sans"
@@ -14,8 +14,7 @@ font_math = "New Computer Modern Math"
 [header]
 name_size = 20
 original_name_size = 17
-original_name_weight = "black"
-contact_size = 9
+contact_size = 10
 
 [footer]
 show_name = true
