@@ -68,8 +68,8 @@
   if items.len() == 0 {
     none
   } else {
-    let rendered = items.map(item => text(size: size, font: "Inconsolata", weight: "bold")[#item])
-    rendered.join([, ])
+    let rendered = items.map(item => text(size: size, fill: gray, font: "Inconsolata", weight: "bold")[#item])
+    rendered.join(text(fill: gray)[, ])
   }
 }
 
