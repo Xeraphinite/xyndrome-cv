@@ -1,59 +1,75 @@
 #import "../components/ui.typ": render-icon
+#import "experience.typ": format-date-range, format-place, render-stack
 
 #let project-entry(
   title: "",
+  stack: none,
   role: "",
   org: "",
   start: "",
   end: "",
   location: "",
+  summary: none,
   details: [],
   url: "",
   icon: none,
   icon-height: 0.95em,
   icon-baseline: 15%,
 ) = {
-  let project_title = if url != "" { link(url)[#title] } else { title }
+  let project-title = if url != "" { link(url)[#title] } else { title }
   let icon-content = render-icon(icon, height: icon-height, baseline: icon-baseline)
+  let title-content = if icon-content == none {
+    strong[#project-title]
+  } else {
+    [#icon-content #h(0.15em) #strong[#project-title]]
+  }
+
+  let stack-text = render-stack(stack)
+  let date-range = format-date-range(start, end)
+  let has-stack = stack-text != none
+  let has-date = date-range != none
+  let place = format-place(org, location)
+  let has-role = role != none and role != ""
+  let has-place = place != none
 
   grid(
     columns: (1fr, auto),
-    column-gutter: 1em,
     align(left)[
-      #{
-        if icon-content == none {
-          [#strong[#project_title]]
-        } else {
-          [#icon-content #h(0.15em) #strong[#project_title]]
-        }
-      }
-      #{
-        if role != "" [ \ #text(size: 0.9em, [#role]) ]
-      }
+      #title-content
     ],
     align(right)[
-      #{
-        if org != "" [#org]
-        if location != "" and org != "" [, #location] else if location != "" [#location]
-        if start != "" or end != "" [
-          \ #{
-            if type(start) == datetime {
-              text(size: 0.9em, [#start.display("[month repr:long] [year]")])
-            } else { text(size: 0.9em, [#start]) }
-          } #{
-            if end != "" [
-              #{
-                if type(end) == datetime {
-                  text(size: 0.9em, [#end.display("- [month repr:long] [year]")])
-                } else [\- #text(size: 0.9em, [#end])]
-              }
-            ]
-          }
-        ]
-      }
+      #if has-stack and has-date [
+        #stack-text#h(0.6em)#text(size: 0.88em)[#date-range]
+      ] else if has-stack [
+        #stack-text
+      ] else if has-date [
+        #text(size: 0.88em)[#date-range]
+      ]
     ],
-
   )
+
+  if has-role or has-place [
+    #v(-0.5em)
+    #grid(
+      columns: (1fr, auto),
+      align(left)[
+        #if has-role [
+          #text(size: 0.9em, [#role])
+        ]
+      ],
+      align(right)[
+        #if has-place [
+          #text(size: 0.9em, [#place])
+        ]
+      ],
+    )
+    #v(-0.2em)
+  ]
+
+  if summary != none [
+    #strong(text(size: 0.85em, [#summary]))
+    #v(0.1em)
+  ]
   details
 }
 

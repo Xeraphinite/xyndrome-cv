@@ -15,6 +15,10 @@
   updated: datetime.today(),
   lang: "en",
   show_furigana: true,
+  page_margin_top: 1.25cm,
+  page_margin_bottom: 1.25cm,
+  page_margin_left: 1.5cm,
+  page_margin_right: 1.5cm,
   text_size: 10pt,
   heading_size: 12pt,
   subheading_size: 10.5pt,
@@ -130,7 +134,7 @@
   set par(justify: true)
 
   set page(
-    margin: (top: 1.25cm, bottom: 1.25cm, left: 1.5cm, right: 1.5cm),
+    margin: (top: page_margin_top, bottom: page_margin_bottom, left: page_margin_left, right: page_margin_right),
     footer: [
       #align(center)[
         #text(

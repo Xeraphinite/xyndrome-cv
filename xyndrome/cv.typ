@@ -1,6 +1,6 @@
 #import "core.typ": cv
 #import "sections/render.typ": default-section-order, render-contacts, render-section
-#import "utils.typ": rich, to-length
+#import "utils.typ": rich, to-length, parse-length
 
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
@@ -19,6 +19,12 @@
     contacts: (),
   )
   let default-config = (
+    page: (
+      margin_top: "1.25cm",
+      margin_bottom: "1.25cm",
+      margin_left: "1.5cm",
+      margin_right: "1.5cm",
+    ),
     global: (
       lang: "en",
       show_furigana: true,
@@ -72,6 +78,7 @@
     }
   }
 
+  let page-config = config-data.at("page", default: default-config.page)
   let global-config = config-data.at("global", default: default-config.global)
   let header-config = config-data.at("header", default: default-config.header)
   let footer-config = config-data.at("footer", default: default-config.footer)
@@ -104,6 +111,11 @@
   let header-original-size = to-length(header-config.at("original_name_size", default: none), 15.3pt)
   let header-original-weight = header-config.at("original_name_weight", default: "black")
   let header-contact-size = to-length(header-config.at("contact_size", default: none), 9pt)
+
+  let page-margin-top = parse-length(page-config.at("margin_top", default: none), 1.25cm)
+  let page-margin-bottom = parse-length(page-config.at("margin_bottom", default: none), 1.25cm)
+  let page-margin-left = parse-length(page-config.at("margin_left", default: none), 1.5cm)
+  let page-margin-right = parse-length(page-config.at("margin_right", default: none), 1.5cm)
 
   let footer-show-name = footer-config.at("show_name", default: true)
   let footer-text = rich(footer-config.at("text", default: default-config.footer.text))
@@ -138,6 +150,10 @@
   }
 
   show: cv.with(
+    page_margin_top: page-margin-top,
+    page_margin_bottom: page-margin-bottom,
+    page_margin_left: page-margin-left,
+    page_margin_right: page-margin-right,
     en_name: en-name,
     original_name: original-name,
     furigana_name: furigana-name,

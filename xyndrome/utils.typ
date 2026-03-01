@@ -36,6 +36,17 @@
   else { value }
 }
 
+/// Parse a length from a TOML value.
+/// - Strings like "1.25cm", "12pt", "0.5in" are evaluated as Typst lengths.
+/// - Numbers are treated as pt (same as to-length).
+/// - none falls back to the given fallback.
+#let parse-length(value, fallback) = {
+  if value == none { fallback }
+  else if type(value) == int or type(value) == float { value * 1pt }
+  else if type(value) == str { eval(value) }
+  else { value }
+}
+
 #let format-people(people, aliases: ()) = {
   let resolved = if aliases == none { () } else { aliases }
   if type(people) == array {

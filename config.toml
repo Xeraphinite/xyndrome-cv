@@ -1,10 +1,16 @@
+[page]
+margin_top = "1.25cm"
+margin_bottom = "1.25cm"
+margin_left = "1.6cm"
+margin_right = "1.6cm"
+
 [global]
 lang = "en"
-show_furigana = false
-font_size = 10
-heading_size = 12
+show_furigana = true
+font_size = 10.5
+heading_size = 14
 subheading_size = 10.5
-list_size = 9.5
+list_size = 10
 font_serif = "Spectral"
 font_serif_cjk = "Noto Serif SC"
 font_sans = "Rethink Sans"
@@ -12,13 +18,13 @@ font_mono = "Inconsolata"
 font_math = "New Computer Modern Math"
 
 [header]
-name_size = 20
+name_size = 22
 original_name_size = 17
-contact_size = 10
+contact_size = 11
 
 [footer]
 show_name = true
-text = "Full CV: #link(\"https://keyzh.pages.dev/cv\")[`keyzh.pages.dev/cv`]"
+text = "Full CV: #link(\"https://keyzh.pages.dev\")[`keyzh.pages.dev`]"
 show_updated = true
 updated_prefix = "Last Updated:"
 show_page = true

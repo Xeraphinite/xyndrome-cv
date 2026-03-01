@@ -1,6 +1,6 @@
 #import "xyndrome/cv.typ": render-cv
 
-#render-cv("../cv-1p.toml", config-path: "../config.toml")
+#render-cv("../cv-2p.toml", config-path: "../config.toml")
 
 // Language variants (uncomment one to use):
 // #render-cv("../intl/ja/cv-ja.toml", config-path: "../config.toml")

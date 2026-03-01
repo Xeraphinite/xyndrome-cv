@@ -111,12 +111,14 @@
       } else { item }
       project(
         title: entry.at("title", default: ""),
+        stack: entry.at("stack", default: none),
         url: entry.at("url", default: ""),
         role: entry.at("role", default: ""),
         org: entry.at("org", default: ""),
         start: entry.at("start", default: ""),
         end: entry.at("end", default: ""),
         location: entry.at("location", default: ""),
+        summary: entry.at("summary", default: none),
         icon: icon-for(entry.at("icon", default: "")),
         details: bullet-list(entry.at("details", default: ())),
       )

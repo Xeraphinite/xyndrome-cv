@@ -17,10 +17,15 @@ contacts = [
 
 [sections]
 education = "Education"
-experience = "Selected Project"
 publications = "Publications"
+experience = "Research Experience"
+projects = "Projects"
+patents = "Patents & Copyrights"
+patents_sub = "Patents"
+copyrights_sub = "Software Copyrights"
 skills = "Skills"
 awards = "Awards"
+
 
 [education.education-1]
 institution = "Guangdong University of Technology"
@@ -57,6 +62,34 @@ details = [
   "*Agent Design*: Designed _architecture_ for LLMs to generate or edit CAD programs through self-testing and self-repairing. Different from prior method that only work in one-file, the agent could use specific tools (e.g., `spec` tool for extracting specification from natural language)  in multi-file workspaces for assemblies, which guiding fixes in a closed-loop.",
   "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming prior LLM-only (e.g., GPT-5) and tool-based baselines on constraint satisfaction while keeping geometry fidelity.",
   "*Outcome*: One paper is under review at _43rd International Conference on Machine Learning_ (*ICML 2026*).",
+]
+
+[experience.exp-2]
+project = "Human-in-the-loop CAD Generation Workflow"
+role = "Leader"
+org = "State Key Lab of Manufacturing Technology & Equipment"
+location = "Guangzhou, China"
+start = "Dec 2024"
+end = "May 2025"
+summary = "Designed a HITL agentic workflow for Code-based CAD generation, and evaluated it with code validity and human preference."
+details = [
+  "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as backbone, combined multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
+  "*Results*: Evaluated 100 real-world models using invalid rate and expert pairwise Elo; achieved best performance at 2% invalid rate and 1075.5 Elo, outperforming Claude, GPT-4o, and non-agent Qwen baselines.",
+  "*Outcome*: One paper was published at _Applied Soft Computing_.",
+]
+
+[projects.project1]
+title = "Automated Color Difference Control & Calibration"
+role = "Lead Developer"
+org = "Vograce"
+location = "Yiwu, Zhejiang"
+start = "Dec 2024"
+end = "Jul 2025"
+summary = "Quick Prototyping in Automated Color Difference Control & Calibration."
+details = [
+  "Problem: Personalized printing had inconsistent color reproduction and labor-heavy QA.",
+  "Method: Calibrated machine-vision capture; $Delta E$ (CIEDE2000) computation, adaptive sRGB↔CMYK feedback, operator guidance and audit trails.",
+  "Result: Detection→recommendation latency ↓ to ~1 s/image; ≈20× efficiency vs. manual inspection in pilot line runs.",
 ]
 
 
@@ -122,14 +155,15 @@ items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React",
 label = "DevOps & Backend"
 items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
 
-# [skills.interests]
-# label = "Interests"
-# items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
+[skills.interests]
+label = "Interests"
+items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
 
 [awards.award-1]
-name = "National Scholarship (TOP 2%)"
+name = "National Scholarship"
 date = "2025"
 from = "Ministry of Education, China"
+details = "Top 2%"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"
@@ -145,3 +179,59 @@ from = "Guangdong University of Technology"
 name = "Scholarship in Academic Excellence"
 date = "2020, 2021, 2022"
 from = "Guangdong University of Finance & Economics"
+
+
+[patents.patent-1]
+number = "202410273298.7"
+title = "Flexible needle puncture path planning based on deep reinforcement learning"
+filed = "2024-03-11"
+status = "Disclosed"
+country = "CN"
+inventors = [
+  "Leng J.",
+  "Zheng K.",
+  "Zhong Y.",
+  "Xie J.",
+  "Li R.",
+  "Xu C.",
+  "Liu Q.",
+]
+# status values typically: Disclosed, Granted.
+
+[patents.patent-2]
+number = "202410950697.2"
+title = "Interaction extraction and demand–manufacturing matching from service interaction context"
+filed = "2024-07-16"
+status = "Disclosed"
+country = "CN"
+inventors = ["Leng J.", "Zheng K.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
+
+[patents.patent-3]
+number = "202410368790.2"
+title = "Unified value-chain middleware for manufacturing and its digital-twin system"
+filed = "2024-03-28"
+status = "Disclosed"
+country = "CN"
+inventors = ["Leng J.", "Zhong Y.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
+
+[patents.patent-4]
+number = "18/662,981"
+title = "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)"
+filed = "2024-05-13"
+status = "Disclosed"
+country = "US"
+inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
+
+[copyrights.copyright-1]
+title = "Multi-feature fusion print color difference detection system"
+year = "2025"
+status = "Authorized"
+country = "China"
+holders = ["Zheng K.", "Zhong Y.", "Leng J."]
+
+[copyrights.copyright-2]
+title = "Vision intelligence-based personalized print color difference analysis system"
+year = "2025"
+status = "Authorized"
+country = "China"
+holders = ["Zheng K.", "Zhong Y.", "Leng J."]
