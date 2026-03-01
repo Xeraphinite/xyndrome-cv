@@ -290,6 +290,7 @@
   patents: (titles, get-section, aliases) => {
     let patents-sub = section-title(titles, "patents_sub", default: none)
     if has-text(patents-sub) {
+      v(-0.5em)
       sec-heading(level: 2, title: patents-sub)
     }
     render-patents(get-section("patents"), aliases)
