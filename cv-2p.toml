@@ -52,15 +52,15 @@ project = "Code-based CAD Assembly Generation"
 # stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, China"
+location = "Guangzhou, Guangdong"
 start = "Aug 2025"
 end = "Present"
 summary = "Built a verifiable benchmark and an LLM agent for controllable code-based CAD generation under executable constraints."
 details = [
-  "*Agent Infra*: Built a _multi-language, containerized code execution sandbox_ with pinned toolchains and reproducible runs. Designed a _horizontally scalable_ backend which captures multiple agent trajectories and failure for large-scale experiment observability. Also built a _lightweight web playground_ for fast debugging and artifacts generating.",
+  "*Agent Infra*: Built a _multi-language, containerized code execution sandbox_ with pinned toolchains and reproducible runs. Designed a _horizontally scalable_ backend which captures multiple agent trajectories and failures for large-scale experiment observability. Also built a _lightweight web playground_ for fast debugging and artifact generation.",
   "*Benchmark Construction*: Built a large-scale benchmark from a 200k human CAD code corpus collected from public repos and CAD communities. Filtered with _deterministic and heuristic rules_ (e.g., fuzzy deduplication), and an LLM-based pipeline to _reduce data contamination_ and _control task difficulty_. Produced 10k single-part tasks and 1.7k assembly tasks with golden reference workspaces and executable tests.",
-  "*Agent Design*: Designed _architecture_ for LLMs to generate or edit CAD programs through self-testing and self-repairing. Different from prior method that only work in one-file, the agent could use specific tools (e.g., `spec`, `inspect`, `verify`) in multi-file workspaces for assemblies, which guiding fixes in a closed-loop.",
-  "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming  baselines on constraint satisfaction while keeping geometry fidelity.",
+  "*Agent Design*: Designed _architecture_ for LLMs to generate or edit CAD programs through self-testing and self-repairing. Different from prior methods that only work in a single file, the agent could use specific tools (e.g., `spec`, `inspect`, `verify`) in multi-file workspaces for assemblies, guiding fixes in a closed loop.",
+  "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming baselines on constraint satisfaction while keeping geometry fidelity.",
   "*Outcome*: One paper is under review at _43rd International Conference on Machine Learning_ (*ICML 2026*).",
 ]
 
@@ -68,12 +68,12 @@ details = [
 project = "Human-in-the-loop CAD Generation Workflow"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, China"
+location = "Guangzhou, Guangdong"
 start = "Dec 2024"
 end = "May 2025"
 summary = "Designed a HITL agentic workflow for Code-based CAD generation maintaining code validity and human preference."
 details = [
-  "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as backbone, combined multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
+  "*Workflow design*: Used fine-tuned `Qwen2.5-VL-7B` as a backbone, combining multiple workflow design patterns for code generation, with intent clarification, validity checks, iterative refinement, memory, and safety gating.",
   "*Results*: Evaluated on 200 real-world models using invalid rate and expert pairwise Elo; achieved best performance at 2% invalid rate and 1075.5 Elo, outperforming Claude, GPT-4o, and non-agent Qwen baselines.",
   "*Outcome*: One paper was published at _Applied Soft Computing_.",
 ]
@@ -89,7 +89,7 @@ summary = "Built a machine-vision pipeline for closed-loop color consistency con
 details = [
   "*Capture & Detection*: Designed the optical acquisition environment and built feature-matching alignment with ROI extraction to handle diverse print patterns under varying lighting and material reflectance, enabling robust $Delta E$ (CIEDE2000) computation.",
   "*Algorithm*: Converted sRGB measurements to CMYK space and applied adaptive iterative step-size feedback to translate measured color differences into actionable ink-level adjustment recommendations for press operators.",
-  "*Results*: Rapidly prototyped with _Gradio_ through extensive iteration cycles, optimized the full detect-and-recommend pipeline to ≤1 s/image—over 20× faster than manual color grading in pilot line runs. Productionized as a full-stack system built with _Next.js_ for enterprise deployment.",
+  "*Results*: Rapidly prototyped with `Gradio` through extensive iteration cycles, optimized the full detect-and-recommend pipeline to ≤1 s/image—over 20× faster than manual color grading in pilot line runs. Productionized as a full-stack system built with `Next.js` and `FastAPI` for enterprise deployment.",
   "*Outcome*: Received two authorized software copyrights.",
 ]
 
