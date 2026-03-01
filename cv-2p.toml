@@ -17,12 +17,12 @@ contacts = [
 
 [sections]
 education = "Education"
-publications = "Publications"
 experience = "Research Experience"
-projects = "Projects"
+publications = "Publications"
 patents = "Patents & Copyrights"
 patents_sub = "Patents"
 copyrights_sub = "Software Copyrights"
+projects = "Projects"
 skills = "Skills"
 awards = "Awards"
 

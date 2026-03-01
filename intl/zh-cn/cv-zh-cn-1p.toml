@@ -1,0 +1,147 @@
+#:schema false
+
+[profile]
+original_name = "郑恪悠"
+furigana_name = "郑|恪|悠"
+furigana = "チェン|コッ|ヤオ"
+en_name = "Keyou (Key) Zheng"
+aliases = ["Zheng K."]
+location_label = "广州，广东"
+show_icons = false
+summary = "本人为机械工程硕士应届毕业生，专注于大语言模型与 AI 驱动的设计自动化。研究方向涵盖代码式 CAD 生成、Agent 工作流以及面向工业场景的人在回路系统。在深度学习、全栈开发与 DevOps 方面具备扎实实践与成果。当前正在申请博士机会，期望进一步推动 AI 赋能设计与制造技术发展。"
+contacts = [
+  { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
+  { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
+  { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+]
+
+[sections]
+education = "教育经历"
+experience = "重点项目"
+publications = "发表论文"
+skills = "技能"
+awards = "获奖情况"
+
+[education.education-1]
+institution = "Guangdong University of Technology"
+degree = "Mechanical Engineering, MEng."
+date = "Sep 2023 - Jun 2026 (Expected)"
+details = [
+  "*GPA:* 3.62/4.0（前 2.5%），导师 #smallcaps(\"Jiewu Leng\");;",
+  "*Dissertation:* _验证器驱动的大语言模型 Agent 代码式参数化 CAD 生成_（进行中）.",
+]
+
+# Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
+[education.education-2]
+institution = "Guangdong University of Finance and Economics"
+degree = "Computer Science, BEng."
+date = "Sep 2019 - Jun 2023"
+details = [
+  "*GPA*: 3.5/4.0（前 5%）;",
+  "*Thesis:* _基于深度强化学习的 Mario 游戏智能体设计与实现_.",
+]
+
+
+[experience.exp-1]
+project = "Code-based CAD Assembly Generation"
+stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
+role = "Leader"
+org = "State Key Lab of Manufacturing Technology & Equipment"
+location = "Guangzhou, China"
+start = "Aug 2025"
+end = "Present"
+summary = "面向可执行约束条件，构建了可控代码式 CAD 生成的可验证基准与 LLM Agent。"
+details = [
+  "*Agent 基础设施*: 构建了具备固定工具链与可复现实验环境的_多语言容器化代码执行沙箱_。设计了可_横向扩展_的后端，用于采集多条 Agent 轨迹与失败日志以支撑大规模实验可观测性；同时实现了用于快速调试和产物生成的_轻量级 Web Playground_。",
+  "*基准构建*: 基于从公开仓库与 CAD 社区收集的 20 万规模人工 CAD 代码语料构建基准。结合_确定性与启发式规则_（如模糊去重）及 LLM 流水线，_降低数据污染并控制任务难度_；最终产出 1 万个单零件任务和 1700 个装配任务，并配套黄金参考工作区与可执行测试。",
+  "*Agent 设计*: 设计了通过自测试与自修复生成/编辑 CAD 程序的 LLM _架构_。不同于仅在单文件中有效的既有方法，该 Agent 可在装配场景的多文件工作区中调用特定工具（如从自然语言提取规范的 `spec` 工具），实现闭环修复。",
+  "*评测与结果*: 以可执行测试作为核心指标评估约束满足率。在装配任务上，本方法取得 54.2% pass rate、41.9% all-tests success、2.4% 无效输出，并在保持几何保真度的同时于约束满足方面超过以往 LLM-only（如 GPT-5）与工具增强基线。",
+  "*成果*: 1 篇论文已投稿至 _43rd International Conference on Machine Learning_（*ICML 2026*）并在审。",
+]
+
+
+[publications.publication-1]
+type = "journal"
+title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
+venue = "Applied Soft Computing"
+published = "2025"
+metadata = "JCR Q1, IF: 6.6"
+DOI = "10.1016/j.asoc.2025.113920"
+pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
+authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
+tldr = ""
+
+[publications.publication-2]
+type = "journal"
+title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
+venue = "Robotics and Computer-Integrated Manufacturing"
+published = "2026"
+metadata = "JCR Q1, IF: 11.4"
+DOI = "10.1016/j.rcim.2025.103076"
+pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
+authors = [
+  "Leng J.",
+  "Zheng K.",
+  "Li R.",
+  "Chen C.",
+  "Wang B.",
+  "Liu Q.*",
+  "Chen X.",
+  "Shen W",
+]
+tldr = ""
+
+
+[skills.ai-engineering]
+label = "AI Engineering"
+items = [
+  "Python",
+  "vLLM",
+  "Unsloth",
+  "TRL",
+  "OpenHands",
+  "PyTorch",
+  "CUDA",
+]
+
+
+[skills.languages]
+label = "Languages"
+items = [
+  "*English (TOEFL: 90)*",
+  "*Japanese (N1: 134)*",
+  "Chinese & Cantonese (native)",
+  "Korean (basic)",
+]
+
+[skills.web-dev]
+label = "Frontend"
+items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
+
+[skills.devops]
+label = "DevOps & Backend"
+items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
+
+# [skills.interests]
+# label = "Interests"
+# items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
+
+[awards.award-1]
+name = "National Scholarship (TOP 2%)"
+date = "2025"
+from = "Ministry of Education, China"
+
+[awards.award-2]
+name = "Scholarship in Academic Excellence"
+date = "2024, 2025"
+from = "Guangdong University of Technology"
+
+[awards.award-4]
+name = "Freshman Entrance Scholarship"
+date = "2023"
+from = "Guangdong University of Technology"
+
+[awards.award-3]
+name = "Scholarship in Academic Excellence"
+date = "2020, 2021, 2022"
+from = "Guangdong University of Finance & Economics"

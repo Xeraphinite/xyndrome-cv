@@ -1,0 +1,147 @@
+#:schema false
+
+[profile]
+original_name = "郑恪悠"
+furigana_name = "郑|恪|悠"
+furigana = "チェン|コッ|ヤオ"
+en_name = "Keyou (Key) Zheng"
+aliases = ["Zheng K."]
+location_label = "광저우, 광동성"
+show_icons = false
+summary = "대규모 언어모델과 AI 기반 설계 자동화를 전공한 자기주도형 기계공학 석사 과정 졸업예정자입니다. 코드 기반 CAD 생성, 에이전트 워크플로우, 산업 응용을 위한 Human-in-the-loop 시스템을 중점적으로 연구했습니다. 딥러닝, 풀스택 개발, DevOps에서 검증된 실무 및 연구 경험을 보유하고 있으며, AI 기반 설계·제조 기술을 고도화하기 위한 박사과정 기회를 찾고 있습니다."
+contacts = [
+  { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
+  { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
+  { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+]
+
+[sections]
+education = "학력"
+experience = "주요 프로젝트"
+publications = "발표 논문"
+skills = "기술"
+awards = "수상 내역"
+
+[education.education-1]
+institution = "Guangdong University of Technology"
+degree = "Mechanical Engineering, MEng."
+date = "Sep 2023 - Jun 2026 (Expected)"
+details = [
+  "*GPA:* 3.62/4.0 (상위 2.5%), 지도교수 #smallcaps(\"Jiewu Leng\");;",
+  "*Dissertation:* _검증기 기반 대규모 언어모델 에이전트를 활용한 코드 기반 파라메트릭 CAD 생성_ (진행 중).",
+]
+
+# Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
+[education.education-2]
+institution = "Guangdong University of Finance and Economics"
+degree = "Computer Science, BEng."
+date = "Sep 2019 - Jun 2023"
+details = [
+  "*GPA*: 3.5/4.0 (상위 5%);",
+  "*Thesis:* _심층 강화학습 기반 Mario 게임 에이전트의 설계 및 구현_.",
+]
+
+
+[experience.exp-1]
+project = "Code-based CAD Assembly Generation"
+stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
+role = "Leader"
+org = "State Key Lab of Manufacturing Technology & Equipment"
+location = "Guangzhou, China"
+start = "Aug 2025"
+end = "Present"
+summary = "실행 가능한 제약 조건 하에서, 제어 가능한 코드 기반 CAD 생성을 위한 검증 가능한 벤치마크와 LLM 에이전트를 구축했습니다."
+details = [
+  "*에이전트 인프라*: 고정된 툴체인과 재현 가능한 실행 환경을 갖춘 _다국어 컨테이너형 코드 실행 샌드박스_를 구축했습니다. 대규모 실험 관측을 위해 에이전트의 다양한 trajectory와 실패 로그를 수집하는 _수평 확장형_ 백엔드를 설계했고, 빠른 디버깅과 산출물 생성을 위한 _경량 웹 플레이그라운드_도 구현했습니다.",
+  "*벤치마크 구축*: 공개 저장소와 CAD 커뮤니티에서 수집한 20만 규모의 인간 작성 CAD 코드 코퍼스를 기반으로 벤치마크를 구축했습니다. _결정론적/휴리스틱 규칙_(예: 퍼지 중복 제거)과 LLM 기반 파이프라인을 결합해 _데이터 오염을 줄이고 과제 난이도를 제어_했으며, 골든 레퍼런스 워크스페이스와 실행 가능한 테스트를 포함한 단일 부품 1만 개, 조립 1.7천 개 태스크를 생성했습니다.",
+  "*에이전트 설계*: 자가 테스트와 자가 수정 루프를 통해 CAD 프로그램을 생성·편집하는 LLM _아키텍처_를 설계했습니다. 기존의 단일 파일 방식과 달리, 조립 과제의 다중 파일 워크스페이스에서 특정 도구(예: 자연어에서 명세를 추출하는 `spec` 도구)를 사용해 폐루프 수정이 가능하도록 했습니다.",
+  "*평가 및 결과*: 실행 가능한 테스트를 핵심 지표로 사용해 제약 만족도를 계산했습니다. 조립 태스크에서 제안 방법은 통과율 54.2%, 전체 테스트 성공률 41.9%, 무효 출력 2.4%를 기록했고, 형상 점수를 유지하면서 prior LLM-only(예: GPT-5) 및 도구 기반 기준선을 제약 만족도에서 능가했습니다.",
+  "*성과*: _43rd International Conference on Machine Learning_ (*ICML 2026*)에 논문 1편을 투고하여 심사 중입니다.",
+]
+
+
+[publications.publication-1]
+type = "journal"
+title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
+venue = "Applied Soft Computing"
+published = "2025"
+metadata = "JCR Q1, IF: 6.6"
+DOI = "10.1016/j.asoc.2025.113920"
+pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
+authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
+tldr = ""
+
+[publications.publication-2]
+type = "journal"
+title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
+venue = "Robotics and Computer-Integrated Manufacturing"
+published = "2026"
+metadata = "JCR Q1, IF: 11.4"
+DOI = "10.1016/j.rcim.2025.103076"
+pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
+authors = [
+  "Leng J.",
+  "Zheng K.",
+  "Li R.",
+  "Chen C.",
+  "Wang B.",
+  "Liu Q.*",
+  "Chen X.",
+  "Shen W",
+]
+tldr = ""
+
+
+[skills.ai-engineering]
+label = "AI Engineering"
+items = [
+  "Python",
+  "vLLM",
+  "Unsloth",
+  "TRL",
+  "OpenHands",
+  "PyTorch",
+  "CUDA",
+]
+
+
+[skills.languages]
+label = "Languages"
+items = [
+  "*English (TOEFL: 90)*",
+  "*Japanese (N1: 134)*",
+  "Chinese & Cantonese (native)",
+  "Korean (basic)",
+]
+
+[skills.web-dev]
+label = "Frontend"
+items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
+
+[skills.devops]
+label = "DevOps & Backend"
+items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
+
+# [skills.interests]
+# label = "Interests"
+# items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
+
+[awards.award-1]
+name = "National Scholarship (TOP 2%)"
+date = "2025"
+from = "Ministry of Education, China"
+
+[awards.award-2]
+name = "Scholarship in Academic Excellence"
+date = "2024, 2025"
+from = "Guangdong University of Technology"
+
+[awards.award-4]
+name = "Freshman Entrance Scholarship"
+date = "2023"
+from = "Guangdong University of Technology"
+
+[awards.award-3]
+name = "Scholarship in Academic Excellence"
+date = "2020, 2021, 2022"
+from = "Guangdong University of Finance & Economics"
