@@ -8,7 +8,7 @@ Always record reusable project rules here after structural/template changes.
 - Shared non-visual helpers live in `xyndrome/utils.typ`.
 - `xyndrome/lib.typ` re-exports from `sections/index.typ` and `components/ui.typ`.
 - `xyndrome/sections/common.typ` was removed; heading-gap state/reset is no longer used.
-- Typography override states (`heading-size-override`, `subheading-size-override`, `list-size-override`) are declared in both `xyndrome/cv.typ` and `xyndrome/core.typ` with the same state keys.
+- Typography override states (`heading-size-override`, `subheading-size-override`, `list-size-override`, `title-font-override`) are declared in both `xyndrome/cv.typ` and `xyndrome/core.typ` with the same state keys.
 
 ## Folder Rules
 
@@ -28,6 +28,17 @@ Always record reusable project rules here after structural/template changes.
   - `[header]`
   - `[footer]`
   - `[sections.default]` and optional `[sections.<section-name>]`
+- Global typography config uses:
+  - `global.font_title` + `global.font_title_cjk` for headings/subheadings
+  - `global.font_content` + `global.font_content_cjk` for body text
+  - `global.name_font` only for `profile.original_name` in the header
+- Section style config supports inherited overrides for:
+  - `text_size`
+  - `heading_size`
+  - `subheading_size`
+  - `list_size`
+  - `font_title` + `font_title_cjk`
+  - `font_content` + `font_content_cjk`
 - Profile and CV content are in each CV TOML (for example `cv-1p.toml`).
 - Furigana fields in profile:
   - `original_name`

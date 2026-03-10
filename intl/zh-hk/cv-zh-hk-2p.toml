@@ -6,9 +6,9 @@ furigana_name = "郑|恪|悠"
 furigana = "チェン|コッ|ヤオ"
 en_name = "Keyou (Key) Zheng"
 aliases = ["Zheng K."]
-location_label = "廣州，廣東"
+location_label = "中國廣東廣州"
 show_icons = false
-summary = "本人為機械工程碩士應屆畢業生，專注於大型語言模型同 AI 驅動嘅設計自動化。研究方向涵蓋程式化 CAD 生成、Agent 工作流，以及面向工業場景嘅人在回路系統。喺深度學習、全端開發同 DevOps 方面具備扎實實踐同成果。現正申請博士機會，希望進一步推動 AI 賦能設計與製造技術發展。"
+summary = "本人為自驅型機械工程碩士應屆畢業生，專注於大型語言模型同 AI 驅動設計自動化。研究方向涵蓋程式化 CAD 生成、Agent 工作流，以及面向工業應用嘅人在回路系統。喺深度學習、全端開發同 DevOps 方面具備扎實經驗，現正申請博士機會，希望繼續推進 AI 賦能設計與製造技術。"
 contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
@@ -27,69 +27,69 @@ skills = "技能"
 awards = "獲獎情況"
 
 [education.education-1]
-institution = "Guangdong University of Technology"
-degree = "Mechanical Engineering, MEng."
-date = "Sep 2023 - Jun 2026 (Expected)"
+institution = "廣東工業大學"
+degree = "機械工程碩士"
+date = "2023 年 9 月 - 2026 年 6 月（預計）"
 details = [
-  "*GPA:* 3.62/4.0（前 2.5%），導師 #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _驗證器驅動嘅大型語言模型 Agent 程式化參數 CAD 生成_（進行中）.",
+  "*GPA:* 3.62/4.0（前 2.5%），導師為 #smallcaps(\"Jiewu Leng\");;",
+  "*畢業論文：* _驗證器驅動嘅大型語言模型 Agent 程式化參數化 CAD 生成_（進行中）。",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
 [education.education-2]
-institution = "Guangdong University of Finance and Economics"
-degree = "Computer Science, BEng."
-date = "Sep 2019 - Jun 2023"
+institution = "廣東財經大學"
+degree = "計算機科學與技術學士"
+date = "2019 年 9 月 - 2023 年 6 月"
 details = [
-  "*GPA*: 3.5/4.0（前 5%）;",
-  "*Thesis:* _基於深度強化學習嘅 Mario 遊戲智能體設計與實現_.",
+  "*GPA:* 3.5/4.0（前 5%）；",
+  "*畢業論文：* _基於深度強化學習嘅 Mario 遊戲智能體設計與實現_。",
 ]
 
 
 [experience.exp-1]
-project = "Code-based CAD Assembly Generation"
+project = "程式化 CAD 裝配生成"
 # stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
-role = "Leader"
-org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, Guangdong"
-start = "Aug 2025"
-end = "Present"
-summary = "面向可執行約束條件，構建咗可控程式化 CAD 生成嘅可驗證基準同 LLM Agent。"
+role = "負責人"
+org = "製造技術與裝備國家重點實驗室"
+location = "中國廣東廣州"
+start = "2025 年 8 月"
+end = "至今"
+summary = "圍繞可執行約束，構建咗面向可控程式化 CAD 生成嘅可驗證基準同 LLM Agent。"
 details = [
-  "*Agent 基礎設施*: 構建咗具備固定工具鏈同可重現實驗環境嘅_多語言容器化程式碼執行沙箱_。設計咗可_橫向擴展_嘅後端，用於收集多條 Agent 軌跡同失敗日誌，以支撐大規模實驗可觀測性；同時實現咗用於快速除錯同產物生成嘅_輕量 Web Playground_。",
-  "*基準構建*: 基於從公開倉庫同 CAD 社群收集嘅 20 萬規模人工 CAD 程式碼語料，構建咗大規模基準。結合_確定性與啟發式規則_（如模糊去重）同 LLM 流程，_降低數據污染_並_控制任務難度_；最終產出 1 萬個單零件任務同 1700 個裝配任務，並配套黃金參考工作區同可執行測試。",
-  "*Agent 設計*: 設計咗透過自測試同自修復來生成/編輯 CAD 程式嘅 LLM _架構_。唔同於只支援單檔嘅既有方法，呢個 Agent 可以喺裝配場景嘅多檔工作區中調用 `spec`、`inspect`、`verify` 等工具，實現閉環修復。",
-  "*評測與結果*: 以可執行測試作為核心指標評估約束滿足率。喺裝配任務上，本方法取得 54.2% pass rate、41.9% all-tests success、2.4% 無效輸出，並喺保持幾何保真度嘅同時喺約束滿足方面優於基線。",
-  "*成果*: 1 篇論文已投稿至 _43rd International Conference on Machine Learning_（*ICML 2026*）並在審。",
+  "*Agent 基礎設施：* 構建咗具備固定工具鏈同可重現實驗環境嘅_多語言容器化程式碼執行沙箱_。設計咗可_橫向擴展_嘅後端，用於收集多條 Agent 軌跡同失敗記錄，以支撐大規模實驗可觀測性；同時實現咗用於快速除錯同產物生成嘅_輕量 Web Playground_。",
+  "*基準構建：* 基於從公開倉庫同 CAD 社群收集嘅 20 萬規模人工 CAD 程式碼語料，構建咗大規模基準。結合_確定性與啟發式規則_（例如模糊去重）同 LLM 流程，_降低數據污染_並_控制任務難度_；最終產出 1 萬個單零件任務同 1700 個裝配任務，並配套黃金參考工作區同可執行測試。",
+  "*Agent 設計：* 設計咗透過自測試同自修復生成或編輯 CAD 程式嘅 LLM _架構_。唔同於只支援單檔嘅既有方法，呢個 Agent 可以喺裝配場景嘅多檔工作區中調用 `spec`、`inspect`、`verify` 等工具，實現閉環修復。",
+  "*評測與結果：* 以可執行測試作為核心指標評估約束滿足率。喺裝配任務上，本方法取得 54.2% 通過率、41.9% 全測試通過率同 2.4% 無效輸出率，並喺保持幾何保真度嘅同時於約束滿足方面優於基線。",
+  "*成果：* 1 篇論文已投稿至 _第 43 屆國際機器學習大會_（*ICML 2026*）並在審。",
 ]
 
 [experience.exp-2]
-project = "Human-in-the-loop CAD Generation Workflow"
-role = "Leader"
-org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, Guangdong"
-start = "Dec 2024"
-end = "May 2025"
+project = "人在回路 CAD 生成工作流"
+role = "負責人"
+org = "製造技術與裝備國家重點實驗室"
+location = "中國廣東廣州"
+start = "2024 年 12 月"
+end = "2025 年 5 月"
 summary = "設計咗用於程式化 CAD 生成嘅 HITL Agent 工作流，喺保障程式碼有效性嘅同時兼顧人類偏好。"
 details = [
-  "*工作流設計*: 以微調後嘅 `Qwen2.5-VL-7B` 作為骨幹，融合多種程式碼生成工作流模式，涵蓋意圖澄清、有效性校驗、迭代優化、記憶同安全門控。",
-  "*結果*: 喺 200 個真實模型上以無效率同專家成對 Elo 評估，達到 2% 無效率同 1075.5 Elo 嘅最佳表現，優於 Claude、GPT-4o 同非 Agent 嘅 Qwen 基線。",
-  "*成果*: 1 篇論文已發表於 _Applied Soft Computing_。",
+  "*工作流設計：* 以微調後嘅 `Qwen2.5-VL-7B` 作為骨幹，融合多種程式碼生成工作流模式，涵蓋意圖澄清、有效性校驗、迭代優化、記憶同安全門控。",
+  "*結果：* 喺 200 個真實模型上以無效率同專家成對 Elo 評估，達到 2% 無效率同 1075.5 Elo 嘅最佳表現，優於 Claude、GPT-4o 同非 Agent 嘅 Qwen 基線。",
+  "*成果：* 1 篇論文已發表於 _Applied Soft Computing_。",
 ]
 
 [projects.project1]
-title = "Automated Color Difference Control & Calibration"
-role = "Lead Developer"
+title = "自動化色差控制與校準"
+role = "主導開發者"
 org = "Vograce"
-location = "Yiwu, Zhejiang"
-start = "Dec 2024"
-end = "Jul 2025"
+location = "中國浙江義烏"
+start = "2024 年 12 月"
+end = "2025 年 7 月"
 summary = "構建咗用於定制印刷生產閉環色彩一致性控制嘅機器視覺流程。"
 details = [
-  "*採集與檢測*: 設計光學採集環境並實現特徵匹配對齊同 ROI 提取，以適應唔同光照同材料反射條件下嘅多樣化印刷圖案，實現穩健嘅 $Delta E$（CIEDE2000）計算。",
-  "*算法*: 將 sRGB 測量值映射到 CMYK 空間，並採用自適應迭代步長反饋機制，將量測色差轉化為機台操作員可執行嘅墨量調整建議。",
-  "*結果*: 透過 `Gradio` 快速原型同多輪迭代，將完整「檢測-建議」流程優化到 ≤1 秒/張，喺試產線相對人工校色提速超過 20 倍；並進一步以 `Next.js` + `FastAPI` 構建全端生產系統，支援企業部署。",
-  "*成果*: 已獲得 2 項軟件著作權授權。",
+  "*採集與檢測：* 設計光學採集環境並實現特徵匹配對齊同 ROI 提取，以適應唔同光照同材料反射條件下嘅多樣化印刷圖案，實現穩健嘅 $Delta E$（CIEDE2000）計算。",
+  "*算法：* 將 sRGB 測量值映射到 CMYK 空間，並採用自適應迭代步長反饋機制，將量測色差轉化為印刷操作員可執行嘅墨量調整建議。",
+  "*結果：* 透過 `Gradio` 快速原型同多輪迭代，將完整檢測-建議流程優化到 ≤1 秒/張，喺試產線中相較人手校色提速超過 20 倍；並進一步以 `Next.js` 同 `FastAPI` 構建全端生產系統，支援企業部署。",
+  "*成果：* 已獲得 2 項軟件著作權授權。",
 ]
 
 
@@ -126,7 +126,7 @@ tldr = ""
 
 
 [skills.ai-engineering]
-label = "AI Engineering"
+label = "AI 工程"
 items = [
   "Python",
   "vLLM",
@@ -139,55 +139,55 @@ items = [
 
 
 [skills.languages]
-label = "Languages"
+label = "語言"
 items = [
-  "*English (TOEFL: 90)*",
-  "*Japanese (N1: 134)*",
-  "Chinese & Cantonese (native)",
-  "Korean (basic)",
+  "*英文（TOEFL：90）*",
+  "*日文（N1：134）*",
+  "中文同粵語（母語）",
+  "韓文（基礎）",
 ]
 
 [skills.web-dev]
-label = "Frontend"
+label = "前端"
 items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
 
 [skills.devops]
-label = "DevOps & Backend"
+label = "DevOps 同後端"
 items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
 
 [skills.interests]
-label = "Interests"
-items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
+label = "興趣"
+items = ["字體排印", "平面設計", "UI/UX 設計", "音樂遊戲"]
 
 [awards.award-1]
-name = "National Scholarship"
+name = "國家獎學金"
 date = "2025"
-from = "Ministry of Education, China"
+from = "中國教育部"
 details = "前 2%"
 
 [awards.award-2]
-name = "Scholarship in Academic Excellence"
+name = "學業優秀獎學金"
 date = "2024, 2025"
-from = "Guangdong University of Technology"
+from = "廣東工業大學"
 
 [awards.award-4]
-name = "Freshman Entrance Scholarship"
+name = "新生入學獎學金"
 date = "2023"
-from = "Guangdong University of Technology"
+from = "廣東工業大學"
 
 [awards.award-3]
-name = "Scholarship in Academic Excellence"
+name = "學業優秀獎學金"
 date = "2020, 2021, 2022"
-from = "Guangdong University of Finance & Economics"
+from = "廣東財經大學"
 
 # status values typically: Disclosed, Granted.
 
 [patents.patent-1]
 number = "202410273298.7"
-title = "Flexible needle puncture path planning based on deep reinforcement learning"
+title = "一種基於深度強化學習嘅柔性針穿刺路徑規劃方法"
 filed = "2024-03-11"
-status = "Disclosed"
-country = "CN"
+status = "公開"
+country = "中國"
 inventors = [
   "Leng J.",
   "Zheng K.",
@@ -200,38 +200,38 @@ inventors = [
 
 [patents.patent-2]
 number = "202410950697.2"
-title = "Interaction extraction and demand–manufacturing matching from service interaction context"
+title = "一種基於服務互動語境嘅互動提取同需求製造匹配方法"
 filed = "2024-07-16"
-status = "Disclosed"
-country = "CN"
+status = "公開"
+country = "中國"
 inventors = ["Leng J.", "Zheng K.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
 
 [patents.patent-3]
 number = "202410368790.2"
-title = "Unified value-chain middleware for manufacturing and its digital-twin system"
+title = "一種面向製造業嘅統一價值鏈中間件及其數碼孿生系統"
 filed = "2024-03-28"
-status = "Disclosed"
-country = "CN"
+status = "公開"
+country = "中國"
 inventors = ["Leng J.", "Zhong Y.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
 
 [patents.patent-4]
 number = "18/662,981"
-title = "Defect prediction methods based on multi-feature parallel multi-stage neural network (MF-PMSNN)"
+title = "一種基於多特徵並行多階段神經網絡（MF-PMSNN）嘅缺陷預測方法"
 filed = "2024-05-13"
-status = "Disclosed"
-country = "US"
+status = "公開"
+country = "美國"
 inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
 
 [copyrights.copyright-1]
-title = "Multi-feature fusion print color difference detection system"
+title = "多特徵融合印刷色差檢測系統"
 year = "2025"
-status = "Authorized"
-country = "China"
+status = "已授權"
+country = "中國"
 holders = ["Zheng K.", "Zhong Y.", "Leng J."]
 
 [copyrights.copyright-2]
-title = "Vision intelligence-based personalized print color difference analysis system"
+title = "基於視覺智能嘅個性化印刷色差分析系統"
 year = "2025"
-status = "Authorized"
-country = "China"
+status = "已授權"
+country = "中國"
 holders = ["Zheng K.", "Zhong Y.", "Leng J."]

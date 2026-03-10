@@ -6,9 +6,9 @@ furigana_name = "郑|恪|悠"
 furigana = "チェン|コッ|ヤオ"
 en_name = "Keyou (Key) Zheng"
 aliases = ["Zheng K."]
-location_label = "広州市、広東省"
+location_label = "中国広東省広州市"
 show_icons = false
-summary = "大規模言語モデルとAI駆動の設計自動化を専門とする、主体性の高い機械工学修士課程修了見込み者です。Code-CAD生成、エージェント型ワークフロー、産業応用向けHuman-in-the-loopシステムを中心に研究してきました。深層学習、フルスタック開発、DevOpsで実績があり、AIによる設計・製造技術の高度化を目指して博士課程進学の機会を希望しています。"
+summary = "大規模言語モデルと AI 駆動の設計自動化を専門とする、自律性の高い機械工学修士課程修了見込み者です。研究分野は、コードベース CAD 生成、エージェント型ワークフロー、産業応用に向けた Human-in-the-loop システムです。深層学習、フルスタック開発、DevOps における実績を持ち、AI による設計・製造技術の発展に向けて博士課程進学の機会を志望しています。"
 contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
@@ -17,46 +17,46 @@ contacts = [
 
 [sections]
 education = "学歴"
-experience = "研究プロジェクト"
+experience = "代表プロジェクト"
 publications = "発表論文"
 skills = "スキル"
 awards = "受賞歴"
 
 [education.education-1]
-institution = "Guangdong University of Technology"
-degree = "Mechanical Engineering, MEng."
-date = "Sep 2023 - Jun 2026 (Expected)"
+institution = "広東工業大学"
+degree = "機械工学 修士"
+date = "2023年9月 - 2026年6月（修了見込み）"
 details = [
-  "*GPA:* 3.62/4.0（上位2.5%）、指導教員 #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _検証器駆動の大規模言語モデルエージェントによるコードベース・パラメトリックCAD生成_（進行中）.",
+  "*GPA:* 3.62/4.0（上位 2.5%）、指導教員 #smallcaps(\"Jiewu Leng\");;",
+  "*修士論文：* _検証器駆動の大規模言語モデルエージェントによるコードベース・パラメトリック CAD 生成_（進行中）。",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
 [education.education-2]
-institution = "Guangdong University of Finance and Economics"
-degree = "Computer Science, BEng."
-date = "Sep 2019 - Jun 2023"
+institution = "広東財経大学"
+degree = "コンピュータサイエンス 学士"
+date = "2019年9月 - 2023年6月"
 details = [
-  "*GPA*: 3.5/4.0（上位5%）;",
-  "*Thesis:* _深層強化学習に基づくMarioゲームエージェントの設計と実装_.",
+  "*GPA:* 3.5/4.0（上位 5%）；",
+  "*卒業論文：* _深層強化学習に基づく Mario ゲームエージェントの設計と実装_。",
 ]
 
 
 [experience.exp-1]
-project = "Code-based CAD Assembly Generation"
+project = "コードベース CAD アセンブリ生成"
 stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
-role = "Leader"
-org = "State Key Lab of Manufacturing Technology & Equipment"
-location = "Guangzhou, China"
-start = "Aug 2025"
-end = "Present"
-summary = "実行可能な制約条件下で、制御可能なコードベースCAD生成のための検証可能ベンチマークとLLMエージェントを構築しました。"
+role = "リーダー"
+org = "製造技術・設備国家重点実験室"
+location = "中国広州"
+start = "2025年8月"
+end = "現在"
+summary = "実行可能な制約条件のもとで、制御可能なコードベース CAD 生成のための検証可能ベンチマークと LLM エージェントを構築しました。"
 details = [
-  "*エージェント基盤*: 固定ツールチェーンと再現可能実行を備えた_多言語・コンテナ化コード実行サンドボックス_を構築しました。大規模実験の可観測性のため、複数のエージェント軌跡と失敗を収集する_水平スケーラブル_なバックエンドを設計し、迅速なデバッグと成果物生成向けに_軽量Webプレイグラウンド_も実装しました。",
-  "*ベンチマーク構築*: 公開リポジトリとCADコミュニティから収集した20万件の人手CADコードコーパスを基にベンチマークを構築しました。_決定論的・ヒューリスティック規則_（例: あいまい重複排除）とLLMパイプラインを用いて_データ汚染を低減し課題難易度を制御_、ゴールデン参照ワークスペースと実行可能テスト付きで単体部品1万件・アセンブリ1,700件を作成しました。",
-  "*エージェント設計*: 自己テストと自己修復を通じてCADプログラムを生成・編集するLLM _アーキテクチャ_を設計しました。単一ファイルでしか機能しない従来法と異なり、アセンブリ向けマルチファイル環境で特定ツール（例: 自然言語から仕様を抽出する `spec` ツール）を利用し、クローズドループで修正を導けます。",
-  "*評価と結果*: 実行可能テストを主要指標として制約充足度を評価しました。アセンブリ課題で本手法は pass rate 54.2%、all-tests success 41.9%、invalid output 2.4% を達成し、幾何忠実性を保ちながら従来のLLM単体（例: GPT-5）およびツールベース手法を制約充足で上回りました。",
-  "*成果*: _43rd International Conference on Machine Learning_（*ICML 2026*）に論文1本を投稿し、査読中です。",
+  "*エージェント基盤：* 固定ツールチェーンと再現可能な実行環境を備えた_多言語・コンテナ化コード実行サンドボックス_を構築しました。複数のエージェント軌跡と失敗記録を収集できる_水平スケーラブル_なバックエンドを設計し、大規模実験の可観測性を確保しました。さらに、迅速なデバッグと成果物生成のための_軽量 Web プレイグラウンド_も実装しました。",
+  "*ベンチマーク構築：* 公開リポジトリと CAD コミュニティから収集した 20 万件の人手 CAD コードコーパスを基にベンチマークを構築しました。_決定論的・ヒューリスティック規則_（例: あいまい重複排除）と LLM パイプラインを組み合わせ、_データ汚染を低減し課題難易度を制御_しました。最終的に、ゴールデン参照ワークスペースと実行可能テスト付きで、単体部品 1 万件・アセンブリ 1,700 件を作成しました。",
+  "*エージェント設計：* 自己テストと自己修復を通じて CAD プログラムを生成・編集する LLM _アーキテクチャ_を設計しました。単一ファイル前提の従来手法と異なり、アセンブリ向けのマルチファイル環境で特定ツール（例: 自然言語から仕様を抽出する `spec` ツール）を利用し、クローズドループで修正を行えます。",
+  "*評価と結果：* 実行可能テストを主要指標として制約充足度を評価しました。アセンブリ課題では、pass rate 54.2%、all-tests success 41.9%、invalid output 2.4% を達成し、幾何忠実性を保ちながら、従来の LLM 単体（例: GPT-5）およびツール強化ベースラインより高い制約充足性能を示しました。",
+  "*成果：* 論文 1 本を _第43回国際機械学習会議_（*ICML 2026*）に投稿し、査読中です。",
 ]
 
 
@@ -93,7 +93,7 @@ tldr = ""
 
 
 [skills.ai-engineering]
-label = "AI Engineering"
+label = "AI エンジニアリング"
 items = [
   "Python",
   "vLLM",
@@ -106,42 +106,42 @@ items = [
 
 
 [skills.languages]
-label = "Languages"
+label = "言語"
 items = [
-  "*English (TOEFL: 90)*",
-  "*Japanese (N1: 134)*",
-  "Chinese & Cantonese (native)",
-  "Korean (basic)",
+  "*英語（TOEFL: 90）*",
+  "*日本語（N1: 134）*",
+  "中国語・広東語（母語）",
+  "韓国語（初級）",
 ]
 
 [skills.web-dev]
-label = "Frontend"
+label = "フロントエンド"
 items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
 
 [skills.devops]
-label = "DevOps & Backend"
+label = "DevOps・バックエンド"
 items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
 
 # [skills.interests]
-# label = "Interests"
-# items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
+# label = "関心分野"
+# items = ["タイポグラフィ", "グラフィックデザイン", "UI/UX デザイン", "リズムゲーム"]
 
 [awards.award-1]
-name = "National Scholarship (TOP 2%)"
+name = "国家奨学金（上位 2%）"
 date = "2025"
-from = "Ministry of Education, China"
+from = "中国教育部"
 
 [awards.award-2]
-name = "Scholarship in Academic Excellence"
+name = "学業優秀奨学金"
 date = "2024, 2025"
-from = "Guangdong University of Technology"
+from = "広東工業大学"
 
 [awards.award-4]
-name = "Freshman Entrance Scholarship"
+name = "新入生入学奨学金"
 date = "2023"
-from = "Guangdong University of Technology"
+from = "広東工業大学"
 
 [awards.award-3]
-name = "Scholarship in Academic Excellence"
+name = "学業優秀奨学金"
 date = "2020, 2021, 2022"
-from = "Guangdong University of Finance & Economics"
+from = "広東財経大学"

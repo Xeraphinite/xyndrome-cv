@@ -19,10 +19,10 @@ contacts = [
 education = "Education"
 experience = "Research Experience"
 publications = "Publications"
+projects = "Projects"
 patents = "Patents & Copyrights"
 patents_sub = "Patents"
 copyrights_sub = "Software Copyrights"
-projects = "Projects"
 skills = "Skills"
 awards = "Awards"
 
@@ -33,7 +33,7 @@ degree = "Mechanical Engineering, MEng."
 date = "Sep 2023 - Jun 2026 (Expected)"
 details = [
   "*GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _Verifier-Driven Code-based Parametric CAD Generation with Large Language Models Agent_ (Ongoing).",
+  "*Dissertation:* _A Verifier-Driven LLM Agent for Code-based Parametric CAD Generation _ (Ongoing).",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)

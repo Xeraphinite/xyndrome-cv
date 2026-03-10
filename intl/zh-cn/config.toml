@@ -1,41 +1,41 @@
 [page]
-margin_top = "1.25cm"
+margin_top = "1cm"
 margin_bottom = "1.25cm"
 margin_left = "1.6cm"
 margin_right = "1.6cm"
 
 [global]
 lang = "en"
-show_furigana = true
+show_furigana = false
 font_size = 10.5
-heading_size = 14
+heading_size = 13
 subheading_size = 10.5
-list_size = 10
-font_content = "Spectral"
+list_size = 9.5
+font_content = "IBM Plex Sans SC"
 font_content_cjk = "Noto Serif SC"
-font_title = "Rethink Sans"
-font_title_cjk = "IBM Plex Sans SC"
+font_title = "Noto Serif SC"
+font_title_cjk = "Noto Serif SC"
 name_font = "Noto Serif SC"
-font_mono = "Inconsolata"
+font_mono = "Maple Mono"
 font_math = "New Computer Modern Math"
 
 [header]
 name_size = 22
 original_name_size = 17
-contact_size = 11
+contact_size = 9
 
 [footer]
-show_name = true
+show_name = false
+show_updated = false
+show_page = false
 # text = "Full CV: #link(\"https://keyzh.pages.dev\")[`keyzh.pages.dev`]"
-show_updated = true
-updated_prefix = "Last Updated:"
-show_page = true
+updated_prefix = ""
 page_format = "1 of 1"
 
 [sections.default]
-font_title = "Rethink Sans"
-font_content = "Spectral"
+font_title = "Noto Serif SC"
+font_content = "IBM Plex Sans SC"
 
-[sections.skills]
-font_title = "IBM Plex Sans"
+[sections.publications]
+font_content = "Spectral"
 text_size = 10

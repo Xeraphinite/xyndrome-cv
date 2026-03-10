@@ -5,9 +5,19 @@
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
 #let list-size-override = state("list-size-override", none)
+#let title-font-override = state("title-font-override", none)
 
 #let render-cv(locale-path, config-path: none) = {
-  let empty-style = (text_size: none, heading_size: none, subheading_size: none, list_size: none)
+  let empty-style = (
+    text_size: none,
+    heading_size: none,
+    subheading_size: none,
+    list_size: none,
+    font_title: none,
+    font_title_cjk: none,
+    font_content: none,
+    font_content_cjk: none,
+  )
   let default-profile = (
     en_name: "",
     original_name: "",
@@ -32,9 +42,11 @@
       heading_size: 12,
       subheading_size: 10.5,
       list_size: 9,
-      font_serif: "Spectral",
-      font_serif_cjk: "Noto Serif SC",
-      font_sans: "Rethink Sans",
+      font_content: "Spectral",
+      font_content_cjk: "Noto Serif SC",
+      font_title: "Rethink Sans",
+      font_title_cjk: "IBM Plex Sans",
+      name_font: none,
       font_mono: "Inconsolata",
       font_math: "New Computer Modern Math",
       footer_size: 8,
@@ -100,9 +112,11 @@
   let subheading-size = to-length(global-config.at("subheading_size", default: none), base-font + 0.5pt)
   let list-size = to-length(global-config.at("list_size", default: none), base-font - 1pt)
   let footer-size = to-length(global-config.at("footer_size", default: none), base-font - 2pt)
-  let font-serif-primary = global-config.at("font_serif", default: "Spectral")
-  let font-serif-secondary = global-config.at("font_serif_cjk", default: "Noto Serif SC")
-  let font-sans = global-config.at("font_sans", default: "Rethink Sans")
+  let font-content = global-config.at("font_content", default: "Spectral")
+  let font-content-cjk = global-config.at("font_content_cjk", default: "Noto Serif SC")
+  let font-title = global-config.at("font_title", default: "Rethink Sans")
+  let font-title-cjk = global-config.at("font_title_cjk", default: "IBM Plex Sans")
+  let name-font = global-config.at("name_font", default: none)
   let font-mono = global-config.at("font_mono", default: "Inconsolata")
   let font-math = global-config.at("font_math", default: "New Computer Modern Math")
 
@@ -125,13 +139,40 @@
   let footer-page-format = footer-config.at("page_format", default: "1 of 1")
 
   let default-style = section-config.at("default", default: empty-style)
+  let style-value = (section-style, key, fallback: none) => {
+    let section-value = section-style.at(key, default: none)
+    if section-value != none {
+      section-value
+    } else {
+      let default-value = default-style.at(key, default: none)
+      if default-value != none { default-value } else { fallback }
+    }
+  }
   let style-for = section-name => {
     let section-style = section-config.at(section-name, default: empty-style)
     (
-      text_size: to-length(section-style.at("text_size", default: default-style.at("text_size", default: none)), none),
-      heading_size: to-length(section-style.at("heading_size", default: default-style.at("heading_size", default: none)), none),
-      subheading_size: to-length(section-style.at("subheading_size", default: default-style.at("subheading_size", default: none)), none),
-      list_size: to-length(section-style.at("list_size", default: default-style.at("list_size", default: none)), none),
+      text_size: to-length(style-value(section-style, "text_size"), none),
+      heading_size: to-length(style-value(section-style, "heading_size"), none),
+      subheading_size: to-length(style-value(section-style, "subheading_size"), none),
+      list_size: to-length(style-value(section-style, "list_size"), none),
+      font_title: (
+        (
+          name: style-value(section-style, "font_title", fallback: font-title),
+          covers: "latin-in-cjk",
+        ),
+        (
+          name: style-value(section-style, "font_title_cjk", fallback: font-title-cjk),
+        ),
+      ),
+      font_content: (
+        (
+          name: style-value(section-style, "font_content", fallback: font-content),
+          covers: "latin-in-cjk",
+        ),
+        (
+          name: style-value(section-style, "font_content_cjk", fallback: font-content-cjk),
+        ),
+      ),
     )
   }
 
@@ -164,9 +205,11 @@
     heading_size: heading-size,
     subheading_size: subheading-size,
     list_size: list-size,
-    font_serif_primary: font-serif-primary,
-    font_serif_secondary: font-serif-secondary,
-    font_sans: font-sans,
+    font_content: font-content,
+    font_content_cjk: font-content-cjk,
+    font_title: font-title,
+    font_title_cjk: font-title-cjk,
+    name_font: name-font,
     font_mono: font-mono,
     font_math: font-math,
     header_name_size: header-name-size,
@@ -191,6 +234,8 @@
       heading-size-override.update(section-style.at("heading_size"))
       subheading-size-override.update(section-style.at("subheading_size"))
       list-size-override.update(section-style.at("list_size"))
+      title-font-override.update(section-style.at("font_title"))
+      set text(font: section-style.at("font_content"))
       if section-style.at("text_size") != none {
         set text(size: section-style.at("text_size"))
       }

@@ -4,6 +4,7 @@
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
 #let list-size-override = state("list-size-override", none)
+#let title-font-override = state("title-font-override", none)
 
 #let cv(
   en_name: "",
@@ -23,9 +24,11 @@
   heading_size: 12pt,
   subheading_size: 10.5pt,
   list_size: 9pt,
-  font_serif_primary: "Spectral",
-  font_serif_secondary: "Noto Serif SC",
-  font_sans: "Rethink Sans",
+  font_content: "Spectral",
+  font_content_cjk: "Noto Serif SC",
+  font_title: "Rethink Sans",
+  font_title_cjk: "IBM Plex Sans",
+  name_font: none,
   font_mono: "Inconsolata",
   font_math: "New Computer Modern Math",
   header_name_size: 18pt,
@@ -60,18 +63,27 @@
   set document(author: full_name_text, title: full_name_text, date: updated)
 
   let font_configs = (
-    serif: (
-      (name: font_serif_primary, covers: "latin-in-cjk"),
-      (name: font_serif_secondary),
+    content: (
+      (name: font_content, covers: "latin-in-cjk"),
+      (name: font_content_cjk),
     ),
-    sans: (
-      (name: font_sans, covers: "latin-in-cjk"),
+    title: (
+      (name: font_title, covers: "latin-in-cjk"),
+      (name: font_title_cjk),
     ),
     mono: (
       (name: font_mono, covers: "latin-in-cjk"),
     ),
     math: font_math,
   )
+  let original-name-font = if name_font == none or name_font == "" {
+    font_configs.content
+  } else {
+    (
+      (name: name_font, covers: "latin-in-cjk"),
+      (name: font_content_cjk),
+    )
+  }
 
   show raw: it => box(
     text(font: font_configs.mono, weight: 500, it, size: 1.2em),
@@ -98,7 +110,7 @@
     set text(
       size: text_size,
       lang: lang,
-      font: font_configs.serif,
+      font: font_configs.content,
       fill: luma(20%),
     )
     doc
@@ -106,11 +118,12 @@
 
   show heading.where(level: 1): it => context {
     let section-heading-size = heading-size-override.get()
+    let section-title-font = title-font-override.get()
     pad(
       top: 0pt,
       bottom: 0.6em,
       text(
-        font: font_configs.sans,
+        font: if section-title-font == none { font_configs.title } else { section-title-font },
         size: if section-heading-size == none { heading_size } else { section-heading-size },
         weight: "black",
         it.body,
@@ -119,11 +132,12 @@
   }
   show heading.where(level: 2): it => context {
     let section-subheading-size = subheading-size-override.get()
+    let section-title-font = title-font-override.get()
     pad(
       top: -0.2em,
       bottom: 0.3em,
       text(
-        font: font_configs.sans,
+        font: if section-title-font == none { font_configs.title } else { section-title-font },
         size: if section-subheading-size == none { subheading_size } else { section-subheading-size },
         weight: "bold",
         it.body,
@@ -168,17 +182,18 @@
   )
 
   align(center)[
-    #block(text(size: header_name_size, weight: header_name_weight, font: font_configs.serif, [#smallcaps(en_name) #h(0.4em) #{
+    #block(text(size: header_name_size, weight: header_name_weight, font: font_configs.content, [#smallcaps(en_name) #h(0.4em) #{
       let show-ruby = (
         show_furigana and resolved-furigana != none and resolved-furigana != ""
         and resolved-furigana-name != none and resolved-furigana-name != ""
         and resolved-furigana.contains("|") and resolved-furigana-name.contains("|")
       )
       if show-ruby {
-        text(size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
+        text(font: original-name-font, size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
       } else {
         text(
           original_name,
+          font: original-name-font,
           size: header_original_name_size,
           weight: header_original_name_weight,
         )
