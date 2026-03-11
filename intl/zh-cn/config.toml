@@ -7,35 +7,35 @@ margin_right = "1.6cm"
 [global]
 lang = "en"
 show_furigana = false
-font_size = 10.5
+font_size = 10
 heading_size = 13
 subheading_size = 10.5
-list_size = 9.5
-font_content = "IBM Plex Sans SC"
-font_content_cjk = "Noto Serif SC"
+list_size = 9
+font_content = "MiSans"
 font_title = "Noto Serif SC"
-font_title_cjk = "Noto Serif SC"
 name_font = "Noto Serif SC"
 font_mono = "Maple Mono"
 font_math = "New Computer Modern Math"
 
 [header]
-name_size = 22
-original_name_size = 17
+alignment = "left"
+original_name_size = 20
+job_intent_size = 10
 contact_size = 9
+show_avatar = true
+avatar_size = "1.8cm"
+avatar_path = "../assets/avatar.png"
 
 [footer]
 show_name = false
 show_updated = false
-show_page = false
-# text = "Full CV: #link(\"https://keyzh.pages.dev\")[`keyzh.pages.dev`]"
-updated_prefix = ""
-page_format = "1 of 1"
-
-[sections.default]
-font_title = "Noto Serif SC"
-font_content = "IBM Plex Sans SC"
+show_page = true
+page_format = "1 / 1"
 
 [sections.publications]
 font_content = "Spectral"
 text_size = 10
+
+[sections.skills]
+font_content = "MiSans"
+text_size = 9.5

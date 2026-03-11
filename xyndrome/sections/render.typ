@@ -1,6 +1,6 @@
 #import "index.typ": *
 #import "../icons.typ": *
-#import "../components/ui.typ": contact, badge
+#import "../components/ui.typ": contact
 #import "../utils.typ": bullet-list, format-people, has-text, opt-text, rich
 
 #let icon-map = (
@@ -129,23 +129,7 @@
 #let render-skill-item(item) = {
   if type(item) == dictionary {
     let text = item.at("text", default: item.at("name", default: none))
-    let category = item.at("category", default: item.at("badge", default: none))
-    let content = rich(text)
-    if content == none { none }
-    else if category == none or category == "" { content }
-    else {
-      [
-        #content #h(0.18em)
-        #badge(
-          label: category,
-          text-size: 0.62em,
-          padding: (x: 0.22em, y: 0.14em),
-          radius: 0.18em,
-          fill: luma(95%),
-          stroke: luma(72%),
-        )
-      ]
-    }
+    rich(text)
   } else {
     rich(item)
   }
@@ -278,16 +262,16 @@
 )
 
 #let section-dispatch = (
-  education: (titles, get-section, aliases) => render-education(get-section("education")),
-  experience: (titles, get-section, aliases) => render-experience(get-section("experience")),
-  publications: (titles, get-section, aliases) => {
+  education: (titles, get-section, aliases, styled) => styled("education", () => render-education(get-section("education"))),
+  experience: (titles, get-section, aliases, styled) => styled("experience", () => render-experience(get-section("experience"))),
+  publications: (titles, get-section, aliases, styled) => styled("publications", () => {
     let publications-sub = section-title(titles, "publications_sub", default: none)
     if has-text(publications-sub) {
       sec-heading(level: 2, title: publications-sub)
     }
     render-publications(get-section("publications"), aliases)
-  },
-  patents: (titles, get-section, aliases) => {
+  }),
+  patents: (titles, get-section, aliases, styled) => styled("patents", () => {
     let patents-sub = section-title(titles, "patents_sub", default: none)
     if has-text(patents-sub) {
       v(-0.5em)
@@ -296,27 +280,31 @@
     render-patents(get-section("patents"), aliases)
     if get-section("copyrights") != none {
       v(0.5em)
-      let copyrights-sub = section-title(titles, "copyrights_sub", default: none)
-      if has-text(copyrights-sub) {
-        sec-heading(level: 2, title: copyrights-sub)
-      }
-      render-copyrights(get-section("copyrights"), aliases)
+      styled("copyrights", () => {
+        let copyrights-sub = section-title(titles, "copyrights_sub", default: none)
+        if has-text(copyrights-sub) {
+          sec-heading(level: 2, title: copyrights-sub)
+        }
+        render-copyrights(get-section("copyrights"), aliases)
+      })
     }
-  },
-  projects: (titles, get-section, aliases) => render-projects(get-section("projects")),
-  skills: (titles, get-section, aliases) => render-skills(get-section("skills")),
-  artifacts: (titles, get-section, aliases) => render-artifacts(get-section("artifacts")),
-  awards: (titles, get-section, aliases) => render-awards(get-section("awards")),
-  serving: (titles, get-section, aliases) => render-serving(get-section("serving")),
+  }),
+  projects: (titles, get-section, aliases, styled) => styled("projects", () => render-projects(get-section("projects"))),
+  skills: (titles, get-section, aliases, styled) => styled("skills", () => {
+    render-skills(get-section("skills"))
+  }),
+  artifacts: (titles, get-section, aliases, styled) => styled("artifacts", () => render-artifacts(get-section("artifacts"))),
+  awards: (titles, get-section, aliases, styled) => styled("awards", () => render-awards(get-section("awards"))),
+  serving: (titles, get-section, aliases, styled) => styled("serving", () => render-serving(get-section("serving"))),
 )
 
-#let render-section(section, titles, get-section, aliases) = {
+#let render-section(section, titles, get-section, aliases, styled) = {
   let handler = section-dispatch.at(section, default: none)
   if handler == none {
     none
   } else {
     let heading-title = section-title(titles, section, default: section-default-title.at(section, default: section))
     sec-heading(icon: section-icon.at(section, default: none), title: heading-title)
-    handler(titles, get-section, aliases)
+    handler(titles, get-section, aliases, styled)
   }
 }

@@ -13,6 +13,10 @@ Always record reusable project rules here after structural/template changes.
 ## Folder Rules
 
 - `intl/` must contain TOML files only.
+- Bundled Typst font assets live under `fonts/`.
+- Reusable non-font binary assets such as profile images live under `assets/`.
+- Vendored static Mi Sans TTFs for Simplified Chinese live under `fonts/misans/static/`.
+- Use the static `MiSans` family for Typst; do not rely on the variable font file because Typst does not support VF here.
 - Language entry `.typ` files are at repo root:
   - `main-ja.typ`
   - `main-zh-cn.typ`
@@ -39,6 +43,7 @@ Always record reusable project rules here after structural/template changes.
   - `list_size`
   - `font_title` + `font_title_cjk`
   - `font_content` + `font_content_cjk`
+- Section style blocks apply to every rendered section name, including nested rendered content such as `[sections.copyrights]`.
 - Profile and CV content are in each CV TOML (for example `cv-1p.toml`).
 - Furigana fields in profile:
   - `original_name`
@@ -53,6 +58,12 @@ Always record reusable project rules here after structural/template changes.
   - line 2: `role` (left), `place` (right, from `org` and `location`)
   - `stack` can be comma-separated text (or array) and each stack token renders as mono; commas remain serif.
 - Header contacts are rendered as boxed inline items with explicit baseline and spacing for vertical centering consistency.
+- Header config supports:
+  - `alignment` with `center` or `left`
+  - `show_avatar` + `avatar_size` for a right-side placeholder avatar block
+  - `avatar_path` for a header image asset
+  - `job_intent_size` for inline `profile.job_intent` text after `original_name`
+- Profile supports optional `job_intent` for header-only intent text.
 - `create-icon` in `xyndrome/icons.typ` supports per-side `inset` padding and full `outset` spacing (`left`/`right`/`top`/`bottom`) via native `box(..., outset: ...)`.
 - Specific icon wrappers should be defined via `create-icon.with(...)` (or alias `.with(...)`) to avoid duplicated default parameter signatures; keep `inset`/`outset` only on `create-icon`.
 
@@ -90,6 +101,7 @@ Always record reusable project rules here after structural/template changes.
 
 - English: `typst compile main.typ`
 - Japanese: `typst compile --root . main-ja.typ cv-ja.pdf`
-- Simplified Chinese: `typst compile --root . main-zh-cn.typ cv-zh-cn.pdf`
+- Simplified Chinese uses vendored Mi Sans. Add `--font-path fonts` unless Mi Sans is installed system-wide.
+- Simplified Chinese: `typst compile --root . --font-path fonts main-zh-cn.typ cv-zh-cn.pdf`
 - Traditional Chinese/Cantonese: `typst compile --root . main-zh-hk.typ cv-zh-hk.pdf`
 - Korean: `typst compile --root . main-ko.typ cv-ko.pdf`

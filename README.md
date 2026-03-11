@@ -30,7 +30,7 @@ typst compile --root . main-ja.typ cv-ja.pdf
 
 #### Simplified Chinese (简体中文)
 ```bash
-typst compile --root . main-zh-cn.typ cv-zh-cn.pdf
+typst compile --root . --font-path fonts main-zh-cn.typ cv-zh-cn.pdf
 ```
 
 #### Traditional Chinese / Cantonese (繁體中文/粵語)
@@ -52,6 +52,7 @@ xyndrome-cv/
 ├── main-zh-cn.typ           # Simplified Chinese entrypoint
 ├── main-zh-hk.typ           # Traditional Chinese/Cantonese entrypoint
 ├── main-ko.typ              # Korean entrypoint
+├── fonts/                   # Bundled local fonts for Typst
 ├── intl/                    # International TOML data only
 │   ├── ja/                  # Japanese
 │   │   └── cv-ja.toml
@@ -73,6 +74,12 @@ xyndrome-cv/
 ```
 
 ## Fonts & icons
+
+Bundled project fonts:
+
+- Simplified Chinese body text uses static Xiaomi HyperOS MiSans TTFs from `fonts/misans/static/`.
+- Use the `MiSans` family in Typst; do not rely on the variable font file.
+- When building with bundled fonts, include `--font-path fonts` unless the same font is already installed system-wide.
 
 We use the following open-source fonts:
 

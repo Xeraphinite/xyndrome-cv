@@ -49,7 +49,6 @@ details = [
 
 [experience.exp-1]
 project = "Code-based CAD Assembly Generation"
-# stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
 role = "Leader"
 org = "State Key Lab of Manufacturing Technology & Equipment"
 location = "Guangzhou, Guangdong"
@@ -57,9 +56,9 @@ start = "Aug 2025"
 end = "Present"
 summary = "Built a verifiable benchmark and an LLM agent for controllable code-based CAD generation under executable constraints."
 details = [
-  "*Agent Infra*: Built a _multi-language, containerized code execution sandbox_ with pinned toolchains and reproducible runs. Designed a _horizontally scalable_ backend which captures multiple agent trajectories and failures for large-scale experiment observability. Also built a _lightweight web playground_ for fast debugging and artifact generation.",
+  "*Agent Infra*: Built a _multi-language, containerized code execution sandbox_ with pinned toolchains and reproducible runs. Designed a _horizontally scalable_ backend which captures multiple agent trajectories and failures for large-scale experiment observability. Also built a _lightweight web playground_ and _TUI_ for fast iterating.",
   "*Benchmark Construction*: Built a large-scale benchmark from a 200k human CAD code corpus collected from public repos and CAD communities. Filtered with _deterministic and heuristic rules_ (e.g., fuzzy deduplication), and an LLM-based pipeline to _reduce data contamination_ and _control task difficulty_. Produced 10k single-part tasks and 1.7k assembly tasks with golden reference workspaces and executable tests.",
-  "*Agent Design*: Designed _architecture_ for LLMs to generate or edit CAD programs through self-testing and self-repairing. Different from prior methods that only work in a single file, the agent could use specific tools (e.g., `spec`, `inspect`, `verify`) in multi-file workspaces for assemblies, guiding fixes in a closed loop.",
+  "*Agent Design*: Designed _architecture_ for LLMs to generate and edit CAD programs through self-testing and self-repairing. Different from prior methods that only work in a single file, the agent could use specific tools (e.g., `spec`, `inspect`, `verify`) in multi-file workspace for assemblies following a state-machine to generate controllable code.",
   "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming baselines on constraint satisfaction while keeping geometry fidelity.",
   "*Outcome*: One paper is under review at _43rd International Conference on Machine Learning_ (*ICML 2026*).",
 ]

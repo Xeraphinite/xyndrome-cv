@@ -4,6 +4,7 @@
 original_name = "郑恪悠"
 furigana_name = "郑|恪|悠"
 furigana = "チェン|コッ|ヤオ"
+job_intent = "_求职意向_ 博士机会"
 en_name = "Keyou (Key) Zheng"
 aliases = ["Zheng K."]
 location_label = "广州，广东"
@@ -23,6 +24,7 @@ patents = "专利与著作权"
 patents_sub = "专利"
 copyrights_sub = "软件著作权"
 projects = "项目经历"
+artifacts = "Artifacts"
 skills = "技能"
 awards = "获奖情况"
 
@@ -91,6 +93,24 @@ details = [
   "*结果*: 通过 `Gradio` 快速原型与多轮迭代，将完整“检测-推荐”流水线优化到 ≤1 秒/张，在试产线中相较人工校色提速超过 20 倍；并进一步以 `Next.js` + `FastAPI` 构建全栈生产系统，支持企业部署。",
   "*成果*: 已获得 2 项软件著作权授权。",
 ]
+
+[artifacts.artifact-1]
+name = "Ringrad"
+tech = ["MLX", "Python"]
+description = "面向 Apple Silicon 的极简自动微分实验项目"
+year = "2024"
+
+[artifacts.artifact-2]
+name = "kits(une)"
+tech = ["vLLM", "TypeScript", "Next.js"]
+description = "围绕大语言模型工作流的复现与整合项目集合"
+year = "2025"
+
+[artifacts.artifact-3]
+name = "Xyndrome CV"
+tech = ["Typst", "TOML", "Multilingual"]
+description = "支持多语言配置与统一样式体系的简历模板项目"
+year = "2025"
 
 
 [publications.publication-1]

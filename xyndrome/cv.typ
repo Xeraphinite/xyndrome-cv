@@ -5,6 +5,7 @@
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
 #let list-size-override = state("list-size-override", none)
+#let text-size-override = state("text-size-override", none)
 #let title-font-override = state("title-font-override", none)
 
 #let render-cv(locale-path, config-path: none) = {
@@ -23,6 +24,7 @@
     original_name: "",
     furigana_name: none,
     furigana: none,
+    job_intent: none,
     aliases: (),
     location_label: none,
     show_icons: true,
@@ -56,7 +58,12 @@
       name_weight: "bold",
       original_name_size: 15.3,
       original_name_weight: "black",
+      alignment: "center",
+      job_intent_size: 10.5,
       contact_size: 9,
+      show_avatar: false,
+      avatar_size: "1.8cm",
+      avatar_path: none,
     ),
     footer: (
       show_name: true,
@@ -104,6 +111,7 @@
   let show-icons = profile-value("show_icons", default: default-profile.show_icons)
   let location-label = profile-value("location_label", default: default-profile.location_label)
   let contacts = profile-value("contacts", default: default-profile.contacts)
+  let job-intent = rich(profile-value("job_intent", default: none))
 
   let lang = global-config.at("lang", default: "en")
   let show-furigana = global-config.at("show_furigana", default: true)
@@ -124,7 +132,12 @@
   let header-name-weight = header-config.at("name_weight", default: "bold")
   let header-original-size = to-length(header-config.at("original_name_size", default: none), 15.3pt)
   let header-original-weight = header-config.at("original_name_weight", default: "black")
+  let header-alignment = header-config.at("alignment", default: "center")
+  let header-job-intent-size = to-length(header-config.at("job_intent_size", default: none), 10.5pt)
   let header-contact-size = to-length(header-config.at("contact_size", default: none), 9pt)
+  let header-show-avatar = header-config.at("show_avatar", default: false)
+  let header-avatar-size = parse-length(header-config.at("avatar_size", default: none), 1.8cm)
+  let header-avatar-path = header-config.at("avatar_path", default: none)
 
   let page-margin-top = parse-length(page-config.at("margin_top", default: none), 1.25cm)
   let page-margin-bottom = parse-length(page-config.at("margin_bottom", default: none), 1.25cm)
@@ -189,6 +202,21 @@
   let get-section = section => {
     if locale-data.at(section, default: none) == none { none } else { locale-data.at(section) }
   }
+  let render-with-style = (section-name, body-fn) => {
+    let section-style = style-for(section-name)
+    context {
+      heading-size-override.update(section-style.at("heading_size"))
+      subheading-size-override.update(section-style.at("subheading_size"))
+      list-size-override.update(section-style.at("list_size"))
+      text-size-override.update(section-style.at("text_size"))
+      title-font-override.update(section-style.at("font_title"))
+      set text(font: section-style.at("font_content"))
+      if section-style.at("text_size") != none {
+        set text(size: section-style.at("text_size"))
+      }
+      body-fn()
+    }
+  }
 
   show: cv.with(
     page_margin_top: page-margin-top,
@@ -216,7 +244,13 @@
     header_name_weight: header-name-weight,
     header_original_name_size: header-original-size,
     header_original_name_weight: header-original-weight,
+    header_alignment: header-alignment,
+    header_job_intent: job-intent,
+    header_job_intent_size: header-job-intent-size,
     header_contact_size: header-contact-size,
+    header_show_avatar: header-show-avatar,
+    header_avatar_size: header-avatar-size,
+    header_avatar_path: header-avatar-path,
     footer_size: footer-size,
     footer_show_name: footer-show-name,
     footer_text: footer-text,
@@ -229,17 +263,6 @@
   )
 
   for section in section-order {
-    let section-style = style-for(section)
-    context {
-      heading-size-override.update(section-style.at("heading_size"))
-      subheading-size-override.update(section-style.at("subheading_size"))
-      list-size-override.update(section-style.at("list_size"))
-      title-font-override.update(section-style.at("font_title"))
-      set text(font: section-style.at("font_content"))
-      if section-style.at("text_size") != none {
-        set text(size: section-style.at("text_size"))
-      }
-      render-section(section, titles, get-section, aliases)
-    }
+    render-section(section, titles, get-section, aliases, render-with-style)
   }
 }

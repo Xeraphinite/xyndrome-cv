@@ -4,6 +4,7 @@
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
 #let list-size-override = state("list-size-override", none)
+#let text-size-override = state("text-size-override", none)
 #let title-font-override = state("title-font-override", none)
 
 #let cv(
@@ -35,7 +36,13 @@
   header_name_weight: "bold",
   header_original_name_size: 15.3pt,
   header_original_name_weight: "black",
+  header_alignment: "center",
+  header_job_intent: none,
+  header_job_intent_size: 10.5pt,
   header_contact_size: 9pt,
+  header_show_avatar: false,
+  header_avatar_size: 1.8cm,
+  header_avatar_path: none,
   footer_size: 8pt,
   footer_show_name: true,
   footer_text: none,
@@ -86,13 +93,22 @@
   }
 
   show raw: it => box(
-    text(font: font_configs.mono, weight: 500, it, size: 1.2em),
+    text(font: font_configs.mono, weight: 500, it, size: 1.15em),
   )
 
   show link: it => underline(
     stroke: (dash: "dashed"),
     offset: 0.2em,
   )[#it]
+
+  show strong: it => {
+    let strong-weight = if font_content == "MiSans" or font_content_cjk == "MiSans" {
+      "semibold"
+    } else {
+      "bold"
+    }
+    text(weight: strong-weight, it.body)
+  }
 
   show list: it => context {
     let section-list-size = list-size-override.get()
@@ -181,42 +197,103 @@
     ],
   )
 
-  align(center)[
-    #block(text(size: header_name_size, weight: header_name_weight, font: font_configs.content, [#smallcaps(en_name) #h(0.4em) #{
-      let show-ruby = (
-        show_furigana and resolved-furigana != none and resolved-furigana != ""
-        and resolved-furigana-name != none and resolved-furigana-name != ""
-        and resolved-furigana.contains("|") and resolved-furigana-name.contains("|")
+  let header-align = if header_alignment == "left" { start } else { center }
+  let contact-info = contacts
+  if address != none and address != "" {
+    contact-info.push([#smallcaps(address)])
+  }
+  let contact-items = contact-info.map(item => box(baseline: 32%)[#item])
+  let original-name-content = {
+    let show-ruby = (
+      show_furigana and resolved-furigana != none and resolved-furigana != ""
+      and resolved-furigana-name != none and resolved-furigana-name != ""
+      and resolved-furigana.contains("|") and resolved-furigana-name.contains("|")
+    )
+    if show-ruby {
+      text(font: original-name-font, size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
+    } else {
+      text(
+        original_name,
+        font: original-name-font,
+        size: header_original_name_size,
+        weight: header_original_name_weight,
       )
-      if show-ruby {
-        text(font: original-name-font, size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
-      } else {
-        text(
-          original_name,
-          font: original-name-font,
-          size: header_original_name_size,
-          weight: header_original_name_weight,
-        )
-      }
-    }]))
-  ]
-
-  pad(
-    top: 2pt,
-    align(center)[
-      #{
-        let contact_info = contacts
-        if address != none and address != "" {
-          contact_info.push([#smallcaps(address)])
+    }
+  }
+  let header-info = [
+    #if header_alignment == "left" {
+      stack(
+        dir: ttb,
+        spacing: 0.1em,
+        text(size: header_name_size, weight: header_name_weight, font: font_configs.content)[#smallcaps(en_name)],
+        block([
+          #if original_name != none and original_name != "" {
+            original-name-content
+          }
+          #if header_job_intent != none {
+            h(0.55em)
+            text(size: header_job_intent_size, weight: "medium", fill: luma(45%))[#header_job_intent]
+          }
+        ]),
+      )
+    } else {
+      block(text(size: header_name_size, weight: header_name_weight, font: font_configs.content, [
+        #smallcaps(en_name)
+        #if original_name != none and original_name != "" {
+          [#h(0.4em)#original-name-content]
         }
-        let contact_items = contact_info.map(item => box(baseline: 32%)[#item])
-        [
+        #if header_job_intent != none {
+          [#h(0.55em)#text(size: header_job_intent_size, weight: "medium", fill: luma(45%))[#header_job_intent]]
+        }
+      ]))
+    }
+    #if contact-items.len() > 0 {
+      pad(
+        top: 2pt,
+        align(header-align)[
           #set text(size: header_contact_size)
-          #contact_items.join(h(0.75em))
+          #contact-items.join(h(0.75em))
+        ],
+      )
+    }
+  ]
+  context {
+    let header-info-height = measure(header-info).height
+    let header-avatar = if header_avatar_path != none and header_avatar_path != "" {
+      block(
+        radius: 18%,
+        clip: true,
+        inset: 0pt,
+      )[
+        #image(header_avatar_path, height: header-info-height)
+      ]
+    } else {
+      rect(
+        width: header_avatar_size,
+        height: header-info-height,
+        radius: 18%,
+        inset: 0pt,
+        fill: rgb("#f6f1e8"),
+        stroke: (paint: rgb("#d6cab5"), thickness: 0.8pt),
+      )[
+        #place(center + horizon)[
+          #text(size: 7pt, weight: "medium", fill: luma(55%))[PHOTO]
         ]
-      }
-    ],
-  )
+      ]
+    }
+
+    if header_show_avatar {
+      grid(
+        columns: (1fr, auto),
+        column-gutter: 0.8cm,
+        align: (start, top),
+        align(top + header-align)[#header-info],
+        align(top + right)[#header-avatar],
+      )
+    } else {
+      align(header-align)[#header-info]
+    }
+  }
 
   body
 }

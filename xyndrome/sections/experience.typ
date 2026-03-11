@@ -105,7 +105,7 @@
       ]
     ],
   )
-
+  
   if has-role or has-place [
     #v(-0.5em)
     #grid(
@@ -122,6 +122,8 @@
       ],
     )
     #v(-0.2em)
+  ] else [
+    #v(-0.3em)
   ]
 
   if summary != none [
