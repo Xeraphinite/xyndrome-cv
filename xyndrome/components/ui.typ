@@ -2,6 +2,7 @@
 
 /// Global toggle for icon rendering.
 #let icons-enabled = state("icons-enabled", true)
+#let current-lang = state("current-lang", "en")
 
 /// Render one icon from icon function or content.
 #let render-icon(
@@ -118,6 +119,63 @@
   }
 }
 
+#let is-et-al(author) = {
+  if type(author) != str {
+    false
+  } else {
+    let normalized = author.trim()
+    (
+      "et al.",
+      "et al",
+      "Et al.",
+      "Et al",
+      "ET AL.",
+      "ET AL",
+      "et. al.",
+      "et. al",
+      "Et. al.",
+      "Et. al",
+      "ET. AL.",
+      "ET. AL",
+      "等",
+    ).contains(normalized)
+  }
+}
+
+#let localized-et-al() = context {
+  let lang = current-lang.get()
+  if lang == "zh" or lang == "zh-cn" or lang == "zh-hk" {
+    [等]
+  } else if lang == "ja" {
+    [ほか]
+  } else if lang == "ko" {
+    [외]
+  } else {
+    [et al.]
+  }
+}
+
+#let et-al-prefix() = context {
+  let lang = current-lang.get()
+  if lang == "zh" or lang == "zh-cn" or lang == "zh-hk" or lang == "ja" or lang == "ko" {
+    []
+  } else {
+    [#h(0.15em)]
+  }
+}
+
+#let render-author(author, format: "full", custom-formatter: none) = {
+  if is-et-al(author) {
+    localized-et-al()
+  } else if format == "short" {
+    short-name(author)
+  } else if format == "custom" and custom-formatter != none {
+    custom-formatter(author)
+  } else {
+    smallcaps(author)
+  }
+}
+
 #let authors-component(
   authors: (),
   format: "full",
@@ -125,24 +183,20 @@
   custom-formatter: none,
 ) = {
   if type(authors) == array {
-    let formatted = authors.map(author => {
-      if format == "short" {
-        short-name(author)
-      } else if format == "custom" and custom-formatter != none {
-        custom-formatter(author)
+    let pieces = ()
+    for (index, author) in authors.enumerate() {
+      let rendered = render-author(author, format: format, custom-formatter: custom-formatter)
+      if index == 0 {
+        pieces.push(rendered)
+      } else if is-et-al(author) {
+        pieces.push([#et-al-prefix()#rendered])
       } else {
-        smallcaps(author)
+        pieces.push([#separator#rendered])
       }
-    })
-    formatted.join(separator)
-  } else {
-    if format == "short" {
-      short-name(authors)
-    } else if format == "custom" and custom-formatter != none {
-      custom-formatter(authors)
-    } else {
-      smallcaps(authors)
     }
+    pieces.join()
+  } else {
+    render-author(authors, format: format, custom-formatter: custom-formatter)
   }
 }
 

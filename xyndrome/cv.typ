@@ -7,13 +7,31 @@
 #let list-size-override = state("list-size-override", none)
 #let text-size-override = state("text-size-override", none)
 #let title-font-override = state("title-font-override", none)
+#let heading-gap-override = state("heading-gap-override", none)
+#let section-gap-override = state("section-gap-override", none)
 
 #let render-cv(locale-path, config-path: none) = {
+  let display-lang-from-path = path => {
+    let normalized = str(path)
+    if normalized.contains("zh-cn") {
+      "zh-cn"
+    } else if normalized.contains("zh-hk") {
+      "zh-hk"
+    } else if normalized.contains("\\ja\\") or normalized.contains("/ja/") or normalized.contains("cv-ja") {
+      "ja"
+    } else if normalized.contains("\\ko\\") or normalized.contains("/ko/") or normalized.contains("cv-ko") {
+      "ko"
+    } else {
+      none
+    }
+  }
   let empty-style = (
     text_size: none,
     heading_size: none,
+    heading_gap: none,
     subheading_size: none,
     list_size: none,
+    section_gap: none,
     font_title: none,
     font_title_cjk: none,
     font_content: none,
@@ -42,8 +60,10 @@
       show_furigana: true,
       font_size: 10,
       heading_size: 12,
+      heading_gap: "0.6em",
       subheading_size: 10.5,
       list_size: 9,
+      section_gap: "0pt",
       font_content: "Spectral",
       font_content_cjk: "Noto Serif SC",
       font_title: "Rethink Sans",
@@ -114,11 +134,19 @@
   let job-intent = rich(profile-value("job_intent", default: none))
 
   let lang = global-config.at("lang", default: "en")
+  let display-lang = if global-config.at("display_lang", default: none) != none {
+    global-config.at("display_lang")
+  } else {
+    let inferred = display-lang-from-path(locale-path)
+    if inferred == none { lang } else { inferred }
+  }
   let show-furigana = global-config.at("show_furigana", default: true)
   let base-font = to-length(global-config.at("font_size", default: none), 10pt)
   let heading-size = to-length(global-config.at("heading_size", default: none), base-font + 2pt)
+  let heading-gap = parse-length(global-config.at("heading_gap", default: none), 0.6em)
   let subheading-size = to-length(global-config.at("subheading_size", default: none), base-font + 0.5pt)
   let list-size = to-length(global-config.at("list_size", default: none), base-font - 1pt)
+  let section-gap = parse-length(global-config.at("section_gap", default: none), 0pt)
   let footer-size = to-length(global-config.at("footer_size", default: none), base-font - 2pt)
   let font-content = global-config.at("font_content", default: "Spectral")
   let font-content-cjk = global-config.at("font_content_cjk", default: "Noto Serif SC")
@@ -166,8 +194,10 @@
     (
       text_size: to-length(style-value(section-style, "text_size"), none),
       heading_size: to-length(style-value(section-style, "heading_size"), none),
+      heading_gap: parse-length(style-value(section-style, "heading_gap"), none),
       subheading_size: to-length(style-value(section-style, "subheading_size"), none),
       list_size: to-length(style-value(section-style, "list_size"), none),
+      section_gap: parse-length(style-value(section-style, "section_gap"), none),
       font_title: (
         (
           name: style-value(section-style, "font_title", fallback: font-title),
@@ -206,6 +236,8 @@
     let section-style = style-for(section-name)
     context {
       heading-size-override.update(section-style.at("heading_size"))
+      heading-gap-override.update(section-style.at("heading_gap"))
+      section-gap-override.update(section-style.at("section_gap"))
       subheading-size-override.update(section-style.at("subheading_size"))
       list-size-override.update(section-style.at("list_size"))
       text-size-override.update(section-style.at("text_size"))
@@ -229,10 +261,13 @@
     furigana: furigana,
     show_furigana: show-furigana,
     lang: lang,
+    display_lang: display-lang,
     text_size: base-font,
     heading_size: heading-size,
+    heading_gap: heading-gap,
     subheading_size: subheading-size,
     list_size: list-size,
+    section_gap: section-gap,
     font_content: font-content,
     font_content_cjk: font-content-cjk,
     font_title: font-title,
@@ -262,7 +297,15 @@
     contacts: render-contacts(contacts, location-label),
   )
 
-  for section in section-order {
+  for (index, section) in section-order.enumerate() {
+    if index > 0 {
+      let current-style = style-for(section)
+      let current-gap = current-style.at("section_gap")
+      let active-section-gap = if current-gap == none { section-gap } else { current-gap }
+      if active-section-gap != none and active-section-gap != 0pt {
+        v(active-section-gap)
+      }
+    }
     render-section(section, titles, get-section, aliases, render-with-style)
   }
 }

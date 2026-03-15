@@ -32,10 +32,10 @@
     let active-size = text-size-override.get()
     let content = grid(
       columns: (1fr, 2fr, 1.5fr, auto),
-      column-gutter: 1em,
-      align(left)[#artifact_name],
+      column-gutter: 1.25em,
+      align(left)[#text(style: "italic", font: "Maple Mono")[#artifact_name]],
       align(left)[#text(style: "italic")[#description]],
-      align(left)[#{ if tech-list.len() > 0 [#raw(tech-list.join(", "))] }],
+      align(left)[#{ if tech-list.len() > 0 [ #tech-list.join(",  ") ] }],
       align(right)[#{ if year != "" [#year] }],
     )
 

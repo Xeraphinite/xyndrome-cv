@@ -104,7 +104,7 @@
       align(top)[#text(weight: "bold")[#spectral-numbering([\[P#{pat_number}\]])]],
       align(left)[
         #spectral-english([
-          #inventor_text, #year. #emph(title) \[#{status}\]. #country #spectral-numbering([#number]).
+          #inventor_text, #year. #emph(title). #country #spectral-numbering([#number]).
         ])
         #{ if icon != none [
           #h(0.5em)

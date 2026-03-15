@@ -1,4 +1,4 @@
-#import "components/ui.typ": icons-enabled
+#import "components/ui.typ": current-lang, icons-enabled
 #import "sections/header.typ": render-header
 #import "sections/footer.typ": render-footer
 
@@ -7,6 +7,7 @@
 #let list-size-override = state("list-size-override", none)
 #let text-size-override = state("text-size-override", none)
 #let title-font-override = state("title-font-override", none)
+#let heading-gap-override = state("heading-gap-override", none)
 
 #let cv(
   en_name: "",
@@ -17,6 +18,7 @@
   contacts: (),
   updated: datetime.today(),
   lang: "en",
+  display_lang: "en",
   show_furigana: true,
   page_margin_top: 1.25cm,
   page_margin_bottom: 1.25cm,
@@ -24,8 +26,10 @@
   page_margin_right: 1.5cm,
   text_size: 10pt,
   heading_size: 12pt,
+  heading_gap: 0.6em,
   subheading_size: 10.5pt,
   list_size: 9pt,
+  section_gap: 0pt,
   font_content: "Spectral",
   font_content_cjk: "Noto Serif SC",
   font_title: "Rethink Sans",
@@ -55,6 +59,7 @@
   body,
 ) = {
   context { icons-enabled.update(icons_enabled) }
+  context { current-lang.update(display_lang) }
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
 
   set document(author: full_name_text, title: full_name_text, date: updated)
@@ -124,10 +129,11 @@
 
   show heading.where(level: 1): it => context {
     let section-heading-size = heading-size-override.get()
+    let section-heading-gap = heading-gap-override.get()
     let section-title-font = title-font-override.get()
     pad(
       top: 0pt,
-      bottom: 0.6em,
+      bottom: if section-heading-gap == none { heading_gap } else { section-heading-gap },
       text(
         font: if section-title-font == none { font_configs.title } else { section-title-font },
         size: if section-heading-size == none { heading_size } else { section-heading-size },

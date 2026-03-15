@@ -22,7 +22,7 @@
   header_avatar_size: 1.8cm,
   header_avatar_path: none,
 ) = {
-  let header-title-lift = 1.2em
+  let header-title-lift = 1.7em
   let resolved-avatar-path = if header_avatar_path == none or header_avatar_path == "" {
     none
   } else if str(header_avatar_path).contains(":") or str(header_avatar_path).starts-with("/") {
@@ -113,21 +113,22 @@
     }
   ]
 
-  pad(top: 0.24cm, bottom: 0.25cm)[
+  pad(top: 0.24cm, bottom: -0.3cm)[
     #context {
       let header-info-height = measure(header-info).height + header-title-lift
+      let offset = 1.25em
       let header-avatar = if resolved-avatar-path != none and resolved-avatar-path != "" {
         block(
           radius: 18%,
           clip: true,
           inset: 0em,
         )[
-          #image(resolved-avatar-path, height: header-info-height)
+          #image(resolved-avatar-path, height: header-info-height * 1.3)
         ]
       } else {
         rect(
-          width: header_avatar_size,
-          height: header-info-height,
+          width: header_avatar_size * 1.5,
+          height: header-info-height * 1.5,
           radius: 18%,
           inset: 0em,
           fill: rgb("#f6f1e8"),
@@ -146,8 +147,8 @@
           column-gutter: 0.8cm,
           align: (start, top),
           align(top)[#header-info],
-          align(top)[#box(outset: (bottom: -header-title-lift))[
-            #move(dy: -header-title-lift)[#header-avatar]
+          align(top)[#box(outset: (bottom: -header-title-lift - offset))[
+            #move(dy: -header-title-lift - offset)[#header-avatar]
           ]],
         )
       } else {

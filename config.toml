@@ -35,6 +35,8 @@ page_format = "1 of 1"
 [sections.default]
 font_title = "Rethink Sans"
 font_content = "Spectral"
+# heading_gap = "0.6em"
+# section_gap = "0pt"
 
 [sections.skills]
 font_title = "IBM Plex Sans"

@@ -1,27 +1,28 @@
 [page]
 margin_top = "1.5cm"
 margin_bottom = "2cm"
-margin_left = "2cm"
-margin_right = "2cm"
+margin_left = "1.8cm"
+margin_right = "1.8cm"
 
 [global]
-lang = "en"
+lang = "zh"
 show_furigana = false
-font_size = 10
-heading_size = 13
-subheading_size = 10.5
-list_size = 9
 font_content = "MiSans"
 font_title = "Noto Serif SC"
 name_font = "Noto Serif SC"
 font_mono = "Maple Mono"
 font_math = "New Computer Modern Math"
+font_size = 10.5
+heading_size = 13
+subheading_size = 10.5
+list_size = 9.5
+section_gap = "0.1cm"
 
 [header]
 alignment = "left"
-original_name_size = 20
-job_intent_size = 10
-contact_size = 9
+original_name_size = 22
+job_intent_size = 12
+contact_size = 10
 show_avatar = true
 avatar_size = "1.8cm"
 avatar_path = "../assets/avatar.png"
@@ -38,8 +39,6 @@ text_size = 10
 
 [sections.skills]
 font_content = "MiSans"
-text_size = 9.5
 
 [sections.artifacts]
 font_content = "MiSans"
-text_size = 9

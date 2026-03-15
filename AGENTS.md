@@ -41,8 +41,10 @@ Always record reusable project rules here after structural/template changes.
 - Section style config supports inherited overrides for:
   - `text_size`
   - `heading_size`
+  - `heading_gap`
   - `subheading_size`
   - `list_size`
+  - `section_gap`
   - `font_title` + `font_title_cjk`
   - `font_content` + `font_content_cjk`
 - Section style blocks apply to every rendered section name, including nested rendered content such as `[sections.copyrights]`.
