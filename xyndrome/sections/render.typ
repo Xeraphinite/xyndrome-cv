@@ -229,6 +229,7 @@
   "artifacts",
   "awards",
   "serving",
+  "summary",
 )
 
 #let section-title(titles, key, default: none) = if titles != none and type(titles) == dictionary {
@@ -247,6 +248,7 @@
   artifacts: "Artifacts",
   awards: "Awards",
   serving: "Serving",
+  summary: "Summary",
 )
 
 #let section-icon = (
@@ -259,6 +261,7 @@
   artifacts: artifact-icon,
   awards: award-icon,
   serving: serving-icon,
+  summary: summary-icon,
 )
 
 #let section-dispatch = (
@@ -296,6 +299,7 @@
   artifacts: (titles, get-section, aliases, styled) => styled("artifacts", () => render-artifacts(get-section("artifacts"))),
   awards: (titles, get-section, aliases, styled) => styled("awards", () => render-awards(get-section("awards"))),
   serving: (titles, get-section, aliases, styled) => styled("serving", () => render-serving(get-section("serving"))),
+  summary: (titles, get-section, aliases, styled) => styled("summary", () => summary-block(get-section("summary"))),
 )
 
 #let render-section(section, titles, get-section, aliases, styled) = {

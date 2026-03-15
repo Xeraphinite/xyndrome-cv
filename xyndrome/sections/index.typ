@@ -7,3 +7,4 @@
 #import "publications.typ": *
 #import "artifacts.typ": *
 #import "serving.typ": *
+#import "summary.typ": *

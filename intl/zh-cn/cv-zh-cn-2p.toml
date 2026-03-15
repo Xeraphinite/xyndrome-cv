@@ -3,13 +3,10 @@
 [profile]
 original_name = "郑恪悠"
 furigana_name = "郑|恪|悠"
-furigana = "チェン|コッ|ヤオ"
-job_intent = "求职意向：博士机会"
-en_name = "Keyou (Key) Zheng"
-aliases = ["Zheng K."]
-location_label = "中国广东广州"
+job_intent = "*求职意向*：博士机会"
+aliases = ["Zheng K.", "Keyou Zheng", "郑恪悠"]
+location_label = "广东广州"
 show_icons = false
-summary = "自驱型机械工程硕士应届毕业生，专注于大语言模型与 AI 驱动的设计自动化。研究方向涵盖代码式 CAD 生成、Agent 工作流，以及面向工业应用的人在回路系统。在深度学习、全栈开发与 DevOps 方面具备扎实经验，正在申请博士机会，以继续推进 AI 赋能设计与制造技术。"
 contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
@@ -18,81 +15,130 @@ contacts = [
 
 [sections]
 education = "教育经历"
-experience = "研究经历"
+experience = "项目经历"
 publications = "论文发表"
-projects = "项目经历"
-patents = "专利与著作权"
+patents = "专利与软件著作权"
 patents_sub = "专利"
 copyrights_sub = "软件著作权"
 skills = "技能"
 awards = "获奖情况"
-
+artifacts = "小项目"
+summary = "自我评价"
 
 [education.education-1]
-institution = "广东工业大学"
-degree = "机械工程硕士"
+institution = "广东工业大学, 机械工程"
+degree = "硕士"
 date = "2023 年 9 月 - 2026 年 6 月（预计）"
 details = [
-  "*GPA:* 3.62/4.0（前 2.5%），导师为 #smallcaps(\"Jiewu Leng\");;",
-  "*毕业论文：* _验证器驱动的大语言模型 Agent 代码式参数化 CAD 生成_（进行中）。",
+  "*GPA*: 3.62/4.0（前 2.5 %）",
+  "*毕业论文*: 基于代码生成-测试-修复智能迭代的可控参数化几何设计方法（进行中）。",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
 [education.education-2]
-institution = "广东财经大学"
-degree = "计算机科学与技术学士"
+institution = "广东财经大学, 计算机科学与技术（实验班）"
+degree = "学士"
 date = "2019 年 9 月 - 2023 年 6 月"
-details = [
-  "*GPA:* 3.5/4.0（前 5%）；",
-  "*毕业论文：* _基于深度强化学习的 Mario 游戏智能体设计与实现_。",
-]
+details = ["*GPA:* 3.5/4.0（前 5 %）；", "*毕业论文*: _基于深度强化学习的马里奥游戏智能体设计与实现_。"]
 
 
 [experience.exp-1]
-project = "代码式 CAD 装配生成"
-# stack = "vLLM, OpenHands, Docker, Kubernetes, Laminar"
+project = "可控参数化几何模型设计"
 role = "负责人"
-org = "制造技术与装备国家重点实验室"
-location = "中国广东广州"
-start = "2025 年 8 月"
+org = "精密电子制造技术与装备国家重点实验室"
+location = "广东广州"
+start = "2025.8"
 end = "至今"
-summary = "围绕可执行约束，构建了面向可控代码式 CAD 生成的可验证基准与 LLM Agent。"
+summary = "围绕可执行代码约束，构建了面向可控代码式 CAD 生成的可验证基准、以及基于大语言模型的智能体。"
 details = [
-  "*Agent 基础设施：* 构建了具备固定工具链与可复现实验环境的_多语言容器化代码执行沙箱_。设计了可_横向扩展_的后端，用于采集多条 Agent 轨迹与失败记录，支撑大规模实验可观测性；同时实现了用于快速调试与产物生成的_轻量级 Web Playground_。",
-  "*基准构建：* 基于从公开仓库与 CAD 社区收集的 20 万规模人工 CAD 代码语料构建了大规模基准。结合_确定性与启发式规则_（如模糊去重）和 LLM 流水线，_降低数据污染_并_控制任务难度_；最终产出 1 万个单零件任务和 1700 个装配任务，并配套黄金参考工作区与可执行测试。",
-  "*Agent 设计：* 设计了通过自测试与自修复生成或编辑 CAD 程序的 LLM _架构_。不同于仅支持单文件的既有方法，该 Agent 可在装配场景的多文件工作区中调用 `spec`、`inspect`、`verify` 等工具，实现闭环修复。",
-  "*评测与结果：* 以可执行测试为核心指标评估约束满足率。在装配任务上，本方法取得 54.2% 通过率、41.9% 全测试通过率和 2.4% 无效输出率，并在保持几何保真度的同时于约束满足方面优于基线。",
-  "*成果：* 1 篇论文已投稿至 _第 43 届国际机器学习大会_（*ICML 2026*）并在审。",
+  "*基础设施*: 使用 `Docker` 构建了具备固定工具链与可复现实验环境的多语言容器化代码执行沙箱。为满足大规模实验的要求，设计了鲁棒性较强的评测基建，采集多条轨迹、失败记录等；为快速进行端对端测试，实现了轻量级的 Web 和 TUI 应用。",
+  "*基准数据集构建*: 从公开仓库与 CAD 社区收集的 20 万规模的人工 CAD 代码语料构建基准数据集，结合确定性、启发式规则、和 LLM 驱动的数据处理流水线，减轻数据污染、控制任务难度；最终产出约 1 万个单零件任务和 1700 个装配任务。",
+  "*智能体实现*: 使用 `OpenHands` 实现了程序生成智能体。既有方法仅支持单文件生成，该智能体可在装配场景的多文件工作区中调用预先设计的工具，准确理解语义、以支持复杂装配零件的生成。",
+  "*评测与结果*: 以测试为核心指标评估约束满足率。在自建基准数据集上，方法取得 `54.2%` 通过率、`41.9%` 全测试通过率和 `2.4%` 无效输出率，并在保持几何保真度的同时，于约束满足方面优于既有纯 LLM (如 GPT-5) 与特定基线算法。",
+  "*研究成果*: 以第一作者身份，投稿 1 篇论文至 *ICML 2026* (CCF-A, 在审) 。",
 ]
 
 [experience.exp-2]
-project = "人在回路 CAD 生成工作流"
-role = "负责人"
-org = "制造技术与装备国家重点实验室"
-location = "中国广东广州"
-start = "2024 年 12 月"
-end = "2025 年 5 月"
-summary = "设计了用于代码式 CAD 生成的 HITL Agent 工作流，在保证代码有效性的同时兼顾人类偏好。"
-details = [
-  "*工作流设计：* 以微调后的 `Qwen2.5-VL-7B` 为骨干，融合多种代码生成工作流模式，覆盖意图澄清、有效性校验、迭代优化、记忆与安全门控。",
-  "*结果：* 在 200 个真实模型上以无效率与专家成对 Elo 评估，达到 2% 无效率和 1075.5 Elo 的最佳表现，优于 Claude、GPT-4o 及非 Agent 的 Qwen 基线。",
-  "*成果：* 1 篇论文已发表于 _Applied Soft Computing_。",
-]
-
-[projects.project1]
-title = "自动化色差控制与校准"
-role = "主导开发者"
-org = "Vograce"
-location = "中国浙江义乌"
+project = "自动化色差控制与校准"
+role = "主要开发者"
+org = "浙江世赞工艺品有限公司"
+location = "浙江义乌"
 start = "2024 年 12 月"
 end = "2025 年 7 月"
 summary = "构建了用于定制印刷生产闭环色彩一致性控制的机器视觉流水线。"
 details = [
-  "*采集与检测：* 设计光学采集环境并实现特征匹配对齐与 ROI 提取，以适应不同光照和材料反射条件下的多样化印刷图案，实现稳健的 $Delta E$（CIEDE2000）计算。",
-  "*算法：* 将 sRGB 测量值映射到 CMYK 空间，并采用自适应迭代步长反馈机制，把测得色差转化为印刷操作员可执行的墨量调整建议。",
-  "*结果：* 通过 `Gradio` 快速原型与多轮迭代，将完整检测-推荐流水线优化到 ≤1 秒/张，在试产线中相较人工校色提速超过 20 倍；并进一步以 `Next.js` 和 `FastAPI` 构建全栈生产系统，支持企业部署。",
-  "*成果：* 已获得 2 项软件著作权授权。",
+  "*采集与检测*: 合作设计并搭建了用于图像采集的标准化暗室平台，包含布置光源固定位置、产品传动结构等；使用 `OpenCV` 实现特征匹配对齐与 ROI 提取，以适应不同光照和材料反射条件下的多样化印刷图案，为后续色差分析提供稳定输入。",
+  "*算法设计*: 将 sRGB 测量值映射到印刷品实际使用的 CMYK 色彩空间，实现稳健的 $Delta E$（CIEDE2000）计算；基于计算得到的 $Delta E$ 采用自适应迭代步长反馈机制，转化为印刷操作员可执行的墨量调整建议。",
+  "*结果*: 通过 `Gradio` 快速原型与多轮迭代，将完整检测-推荐流水线优化到 ≤1 秒/张，在试产线中相较人工校色提速超过 20 倍；并进一步以 `Next.js` 和 `FastAPI` 构建全栈生产系统，支持企业部署。",
+  "*成果*: 已获得 2 项软件著作权授权。",
 ]
+
+[patents.patent-1]
+country = "CN"
+number = "202410273298.7"
+title = "一种基于深度强化学习的柔性针穿刺路径规划方法"
+filed = "2024-03-11"
+status = "实质审查"
+inventors = ["冷杰武", "郑恪悠", "钟元蔚 等"]
+
+[patents.patent-2]
+country = "CN"
+number = "202410950697.2"
+title = "一种基于服务交互上下文的交互提取与需求制造匹配方法"
+filed = "2024-07-16"
+status = "实质审查"
+inventors = ["冷杰武", "郑恪悠", "钟元蔚 等"]
+
+[patents.patent-3]
+country = "CN"
+number = "202410368790.2"
+title = "一种面向制造业的统一价值链中间件及其数字孪生系统"
+filed = "2024-03-28"
+status = "实质审查"
+inventors = ["冷杰武", "钟元蔚", "郑恪悠", "等"]
+
+[patents.patent-4]
+country = "US"
+number = "18/662,981"
+title = "Defect Prediction Methods Based on Multi-Parallel Multi-Stage Neural Network (MF-PMSNN)"
+filed = "2024-05-13"
+status = "Disclosed"
+inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
+
+[copyrights.copyright-1]
+title = "多特征融合印刷色差检测系统"
+year = "2025"
+status = "已授权"
+country = "中国"
+holders = ["郑恪悠"]
+
+[copyrights.copyright-2]
+title = "基于视觉智能的个性化印刷色差分析系统"
+year = "2025"
+status = "已授权"
+country = "中国"
+holders = ["郑恪悠"]
+
+[artifacts.artifact-1]
+name = "melatonin"
+icon = "github"
+tech = ["Next.js", "TailwindCSS", "Postgre"]
+description = "体验顺滑的个人博客"
+year = "2025"
+
+[artifacts.artifact-2]
+name = "autogsm"
+icon = "github"
+tech = ["Codex", "TRL", "Unsloth"]
+description = "无需人类介入优化 GSM8K 的自主 Agent"
+year = "2026"
+
+[artifacts.artifact-3]
+name = "play"
+icon = "github"
+tech = ["TUI", "ink", ""]
+description = "运行在命令行的 CAD Agent"
+year = "2025"
 
 
 [publications.publication-1]
@@ -111,7 +157,7 @@ type = "journal"
 title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
 venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
-metadata = "JCR Q1, IF: 11.4"
+metadata = "JCR Q1, IF: 11.4, Highly Cited Paper"
 DOI = "10.1016/j.rcim.2025.103076"
 pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
 authors = [
@@ -129,29 +175,24 @@ tldr = ""
 
 [skills.ai-engineering]
 label = "AI 工程"
-items = [
-  "Python",
-  "vLLM",
-  "Unsloth",
-  "TRL",
-  "OpenHands",
-  "PyTorch",
-  "CUDA",
-]
+items = ["Python", "vLLM", "Unsloth", "TRL", "OpenHands", "PyTorch", "CUDA"]
 
 
 [skills.languages]
 label = "语言"
-items = [
-  "*英语（TOEFL：90）*",
-  "*日语（N1：134）*",
-  "中文与粤语（母语）",
-  "韩语（基础）",
-]
+items = ["英语 (TOEFL: 90)", "日语 (JLPT N1)", "粤语", "韩语（基础）"]
 
 [skills.web-dev]
 label = "前端"
-items = ["TypeScript", "JavaScript", "Next.js", "Tailwind CSS", "Vite", "React", "PWA"]
+items = [
+  "TypeScript",
+  "JavaScript",
+  "Next.js",
+  "Tailwind CSS",
+  "Vite",
+  "React",
+  "PWA",
+]
 
 [skills.devops]
 label = "DevOps 与后端"
@@ -159,7 +200,7 @@ items = ["Rust", "CLI", "Docker", "Kubernetes", "Node", "PostgreSQL", "Azure"]
 
 [skills.interests]
 label = "兴趣"
-items = ["字体排印", "平面设计", "UI/UX 设计", "音游"]
+items = ["字体排印", "平面设计", "UI/UX 设计"]
 
 [awards.award-1]
 name = "国家奖学金"
@@ -182,58 +223,5 @@ name = "学业优秀奖学金"
 date = "2020, 2021, 2022"
 from = "广东财经大学"
 
-# status values typically: Disclosed, Granted.
-
-[patents.patent-1]
-number = "202410273298.7"
-title = "一种基于深度强化学习的柔性针穿刺路径规划方法"
-filed = "2024-03-11"
-status = "公开"
-country = "中国"
-inventors = [
-  "Leng J.",
-  "Zheng K.",
-  "Zhong Y.",
-  "Xie J.",
-  "Li R.",
-  "Xu C.",
-  "Liu Q.",
-]
-
-[patents.patent-2]
-number = "202410950697.2"
-title = "一种基于服务交互上下文的交互提取与需求制造匹配方法"
-filed = "2024-07-16"
-status = "公开"
-country = "中国"
-inventors = ["Leng J.", "Zheng K.", "Xie J.", "Li R.", "Xu C.", "Liu Q."]
-
-[patents.patent-3]
-number = "202410368790.2"
-title = "一种面向制造业的统一价值链中间件及其数字孪生系统"
-filed = "2024-03-28"
-status = "公开"
-country = "中国"
-inventors = ["Leng J.", "Zhong Y.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
-
-[patents.patent-4]
-number = "18/662,981"
-title = "一种基于多特征并行多阶段神经网络（MF-PMSNN）的缺陷预测方法"
-filed = "2024-05-13"
-status = "公开"
-country = "美国"
-inventors = ["Leng J.", "Xie J.", "Zheng K.", "Li R.", "Xu C.", "Liu Q."]
-
-[copyrights.copyright-1]
-title = "多特征融合印刷色差检测系统"
-year = "2025"
-status = "已授权"
-country = "中国"
-holders = ["Zheng K.", "Zhong Y.", "Leng J."]
-
-[copyrights.copyright-2]
-title = "基于视觉智能的个性化印刷色差分析系统"
-year = "2025"
-status = "已授权"
-country = "中国"
-holders = ["Zheng K.", "Zhong Y.", "Leng J."]
+[summary.summary-1]
+summary = "本人性格平和稳重，做事认真细致，具备良好的沟通协作能力、学习能力与创新意识。专业能力方面，我具备扎实的计算机科学基础，具有 AI 工程、机器视觉、智能体系统与全栈开发等方面的项目经验，并持续关注相关前沿进展。工程实践方面，我能够将算法方法与实际场景结合，较快理解复杂问题并推进执行，独立完成系统的构建、优化与部署。"

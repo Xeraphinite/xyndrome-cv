@@ -1,5 +1,6 @@
 #import "components/ui.typ": icons-enabled
-#import "@preview/rubby:0.10.2": get-ruby
+#import "sections/header.typ": render-header
+#import "sections/footer.typ": render-footer
 
 #let heading-size-override = state("heading-size-override", none)
 #let subheading-size-override = state("subheading-size-override", none)
@@ -55,17 +56,6 @@
 ) = {
   context { icons-enabled.update(icons_enabled) }
   let full_name_text = if original_name != "" { en_name + "  " + original_name } else { en_name }
-  let resolved-furigana-name = if furigana_name == none or furigana_name == "" { original_name } else { furigana_name }
-  let resolved-furigana = furigana
-
-  let ruby = get-ruby(
-    size: 0.4em, // Ruby font size (made smaller)
-    dy: 2pt, // Vertical offset of the ruby
-    pos: top, // Ruby position (top or bottom)
-    alignment: "center", // Ruby alignment ("center", "start", "between", "around")
-    delimiter: "|", // The delimiter between words
-    auto-spacing: true, // Automatically add necessary space around words
-  )
 
   set document(author: full_name_text, title: full_name_text, date: updated)
 
@@ -165,135 +155,40 @@
 
   set page(
     margin: (top: page_margin_top, bottom: page_margin_bottom, left: page_margin_left, right: page_margin_right),
-    footer: [
-      #align(center)[
-        #text(
-          size: footer_size,
-          fill: luma(40%),
-        )[
-          #{
-            let footer-items = ()
-            if footer_show_name and en_name != none and en_name != "" {
-              footer-items.push([*#en_name*])
-            }
-            if footer_text != none and footer_text != "" {
-              footer-items.push([#footer_text])
-            }
-            if footer_show_updated {
-              if footer_updated_prefix != none and footer_updated_prefix != "" {
-                footer-items.push([#footer_updated_prefix #updated.display("[month repr:short] [year]")])
-              } else {
-                footer-items.push([#updated.display("[month repr:short] [year]")])
-              }
-            }
-            if footer_show_page {
-              footer-items.push([#context { counter(page).display(footer_page_format, both: true) }])
-            }
-            let separator = [#h(0.4em)-#h(0.4em)]
-            footer-items.join(separator)
-          }
-        ]
-      ]
-    ],
+    footer: render-footer(
+      en_name: en_name,
+      updated: updated,
+      footer_size: footer_size,
+      footer_show_name: footer_show_name,
+      footer_text: footer_text,
+      footer_show_updated: footer_show_updated,
+      footer_updated_prefix: footer_updated_prefix,
+      footer_show_page: footer_show_page,
+      footer_page_format: footer_page_format,
+    ),
   )
-
-  let header-align = if header_alignment == "left" { start } else { center }
-  let contact-info = contacts
-  if address != none and address != "" {
-    contact-info.push([#smallcaps(address)])
-  }
-  let contact-items = contact-info.map(item => box(baseline: 32%)[#item])
-  let original-name-content = {
-    let show-ruby = (
-      show_furigana and resolved-furigana != none and resolved-furigana != ""
-      and resolved-furigana-name != none and resolved-furigana-name != ""
-      and resolved-furigana.contains("|") and resolved-furigana-name.contains("|")
-    )
-    if show-ruby {
-      text(font: original-name-font, size: header_original_name_size, weight: header_original_name_weight)[#ruby[#resolved-furigana][#resolved-furigana-name]]
-    } else {
-      text(
-        original_name,
-        font: original-name-font,
-        size: header_original_name_size,
-        weight: header_original_name_weight,
-      )
-    }
-  }
-  let header-info = [
-    #if header_alignment == "left" {
-      stack(
-        dir: ttb,
-        spacing: 0.1em,
-        text(size: header_name_size, weight: header_name_weight, font: font_configs.content)[#smallcaps(en_name)],
-        block([
-          #if original_name != none and original_name != "" {
-            original-name-content
-          }
-          #if header_job_intent != none {
-            h(0.55em)
-            text(size: header_job_intent_size, weight: "medium", fill: luma(45%))[#header_job_intent]
-          }
-        ]),
-      )
-    } else {
-      block(text(size: header_name_size, weight: header_name_weight, font: font_configs.content, [
-        #smallcaps(en_name)
-        #if original_name != none and original_name != "" {
-          [#h(0.4em)#original-name-content]
-        }
-        #if header_job_intent != none {
-          [#h(0.55em)#text(size: header_job_intent_size, weight: "medium", fill: luma(45%))[#header_job_intent]]
-        }
-      ]))
-    }
-    #if contact-items.len() > 0 {
-      pad(
-        top: 2pt,
-        align(header-align)[
-          #set text(size: header_contact_size)
-          #contact-items.join(h(0.75em))
-        ],
-      )
-    }
-  ]
-  context {
-    let header-info-height = measure(header-info).height
-    let header-avatar = if header_avatar_path != none and header_avatar_path != "" {
-      block(
-        radius: 18%,
-        clip: true,
-        inset: 0pt,
-      )[
-        #image(header_avatar_path, height: header-info-height)
-      ]
-    } else {
-      rect(
-        width: header_avatar_size,
-        height: header-info-height,
-        radius: 18%,
-        inset: 0pt,
-        fill: rgb("#f6f1e8"),
-        stroke: (paint: rgb("#d6cab5"), thickness: 0.8pt),
-      )[
-        #place(center + horizon)[
-          #text(size: 7pt, weight: "medium", fill: luma(55%))[PHOTO]
-        ]
-      ]
-    }
-
-    if header_show_avatar {
-      grid(
-        columns: (1fr, auto),
-        column-gutter: 0.8cm,
-        align: (start, top),
-        align(top + header-align)[#header-info],
-        align(top + right)[#header-avatar],
-      )
-    } else {
-      align(header-align)[#header-info]
-    }
-  }
+  render-header(
+    en_name: en_name,
+    original_name: original_name,
+    furigana_name: furigana_name,
+    furigana: furigana,
+    show_furigana: show_furigana,
+    address: address,
+    contacts: contacts,
+    font_configs: font_configs,
+    original_name_font: original-name-font,
+    header_name_size: header_name_size,
+    header_name_weight: header_name_weight,
+    header_original_name_size: header_original_name_size,
+    header_original_name_weight: header_original_name_weight,
+    header_alignment: header_alignment,
+    header_job_intent: header_job_intent,
+    header_job_intent_size: header_job_intent_size,
+    header_contact_size: header_contact_size,
+    header_show_avatar: header_show_avatar,
+    header_avatar_size: header_avatar_size,
+    header_avatar_path: header_avatar_path,
+  )
 
   body
 }

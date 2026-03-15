@@ -6,6 +6,12 @@
 #let preprint-counter = counter("preprint")
 #let patent-counter = counter("patent")
 #let software-counter = counter("software")
+#let spectral-numbering(body) = text(font: "Spectral", body)
+#let latin-span = regex("[A-Za-z0-9][A-Za-z0-9 ./,&()\\-]*")
+#let spectral-english(body) = context {
+  show latin-span: set text(font: "Spectral")
+  body
+}
 
 #let year-text(value) = {
   if value == none or value == "" {
@@ -57,7 +63,7 @@
     grid(
       columns: (auto, 1fr),
       column-gutter: 0.8em,
-      align(top)[#text(weight: "bold")[\[#prefix#number\]]],
+      align(top)[#text(weight: "bold")[#spectral-numbering([\[#prefix#number\]])]],
       align(left)[
         #{ author_text }#{ if published-year != "" [ (#published-year)] }. #{ emph(title) }. _#{ venue }_#{ if metadata != "" [. #{ metadata }] }.
         #{ if DOI != none [DOI: #link("https://doi.org/" + DOI)[#DOI]] }
@@ -95,9 +101,11 @@
     grid(
       columns: (auto, 1fr),
       column-gutter: 0.8em,
-      align(top)[#text(weight: "bold")[\[P#{pat_number}\]]],
+      align(top)[#text(weight: "bold")[#spectral-numbering([\[P#{pat_number}\]])]],
       align(left)[
-        #inventor_text (#year). #emph(title) \[#{status}\]. #country #{number}.
+        #spectral-english([
+          #inventor_text, #year. #emph(title) \[#{status}\]. #country #spectral-numbering([#number]).
+        ])
         #{ if icon != none [
           #h(0.5em)
           #if type(icon) == array { icon.join(h(0.5em)) } else { icon }
@@ -125,9 +133,11 @@
     grid(
       columns: (auto, 1fr),
       column-gutter: 0.8em,
-      align(top)[#text(weight: "bold")[\[S#number\]]],
+      align(top)[#text(weight: "bold")[#spectral-numbering([\[S#number\]])]],
       align(left)[
-        #holder_text (#year). #emph(title). #status, #country.
+        #spectral-english([
+          #holder_text (#year). #emph(title). #status, #country.
+        ])
         #{ if icon != none [
           #h(0.5em)
           #if type(icon) == array { icon.join(h(0.5em)) } else { icon }

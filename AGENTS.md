@@ -7,7 +7,9 @@ Always record reusable project rules here after structural/template changes.
 - Reusable UI components live in `xyndrome/components/ui.typ`.
 - Shared non-visual helpers live in `xyndrome/utils.typ`.
 - `xyndrome/lib.typ` re-exports from `sections/index.typ` and `components/ui.typ`.
+- Header and footer renderers live in `xyndrome/sections/header.typ` and `xyndrome/sections/footer.typ`.
 - `xyndrome/sections/common.typ` was removed; heading-gap state/reset is no longer used.
+- Summary section implementation lives in `xyndrome/sections/summary.typ`.
 - Typography override states (`heading-size-override`, `subheading-size-override`, `list-size-override`, `title-font-override`) are declared in both `xyndrome/cv.typ` and `xyndrome/core.typ` with the same state keys.
 
 ## Folder Rules
@@ -44,6 +46,7 @@ Always record reusable project rules here after structural/template changes.
   - `font_title` + `font_title_cjk`
   - `font_content` + `font_content_cjk`
 - Section style blocks apply to every rendered section name, including nested rendered content such as `[sections.copyrights]`.
+- Publication numbering is fixed to `Spectral` for `journal`, `patents`, and `software`; it must not inherit `font_content` overrides.
 - Profile and CV content are in each CV TOML (for example `cv-1p.toml`).
 - Furigana fields in profile:
   - `original_name`
