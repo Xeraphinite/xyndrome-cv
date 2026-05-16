@@ -3,7 +3,7 @@
 [profile]
 original_name = "郑恪悠"
 furigana_name = "郑|恪|悠"
-job_intent = "*求职意向*：博士机会"
+# job_intent = "*求职意向*：博士机会"
 aliases = ["Zheng K.", "Keyou Zheng", "郑恪悠"]
 location_label = "广东广州"
 show_icons = false
@@ -22,7 +22,7 @@ patents_sub = "专利"
 copyrights_sub = "软件著作权"
 skills = "技能"
 awards = "获奖情况"
-artifacts = "小项目"
+# artifacts = "小项目"
 # summary = "自我评价"
 
 [education.education-1]
@@ -31,7 +31,7 @@ degree = "硕士"
 date = "2023 年 9 月 - 2026 年 6 月（预计）"
 details = [
   "*GPA*: 3.62/4.0（前 2.5 %）",
-  "*毕业论文*: 基于代码生成-测试-修复智能迭代的可控参数化几何设计方法（进行中）。",
+  "*毕业论文*: 基于代码生成-测试-修复智能迭代的可控参数化几何设计方法",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
@@ -39,7 +39,7 @@ details = [
 institution = "广东财经大学, 计算机科学与技术（实验班）"
 degree = "学士"
 date = "2019 年 9 月 - 2023 年 6 月"
-details = ["*GPA:* 3.5/4.0（前 5 %）；", "*毕业论文*: _基于深度强化学习的马里奥游戏智能体设计与实现_。"]
+details = ["*GPA:* 3.5/4.0（前 5 %）；", "*毕业论文*: _基于深度强化学习的马里奥游戏智能体设计与实现_"]
 
 
 [experience.exp-1]
@@ -54,8 +54,8 @@ details = [
   "*基础设施*: 使用 `Docker` 构建了具备固定工具链与可复现实验环境的多语言容器化代码执行沙箱。为满足大规模实验的要求，设计了鲁棒性较强的评测基建，采集多条轨迹、失败记录等；为快速进行端对端测试，实现了轻量级的 Web 和 TUI 应用。",
   "*基准数据集构建*: 从公开仓库与 CAD 社区收集的 20 万规模的人工 CAD 代码语料构建基准数据集，结合确定性、启发式规则、和 LLM 驱动的数据处理流水线，减轻数据污染、控制任务难度；最终产出约 1 万个单零件任务和 1700 个装配任务。",
   "*智能体实现*: 使用 `OpenHands` 实现了程序生成智能体。既有方法仅支持单文件生成，该智能体可在装配场景的多文件工作区中调用预先设计的工具，准确理解语义、以支持复杂装配零件的生成。",
-  "*评测与结果*: 以测试为核心指标评估约束满足率。在自建基准数据集上，方法取得 `54.2%` 通过率、`41.9%` 全测试通过率和 `2.4%` 无效输出率，并在保持几何保真度的同时，于约束满足方面优于既有纯 LLM (如 GPT-5) 与特定基线算法。",
-  "*研究成果*: 以第一作者身份，投稿 1 篇论文至 *ICML 2026* (CCF-A, 在审) 。",
+  "*评测与结果*: 以测试为核心指标评估约束满足率。在自建基准数据集上，方法取得 `54.2%` 通过率、`41.9%` 全测试通过率和 `2.4%` 无效输出率，并在保持几何保真度的同时，于约束满足度方面优于其他基线算法。",
+  "*研究成果*: 以第一作者身份，投稿 1 篇论文至机器学习顶会 *ICML 2026* (CCF-A, 已接收) 。",
 ]
 
 [experience.exp-2]
@@ -117,6 +117,20 @@ country = "中国"
 holders = ["郑恪悠"]
 
 [publications.publication-1]
+type = "conference"
+title = "SPADA: A Verifiable Test-Driven Agent for Controllable Parametric CAD Assembly Generation"
+venue = "The Forty-Third International Conference on Machine Learning (ICML 2026)"
+published = "2026"
+metadata = "CCF-A"
+authors = [
+  "Zheng K.",
+  "Su X.",
+  "Leng J.*",
+]
+tldr = ""
+
+
+[publications.publication-2]
 type = "journal"
 title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
 venue = "Applied Soft Computing"
@@ -127,7 +141,7 @@ pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
 tldr = ""
 
-[publications.publication-2]
+[publications.publication-3]
 type = "journal"
 title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
 venue = "Robotics and Computer-Integrated Manufacturing"
@@ -170,7 +184,7 @@ items = ["Python", "TypeScript", "JavaScript", "Rust", "C++", "C"]
 
 [skills.languages]
 label = "自然语言"
-items = ["英语 (TOEFL: 90)", "日语 (JLPT N1)", "粤语 (母语)", "韩语（基础）"]
+items = ["英语 (TOEFL: 90, CET-6)", "日语 (JLPT N1)", "粤语 (母语)", "韩语（基础）"]
 
 [awards.award-1]
 name = "国家奖学金"
@@ -192,22 +206,22 @@ name = "学业优秀奖学金"
 date = "2020, 2021, 2022"
 from = "广东财经大学"
 
-[artifacts.artifact-1]
-name = "melatonin"
-tech = ["Next.js", "UnoCSS", "PostgreSQL"]
-description = "用户体验顺滑的个人博客"
+# [artifacts.artifact-1]
+# name = "melatonin"
+# tech = ["Next.js", "UnoCSS", "PostgreSQL"]
+# description = "用户体验顺滑的个人博客"
 
-[artifacts.artifact-2]
-name = "autogsm"
-tech = ["Codex", "TRL","Qwen-3.5-2b"]
-description = "会自己刷 GSM 点的全自动 Agent"
+# [artifacts.artifact-2]
+# name = "autogsm"
+# tech = ["Codex", "TRL","Qwen-3.5-2b"]
+# description = "会自己刷 GSM 点的全自动 Agent"
 
-[artifacts.artifact-3]
-name = "play"
-tech = ["Terminal UI", "ink", "React"]
-description = "在 Terminal 里 Vibe CADing"
+# [artifacts.artifact-3]
+# name = "play"
+# tech = ["Terminal UI", "ink", "React"]
+# description = "在 Terminal 里 Vibe CADing"
 
-[artifacts.artifact-4]
-name = "SanpoGPT"
-tech = ["Streamlit", "LiteLLM", "GPT-4o"]
-description = "个性化出题的 JLPT 小帮手"
+# [artifacts.artifact-4]
+# name = "SanpoGPT"
+# tech = ["Streamlit", "LiteLLM", "GPT-4o"]
+# description = "个性化出题的 JLPT 小帮手"

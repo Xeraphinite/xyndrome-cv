@@ -147,6 +147,7 @@
   let subheading-size = to-length(global-config.at("subheading_size", default: none), base-font + 0.5pt)
   let list-size = to-length(global-config.at("list_size", default: none), base-font - 1pt)
   let section-gap = parse-length(global-config.at("section_gap", default: none), 0pt)
+  let first-section-gap = parse-length(global-config.at("first_section_gap", default: none), none)
   let footer-size = to-length(global-config.at("footer_size", default: none), base-font - 2pt)
   let font-content = global-config.at("font_content", default: "Spectral")
   let font-content-cjk = global-config.at("font_content_cjk", default: "Noto Serif SC")
@@ -298,13 +299,15 @@
   )
 
   for (index, section) in section-order.enumerate() {
-    if index > 0 {
-      let current-style = style-for(section)
-      let current-gap = current-style.at("section_gap")
-      let active-section-gap = if current-gap == none { section-gap } else { current-gap }
-      if active-section-gap != none and active-section-gap != 0pt {
-        v(active-section-gap)
-      }
+    let current-style = style-for(section)
+    let current-gap = current-style.at("section_gap")
+    let active-section-gap = if index == 0 {
+      if first-section-gap != none { first-section-gap } else { none }
+    } else {
+      if current-gap == none { section-gap } else { current-gap }
+    }
+    if active-section-gap != none and active-section-gap != 0pt {
+      v(active-section-gap)
     }
     render-section(section, titles, get-section, aliases, render-with-style)
   }

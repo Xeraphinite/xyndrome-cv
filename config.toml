@@ -11,6 +11,7 @@ font_size = 10.5
 heading_size = 14
 subheading_size = 10.5
 list_size = 10
+first_section_gap = "0.45cm"
 font_content = "Spectral"
 font_content_cjk = "Noto Serif SC"
 font_title = "Rethink Sans"
@@ -18,6 +19,7 @@ font_title_cjk = "IBM Plex Sans SC"
 name_font = "Noto Serif SC"
 font_mono = "Inconsolata"
 font_math = "New Computer Modern Math"
+# section_gap = "0.1cm"
 
 [header]
 name_size = 22

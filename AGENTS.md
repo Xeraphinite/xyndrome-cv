@@ -38,6 +38,7 @@ Always record reusable project rules here after structural/template changes.
   - `global.font_title` + `global.font_title_cjk` for headings/subheadings
   - `global.font_content` + `global.font_content_cjk` for body text
   - `global.name_font` only for `profile.original_name` in the header
+  - `global.first_section_gap` for spacing before the very first rendered section heading (defaults to none)
 - Section style config supports inherited overrides for:
   - `text_size`
   - `heading_size`

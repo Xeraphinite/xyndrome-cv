@@ -17,8 +17,8 @@ contacts = [
 
 [sections]
 education = "Education"
-experience = "Research Experience"
 publications = "Publications"
+experience = "Research Experience"
 projects = "Projects"
 patents = "Patents & Copyrights"
 patents_sub = "Patents"
@@ -160,10 +160,9 @@ label = "Interests"
 items = ["Typography", "Graphic Design", "UI/UX Design", "Rhythm Games"]
 
 [awards.award-1]
-name = "National Scholarship"
+name = "National Scholarship (TOP 1.5%)"
 date = "2025"
 from = "Ministry of Education, China"
-details = "Top 2%"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"

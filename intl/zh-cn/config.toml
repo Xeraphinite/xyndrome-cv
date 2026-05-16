@@ -25,7 +25,7 @@ job_intent_size = 12
 contact_size = 10
 show_avatar = true
 avatar_size = "1.8cm"
-avatar_path = "../assets/avatar.png"
+avatar_path = "../assets/avatar.jpg"
 
 [footer]
 show_name = false
