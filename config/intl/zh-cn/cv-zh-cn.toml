@@ -14,6 +14,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
 ]
 
 [sections]
@@ -28,13 +29,18 @@ artifacts = "Artifacts"
 skills = "技能"
 awards = "获奖情况"
 
+[education.education-3]
+institution = "Hokkaido University (QS Top 200)"
+degree = "Computer Science and Technology, PhD"
+date = "Apr 2027 - Apr 2030 (Expected)"
+
 [education.education-1]
 institution = "Guangdong University of Technology"
 degree = "Mechanical Engineering, MEng."
-date = "Sep 2023 - Jun 2026 (Expected)"
+date = "Sep 2023 - Jun 2026"
 details = [
   "*GPA:* 3.62/4.0（前 2.5%），导师 #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _验证器驱动的大语言模型 Agent 代码式参数化 CAD 生成_（进行中）.",
+  "*Dissertation:* _验证器驱动的大语言模型 Agent 代码式参数化 CAD 生成_.",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
@@ -187,12 +193,12 @@ details = "前 2%"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"
-date = "2024, 2025"
+date = "2023, 2024, 2025"
 from = "Guangdong University of Technology"
 
 [awards.award-4]
-name = "Freshman Entrance Scholarship"
-date = "2023"
+name = "Miya Scholarship"
+date = "2026"
 from = "Guangdong University of Technology"
 
 [awards.award-3]

@@ -14,21 +14,22 @@ Always record reusable project rules here after structural/template changes.
 
 ## Folder Rules
 
-- `intl/` must contain TOML files only.
+- Runtime configuration and CV TOML data live under `config/`; localized data mirrors the locale under `config/intl/<locale>/`.
+- Generated artifacts live under `output/`: PDFs go directly in `output/`, and Markdown CVs go under `output/markdown/`.
+- `intl/` contains localized Typst entrypoints under `intl/<locale>/typ/`; do not store config or CV TOML files there.
 - Bundled Typst font assets live under `fonts/`.
 - Reusable non-font binary assets such as profile images live under `assets/`.
 - Vendored static Mi Sans TTFs for Simplified Chinese live under `fonts/misans/static/`.
 - Use the static `MiSans` family for Typst; do not rely on the variable font file because Typst does not support VF here.
-- Language entry `.typ` files are at repo root:
-  - `main-ja.typ`
-  - `main-zh-cn.typ`
-  - `main-zh-hk.typ`
-  - `main-ko.typ`
+- Vendored Noto Serif SC lives under `fonts/noto-serif-sc/` as `NotoSerifSC[wght].ttf`.
+- Vendored Maple Mono static TTFs live under `fonts/maple-mono/`.
+- Vendored New Computer Modern Math OTFs live under `fonts/new-computer-modern/math/`.
+- Localized entry `.typ` files live under `intl/<locale>/typ/`.
 
 ## Config/Data Rules
 
-- Runtime config file is `config.toml`.
-- `config.toml` sections:
+- Default runtime config file is `config/config.toml`.
+- `config/config.toml` sections:
   - `[page]`
   - `[global]`
   - `[header]`
@@ -50,7 +51,9 @@ Always record reusable project rules here after structural/template changes.
   - `font_content` + `font_content_cjk`
 - Section style blocks apply to every rendered section name, including nested rendered content such as `[sections.copyrights]`.
 - Publication numbering is fixed to `Spectral` for `journal`, `patents`, and `software`; it must not inherit `font_content` overrides.
-- Profile and CV content are in each CV TOML (for example `cv-1p.toml`).
+- Profile and CV content are in each CV TOML (for example `config/cv-1p.toml`).
+- Whenever a CV TOML under `config/` changes, update the corresponding file under `output/markdown/` in the same change by running `python3 scripts/generate_markdown.py`.
+- Markdown CV paths mirror their config sources after stripping the leading `config/`: main CVs use `output/markdown/cv*.md`, and localized CVs use `output/markdown/intl/<locale>/cv*.md`.
 - Furigana fields in profile:
   - `original_name`
   - `furigana_name`
@@ -63,7 +66,8 @@ Always record reusable project rules here after structural/template changes.
   - line 1: `project` (left), `stack` + `time` (right, stack before time)
   - line 2: `role` (left), `place` (right, from `org` and `location`)
   - `stack` can be comma-separated text (or array) and each stack token renders as mono; commas remain serif.
-- Header contacts are rendered as boxed inline items with explicit baseline and spacing for vertical centering consistency.
+- Header contacts are rendered as boxed inline items with explicit baseline and spacing for vertical centering consistency; keep the full contact strip in one unbreakable line.
+- Google Scholar header contacts use the `scholar` icon key and link to the profile URL from the CV TOML data.
 - Header config supports:
   - `alignment` with `center` or `left`
   - `show_avatar` + `avatar_size` for a right-side placeholder avatar block
@@ -105,9 +109,10 @@ Always record reusable project rules here after structural/template changes.
 
 ## Validation Commands
 
-- English: `typst compile main.typ`
-- Japanese: `typst compile --root . main-ja.typ cv-ja.pdf`
+- Markdown sync: `python3 scripts/generate_markdown.py --check`
+- English: `typst compile main.typ output/main.pdf`
+- Japanese: `typst compile --root . intl/ja/typ/cv-ja.typ output/cv-ja.pdf`
 - Simplified Chinese uses vendored Mi Sans. Add `--font-path fonts` unless Mi Sans is installed system-wide.
-- Simplified Chinese: `typst compile --root . --font-path fonts main-zh-cn.typ cv-zh-cn.pdf`
-- Traditional Chinese/Cantonese: `typst compile --root . main-zh-hk.typ cv-zh-hk.pdf`
-- Korean: `typst compile --root . main-ko.typ cv-ko.pdf`
+- Simplified Chinese: `typst compile --root . --font-path fonts intl/zh-cn/typ/cv-zh-cn.typ output/cv-zh-cn.pdf`
+- Traditional Chinese/Cantonese: `typst compile --root . intl/zh-hk/typ/cv-zh-hk.typ output/cv-zh-hk.pdf`
+- Korean: `typst compile --root . intl/ko/typ/cv-ko.typ output/cv-ko.pdf`

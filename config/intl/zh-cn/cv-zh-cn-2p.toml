@@ -11,6 +11,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
 ]
 
 [sections]
@@ -25,10 +26,15 @@ awards = "获奖情况"
 # artifacts = "小项目"
 # summary = "自我评价"
 
+[education.education-3]
+institution = "北海道大学（QS 前 200），计算机科学与技术"
+degree = "博士"
+date = "2027 年 4 月 - 2030 年 4 月（预计）"
+
 [education.education-1]
 institution = "广东工业大学, 机械工程"
 degree = "硕士"
-date = "2023 年 9 月 - 2026 年 6 月（预计）"
+date = "2023 年 9 月 - 2026 年 6 月"
 details = [
   "*GPA*: 3.62/4.0（前 2.5 %）",
   "*毕业论文*: 基于代码生成-测试-修复智能迭代的可控参数化几何设计方法",
@@ -137,7 +143,7 @@ venue = "Applied Soft Computing"
 published = "2025"
 metadata = "JCR Q1, IF: 6.6"
 DOI = "10.1016/j.asoc.2025.113920"
-pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
+# pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
 tldr = ""
 
@@ -148,7 +154,7 @@ venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
 metadata = "JCR Q1, IF: 11.4, Highly Cited Paper"
 DOI = "10.1016/j.rcim.2025.103076"
-pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
+# pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
 authors = [
   "Leng J.",
   "Zheng K.",
@@ -193,18 +199,18 @@ from = "中国教育部"
 
 [awards.award-2]
 name = "学业优秀奖学金"
-date = "2024, 2025"
-from = "广东工业大学"
-
-[awards.award-4]
-name = "新生入学奖学金"
-date = "2023"
+date = "2023, 2024, 2025"
 from = "广东工业大学"
 
 [awards.award-3]
 name = "学业优秀奖学金"
 date = "2020, 2021, 2022"
 from = "广东财经大学"
+
+[awards.award-4]
+name = "米亚奖学金"
+date = "2026"
+from = "广东工业大学"
 
 # [artifacts.artifact-1]
 # name = "melatonin"

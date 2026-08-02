@@ -13,6 +13,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
   { icon = "phone", label = "(+86) 137-9409-1521", url = "" },
 ]
 
@@ -30,13 +31,18 @@ awards = "Awards"
 # artifacts = "Artifacts & Demos"
 # serving = "Serving"
 
+[education.education-3]
+institution = "Hokkaido University (QS Top 200)"
+degree = "Computer Science and Technology, PhD"
+date = "Apr 2027 - Apr 2030 (Expected)"
+
 [education.education-1]
 institution = "Guangdong University of Technology"
 degree = "Mechanical Engineering, MEng."
-date = "Sep 2023 - Jun 2026 (Expected)"
+date = "Sep 2023 - Jun 2026"
 details = [
   "*GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _Verifier-Driven Code-based Parametric CAD Generation with Large Language Models Agent_ (Ongoing).",
+  "*Dissertation:* _Verifier-Driven Code-based Parametric CAD Generation with Large Language Models Agent_.",
   # "*Project page:* #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/spada\", text:\"Xeraphinite/spada\").",
 ]
 
@@ -66,7 +72,7 @@ details = [
   "*Agent Design*: We designed a simple yet effective tool-augmennted agent: ",
   "*Reliability-first generation loop*: Turn briefs into constraints, execute candidates, read failures, and repair until checks pass.",
   "*Results*: Invalid rate 1.8% (parts) and 2.4% (assemblies). All-check pass rate +17.1 points for parts (52.3%) and +21.5 points for assemblies (41.9% vs 20.4% best baseline). Shape overlap 78.9 (parts). Pass rate 65.7% (parts) and 54.2% (assemblies).",
-  "*Outcome*: One paper under review (ICML 2026)."
+  "*Outcome*: First-author paper accepted at the _43rd International Conference on Machine Learning_ (*ICML 2026*)."
   # "*Stack*: #link-with-icon(url:\"https://github.com/vllm-project/vllm\", text:\"vLLM\") (Inference), #link-with-icon(url:\"https://openhands.dev/\", text:\"OpenHands\")(Agent Scaffold) , #link-with-icon(url:\"https://github.com/laude-institute/harbor\", text:\"Harbor\"), #link-with-icon(url:\"https://laminar.sh/\", text:\"Laminar\")(Eval & Observation)",
 ]
 
@@ -105,6 +111,15 @@ details = [
 
 
 [publications.publication-1]
+type = "conference"
+title = "SPADA: A Verifiable Test-Driven Agent for Controllable Parametric CAD Assembly Generation"
+venue = "The Forty-Third International Conference on Machine Learning (ICML 2026)"
+published = "2026"
+metadata = "CCF-A"
+authors = ["Zheng K.", "Su X.", "Leng J.*"]
+tldr = ""
+
+[publications.publication-2]
 type = "journal"
 title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
 venue = "Applied Soft Computing"
@@ -115,12 +130,12 @@ tldr = "Introduces a human-in-the-loop agentic workflow for geometric modelling,
 pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
 
-[publications.publication-2]
+[publications.publication-3]
 type = "journal"
 title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
 venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
-metadata = "JCR Q1, IF: 11.4"
+metadata = "JCR Q1, IF: 11.4, Highly Cited Paper"
 DOI = "10.1016/j.rcim.2025.103076"
 tldr = "In-depth survey of Generative AI for smart manufacturing across full product lifecycle."
 pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
@@ -237,13 +252,13 @@ from = "Ministry of Education, China"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"
-date = "2024, 2025"
+date = "2023, 2024, 2025"
 from = "Guangdong University of Technology"
 # details = "Top 10% among all graduate"
 
 [awards.award-4]
-name = "Freshman Entrance Scholarship"
-date = "2023"
+name = "Miya Scholarship"
+date = "2026"
 from = "Guangdong University of Technology"
 
 [awards.award-3]

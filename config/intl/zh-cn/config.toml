@@ -13,10 +13,10 @@ name_font = "Noto Serif SC"
 font_mono = "Maple Mono"
 font_math = "New Computer Modern Math"
 font_size = 10.5
-heading_size = 13
-subheading_size = 10.5
-list_size = 9.5
-section_gap = "0.1cm"
+heading_size = 14
+subheading_size = 11
+list_size = 10
+section_gap = "0.2cm"
 
 [header]
 alignment = "left"
@@ -35,7 +35,7 @@ page_format = "1 / 1"
 
 [sections.publications]
 font_content = "Spectral"
-text_size = 10
+text_size = 11
 
 [sections.skills]
 font_content = "MiSans"

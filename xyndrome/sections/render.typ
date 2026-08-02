@@ -7,6 +7,7 @@
   email: email-icon,
   website: website-icon,
   github: github-icon,
+  scholar: scholar-icon,
   location: location-icon,
   phone: phone-icon,
   spada: spada-icon,

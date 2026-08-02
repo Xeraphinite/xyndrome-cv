@@ -107,7 +107,7 @@
         top: 2pt,
         align(header-align)[
           #set text(size: header_contact_size)
-          #contact-items.join(h(0.75em))
+          #stack(dir: ltr, spacing: 0.4em, ..contact-items)
         ],
       )
     }

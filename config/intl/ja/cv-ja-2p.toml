@@ -13,6 +13,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
 ]
 
 [sections]
@@ -27,13 +28,18 @@ skills = "スキル"
 awards = "受賞歴"
 
 
+[education.education-3]
+institution = "北海道大学（QS 世界大学ランキング上位 200 位）"
+degree = "コンピュータサイエンス 博士"
+date = "2027年4月 - 2030年4月（修了見込み）"
+
 [education.education-1]
 institution = "広東工業大学"
 degree = "機械工学 修士"
-date = "2023年9月 - 2026年6月（修了見込み）"
+date = "2023年9月 - 2026年6月"
 details = [
   "*GPA:* 3.62/4.0（上位 2.5%）、指導教員 #smallcaps(\"Jiewu Leng\");;",
-  "*修士論文：* _検証器駆動の大規模言語モデルエージェントによるコードベース・パラメトリック CAD 生成_（進行中）。",
+  "*修士論文：* _検証器駆動の大規模言語モデルエージェントによるコードベース・パラメトリック CAD 生成_。",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
@@ -168,12 +174,12 @@ details = "上位 2%"
 
 [awards.award-2]
 name = "学業優秀奨学金"
-date = "2024, 2025"
+date = "2023, 2024, 2025"
 from = "広東工業大学"
 
 [awards.award-4]
-name = "新入生入学奨学金"
-date = "2023"
+name = "米亜奨学金"
+date = "2026"
 from = "広東工業大学"
 
 [awards.award-3]

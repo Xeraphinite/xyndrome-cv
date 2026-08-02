@@ -8,6 +8,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
   { icon = "phone", label = "13794091521", url = "tel:+8613794091521" },
 ]
 
@@ -17,6 +18,11 @@ experience = "代表项目"
 publications = "论文发表"
 skills = "技能"
 artifacts = "Side Projects"
+
+[education.education-3]
+institution = "北海道大学（QS 世界大学排名前 200）, 计算机科学与技术"
+degree = "博士"
+date = "2027.4 - 2030.4（预计）"
 
 [education.education-1]
 institution = "广东工业大学, 机械工程"

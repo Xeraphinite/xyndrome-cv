@@ -1,2 +1,2 @@
 #import "../../../xyndrome/cv.typ": render-cv
-#render-cv("../intl/zh-cn/cv-zh-cn-1p.toml", config-path: "../intl/zh-cn/config.toml")
+#render-cv("../config/intl/zh-cn/cv-zh-cn-1p.toml", config-path: "../config/intl/zh-cn/config.toml")

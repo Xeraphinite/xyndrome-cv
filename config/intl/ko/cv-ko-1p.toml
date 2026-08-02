@@ -13,6 +13,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
 ]
 
 [sections]
@@ -22,13 +23,18 @@ publications = "발표 논문"
 skills = "기술"
 awards = "수상 내역"
 
+[education.education-3]
+institution = "홋카이도대학교 (QS 세계대학순위 200위권)"
+degree = "컴퓨터과학 박사"
+date = "2027년 4월 - 2030년 4월 (졸업 예정)"
+
 [education.education-1]
 institution = "광둥공업대학교"
 degree = "기계공학 석사"
-date = "2023년 9월 - 2026년 6월 (졸업 예정)"
+date = "2023년 9월 - 2026년 6월"
 details = [
   "*GPA:* 3.62/4.0 (상위 2.5%), 지도교수 #smallcaps(\"Jiewu Leng\");;",
-  "*학위논문:* _검증기 기반 대규모 언어모델 에이전트를 활용한 코드 기반 파라메트릭 CAD 생성_ (진행 중).",
+  "*학위논문:* _검증기 기반 대규모 언어모델 에이전트를 활용한 코드 기반 파라메트릭 CAD 생성_.",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
@@ -133,12 +139,12 @@ from = "중국 교육부"
 
 [awards.award-2]
 name = "학업우수장학금"
-date = "2024, 2025"
+date = "2023, 2024, 2025"
 from = "광둥공업대학교"
 
 [awards.award-4]
-name = "신입생 입학장학금"
-date = "2023"
+name = "미야 장학금"
+date = "2026"
 from = "광둥공업대학교"
 
 [awards.award-3]

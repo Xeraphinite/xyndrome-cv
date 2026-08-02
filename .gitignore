@@ -1,8 +1,10 @@
-/output
-
 .vscode
 
 # Typst compiled outputs
-*.pdf
-main.pdf
-test.pdf
+/output/*.pdf
+
+.DS_store
+
+ref/
+
+/fonts

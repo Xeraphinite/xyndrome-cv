@@ -1,0 +1,94 @@
+<!-- Generated from config/intl/zh-cn/cv-zh-cn-1p.toml by scripts/generate_markdown.py. -->
+
+# 郑恪悠
+
+*求职意向* 大语言模型工程师
+
+[`keyouzheng0915@gmail.com`](mailto:keyouzheng0915@gmail.com) · [`keyzh.pages.dev`](https://keyzh.pages.dev) · [`Xeraphinite`](https://github.com/Xeraphinite) · [`Keyou Zheng`](https://scholar.google.com/citations?user=agkWz8MAAAAJ) · [13794091521](tel:+8613794091521) · 广东广州
+
+自驱型机械工程硕士应届毕业生，专注于大语言模型与 AI 驱动的设计自动化。研究方向涵盖代码式 CAD 生成、Agent 工作流，以及面向工业应用的人在回路系统。在深度学习、全栈开发与 DevOps 方面具备扎实经验，正在申请博士机会，以继续推进 AI 赋能设计与制造技术。
+
+## 教育经历
+
+### 北海道大学（QS 世界大学排名前 200）, 计算机科学与技术
+
+博士 · 2027.4 - 2030.4（预计）
+
+### 广东工业大学, 机械工程
+
+硕士 · 2023.9 - 2026.6
+
+- *GPA*: 3.62 / 4.0 (前 2.5%) ；获得*国家奖学金* (2025)，学业优秀奖学金 (2024, 2025), 新生奖学金 (2023) 。
+
+### 广东财经大学, 计算机科学与技术 (实验班)
+
+学士 · 2019.9 - 2023.6
+
+- *GPA*: 3.5 / 4.0 (前 5%) ；连续三年获得学业优秀奖学金 (2020-2022) 。
+
+## 代表项目
+
+### 可控参数化几何模型设计
+
+2025.8 – 至今
+
+围绕可执行代码约束，构建了面向可控代码式 CAD 生成的可验证基准、以及基于大语言模型的智能体。
+
+- *基础设施*: 使用 `Docker` 构建了具备固定工具链与可复现实验环境的多语言容器化代码执行沙箱。为满足大规模实验的要求，设计了可横向扩展的后端，用于采集多条轨迹、失败记录等；为快速进行端对端测试，实现了轻量级的 Web 和 TUI 应用。
+- *数据集构建*: 基于从公开仓库与 CAD 社区收集的 20 万规模人工 CAD 代码语料构建基准。结合确定性、启发式规则、和 LLM 驱动的数据处理流水线，减轻数据污染、控制任务难度；最终产出约 1 万个单零件任务和 1700 个装配任务。
+- *智能体实现*: 利用 `OpenHands` 实现了程序生成智能体。与仅支持单文件的既有方法不同，该智能体可在装配场景的多文件工作区中调用预先设计的工具，准确理解语义、以支持复杂装配零件的生成。
+- *评测与结果*: 以测试为核心指标评估约束满足率。在自建基准数据集上，方法取得 `54.2%` 通过率、`41.9%` 全测试通过率和 `2.4%` 无效输出率，并在保持几何保真度的同时，于约束满足方面优于既有纯 LLM (如 GPT-5) 与工具增强基线。
+- *研究成果*: 以第一作者投稿 1 篇论文至 *ICML 2026* (CCF-A, 在审) 。
+
+### 人在回路 CAD 生成工作流
+
+2025.2 – 2025.5
+
+设计了用于代码式 CAD 生成的智能体工作流，在保证代码有效性的同时兼顾人类偏好。
+
+- *工作流设计*: 以微调后的 `Qwen2.5-VL-7B` 为骨干，融合多种代码生成工作流模式，覆盖意图澄清、有效性校验、迭代优化、记忆与安全门控。
+- *结果*: 在 200 个真实模型上以无效率与专家成对 Elo 评估，达到 2% 无效率和 1075.5 Elo 的最佳表现，优于 Claude、GPT-4o 及非 Agent 的 Qwen 基线。
+- *成果*: 已以第一作者的身份发表 1 篇论文于 Applied Soft Computing (SCI II 区, IF: 6.6)。
+
+### 个性化印刷品色差检测暗室与系统设计
+
+2024.12 – 2025.7
+
+针对个性化印刷流程中的色彩一致性控制问题，构建基于机器视觉的自动化色差检测与参数调节系统。
+
+- *采集与检测*: 设计光学采集环境并实现特征匹配对齐与 ROI 提取，以适应不同光照、材料反射条件下的多样化印刷图案。随后将实际采集到的 sRGB 测量值映射到 CMYK 空间，实现稳健的色差 $Delta E$ (CIEDE2000) 计算。
+- *参数举荐算法设计*: 采用自适应迭代步长反馈机制，准确提取对应颜色，并将测得的色差综合转化为印刷操作员可执行的墨量调整建议，将完整的检测-推荐流水线优化到 ≤ 1 秒/张，在试产线中相较人工校色提速超过 20 倍。
+- *原型设计*: 使用 `Gradio` 多轮迭代原型，在确认系统合理后，进一步部署了基于 `Next.js` 和 `FastAPI` 的全栈生产系统。
+- *成果*: 已获得 2 项软件著作权授权。
+
+## 论文发表
+
+1. **Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling**
+
+   Zheng K., Zhong Y., Su X., Leng J.\*, Liu Q., Chen X
+
+   *Applied Soft Computing* · 2025 · JCR Q1, IF: 6.6, Highly Cited Paper
+
+   DOI: [10.1016/j.asoc.2025.113920](https://doi.org/10.1016/j.asoc.2025.113920)
+
+2. **AIGC-empowered Smart Manufacturing: Prospects and Challenges**
+
+   Leng J., Zheng K., Li R., Chen C., Wang B., Liu Q.\*, Chen X., Shen W
+
+   *Robotics and Computer-Integrated Manufacturing* · 2026 · JCR Q1, IF: 11.4
+
+   DOI: [10.1016/j.rcim.2025.103076](https://doi.org/10.1016/j.rcim.2025.103076)
+
+## 技能
+
+- **AI 工程:** `Python`, `vLLM`, `Unsloth`, `TRL`, `OpenHands`, `PyTorch`
+
+- **语言:** 英语 (TOEFL: 90), 日语 (JLPT N1), 中文, 粤语
+
+- **前端:** `TypeScript`, `JavaScript`, `Next.js`, `Tailwind CSS`, `Vite`, `React`
+
+- **DevOps 与后端:** `Rust`, `CLI`, `Docker`, `FastAPI`, `Node.js`, `PostgreSQL`, `Azure`
+
+## Side Projects
+
+- **`play`.** 比较fancy的 TUI. Typst, TOML, Multilingual · 2025.

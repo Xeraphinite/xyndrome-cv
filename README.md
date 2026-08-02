@@ -16,60 +16,70 @@ A modern, pixel-perfect, and highly customizable CV/resume template built with T
 To build the main English CV:
 
 ```bash
-typst compile main.typ
+typst compile main.typ output/main.pdf
 ```
 
 ### International Versions
 
-Language data is stored in `intl/` as TOML files. Entry `.typ` files are at project root:
+Localized CV data is stored under `config/intl/`. Its entry `.typ` files are under `intl/<locale>/typ/`:
 
 #### Japanese (日本語)
 ```bash
-typst compile --root . main-ja.typ cv-ja.pdf
+typst compile --root . intl/ja/typ/cv-ja.typ output/cv-ja.pdf
 ```
 
 #### Simplified Chinese (简体中文)
 ```bash
-typst compile --root . --font-path fonts main-zh-cn.typ cv-zh-cn.pdf
+typst compile --root . --font-path fonts intl/zh-cn/typ/cv-zh-cn.typ output/cv-zh-cn.pdf
 ```
 
 #### Traditional Chinese / Cantonese (繁體中文/粵語)
 ```bash
-typst compile --root . main-zh-hk.typ cv-zh-hk.pdf
+typst compile --root . intl/zh-hk/typ/cv-zh-hk.typ output/cv-zh-hk.pdf
 ```
 
 #### Korean (한국어)
 ```bash
-typst compile --root . main-ko.typ cv-ko.pdf
+typst compile --root . intl/ko/typ/cv-ko.typ output/cv-ko.pdf
+```
+
+### Markdown Versions
+
+Readable Markdown counterparts for every English and localized CV variant are generated under `output/markdown/`. Their paths mirror the TOML sources under `config/`.
+
+```bash
+python3 scripts/generate_markdown.py
+python3 scripts/generate_markdown.py --check
 ```
 
 ### Directory Structure
 
 ```
 xyndrome-cv/
-├── main.typ                 # English version
-├── main-ja.typ              # Japanese entrypoint
-├── main-zh-cn.typ           # Simplified Chinese entrypoint
-├── main-zh-hk.typ           # Traditional Chinese/Cantonese entrypoint
-├── main-ko.typ              # Korean entrypoint
-├── fonts/                   # Bundled local fonts for Typst
-├── intl/                    # International TOML data only
-│   ├── ja/                  # Japanese
-│   │   └── cv-ja.toml
-│   ├── zh-cn/               # Simplified Chinese
-│   │   └── cv-zh-cn.toml
-│   ├── zh-hk/               # Traditional Chinese/Cantonese
-│   │   └── cv-zh-hk.toml
-│   └── ko/                  # Korean
-│       └── cv-ko.toml
-├── xyndrome/                # Template package
-│   ├── lib.typ              # Main library
-│   ├── core.typ             # Core CV template
-│   ├── cv.typ               # TOML renderer
-│   ├── icons.typ            # Icon definitions
-│   ├── utils.typ            # Helper utilities
-│   ├── components/          # Reusable UI components
-│   └── sections/            # CV sections and renderers
+├── main.typ                  # English entrypoint
+├── config/                   # Runtime config and CV TOML data
+│   ├── config.toml
+│   ├── cv.toml
+│   └── intl/                 # Localized CV data
+├── intl/                     # Localized Typst entrypoints
+│   ├── ja/typ/
+│   ├── zh-cn/typ/
+│   ├── zh-hk/typ/
+│   └── ko/typ/
+├── output/                   # Generated artifacts
+│   ├── *.pdf
+│   └── markdown/             # Generated Markdown CV variants
+├── fonts/                    # Bundled local fonts for Typst
+├── scripts/
+│   └── generate_markdown.py  # TOML-to-Markdown generator
+├── xyndrome/                 # Template package
+│   ├── lib.typ               # Main library
+│   ├── core.typ              # Core CV template
+│   ├── cv.typ                # TOML renderer
+│   ├── icons.typ             # Icon definitions
+│   ├── utils.typ             # Helper utilities
+│   ├── components/           # Reusable UI components
+│   └── sections/             # CV sections and renderers
 └── README.md
 ```
 

@@ -2,9 +2,9 @@
 
 ## Small Features
 
-- [ ] BibTeX support or convertion to `cv.toml` from BibTeX
+- [ ] BibTeX support or conversion to `config/cv.toml` from BibTeX
 - [ ] Add a toggle for non-icons mode
 
 ## AI Features
 
-- [ ] Auto-generate `cv.toml` with `skills`
+- [ ] Auto-generate `config/cv.toml` with `skills`

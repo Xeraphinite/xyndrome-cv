@@ -1,0 +1,83 @@
+<!-- Generated from config/intl/ja/cv-ja-1p.toml by scripts/generate_markdown.py. -->
+
+# Keyou (Key) Zheng
+
+郑恪悠
+
+[`keyouzheng0915@gmail.com`](mailto:keyouzheng0915@gmail.com) · [`keyzh.pages.dev`](https://keyzh.pages.dev) · [`Xeraphinite`](https://github.com/Xeraphinite) · [`Keyou Zheng`](https://scholar.google.com/citations?user=agkWz8MAAAAJ) · 中国広東省広州市
+
+大規模言語モデルと AI 駆動の設計自動化を専門とする、自律性の高い機械工学修士課程修了見込み者です。研究分野は、コードベース CAD 生成、エージェント型ワークフロー、産業応用に向けた Human-in-the-loop システムです。深層学習、フルスタック開発、DevOps における実績を持ち、AI による設計・製造技術の発展に向けて博士課程進学の機会を志望しています。
+
+## 学歴
+
+### 北海道大学（QS 世界大学ランキング上位 200 位）
+
+コンピュータサイエンス 博士 · 2027年4月 - 2030年4月（修了見込み）
+
+### 広東工業大学
+
+機械工学 修士 · 2023年9月 - 2026年6月
+
+- *GPA:* 3.62/4.0（上位 2.5%）、指導教員 Jiewu Leng;;
+- *修士論文：* _検証器駆動の大規模言語モデルエージェントによるコードベース・パラメトリック CAD 生成_。
+
+### 広東財経大学
+
+コンピュータサイエンス 学士 · 2019年9月 - 2023年6月
+
+- *GPA:* 3.5/4.0（上位 5%）；
+- *卒業論文：* _深層強化学習に基づく Mario ゲームエージェントの設計と実装_。
+
+## 代表プロジェクト
+
+### コードベース CAD アセンブリ生成
+
+リーダー · 製造技術・設備国家重点実験室, 中国広州 · 2025年8月 – 現在
+
+**Stack:** vLLM, OpenHands, Docker, Kubernetes, Laminar
+
+実行可能な制約条件のもとで、制御可能なコードベース CAD 生成のための検証可能ベンチマークと LLM エージェントを構築しました。
+
+- *エージェント基盤：* 固定ツールチェーンと再現可能な実行環境を備えた_多言語・コンテナ化コード実行サンドボックス_を構築しました。複数のエージェント軌跡と失敗記録を収集できる_水平スケーラブル_なバックエンドを設計し、大規模実験の可観測性を確保しました。さらに、迅速なデバッグと成果物生成のための_軽量 Web プレイグラウンド_も実装しました。
+- *ベンチマーク構築：* 公開リポジトリと CAD コミュニティから収集した 20 万件の人手 CAD コードコーパスを基にベンチマークを構築しました。_決定論的・ヒューリスティック規則_（例: あいまい重複排除）と LLM パイプラインを組み合わせ、_データ汚染を低減し課題難易度を制御_しました。最終的に、ゴールデン参照ワークスペースと実行可能テスト付きで、単体部品 1 万件・アセンブリ 1,700 件を作成しました。
+- *エージェント設計：* 自己テストと自己修復を通じて CAD プログラムを生成・編集する LLM _アーキテクチャ_を設計しました。単一ファイル前提の従来手法と異なり、アセンブリ向けのマルチファイル環境で特定ツール（例: 自然言語から仕様を抽出する `spec` ツール）を利用し、クローズドループで修正を行えます。
+- *評価と結果：* 実行可能テストを主要指標として制約充足度を評価しました。アセンブリ課題では、pass rate 54.2%、all-tests success 41.9%、invalid output 2.4% を達成し、幾何忠実性を保ちながら、従来の LLM 単体（例: GPT-5）およびツール強化ベースラインより高い制約充足性能を示しました。
+- *成果：* 論文 1 本を _第43回国際機械学習会議_（*ICML 2026*）に投稿し、査読中です。
+
+## 発表論文
+
+1. **[Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling](https://www.sciencedirect.com/science/article/pii/S1568494625012335)**
+
+   Zheng K., Zhong Y., Su X., Leng J.\*, Liu Q., Chen X
+
+   *Applied Soft Computing* · 2025 · JCR Q1, IF: 6.6
+
+   DOI: [10.1016/j.asoc.2025.113920](https://doi.org/10.1016/j.asoc.2025.113920)
+
+2. **[AIGC-empowered Smart Manufacturing: Prospects and Challenges](https://www.sciencedirect.com/science/article/pii/S0736584525001309)**
+
+   Leng J., Zheng K., Li R., Chen C., Wang B., Liu Q.\*, Chen X., Shen W
+
+   *Robotics and Computer-Integrated Manufacturing* · 2026 · JCR Q1, IF: 11.4
+
+   DOI: [10.1016/j.rcim.2025.103076](https://doi.org/10.1016/j.rcim.2025.103076)
+
+## スキル
+
+- **AI エンジニアリング:** Python, vLLM, Unsloth, TRL, OpenHands, PyTorch, CUDA
+
+- **言語:** *英語（TOEFL: 90）*, *日本語（N1: 134）*, 中国語・広東語（母語）, 韓国語（初級）
+
+- **フロントエンド:** TypeScript, JavaScript, Next.js, Tailwind CSS, Vite, React, PWA
+
+- **DevOps・バックエンド:** Rust, CLI, Docker, Kubernetes, Node, PostgreSQL, Azure
+
+## 受賞歴
+
+- **国家奨学金（上位 2%）** — 中国教育部 · 2025
+
+- **学業優秀奨学金** — 広東工業大学 · 2023, 2024, 2025
+
+- **米亜奨学金** — 広東工業大学 · 2026
+
+- **学業優秀奨学金** — 広東財経大学 · 2020, 2021, 2022

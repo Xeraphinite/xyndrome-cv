@@ -13,6 +13,7 @@ contacts = [
   { icon = "email", label = "`keyouzheng0915@gmail.com`", url = "mailto:keyouzheng0915@gmail.com" },
   { icon = "website", label = "`keyzh.pages.dev`", url = "https://keyzh.pages.dev" },
   { icon = "github", label = "`Xeraphinite`", url = "https://github.com/Xeraphinite" },
+  { icon = "scholar", label = "`Keyou Zheng`", url = "https://scholar.google.com/citations?user=agkWz8MAAAAJ" },
 ]
 
 [sections]
@@ -27,13 +28,18 @@ skills = "Skills"
 awards = "Awards"
 
 
+[education.education-3]
+institution = "Hokkaido University (QS Top 200)"
+degree = "Computer Science and Technology, PhD"
+date = "Apr 2027 - Apr 2030 (Expected)"
+
 [education.education-1]
 institution = "Guangdong University of Technology"
 degree = "Mechanical Engineering, MEng."
-date = "Sep 2023 - Jun 2026 (Expected)"
+date = "Sep 2023 - Jun 2026"
 details = [
   "*GPA:* 3.62/4.0 (Top 2.5%), Supervised by Prof. #smallcaps(\"Jiewu Leng\");;",
-  "*Dissertation:* _A Verifier-Driven LLM Agent for Code-based Parametric CAD Generation _ (Ongoing).",
+  "*Dissertation:* _A Verifier-Driven LLM Agent for Code-based Parametric CAD Generation_.",
 ]
 
 # Github: #link-with-icon(icon: github-line-icon, url:\"https://github.com/Xeraphinite/Mario-RL\", text:`Mario-RL`)
@@ -60,7 +66,7 @@ details = [
   "*Benchmark Construction*: Built a large-scale benchmark from a 200k human CAD code corpus collected from public repos and CAD communities. Filtered with _deterministic and heuristic rules_ (e.g., fuzzy deduplication), and an LLM-based pipeline to _reduce data contamination_ and _control task difficulty_. Produced 10k single-part tasks and 1.7k assembly tasks with golden reference workspaces and executable tests.",
   "*Agent Design*: Designed _architecture_ for LLMs to generate and edit CAD programs through self-testing and self-repairing. Different from prior methods that only work in a single file, the agent could use specific tools (e.g., `spec`, `inspect`, `verify`) in multi-file workspace for assemblies following a state-machine to generate controllable code.",
   "*Evaluation and Results*: Used executable tests as the primary measure to calculate constraint satisfaction. On assembly tasks, our method achieved 54.2% pass rate, 41.9% all-tests success, and 2.4% invalid outputs with competitive geometry scores, outperforming baselines on constraint satisfaction while keeping geometry fidelity.",
-  "*Outcome*: One paper is under review at _43rd International Conference on Machine Learning_ (*ICML 2026*).",
+  "*Outcome*: First-author paper accepted at the _43rd International Conference on Machine Learning_ (*ICML 2026*).",
 ]
 
 [experience.exp-2]
@@ -94,6 +100,15 @@ details = [
 
 
 [publications.publication-1]
+type = "conference"
+title = "SPADA: A Verifiable Test-Driven Agent for Controllable Parametric CAD Assembly Generation"
+venue = "The Forty-Third International Conference on Machine Learning (ICML 2026)"
+published = "2026"
+metadata = "CCF-A"
+authors = ["Zheng K.", "Su X.", "Leng J.*"]
+tldr = ""
+
+[publications.publication-2]
 type = "journal"
 title = "Towards Agentic Smart Design: An Industrial Large Model-driven Human-in-the-loop Agentic Workflow for Geometric Modelling"
 venue = "Applied Soft Computing"
@@ -104,12 +119,12 @@ pdf = "https://www.sciencedirect.com/science/article/pii/S1568494625012335"
 authors = ["Zheng K.", "Zhong Y.", "Su X.", "Leng J.*", "Liu Q.", "Chen X"]
 tldr = ""
 
-[publications.publication-2]
+[publications.publication-3]
 type = "journal"
 title = "AIGC-empowered Smart Manufacturing: Prospects and Challenges"
 venue = "Robotics and Computer-Integrated Manufacturing"
 published = "2026"
-metadata = "JCR Q1, IF: 11.4"
+metadata = "JCR Q1, IF: 11.4, Highly Cited Paper"
 DOI = "10.1016/j.rcim.2025.103076"
 pdf = "https://www.sciencedirect.com/science/article/pii/S0736584525001309"
 authors = [
@@ -166,12 +181,12 @@ from = "Ministry of Education, China"
 
 [awards.award-2]
 name = "Scholarship in Academic Excellence"
-date = "2024, 2025"
+date = "2023, 2024, 2025"
 from = "Guangdong University of Technology"
 
 [awards.award-4]
-name = "Freshman Entrance Scholarship"
-date = "2023"
+name = "Miya Scholarship"
+date = "2026"
 from = "Guangdong University of Technology"
 
 [awards.award-3]
